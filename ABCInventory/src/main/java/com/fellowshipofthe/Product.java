@@ -2,11 +2,12 @@ package com.fellowshipofthe;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+
 @XmlRootElement
-public class MockProduct {
+public class Product {
     private String productName;
-    private int productCode;
-    private double price;
+    private String productCode;
+    private String price;
     private String description;
 
     public String getProductName() {
@@ -17,20 +18,20 @@ public class MockProduct {
         this.productName = productName;
     }
 
-    public int getProductCode() {
+    public String getProductCode() {
         return productCode;
     }
 
-    public void setProductCode(int productCode) {
+    public void setProductCode(String productCode) {
         this.productCode = productCode;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice(String price) {
+        this.price = String.valueOf(price);
     }
 
     public String getDescription() {
