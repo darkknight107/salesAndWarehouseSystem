@@ -12,5 +12,7 @@
 </head>
 <body>
   <p><a href="rest/myresource">Jersey resource</a>
+  <input type="text" name="productName">
+
 </body>
 </html>

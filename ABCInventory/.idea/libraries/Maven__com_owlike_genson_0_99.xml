@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.owlike:genson:0.99">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/owlike/genson/0.99/genson-0.99.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/owlike/genson/0.99/genson-0.99-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/owlike/genson/0.99/genson-0.99-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
