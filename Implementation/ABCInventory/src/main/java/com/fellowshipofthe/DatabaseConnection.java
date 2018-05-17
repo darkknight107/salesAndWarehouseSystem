@@ -13,7 +13,8 @@ public class DatabaseConnection {
         String password="abcinventory";
 
         Class.forName("com.mysql.jdbc.Driver");
-        conn= DriverManager.getConnection(url,username,password);
+        conn= DriverManager.getConnection("jdbc:mysql://" +
+                "abc-inventory-database.cotussqxqzdd.ap-southeast-2.rds.amazonaws.com:3306/abcinventorydatabase?user=abcinventory&password=abcinventory");
         System.out.println("Connected to database!");
 
         return conn;
