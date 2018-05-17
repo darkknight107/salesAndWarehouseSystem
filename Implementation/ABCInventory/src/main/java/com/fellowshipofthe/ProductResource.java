@@ -11,7 +11,7 @@ import java.util.List;
 public class ProductResource {
     ProductDAO repo;
 
-    public ProductResource() throws SQLException, ClassNotFoundException {
+    public ProductResource() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         repo= new ProductDAO();
     }
     @GET
