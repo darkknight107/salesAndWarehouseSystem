@@ -43,5 +43,6 @@
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-utils:2.5.0-b36" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.20.0-GA" level="project" />
+    <orderEntry type="library" name="Maven: postgresql:postgresql:9.0-801.jdbc4" level="project" />
   </component>
 </module>
