@@ -9,17 +9,20 @@ import java.util.List;
 
 @Path("products")
 public class ProductResource {
+
     ProductDAO repo;
 
     public ProductResource() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         repo= new ProductDAO();
     }
+
     @GET
     @Produces(MediaType.APPLICATION_XML)
     //@Produces(MediaType.APPLICATION_JSON)
     public List<Product> getProduct() throws SQLException {
         System.out.println("get MockProduct called!");
         return repo.getProducts();
+
     }
 
 }
