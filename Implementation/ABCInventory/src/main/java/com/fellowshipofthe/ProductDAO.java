@@ -4,13 +4,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
     List<Product> products;
     DatabaseConnection dbConnect= new DatabaseConnection();
     Connection conn= dbConnect.connect();
-    public ProductDAO() throws SQLException, ClassNotFoundException {
+    public ProductDAO() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        //initializing arraylist
+        products= new ArrayList<Product>();
     }
 
     public List<Product> getProducts() throws SQLException {
@@ -28,6 +31,4 @@ public class ProductDAO {
         }
         return products;
     }
-
-
 }
