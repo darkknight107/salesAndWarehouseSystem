@@ -1,5 +1,8 @@
 package com.fellowshipofthe;
-@xmlR
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class ProductItem {
     private String productItemCode;
     private String size;

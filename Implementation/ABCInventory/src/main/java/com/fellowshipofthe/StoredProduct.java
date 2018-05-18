@@ -1,5 +1,8 @@
 package com.fellowshipofthe;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class StoredProduct {
     private int productQuantity;
 

@@ -1,5 +1,8 @@
 package com.fellowshipofthe;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Location {
     private String locationID;
     private String locationName;
