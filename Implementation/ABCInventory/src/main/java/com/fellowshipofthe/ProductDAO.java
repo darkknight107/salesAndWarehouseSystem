@@ -9,13 +9,16 @@ import java.util.List;
 
 public class ProductDAO {
     List<Product> products;
-    DatabaseConnection dbConnect= new DatabaseConnection();
-    Connection conn= dbConnect.connect();
+    DatabaseConnection dbConnect;
+    Connection conn;
     public ProductDAO() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         //initializing arraylist
-        products= new ArrayList<Product>();
+        products = new ArrayList<Product>();
+        //creating new  connection
+        dbConnect = new DatabaseConnection();
+        //connecting to database
+        conn = dbConnect.connect();
     }
-
     public List<Product> getProducts() throws SQLException {
         String sql="select * from Product";
         Statement st= conn.createStatement();
