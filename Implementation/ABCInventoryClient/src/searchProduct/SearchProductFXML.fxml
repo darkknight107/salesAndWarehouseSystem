@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="searchProduct.SearchProductController">
+   <children>
+      <Button fx:id="btnSearch" layoutX="557.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleSearchProductCodeAction" text="Search" />
+      <TextField fx:id="txtSearch" layoutX="15.0" layoutY="39.0" onAction="#handleSearchProductCodeAction" prefHeight="27.0" prefWidth="502.0" />
+      <TableView fx:id="tblSearchProduct" layoutX="14.0" layoutY="73.0" prefHeight="200.0" prefWidth="726.0">
+        <columns>
+          <TableColumn prefWidth="109.0" text="Product Code">
+              <cellValueFactory>
+                  <PropertyValueFactory property="productCode" />
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn prefWidth="120.0" text="Product Name">
+              <cellValueFactory>
+                  <PropertyValueFactory property="productName" />
+              </cellValueFactory>
+          </TableColumn>
+            <TableColumn prefWidth="67.0" text="Quantity">
+                <cellValueFactory>
+                    <PropertyValueFactory property="productQuantity" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="46.0" text="Price">
+                <cellValueFactory>
+                    <PropertyValueFactory property="price" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="74.0" text="LocationID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="locationID" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="103.0" text="Location Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="locationName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="122.0" text="Location Address">
+                <cellValueFactory>
+                    <PropertyValueFactory property="locationAddress" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="84.0" text="Phone">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phone" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -7,6 +7,18 @@
     <groupId>com.fellowshipofthe</groupId>
     <artifactId>ABCInventory</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencyManagement>
         <dependencies>
@@ -39,11 +51,18 @@
             <version>5.1.38</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.22.1</version>
+        </dependency>
+
     </dependencies>
 
 
     <properties>
         <jersey.version>2.26-b06</jersey.version>
     </properties>
+
 
 </project>

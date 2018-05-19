@@ -1,8 +1,5 @@
 package com.fellowshipofthe;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class SearchProduct {
     String productCode;
     String productName;
@@ -77,3 +74,4 @@ public class SearchProduct {
         this.phone = phone;
     }
 }
+
