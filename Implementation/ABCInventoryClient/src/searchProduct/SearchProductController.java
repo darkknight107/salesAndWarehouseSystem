@@ -21,6 +21,8 @@ public class SearchProductController {
     private Button btnSearch;
     @FXML
     private TableView<SearchProduct> tblSearchProduct;
+    @FXML
+    private  TextField txtSearchProductItemCode;
 
     public void initialize(URL url, ResourceBundle rb){
         handleSearchProductCodeAction();
@@ -28,16 +30,17 @@ public class SearchProductController {
 
     @FXML
     private void handleSearchProductCodeAction(){
-        WebTarget clientTarget;
+        WebTarget clientTarget = null;
         ObservableList<SearchProduct> data = tblSearchProduct.getItems();
         data.clear();
         Client client = ClientBuilder.newClient();
         client.register(SearchProductMessageBodyReader.class);
-        if (txtSearch.getText().length() > 0) {
+        if (txtSearch.getText().length() > 0  && txtSearchProductItemCode.getText().length() == 0) {
             clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearch.getText());
-        } else {
-            clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/S1");
+        } else if (txtSearch.getText().length() == 0  && txtSearchProductItemCode.getText().length() > 0) {
+            clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/{beginBy}");
+            clientTarget = clientTarget.resolveTemplate("beginBy", txtSearchProductItemCode.getText());
         }
         GenericType<List<SearchProduct>> listc = new GenericType<List<SearchProduct>>() {
         };

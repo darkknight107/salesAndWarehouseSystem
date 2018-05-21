@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class SearchProduct implements Serializable {
 
     private String productCode;
+    private String productItemCode;
+    private String productSize;
     private String productName;
     private String productQuantity;
     private String price;
@@ -12,6 +14,23 @@ public class SearchProduct implements Serializable {
     private String locationName;
     private String locationAddress;
     private String phone;
+
+    public String getProductItemCode() {
+        return productItemCode;
+    }
+
+    public void setProductItemCode(String productItemCode) {
+        this.productItemCode = productItemCode;
+    }
+
+    public String getProductSize() {
+        return productSize;
+    }
+
+    public void setProductSize(String productSize) {
+        this.productSize = productSize;
+    }
+
 
     public String getProductCode() {
         return productCode;

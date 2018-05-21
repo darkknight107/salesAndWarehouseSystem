@@ -1,5 +1,8 @@
 package searchProduct;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
 import javax.json.Json;
 import javax.json.stream.JsonParser;
 import javax.ws.rs.Consumes;
@@ -19,6 +22,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class SearchProductMessageBodyReader implements MessageBodyReader<List<SearchProduct>>{
 
+
 //    @Override
     public boolean isReadable(Class<?> type, Type type1, Annotation[] antns,
                               MediaType mt) {
@@ -29,7 +33,7 @@ public class SearchProductMessageBodyReader implements MessageBodyReader<List<Se
     public List<SearchProduct> readFrom(Class<List<SearchProduct>> type, Type type1, Annotation[] antns, MediaType mt, MultivaluedMap<String, String> mm, InputStream in) throws IOException, WebApplicationException {
         if (mt.getType().equals("application") && mt.getSubtype().equals("json")) {
             SearchProduct searchProduct = new SearchProduct();
-            List<SearchProduct> customers = new ArrayList();
+            List<SearchProduct> searchProducts = new ArrayList();
             JsonParser parser = Json.createParser(in);
             while (parser.hasNext()) {
                 JsonParser.Event event = parser.next();
@@ -38,12 +42,18 @@ public class SearchProductMessageBodyReader implements MessageBodyReader<List<Se
                         searchProduct = new SearchProduct();
                         break;
                     case END_OBJECT:
-                        customers.add(searchProduct);
+                        searchProducts.add(searchProduct);
                         break;
                     case KEY_NAME:
                         String key = parser.getString();
                         parser.next();
                         switch (key) {
+                            case "productItemCode":
+                                searchProduct.setProductItemCode(parser.getString());
+                                break;
+                            case "productSize":
+                                searchProduct.setProductSize(parser.getString());
+                                break;
                             case "productCode":
                                 searchProduct.setProductCode(parser.getString());
                                 break;
@@ -76,7 +86,7 @@ public class SearchProductMessageBodyReader implements MessageBodyReader<List<Se
                         break;
                 }
             }
-            return customers;
+            return searchProducts;
         }
         throw new UnsupportedOperationException("Not supported MediaType: " + mt);
     }

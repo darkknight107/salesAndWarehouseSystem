@@ -7,54 +7,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="777a30cf-d8fc-44c1-bb5f-81c9ce7cb8ae" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_base_2_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_json_provider_2_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_5_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_ext_jersey_entity_filtering_2_26_b06.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_json_jackson_2_22_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ABCInventory_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ABCInventory_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ABCInventory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ABCInventory.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/DatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/DatabaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/Location.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/MyResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/ProductDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/ProductItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/ProductResource.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProduct.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/StoredProduct.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/Location.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/MyResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/ProductDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/ProductItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/ProductResource.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/StoredProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/DatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/DatabaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/Location.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/MyResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/ProductDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/ProductItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/ProductResource.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProduct.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProductDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProductResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProductResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/StoredProduct.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductFXML.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductFXML.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductMessageBodyReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductMessageBodyReader.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,8 +50,8 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="210">
+              <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -100,26 +77,36 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+            <state relative-caret-position="495">
+              <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchProduct.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchProduct.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+            <state relative-caret-position="300">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <folding>
+                <element signature="e#336#337#0" expanded="true" />
+                <element signature="e#374#375#0" expanded="true" />
+                <element signature="e#436#437#0" expanded="true" />
+                <element signature="e#490#491#0" expanded="true" />
+                <element signature="e#528#529#0" expanded="true" />
+                <element signature="e#562#563#0" expanded="true" />
+                <element signature="e#616#617#0" expanded="true" />
+                <element signature="e#662#663#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchProductDAO.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchProductDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+            <state relative-caret-position="-229">
+              <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,11 +114,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="DatabaseConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/DatabaseConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SearchProductResource.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+            <state relative-caret-position="300">
+              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -154,17 +150,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/DatabasConnection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/MyResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java" />
-        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/ABCInventory_Client/SearchProductScene.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/ABCInventory_Client/SearchProductClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/searchProduct/SearchProductMessageBodyReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/searchProduct/SearchProductMain.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java" />
       </list>
     </option>
   </component>
@@ -192,7 +188,6 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="48" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -204,8 +199,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,6 +210,32 @@
               <item name="ABCInventory" type="b2602c69:ProjectViewProjectNode" />
               <item name="ABCInventory" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABCInventory" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABCInventory" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABCInventory" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABCInventory" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABCInventory" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABCInventory" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABCInventory" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABCInventory" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fellowshipofthe" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ABCInventory" type="b2602c69:ProjectViewProjectNode" />
@@ -233,6 +252,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -491,17 +512,19 @@
       <workItem from="1526715081881" duration="475000" />
       <workItem from="1526715573897" duration="150000" />
       <workItem from="1526715728281" duration="139000" />
+      <workItem from="1526887690132" duration="4077000" />
+      <workItem from="1526892859878" duration="902000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9567000" />
+    <option name="totallyTimeSpent" value="14546000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="23" width="1440" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50572246" side_tool="true" visible="true" weight="0.32948717" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50858366" side_tool="true" visible="true" weight="0.32948717" />
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.4985694" weight="0.32948717" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
@@ -518,10 +541,10 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49427754" weight="0.32948717" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4914163" weight="0.32948717" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25178826" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2553648" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -770,37 +793,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/MyResource.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ABCInventory_Client.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ABCInventory_Client/SearchProductController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ABCInventory_Client/SearchProductClient.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ABCInventory_Client/SearchProductScene.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/searchProduct/SearchProductMessageBodyReader.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/searchProduct/SearchProductController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/searchProduct/SearchProductFXML.fxml" />
@@ -821,19 +816,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/DatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+        <state relative-caret-position="495">
+          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+        <state relative-caret-position="-229">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="e#336#337#0" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#662#663#0" expanded="true" />
           </folding>
         </state>
       </provider>

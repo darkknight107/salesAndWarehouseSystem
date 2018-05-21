@@ -18,8 +18,9 @@ public class SearchProductDAO {
         conn= dbconnet.connect();
     }
     public List<SearchProduct> searchProduct(String code) throws SQLException {
-        //String sql= "select * from Product where productCode= \""+ code + "\"";
         String sql= " SELECT p.productCode, \n" +
+                "        pi.productItemCode, \n" +
+                "        pi.productSize, \n" +
                 "        p.productName, \n" +
                 "        sum(sp.productQuantity) 'productQuantity',\n" +
                 "        p.price,\n" +
@@ -31,20 +32,22 @@ public class SearchProductDAO {
                 "\tJOIN ProductItem pi ON sp.productItemCode = pi.productItemCode\n" +
                 "    JOIN Product p ON pi.productCode = p.productCode\n" +
                 "    JOIN Location l ON sp.locationID = l.locationID\n" +
-                "WHERE p.productCode = \""+ code +"\"" +
+                "WHERE pi.productItemCode = \""+ code +"\" OR p.productCode = \""+ code +"\"" +
                 "group by l.locationID;";
         Statement stmt= conn.createStatement();
         ResultSet resultSet= stmt.executeQuery(sql);
         while(resultSet.next()){
             SearchProduct searchProduct= new SearchProduct();
             searchProduct.setProductCode(resultSet.getString(1));
-            searchProduct.setProductName(resultSet.getString(2));
-            searchProduct.setProductQuantity(resultSet.getInt(3));
-            searchProduct.setPrice(resultSet.getString(4));
-            searchProduct.setLocationID(resultSet.getString(5));
-            searchProduct.setLocationName(resultSet.getString(6));
-            searchProduct.setLocationAddress(resultSet.getString(7));
-            searchProduct.setPhone(resultSet.getString(8));
+            searchProduct.setProductItemCode(resultSet.getString(2));
+            searchProduct.setProductSize(resultSet.getString(3));
+            searchProduct.setProductName(resultSet.getString(4));
+            searchProduct.setProductQuantity(resultSet.getInt(5));
+            searchProduct.setPrice(resultSet.getString(6));
+            searchProduct.setLocationID(resultSet.getString(7));
+            searchProduct.setLocationName(resultSet.getString(8));
+            searchProduct.setLocationAddress(resultSet.getString(9));
+            searchProduct.setPhone(resultSet.getString(10));
 
             searchProducts.add(searchProduct);
         }
