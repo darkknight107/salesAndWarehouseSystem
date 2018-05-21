@@ -38,6 +38,8 @@ public class SearchProductController {
         if (txtSearch.getText().length() > 0  && txtSearchProductItemCode.getText().length() == 0) {
             clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearch.getText());
+            tblSearchProduct.getColumns().remove(1);
+            tblSearchProduct.getColumns().remove(2);
         } else if (txtSearch.getText().length() == 0  && txtSearchProductItemCode.getText().length() > 0) {
             clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearchProductItemCode.getText());

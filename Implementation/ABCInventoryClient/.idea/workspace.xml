@@ -3,29 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../ABCInventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/WEB-INF/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/out/artifacts/ABCInventory_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProductResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProductResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/target/classes/com/fellowshipofthe/SearchProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/target/classes/com/fellowshipofthe/SearchProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/target/classes/com/fellowshipofthe/SearchProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/target/classes/com/fellowshipofthe/SearchProductDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/target/classes/com/fellowshipofthe/SearchProductResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/target/classes/com/fellowshipofthe/SearchProductResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventory/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductFXML.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchProduct/SearchProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/searchProduct/SearchProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/searchProduct/SearchProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/searchProduct/SearchProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchProduct/SearchProductMessageBodyReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/searchProduct/SearchProductMessageBodyReader.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchProductController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchProductController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="405">
+              <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -113,7 +96,7 @@
       <file leaf-file-name="SearchProductMessageBodyReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductMessageBodyReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
+            <state relative-caret-position="615">
               <caret line="57" column="50" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -122,14 +105,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchProductFXML.fxml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchProductFXML.fxml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -161,9 +144,9 @@
         <option value="$PROJECT_DIR$/src/sample/SearchProductMain.java" />
         <option value="$PROJECT_DIR$/src/searchProduct/SearchProductMain.java" />
         <option value="$PROJECT_DIR$/src/searchProduct/SearchProduct.java" />
-        <option value="$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml" />
         <option value="$PROJECT_DIR$/src/searchProduct/SearchProductMessageBodyReader.java" />
         <option value="$PROJECT_DIR$/src/searchProduct/SearchProductController.java" />
+        <option value="$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml" />
       </list>
     </option>
   </component>
@@ -177,7 +160,7 @@
     <packageJsonPaths />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -192,6 +175,7 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -215,7 +199,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -350,14 +333,17 @@
       <workItem from="1526887918977" duration="85000" />
       <workItem from="1526888182663" duration="3257000" />
       <workItem from="1526893165892" duration="614000" />
+      <workItem from="1526893948332" duration="811000" />
+      <workItem from="1526894853899" duration="26000" />
+      <workItem from="1526894920266" duration="148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14143000" />
+    <option name="totallyTimeSpent" value="15128000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -375,7 +361,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2639485" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.26752505" />
       <window_info anchor="right" id="Bean Validation" order="4" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -424,8 +410,8 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../ABCInventory/src/main/java/searchProduct/SearchProductMain.java" />
     <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductMain.java">
@@ -445,8 +431,8 @@
     <entry file="file://$PROJECT_DIR$/../ABCInventory/src/main/java/searchProduct/SearchProduct.java" />
     <entry file="file://$PROJECT_DIR$/../ABCInventory/src/main/java/searchProduct/SearchProductFXML.fxml" />
     <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../ABCInventory/src/main/java/searchProduct/SearchProductMain.java" />
     <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductMain.java">
@@ -466,8 +452,8 @@
     <entry file="file://$PROJECT_DIR$/../ABCInventory/src/main/java/searchProduct/SearchProduct.java" />
     <entry file="file://$PROJECT_DIR$/../ABCInventory/src/main/java/searchProduct/SearchProductFXML.fxml" />
     <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../ABCInventory/src/main/java/searchProduct/SearchProductMain.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
@@ -568,7 +554,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductMessageBodyReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
+        <state relative-caret-position="615">
           <caret line="57" column="50" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -576,18 +562,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        <state relative-caret-position="405">
+          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
         </state>
       </provider>
     </entry>
