@@ -1,10 +1,9 @@
 package com.fellowshipofthe;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class SearchProduct {
     String productCode;
+    String productItemCode;
+    String productSize;
     String productName;
     int productQuantity;
     String price;
@@ -12,6 +11,22 @@ public class SearchProduct {
     String locationName;
     String locationAddress;
     String phone;
+
+    public String getProductItemCode() {
+        return productItemCode;
+    }
+
+    public void setProductItemCode(String productItemCode) {
+        this.productItemCode = productItemCode;
+    }
+
+    public String getProductSize() {
+        return productSize;
+    }
+
+    public void setProductSize(String productSize) {
+        this.productSize = productSize;
+    }
 
     public String getProductCode() {
         return productCode;
@@ -77,3 +92,4 @@ public class SearchProduct {
         this.phone = phone;
     }
 }
+
