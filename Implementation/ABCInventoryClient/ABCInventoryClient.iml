@@ -20,5 +20,6 @@
         <jarDirectory url="file://$USER_HOME$/Downloads/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jar_files" level="project" />
   </component>
 </module>
