@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="777a30cf-d8fc-44c1-bb5f-81c9ce7cb8ae" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/junittest/SearchProductTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ABCInventory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ABCInventory.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/junittest/SearchProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/junittest/SearchProductTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/ABCInventoryClient.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/ABCInventoryClient.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMessageBodyReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -54,7 +41,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
+            <state relative-caret-position="901">
               <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
             </state>
           </provider>
@@ -72,7 +59,7 @@
       <file leaf-file-name="SearchProduct.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="-216">
               <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
@@ -81,8 +68,8 @@
       <file leaf-file-name="SearchProductTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/junittest/SearchProductTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+            <state relative-caret-position="243">
+              <caret line="52" column="83" lean-forward="true" selection-start-line="52" selection-start-column="83" selection-end-line="52" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="697">
-              <caret line="41" column="65" lean-forward="true" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="65" />
+              <caret line="41" column="65" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,13 +151,6 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
-  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -187,7 +167,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -248,18 +227,8 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.junittest" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/searchProduct" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -529,37 +498,50 @@
       <workItem from="1526902624208" duration="863000" />
       <workItem from="1526978854272" duration="1232000" />
       <workItem from="1526985255638" duration="4381000" />
+      <workItem from="1526991331319" duration="1328000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SearchProductTest - 2018.05.22 at 21h 59m 02s.xml">
-      <configuration name="SearchProductTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SearchProductTest - 2018.05.22 at 22h 01m 29s.xml">
-      <configuration name="SearchProductTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SearchProductTest - 2018.05.22 at 22h 01m 57s.xml">
-      <configuration name="SearchProductTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SearchProductTest - 2018.05.22 at 22h 02m 34s.xml">
-      <configuration name="SearchProductTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SearchProductTest - 2018.05.22 at 22h 09m 45s.xml">
       <configuration name="SearchProductTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="SearchProductTest - 2018.05.22 at 22h 12m 42s.xml">
       <configuration name="SearchProductTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SearchProductTest - 2018.05.22 at 22h 20m 17s.xml">
+      <configuration name="SearchProductTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SearchProductTest - 2018.05.22 at 22h 21m 02s.xml">
+      <configuration name="SearchProductTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SearchProductTest - 2018.05.22 at 22h 23m 21s.xml">
+      <configuration name="SearchProductTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SearchProductTest - 2018.05.22 at 22h 23m 36s.xml">
+      <configuration name="SearchProductTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SearchProductTest - 2018.05.22 at 22h 23m 51s.xml">
+      <configuration name="SearchProductTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SearchProductTest - 2018.05.22 at 22h 26m 43s.xml">
+      <configuration name="SearchProductTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SearchProductTest - 2018.05.22 at 22h 33m 03s.xml">
+      <configuration name="SearchProductTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SearchProductTest - 2018.05.22 at 22h 37m 10s.xml">
+      <configuration name="SearchProductTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21911000" />
+    <option name="totallyTimeSpent" value="23239000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5104167" side_tool="true" visible="true" weight="0.32943678" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5109375" side_tool="true" visible="true" weight="0.32943678" />
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.4985694" weight="0.32948717" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
@@ -577,7 +559,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48958334" weight="0.32943678" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4890625" weight="0.32943678" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19166666" />
       <window_info anchor="right" id="Bean Validation" order="3" />
@@ -847,7 +829,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
+        <state relative-caret-position="901">
           <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
         </state>
       </provider>
@@ -869,17 +851,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/junittest/TestSearchProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/junittest/TestSearchProduct.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
-          <caret line="41" column="65" lean-forward="true" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="65" />
+          <caret line="41" column="65" selection-start-line="41" selection-start-column="65" selection-end-line="41" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -888,15 +864,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
+        <state relative-caret-position="-216">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/junittest/SearchProductTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        <state relative-caret-position="243">
+          <caret line="52" column="83" lean-forward="true" selection-start-line="52" selection-start-column="83" selection-end-line="52" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
