@@ -17,12 +17,12 @@
               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
           </columnResizePolicy>
         <columns>
-            <TableColumn prefWidth="93.0" text="Product Code">
+            <TableColumn prefWidth="93.0" text="Product Code" fx:id="productCode">
                <cellValueFactory>
                   <PropertyValueFactory property="productCode" />
                </cellValueFactory>
             </TableColumn>
-          <TableColumn prefWidth="124.0" text="Product Item Code">
+          <TableColumn prefWidth="124.0" text="Product Item Code" fx:id="productItemCode">
               <cellValueFactory>
                   <PropertyValueFactory property="productItemCode" />
               </cellValueFactory>
@@ -32,7 +32,7 @@
                   <PropertyValueFactory property="productName" />
               </cellValueFactory>
           </TableColumn>
-            <TableColumn prefWidth="42.0" text="Size">
+            <TableColumn prefWidth="42.0" text="Size" fx:id="size">
                <cellValueFactory>
                   <PropertyValueFactory property="productSize" />
                </cellValueFactory>

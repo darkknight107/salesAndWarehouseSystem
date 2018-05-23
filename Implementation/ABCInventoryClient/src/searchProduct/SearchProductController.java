@@ -3,6 +3,7 @@ package searchProduct;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -23,6 +24,12 @@ public class SearchProductController {
     private TableView<SearchProduct> tblSearchProduct;
     @FXML
     private  TextField txtSearchProductItemCode;
+    @FXML
+    private TableColumn size;
+    @FXML
+    private  TableColumn productCode;
+    @FXML
+    private  TableColumn productItemCode;
 
     public void initialize(URL url, ResourceBundle rb){
         handleSearchProductCodeAction();
@@ -38,11 +45,13 @@ public class SearchProductController {
         if (txtSearch.getText().length() > 0  && txtSearchProductItemCode.getText().length() == 0) {
             clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearch.getText());
-            tblSearchProduct.getColumns().remove(1);
-            tblSearchProduct.getColumns().remove(2);
+            tblSearchProduct.getColumns().remove(size);
+            tblSearchProduct.getColumns().remove(productItemCode);
         } else if (txtSearch.getText().length() == 0  && txtSearchProductItemCode.getText().length() > 0) {
             clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearchProductItemCode.getText());
+            tblSearchProduct.getColumns().add(1,productItemCode);
+            tblSearchProduct.getColumns().add(2,size);
         }
         GenericType<List<SearchProduct>> listc = new GenericType<List<SearchProduct>>() {
         };
