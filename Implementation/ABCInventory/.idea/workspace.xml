@@ -7,12 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="777a30cf-d8fc-44c1-bb5f-81c9ce7cb8ae" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Feedbacks/Week 12/Week 12 Feedbacks.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ABCInventory_war_exploded/WEB-INF/classes/com/fellowshipofthe/SearchProductResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProductDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProductResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fellowshipofthe/SearchProductResource.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductFXML.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/out/production/ABCInventoryClient/searchProduct/SearchProductMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductFXML.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventoryClient/src/searchProduct/SearchProductMain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,8 +67,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+            <state relative-caret-position="675">
+              <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -67,7 +76,7 @@
       <file leaf-file-name="SearchProduct.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="-424">
               <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding>
                 <element signature="e#336#337#0" expanded="true" />
@@ -83,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchProductDAO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchProductDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+            <state relative-caret-position="176">
+              <caret line="115" column="33" lean-forward="true" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchProductResource.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchProductResource.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="224">
+              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -140,8 +149,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java" />
       </list>
     </option>
   </component>
@@ -179,9 +188,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,6 +241,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -502,17 +511,19 @@
       <workItem from="1527036430585" duration="63000" />
       <workItem from="1527036505684" duration="331000" />
       <workItem from="1527037030274" duration="703000" />
+      <workItem from="1527054811180" duration="4218000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18404000" />
+    <option name="totallyTimeSpent" value="22622000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.51502144" side_tool="true" visible="true" weight="0.32948717" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5164521" side_tool="true" visible="true" weight="0.32948717" />
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49642345" weight="0.32948717" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
@@ -524,15 +535,15 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32948717" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49928468" weight="0.32948717" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48497853" weight="0.32948717" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48354793" weight="0.32948717" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26180258" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26180258" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -804,17 +815,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+        <state relative-caret-position="675">
+          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -825,19 +829,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProduct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="-424">
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding>
             <element signature="e#336#337#0" expanded="true" />
@@ -852,10 +846,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/DatabaseConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="224">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fellowshipofthe/SearchProductDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="115" column="33" lean-forward="true" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
