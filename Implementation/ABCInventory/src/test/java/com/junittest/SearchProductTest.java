@@ -13,6 +13,13 @@ public class SearchProductTest {
     Field productItemField= null;
     Field productSizeField= null;
     Field productCodeField= null;
+    Field productNameField=null;
+    Field productQuantityField= null;
+    Field prodctPriceField= null;
+    Field productLocationIDField= null;
+    Field locationNameField= null;
+    Field locationAddressField= null;
+    Field phoneField= null;
 
     @Before
     public void setUp() throws Exception {
@@ -77,6 +84,26 @@ public class SearchProductTest {
         final String result= searchProduct.getProductCode();
         //then
         assertEquals("Testing getProductCode", result, "C2");
+    }
+    @Test
+    public void testSetProductName() throws NoSuchFieldException, IllegalAccessException {
+        //when
+        searchProduct.setProductName("Jackson Tshirt");
+        //then
+        productNameField= searchProduct.getClass().getDeclaredField("productName");
+        productNameField.setAccessible(true);
+        assertEquals("testing setProductName", productNameField.get(searchProduct), "Jackson Tshirt");
+    }
+    @Test
+    public void testGetProductName() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        productNameField= searchProduct.getClass().getDeclaredField("productName");
+        productNameField.setAccessible(true);
+        productNameField.set(searchProduct,"Jersey Tshirt");
+        //when
+        final String result= searchProduct.getProductName();
+        //then
+        assertEquals("testing getProductName", result, "Jersey Tshirt");
     }
 
 }
