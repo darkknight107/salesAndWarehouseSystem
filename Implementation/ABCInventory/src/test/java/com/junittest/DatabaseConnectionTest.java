@@ -9,6 +9,7 @@ public class DatabaseConnectionTest {
 
     @Before
     public void setUp() throws Exception {
+
     }
 
     @Test
