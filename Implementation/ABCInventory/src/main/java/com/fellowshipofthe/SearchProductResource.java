@@ -11,18 +11,28 @@ import java.util.List;
 @Path("searchproduct")
 public class SearchProductResource{
 
-    SearchProductDAO searchProductDAO;
-
 
     @GET
     @Path("searchproductcode/{productcode}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<SearchProduct> searchProduct(@PathParam("productcode") String productCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-        searchProductDAO= new SearchProductDAO();
+        SearchProductDAO searchProductDAO= new SearchProductDAO();
 
         System.out.println("search product called!");
 
         return searchProductDAO.searchProduct(productCode);
+
+    }
+
+    @GET
+    @Path("viewproductitems/{productcode}-{locationID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SearchProduct> viewProduct(@PathParam("productcode") String productItemCode, @PathParam("locationID") String locationID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        SearchProductDAO searchProductDAO= new SearchProductDAO();
+
+        System.out.println("view product items called!");
+
+        return searchProductDAO.viewProductItems(productItemCode,locationID);
 
     }
 
