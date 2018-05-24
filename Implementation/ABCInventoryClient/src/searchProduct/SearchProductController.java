@@ -66,12 +66,12 @@ public class SearchProductController {
         });
 
         if (txtSearch.getText().length() > 0  && txtSearchProductItemCode.getText().length() == 0) {
-            clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/{beginBy}");
+            clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearch.getText());
             clearproductItems();
             tblSearchProduct.getColumns().add(0,displayView);
         } else if (txtSearch.getText().length() == 0  && txtSearchProductItemCode.getText().length() > 0) {
-            clientTarget = client.target("http://localhost:8080/rest/searchproduct/searchproductcode/{beginBy}");
+            clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearchProductItemCode.getText());
             clearproductItems();
             addProductItems();
@@ -91,7 +91,7 @@ public class SearchProductController {
         data.clear();
         Client client = ClientBuilder.newClient();
         client.register(SearchProductMessageBodyReader.class);
-        clientTarget = client.target("http://localhost:8080/rest/searchproduct/viewproductitems/{beginBy}");
+        clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/viewproductitems/{beginBy}");
         String s = productCode + "-" + locationID;
         clientTarget = clientTarget.resolveTemplate("beginBy", s);
         tblSearchProduct.getColumns().remove(displayView);

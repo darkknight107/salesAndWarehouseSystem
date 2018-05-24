@@ -16,9 +16,9 @@
     <top>
         <GridPane hgap="10.0" vgap="10.0">
             <Label text="Product Code:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="txtSearch" onAction="#handleSearchProductCodeAction" onKeyReleased="#handleKeyReleasedAction" prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="txtSearch" onAction="#handleSearchProductCodeAction"  prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <Label text="Product Item Code:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="txtSearchProductItemCode" onAction="#handleSearchProductCodeAction" onKeyReleased="#handleKeyReleasedAction" prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtSearchProductItemCode" onAction="#handleSearchProductCodeAction"  prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#handleSearchProductCodeAction" text="Search" GridPane.columnIndex="0" GridPane.rowIndex="2" />
          <BorderPane.margin>
             <Insets bottom="10.0" />
@@ -40,6 +40,9 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
               </columnResizePolicy>
             <columns>
+                <TableColumn fx:id="displayView">
+
+                </TableColumn>
                 <TableColumn fx:id="productCode" prefWidth="93.0" text="Product Code">
                    <cellValueFactory>
                       <PropertyValueFactory property="productCode" />

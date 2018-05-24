@@ -12,14 +12,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<?import com.sun.javafx.scene.control.skin.TabPaneSkin.TabControlButtons?>
 <BorderPane fx:id="mainPanel" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="searchProduct.SearchProductController">
     <top>
         <GridPane hgap="10.0" vgap="10.0">
             <Label text="Product Code:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="txtSearch" onAction="#handleSearchProductCodeAction" prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <Label  text="Product Item Code:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="txtSearchProductItemCode" onAction="#handleSearchProductCodeAction" prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtSearch" onAction="#handleSearchProductCodeAction"  prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label text="Product Item Code:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="txtSearchProductItemCode" onAction="#handleSearchProductCodeAction"  prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#handleSearchProductCodeAction" text="Search" GridPane.columnIndex="0" GridPane.rowIndex="2" />
          <BorderPane.margin>
             <Insets bottom="10.0" />
@@ -41,19 +40,20 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
               </columnResizePolicy>
             <columns>
-                <TableColumn fx:id="displayView" text="Action">
+                <TableColumn fx:id="displayView">
+
                 </TableColumn>
-                <TableColumn fx:id="productCode" text="Product Code">
+                <TableColumn fx:id="productCode" prefWidth="93.0" text="Product Code">
                    <cellValueFactory>
                       <PropertyValueFactory property="productCode" />
                    </cellValueFactory>
                 </TableColumn>
-              <TableColumn fx:id="productItemCode" text="Product Item Code">
+              <TableColumn fx:id="productItemCode" prefWidth="124.0" text="Product Item Code">
                   <cellValueFactory>
                       <PropertyValueFactory property="productItemCode" />
                   </cellValueFactory>
               </TableColumn>
-              <TableColumn  text="Product Name">
+              <TableColumn prefWidth="101.0" text="Product Name">
                   <cellValueFactory>
                       <PropertyValueFactory property="productName" />
                   </cellValueFactory>
@@ -63,32 +63,32 @@
                       <PropertyValueFactory property="productSize" />
                    </cellValueFactory>
                 </TableColumn>
-                <TableColumn  text="Quantity">
+                <TableColumn prefWidth="62.0" text="Quantity">
                     <cellValueFactory>
                         <PropertyValueFactory property="productQuantity" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Price">
+                <TableColumn prefWidth="51.0" text="Price">
                     <cellValueFactory>
                         <PropertyValueFactory property="price" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="LocationID">
+                <TableColumn prefWidth="76.0" text="LocationID">
                     <cellValueFactory>
                         <PropertyValueFactory property="locationID" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Location Name">
+                <TableColumn prefWidth="99.0" text="Location Name">
                     <cellValueFactory>
                         <PropertyValueFactory property="locationName" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Location Address">
+                <TableColumn prefWidth="125.0" text="Location Address">
                     <cellValueFactory>
                         <PropertyValueFactory property="locationAddress" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Phone">
+                <TableColumn prefWidth="64.0" text="Phone">
                     <cellValueFactory>
                         <PropertyValueFactory property="phone" />
                     </cellValueFactory>
