@@ -12,7 +12,7 @@ public class SearchProductMain extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("SearchProductFXML.fxml"));
         primaryStage.setTitle("Search Product");
-        primaryStage.setScene(new Scene(root, 650, 650));
+        primaryStage.setScene(new Scene(root, 1400, 650));
         primaryStage.show();
     }
 
