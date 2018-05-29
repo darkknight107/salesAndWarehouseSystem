@@ -33,7 +33,6 @@ public class SearchProductController {
 
     // Initialize method for handle the action when pressing button
     public void initialize(URL url, ResourceBundle rb){
-        data = null;
         handleSearchProductCodeAction();
     }
 
@@ -69,14 +68,22 @@ public class SearchProductController {
 
             return cell ;
         });
-
+        if(txtSearch.getText().length() == 0 && txtSearchProductItemCode.getText().length() == 0){
+            alertMessages("No Product Searched","Please input the Product Code/ Product Item Code you want to search.");
+            clearTextFields();
+        }
+        else if(txtSearch.getText().length() > 0 && txtSearchProductItemCode.getText().length() > 0){
+            alertMessages("Duplicate Search","Cannot search the Product Code and Product Item Code at the same time.");
+            clearTextFields();
+        }
 //         The results will be displayed when user searching the product code or product item code
-        if (txtSearch.getText().length() > 0  && txtSearchProductItemCode.getText().length() == 0) {
+        else if (txtSearch.getText().length() > 0  && txtSearchProductItemCode.getText().length() == 0) {
             clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearch.getText());
             clearproductItems();
             tblSearchProduct.getColumns().add(0,displayView);
-        } else if (txtSearch.getText().length() == 0  && txtSearchProductItemCode.getText().length() > 0) {
+        }
+        else if (txtSearch.getText().length() == 0  && txtSearchProductItemCode.getText().length() > 0) {
             clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearchProductItemCode.getText());
             clearproductItems();
@@ -88,15 +95,8 @@ public class SearchProductController {
         List<SearchProduct> searchProductList = clientTarget.request("application/json").get(listc);
         if(searchProductList.isEmpty()){
             alertMessages("Non-Existent Product", "Product does not exist!");
-        }else{
-            if(txtSearch.getText().length() == 0 && txtSearchProductItemCode.getText().length() == 0){
-                alertMessages("No Product Searched","Please input the Product Code/ Product Item Code you want to search.");
-                clearTextFields();
-            }
-            else if(txtSearch.getText().length() > 0 && txtSearchProductItemCode.getText().length() > 0){
-                alertMessages("Duplicate Search","Cannot search the Product Code and Product Item Code at the same time.");
-                clearTextFields();
-            }else {
+        }else {
+            if (txtSearch.getText().length() > 0 || txtSearchProductItemCode.getText().length() > 0) {
                 // Add data to SearchProduct for displaying
                 for (SearchProduct s : searchProductList) {
                     data.add(s);
@@ -105,11 +105,12 @@ public class SearchProductController {
                 clearTextFields();
             }
         }
-    }
+        }
+
 
     // When clicked the button, the button will show the product item of selected product
     private void viewProductItems(String productCode, String locationID){
-        ObservableList<SearchProduct> data = tblSearchProduct.getItems();
+//        ObservableList<SearchProduct> data = tblSearchProduct.getItems();
         data.clear();
         Client client = ClientBuilder.newClient();
         client.register(SearchProductMessageBodyReader.class);
