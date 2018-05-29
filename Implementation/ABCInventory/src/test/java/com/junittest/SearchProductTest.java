@@ -31,11 +31,11 @@ public class SearchProductTest {
     @Test
     public void testSetProductItemCode() throws NoSuchFieldException, IllegalAccessException {
         //when
-        searchProduct.setProductItemCode("A1");
+        searchProduct.setProductItemCode("A2100");
         //then
         productItemField= searchProduct.getClass().getDeclaredField("productItemCode");
         productItemField.setAccessible(true);
-        assertEquals("Testing setProductItemCode", productItemField.get(searchProduct), "A1");
+        assertEquals("Testing setProductItemCode", productItemField.get(searchProduct), "A2100");
     }
     @Test
     public void testGetProductItemCode() throws NoSuchFieldException, IllegalAccessException {
@@ -220,22 +220,22 @@ public class SearchProductTest {
     @Test
     public void testSetPhone() throws NoSuchFieldException, IllegalAccessException {
         //when
-        searchProduct.setPhone("456789");
+        searchProduct.setPhone("3456789");
         //then
         phoneField= searchProduct.getClass().getDeclaredField("phone");
         phoneField.setAccessible(true);
-        assertEquals("test setPhone", phoneField.get(searchProduct), "456789");
+        assertEquals("test setPhone", phoneField.get(searchProduct), "3456789");
     }
     @Test
     public void testGetPhone() throws NoSuchFieldException, IllegalAccessException {
         //given
         phoneField= searchProduct.getClass().getDeclaredField("phone");
         phoneField.setAccessible(true);
-        phoneField.set(searchProduct, "23456");
+        phoneField.set(searchProduct, "2345678");
         //when
         final String result= searchProduct.getPhone();
         //then
-        assertEquals("test getPhone", result, "23456");
+        assertEquals("test getPhone", result, "2345678");
     }
 
 }
