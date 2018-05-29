@@ -16,6 +16,30 @@
       <element id="archive" name="ABCInventoryClient.jar">
         <element id="module-output" name="ABCInventoryClient" />
       </element>
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/cglib-2.1.88.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/guava-14.0.1.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/jersey-client.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/jersey-common.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/jersey-server.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/hk2-api-2.1.88.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/jaxb-api-2.2.7.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/jsonp-jaxrs-1.0.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/hk2-utils-2.1.88.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/javax.json-1.0.1.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/hk2-locator-2.1.88.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/javax.inject-2.1.88.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/javax.ws.rs-api-2.0.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/org.osgi.core-4.2.0.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/persistence-api-1.0.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/javax.servlet-api-3.1.0.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/javax.annotation-api-1.2.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/jersey-container-servlet.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/asm-all-repackaged-2.1.88.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/validation-api-1.1.0.Final.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/osgi-resource-locator-1.0.1.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/jersey-container-servlet-core.jar" />
+      <element id="file-copy" path="$USER_HOME$/Downloads/lib/jersey-media-json-processing-2.0.jar" />
+      <element id="library" level="project" name="ABCInventoryClient" />
     </root>
   </artifact>
 </component>
