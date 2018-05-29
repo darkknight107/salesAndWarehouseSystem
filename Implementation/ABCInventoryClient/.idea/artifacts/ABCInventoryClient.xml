@@ -1,12 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" name="ABCInventoryClient">
-    <output-path>$PROJECT_DIR$/out/artifacts/ABCInventoryClient</output-path>
+  <artifact type="javafx" build-on-make="true" name="ABCInventoryClient">
+    <output-path>$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/artifacts/ABCInventoryClient</output-path>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="searchProduct.SearchProductMain" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
-        <option name="nativeBundle" value="dmg" />
         <option name="title" value="" />
         <option name="vendor" value="" />
         <option name="version" value="" />
@@ -16,6 +15,7 @@
       <element id="archive" name="ABCInventoryClient.jar">
         <element id="module-output" name="ABCInventoryClient" />
       </element>
+      <element id="library" level="project" name="lib" />
     </root>
   </artifact>
 </component>
