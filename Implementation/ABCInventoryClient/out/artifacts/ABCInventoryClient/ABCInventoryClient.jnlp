@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ABCInventoryClient.jnlp">
   <information>
-    <title>ABCInventory</title>
+    <title>ABCInventoryClient</title>
     <vendor>Unknown</vendor>
     <description>ABCInventoryClient</description>
     <offline-allowed/>
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ABCInventoryClient.jar" size="11848" download="eager" />
+    <jar href="ABCInventoryClient.jar" size="12354" download="eager" />
     <jar href="asm-all-repackaged-2.1.88.jar" size="325348" download="eager" />
     <jar href="cglib-2.1.88.jar" size="307599" download="eager" />
     <jar href="guava-14.0.1.jar" size="2333755" download="eager" />
