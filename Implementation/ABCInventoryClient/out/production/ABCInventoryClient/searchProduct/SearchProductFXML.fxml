@@ -40,7 +40,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
               </columnResizePolicy>
             <columns>
-                <TableColumn fx:id="displayView">
+                <TableColumn fx:id="displayView" text="Action">
 
                 </TableColumn>
                 <TableColumn fx:id="productCode" prefWidth="93.0" text="Product Code">
