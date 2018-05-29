@@ -8,11 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
     <orderEntry type="library" name="ABCInventoryClient1" level="project" />
-=======
     <orderEntry type="library" name="ABCInventoryClient" level="project" />
->>>>>>> 44f3e9f3870dff2259e6944e83d285cf03bc663b
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
