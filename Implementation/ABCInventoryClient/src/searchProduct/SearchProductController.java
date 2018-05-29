@@ -28,17 +28,19 @@ public class SearchProductController {
     @FXML
     private TableColumn displayView;
     WebTarget clientTarget = null;
+    ObservableList<SearchProduct> data;
 
 
     // Initialize method for handle the action when pressing button
     public void initialize(URL url, ResourceBundle rb){
+        data = null;
         handleSearchProductCodeAction();
     }
 
     @FXML
     private void handleSearchProductCodeAction(){
         // Get the data from Webservice
-        ObservableList<SearchProduct> data = tblSearchProduct.getItems();
+        data = tblSearchProduct.getItems();
         data.clear();
         Client client = ClientBuilder.newClient();
         client.register(SearchProductMessageBodyReader.class);
@@ -67,35 +69,41 @@ public class SearchProductController {
 
             return cell ;
         });
-//        if(txtSearch.getText().length() == 0 && txtSearchProductItemCode.getText().length() == 0){
-//            alertMessages("No Product Searched","Please input the Product Code/ Product Item Code you want to search.");
-//        }
-//        else if(txtSearch.getText().length() > 0 && txtSearchProductItemCode.getText().length() > 0){
-//            alertMessages("Duplicate Search","Cannot search the Product Code and Product Item Code at the same time.");
-//        }
-        // The results will be displayed when user searching the product code or product item code
+
+//         The results will be displayed when user searching the product code or product item code
         if (txtSearch.getText().length() > 0  && txtSearchProductItemCode.getText().length() == 0) {
             clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearch.getText());
             clearproductItems();
-            //clearTextFields();
             tblSearchProduct.getColumns().add(0,displayView);
         } else if (txtSearch.getText().length() == 0  && txtSearchProductItemCode.getText().length() > 0) {
             clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode/{beginBy}");
             clientTarget = clientTarget.resolveTemplate("beginBy", txtSearchProductItemCode.getText());
             clearproductItems();
-            //clearTextFields();
             addProductItems();
         }
         // Get the json data from web service
         GenericType<List<SearchProduct>> listc = new GenericType<List<SearchProduct>>() {
         };
         List<SearchProduct> searchProductList = clientTarget.request("application/json").get(listc);
-
-        // Add data to SearchProduct for displaying
-        for (SearchProduct s : searchProductList) {
-            data.add(s);
-            System.out.println(s.toString());
+        if(searchProductList.isEmpty()){
+            alertMessages("Non-Existent Product", "Product does not exist!");
+        }else{
+            if(txtSearch.getText().length() == 0 && txtSearchProductItemCode.getText().length() == 0){
+                alertMessages("No Product Searched","Please input the Product Code/ Product Item Code you want to search.");
+                clearTextFields();
+            }
+            else if(txtSearch.getText().length() > 0 && txtSearchProductItemCode.getText().length() > 0){
+                alertMessages("Duplicate Search","Cannot search the Product Code and Product Item Code at the same time.");
+                clearTextFields();
+            }else {
+                // Add data to SearchProduct for displaying
+                for (SearchProduct s : searchProductList) {
+                    data.add(s);
+                    System.out.println(s.toString());
+                }
+                clearTextFields();
+            }
         }
     }
 
