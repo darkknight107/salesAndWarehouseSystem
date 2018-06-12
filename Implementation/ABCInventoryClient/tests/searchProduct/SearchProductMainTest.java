@@ -1,5 +1,6 @@
 package searchProduct;
 
+import homePage.SearchProductMain;
 import javafx.application.Application;
 import org.junit.Test;
 
