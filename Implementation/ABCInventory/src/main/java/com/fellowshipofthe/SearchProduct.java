@@ -11,6 +11,7 @@ public class SearchProduct {
     String locationName;
     String locationAddress;
     String phone;
+    String description;
 
     public String getProductItemCode() {
         return productItemCode;
@@ -90,6 +91,14 @@ public class SearchProduct {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

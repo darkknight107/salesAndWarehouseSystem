@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="ABCInventoryClient1">
+  <library name="ABCInventoryClient2">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/out/artifacts/ABCInventoryClient/hk2-locator-2.1.88.jar!/" />
       <root url="jar://$PROJECT_DIR$/out/artifacts/ABCInventoryClient/persistence-api-1.0.jar!/" />
