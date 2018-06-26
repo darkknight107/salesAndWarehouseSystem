@@ -29,4 +29,10 @@ public class HomePageController {
         BorderPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("searchProduct/SearchProductFXML.fxml"));
         anchorPane.getChildren().setAll(pane);
     }
+    @FXML
+    public void handleManageProduct() throws IOException{
+        //creating anchor pane for ManageProduct (add product) console
+        AnchorPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("manageProduct/ManageProduct.fxml"));
+        anchorPane.getChildren().setAll(pane);
+    }
 }

@@ -2,86 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1ca1740-d27e-40e1-b4cc-4a8061ea4b37" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/homePage/HomePageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/homePage/HomePageFXML.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Iterations/Iteration 6/Iteration 6 Plan Review.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Iterations/Iteration 6/Iteration 6 Plan.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Project Vision/Project Vision 6.1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Documentation/Project Vision/Project Vision 6.1.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Cases/Search Product Test Cases/Search Product Test Cases 6.1.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Cases/Search Product Test Cases/Search Product Test Cases 6.2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/SPT001 Script 6.1.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/SPT001 Script 6.2.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData1/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData1/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData1/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData1/Step 4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData2/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData2/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData2/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData2/Step 4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData3/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData3/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData3/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT001 Script/Screenshots/SPT001TestData3/Step 4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/SPT002 Script 6.1.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData1/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData1/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData1/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData1/Step 4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData2/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData2/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData2/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData3/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData3/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT002 Script/Screenshots/SPT002TestData3/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/SPT003 Script 6..docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData1/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData1/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData1/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData2/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData2/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData2/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData3/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData3/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT003 Script/Screenshots/SPT003TestData3/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/SPT004 Script 6.1.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData1/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData1/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData1/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData2/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData2/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData2/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData3/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData3/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT004 Script/Screenshots/SPT004TestData3/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT005 Script/SPT005 Script 6.1.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT005 Script/Screenshots/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT005 Script/Screenshots/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/SPT006 Script 6.1.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData1/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData1/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData1/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData1/Step 4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData2/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData2/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData2/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData2/Step 4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData3/Step 1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData3/Step 2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData3/Step 3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Documentation/Tests/User Acceptance Test Documents/Test Scripts/Search Product Test Scripts/SPT006 Script/Screenshots/SPT006TestData3/Step 4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ABCInventoryClient1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/ABCInventoryClient2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ABCInventory/src/main/java/manageProduct/AddProductResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ABCInventory/src/main/java/manageProduct/EditProductResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manageProduct/AddProduct.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manageProduct/AddProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manageProduct/ManageProduct.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manageProduct/ManageProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ABCInventory/src/main/java/com/fellowshipofthe/SearchProductDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ABCInventoryClient.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ABCInventoryClient.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ABCInventoryClient/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/searchProduct/SearchProductMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/ABCInventoryClient/searchProduct/SearchProductMainTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ABCInventoryClient/searchProduct/SearchProductMainTest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/ABCInventoryClient/searchProduct/SearchProductMainTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ABCInventoryClient/searchProduct/SearchProductMainTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchProduct/SearchProductMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/SearchProductMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/searchProduct/SearchProductMainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/searchProduct/SearchProductMainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ABCInventoryClient/homePage/HomePageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ABCInventoryClient/homePage/HomePageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/homePage/HomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/HomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/homePage/HomePageFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/homePage/HomePageFXML.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,8 +28,8 @@
       <file leaf-file-name="SearchProductMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/homePage/SearchProductMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+            <state relative-caret-position="221">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -114,44 +46,79 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SearchProduct.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProduct.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SearchProductController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="36" column="5" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="36" selection-end-column="5" />
+            <state relative-caret-position="330">
+              <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManageProduct.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/manageProduct/ManageProduct.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddProduct.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/manageProduct/AddProduct.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddProductController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/manageProduct/AddProductController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="35" lean-forward="true" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchProductMessageBodyReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductMessageBodyReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomePageController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/homePage/HomePageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="517">
+              <caret line="34" column="74" lean-forward="true" selection-start-line="34" selection-start-column="74" selection-end-line="34" selection-end-column="74" />
               <folding>
-                <element signature="e#1535#2018#0" expanded="true" />
-                <element signature="e#2017#2018#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomePageFXML.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/homePage/HomePageFXML.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchProductFXML.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomePageController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/homePage/HomePageController.java">
+      <file leaf-file-name="ManageProductController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/manageProduct/ManageProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+            <state relative-caret-position="408">
+              <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -177,8 +144,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/searchProduct/HomePageFXML.fxml" />
         <option value="$PROJECT_DIR$/src/homePage/HomePageFXML.fxml" />
+        <option value="$PROJECT_DIR$/src/manageProduct/AddProduct.fxml" />
         <option value="$PROJECT_DIR$/src/homePage/SearchProductMain.java" />
+        <option value="$PROJECT_DIR$/src/manageProduct/ManageProduct.fxml" />
         <option value="$PROJECT_DIR$/src/homePage/HomePageController.java" />
+        <option value="$PROJECT_DIR$/src/manageProduct/ManageProductController.java" />
       </list>
     </option>
   </component>
@@ -192,18 +162,19 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,6 +197,12 @@
               <item name="ABCInventoryClient" type="b2602c69:ProjectViewProjectNode" />
               <item name="ABCInventoryClient" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="manageProduct" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABCInventoryClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABCInventoryClient" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="searchProduct" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -241,7 +218,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -350,14 +329,19 @@
       <workItem from="1527668160432" duration="842000" />
       <workItem from="1528793193064" duration="1671000" />
       <workItem from="1528798582053" duration="8566000" />
+      <workItem from="1528938478450" duration="3793000" />
+      <workItem from="1529057581924" duration="1590000" />
+      <workItem from="1529061934235" duration="2096000" />
+      <workItem from="1529566602954" duration="3494000" />
+      <workItem from="1529973345892" duration="1985000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14461000" />
+    <option name="totallyTimeSpent" value="27419000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -371,15 +355,15 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3290938" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32837406" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21997875" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32750398" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12604167" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.37408492" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Learn" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -394,9 +378,8 @@
     <layout-to-restore>
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21997875" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21997875" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -404,6 +387,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.3290938" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -411,7 +395,6 @@
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12604167" />
       <window_info id="Learn" order="7" />
       <window_info anchor="right" id="Database" order="6" />
@@ -421,8 +404,9 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,6 +416,122 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/HomePageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/SearchProductMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/searchProduct/SearchProductTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/HomePageFXML.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/HomePageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="5" selection-start-line="34" selection-start-column="3" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/SearchProductMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/searchProduct/SearchProductTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="5" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/HomePageFXML.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/HomePageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/homePage/SearchProductMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -465,10 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
-          <folding>
-            <element signature="e#1535#2018#0" expanded="true" />
-            <element signature="e#2017#2018#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -623,6 +719,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/HomePageFXML.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/homePage/SearchProductMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/searchProduct/SearchProductTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -633,44 +766,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/homePage/HomePageFXML.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductFXML.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductController.java">
+    <entry file="file://$PROJECT_DIR$/src/manageProduct/ManageProduct.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="e#1535#2018#0" expanded="true" />
-            <element signature="e#2017#2018#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/homePage/SearchProductMain.java">
+    <entry file="file://$PROJECT_DIR$/src/searchProduct/SearchProductMessageBodyReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        <state relative-caret-position="578">
+          <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/homePage/HomePageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        <state relative-caret-position="517">
+          <caret line="34" column="74" lean-forward="true" selection-start-line="34" selection-start-column="74" selection-end-line="34" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/manageProduct/AddProduct.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/manageProduct/AddProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="35" lean-forward="true" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/manageProduct/ManageProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
