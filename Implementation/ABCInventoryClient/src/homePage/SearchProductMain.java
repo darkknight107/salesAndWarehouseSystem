@@ -1,4 +1,4 @@
-package searchProduct;
+package homePage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +10,8 @@ public class SearchProductMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("SearchProductFXML.fxml"));
-        primaryStage.setTitle("Search Product");
+        Parent root = FXMLLoader.load(getClass().getResource("HomePageFXML.fxml"));
+        primaryStage.setTitle("ABC Inventory Management Tool");
         primaryStage.setScene(new Scene(root, 1400, 650));
         primaryStage.show();
     }
