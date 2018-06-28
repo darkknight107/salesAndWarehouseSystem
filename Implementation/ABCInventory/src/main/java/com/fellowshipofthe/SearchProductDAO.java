@@ -127,22 +127,18 @@ public class SearchProductDAO {
 
     }
     //method to access database and add new product to the database
-    public String addProduct(List <SearchProduct> productDetails) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        SearchProduct product= new SearchProduct();
-        product.setProductCode(String.valueOf(productDetails.get(0)));
-        product.setProductName(String.valueOf(productDetails.get(1)));
-        product.setPrice(String.valueOf(productDetails.get(2)));
-        product.setDescription(String.valueOf(productDetails.get(3)));
+    public String addProduct(String newCode, String newName, String newPrice, String newDescription) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        /*SearchProduct product= new SearchProduct();
         String productCode= product.getProductCode();
         String name= product.getProductName();
         String price= product.getPrice();
-        String description= product.getDescription();
+        String description= product.getDescription();*/
         //opening a connection with the database and creating a statement
         dbconnet = new DatabaseConnection();
         conn = dbconnet.connect();
         Statement stmt= conn.createStatement();
         String sql= "INSERT INTO Product (productCode, productName, price, description)" +
-                "VALUES (" +productCode +","+ name+ "," + price + "," + description +")";
+                "VALUES (" +newCode +","+ newName+ "," + newPrice + "," + newDescription +")";
         stmt.executeUpdate(sql);
         conn.close();
         return("Product Added!");
