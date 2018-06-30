@@ -1,21 +1,17 @@
-package manageProduct;
+package com.fellowshipofthe.manageProduct;
 
-import com.fellowshipofthe.SearchProduct;
-import com.fellowshipofthe.SearchProductDAO;
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
+import com.fellowshipofthe.searchProduct.ProductDAO;
 
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
-import java.util.List;
 
-@Path("/manage")
+@Path("manageproduct")
 public class AddProductResource {
-    SearchProductDAO product = new SearchProductDAO();
+    ProductDAO product = new ProductDAO();
 
     @POST
-   // @Path("/addproduct")
+    @Path("addproduct/{productCode}/{productName}/{price}/{description}/")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
     public String addProduct(@FormParam("productCode") String productCode,

@@ -1,6 +1,6 @@
 package com.junittest;
 
-import com.fellowshipofthe.SearchProduct;
+import com.fellowshipofthe.searchProduct.Product;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class SearchProductTest {
     //initializing SearchProduct object and fields
-    SearchProduct searchProduct= null;
+    Product searchProduct= null;
     Field productItemField= null;
     Field productSizeField= null;
     Field productCodeField= null;
@@ -25,7 +25,7 @@ public class SearchProductTest {
     @Before
     public void setUp() throws Exception {
         //creating a new SearchProduct object
-        searchProduct= new SearchProduct();
+        searchProduct= new Product();
     }
     //test productItemCode setter and getter
     @Test

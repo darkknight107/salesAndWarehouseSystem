@@ -1,4 +1,4 @@
-package com.fellowshipofthe;
+package com.fellowshipofthe.searchProduct;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,8 +15,8 @@ public class SearchProductResource{
     @GET
     @Path("searchproductcode/{productcode}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<SearchProduct> searchProduct(@PathParam("productcode") String productCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-        SearchProductDAO searchProductDAO= new SearchProductDAO();
+    public List<Product> searchProduct(@PathParam("productcode") String productCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        ProductDAO searchProductDAO= new ProductDAO();
 
         System.out.println("search product called!");
 
@@ -27,8 +27,8 @@ public class SearchProductResource{
     @GET
     @Path("viewproductitems/{productcode}-{locationID}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<SearchProduct> viewProduct(@PathParam("productcode") String productItemCode, @PathParam("locationID") String locationID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-        SearchProductDAO searchProductDAO= new SearchProductDAO();
+    public List<Product> viewProduct(@PathParam("productcode") String productItemCode, @PathParam("locationID") String locationID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        ProductDAO searchProductDAO= new ProductDAO();
 
         System.out.println("view product items called!");
 

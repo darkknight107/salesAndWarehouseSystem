@@ -1,4 +1,6 @@
-package com.fellowshipofthe;
+package com.fellowshipofthe.searchProduct;
+
+import com.fellowshipofthe.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,18 +9,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchProductDAO {
-    List<SearchProduct> searchProducts;
-    List<SearchProduct> viewProductItems;
+public class ProductDAO {
+    List<Product> searchProducts;
+    List<Product> viewProductItems;
     DatabaseConnection dbconnet;
     Connection conn;
 
-    public SearchProductDAO() {
-        searchProducts= new ArrayList<SearchProduct>();
-        viewProductItems = new ArrayList<SearchProduct>();
+    public ProductDAO() {
+        searchProducts= new ArrayList<Product>();
+        viewProductItems = new ArrayList<Product>();
 
     }
-    public List<SearchProduct> searchProduct(String code){
+    public List<Product> searchProduct(String code){
         try {
             dbconnet = new DatabaseConnection();
             conn = dbconnet.connect();
@@ -41,7 +43,7 @@ public class SearchProductDAO {
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(sql);
             while (resultSet.next()) {
-                SearchProduct searchProduct = new SearchProduct();
+                Product searchProduct = new Product();
                 searchProduct.setProductCode(resultSet.getString(1));
                 searchProduct.setProductItemCode(resultSet.getString(2));
                 searchProduct.setProductSize(resultSet.getString(3));
@@ -72,7 +74,7 @@ public class SearchProductDAO {
         }
         return searchProducts;
     }
-    public List<SearchProduct> viewProductItems(String productCode, String locationID) {
+    public List<Product> viewProductItems(String productCode, String locationID) {
         try {
             dbconnet = new DatabaseConnection();
             conn = dbconnet.connect();
@@ -94,7 +96,7 @@ public class SearchProductDAO {
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(sql);
             while (resultSet.next()) {
-                SearchProduct viewProductItem = new SearchProduct();
+                Product viewProductItem = new Product();
                 viewProductItem.setProductCode(resultSet.getString(1));
                 viewProductItem.setProductItemCode(resultSet.getString(2));
                 viewProductItem.setProductSize(resultSet.getString(3));

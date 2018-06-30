@@ -1,7 +1,7 @@
 package com.junittest;
 
-import com.fellowshipofthe.SearchProduct;
-import com.fellowshipofthe.SearchProductDAO;
+import com.fellowshipofthe.searchProduct.Product;
+import com.fellowshipofthe.searchProduct.ProductDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,11 +13,9 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SearchProductDAOTest {
@@ -30,7 +28,7 @@ public class SearchProductDAOTest {
     @Mock
     private ResultSet rs;
 
-    private SearchProduct searchProduct;
+    private Product searchProduct;
 
     @Before
     public void setUp() throws Exception {
@@ -38,7 +36,7 @@ public class SearchProductDAOTest {
         //when(connection.prepareStatement(any(String.class))).thenReturn(stmt);
        // when(dataSource.getConnection()).thenReturn(connection);
 
-        searchProduct= new SearchProduct();
+        searchProduct= new Product();
         searchProduct.setProductItemCode("S3100");
         searchProduct.setProductSize("XS");
         searchProduct.setProductCode("S3");
@@ -66,7 +64,7 @@ public class SearchProductDAOTest {
 
     @Test
     public void searchProductTest() {
-        SearchProductDAO dao= new SearchProductDAO();
+        ProductDAO dao= new ProductDAO();
         dao.searchProduct(searchProduct.getProductCode());
 
         assertEquals(searchProduct.getProductItemCode(),"S3100");
