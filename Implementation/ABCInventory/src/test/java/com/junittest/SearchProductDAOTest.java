@@ -1,7 +1,7 @@
 package com.junittest;
 
-import com.fellowshipofthe.searchProduct.Product;
-import com.fellowshipofthe.searchProduct.ProductDAO;
+import com.fellowshipofthe.searchProduct.SearchProduct;
+import com.fellowshipofthe.searchProduct.SearchProductDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +28,7 @@ public class SearchProductDAOTest {
     @Mock
     private ResultSet rs;
 
-    private Product searchProduct;
+    private SearchProduct searchProduct;
 
     @Before
     public void setUp() throws Exception {
@@ -36,7 +36,7 @@ public class SearchProductDAOTest {
         //when(connection.prepareStatement(any(String.class))).thenReturn(stmt);
        // when(dataSource.getConnection()).thenReturn(connection);
 
-        searchProduct= new Product();
+        searchProduct= new SearchProduct();
         searchProduct.setProductItemCode("S3100");
         searchProduct.setProductSize("XS");
         searchProduct.setProductCode("S3");
@@ -64,7 +64,7 @@ public class SearchProductDAOTest {
 
     @Test
     public void searchProductTest() {
-        ProductDAO dao= new ProductDAO();
+        SearchProductDAO dao= new SearchProductDAO();
         dao.searchProduct(searchProduct.getProductCode());
 
         assertEquals(searchProduct.getProductItemCode(),"S3100");

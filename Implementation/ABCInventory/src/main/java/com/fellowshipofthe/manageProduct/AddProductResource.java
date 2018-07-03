@@ -1,24 +1,39 @@
 package com.fellowshipofthe.manageProduct;
 
-import com.fellowshipofthe.searchProduct.ProductDAO;
+import com.fellowshipofthe.entityClasses.Product;
+import com.fellowshipofthe.searchProduct.SearchProductDAO;
+
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Path("manageproduct")
 public class AddProductResource {
-    ProductDAO product = new ProductDAO();
+    SearchProductDAO productDAO = new SearchProductDAO();
 
     @POST
-    @Path("addproduct/{productCode}/{productName}/{price}/{description}/")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String addProduct(@FormParam("productCode") String productCode,
-                             @FormParam("productName") String productName,
-                             @FormParam("price") String price,
-                             @FormParam("description") String description) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Boolean addProduct(Product newProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("addProduct called!");
-        return product.addProduct(productCode, productName, price, description);
+        //creating variables to store new product details
+        String newCode= newProduct.getProductCode();
+        String newName= newProduct.getProductName();
+        String newPrice= newProduct.getPrice();
+        String newDescription= newProduct.getDescription();
+        //creating and array list to store each String value of the product details
+        ArrayList<String> newProductList = new ArrayList<>();
+        //adding new product details to the arraylist
+        newProductList.add(newCode);
+        newProductList.add(newName);
+        newProductList.add(newPrice);
+        newProductList.add(newDescription);
+        //check if arraylist items are valid
+        System.out.println(newProductList.get(0) + newProductList.get(1) + newProductList.get(2) + newProductList.get(3));
+        //calling productDAO to connect with database and insert new product
+        return productDAO.addProduct(newProductList);
     }
 }

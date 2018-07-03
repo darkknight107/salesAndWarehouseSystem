@@ -9,18 +9,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO {
-    List<Product> searchProducts;
-    List<Product> viewProductItems;
+public class SearchProductDAO {
+    List<SearchProduct> searchProducts;
+    List<SearchProduct> viewProductItems;
     DatabaseConnection dbconnet;
     Connection conn;
 
-    public ProductDAO() {
-        searchProducts= new ArrayList<Product>();
-        viewProductItems = new ArrayList<Product>();
+    public SearchProductDAO() {
+        searchProducts= new ArrayList<SearchProduct>();
+        viewProductItems = new ArrayList<SearchProduct>();
 
     }
-    public List<Product> searchProduct(String code){
+    public List<SearchProduct> searchProduct(String code){
         try {
             dbconnet = new DatabaseConnection();
             conn = dbconnet.connect();
@@ -43,7 +43,7 @@ public class ProductDAO {
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(sql);
             while (resultSet.next()) {
-                Product searchProduct = new Product();
+                SearchProduct searchProduct = new SearchProduct();
                 searchProduct.setProductCode(resultSet.getString(1));
                 searchProduct.setProductItemCode(resultSet.getString(2));
                 searchProduct.setProductSize(resultSet.getString(3));
@@ -74,7 +74,7 @@ public class ProductDAO {
         }
         return searchProducts;
     }
-    public List<Product> viewProductItems(String productCode, String locationID) {
+    public List<SearchProduct> viewProductItems(String productCode, String locationID) {
         try {
             dbconnet = new DatabaseConnection();
             conn = dbconnet.connect();
@@ -96,7 +96,7 @@ public class ProductDAO {
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(sql);
             while (resultSet.next()) {
-                Product viewProductItem = new Product();
+                SearchProduct viewProductItem = new SearchProduct();
                 viewProductItem.setProductCode(resultSet.getString(1));
                 viewProductItem.setProductItemCode(resultSet.getString(2));
                 viewProductItem.setProductSize(resultSet.getString(3));
@@ -129,20 +129,22 @@ public class ProductDAO {
 
     }
     //method to access database and add new product to the database
-    public String addProduct(String newCode, String newName, String newPrice, String newDescription) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        /*SearchProduct product= new SearchProduct();
-        String productCode= product.getProductCode();
-        String name= product.getProductName();
-        String price= product.getPrice();
-        String description= product.getDescription();*/
+    public Boolean addProduct(List<String> newProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        //creating new variables to store new product details
+        String code= newProduct.get(0);
+        String name= newProduct.get(1);
+        String price= newProduct.get(2);
+        String description= newProduct.get(3);
         //opening a connection with the database and creating a statement
         dbconnet = new DatabaseConnection();
         conn = dbconnet.connect();
         Statement stmt= conn.createStatement();
         String sql= "INSERT INTO Product (productCode, productName, price, description)" +
-                "VALUES (" +newCode +","+ newName+ "," + newPrice + "," + newDescription +")";
+                "VALUES (\"" + code +"\",\""+ name+ "\",\"" + price + "\",\"" + description +"\");";
+        System.out.println(code + name + price + description);
         stmt.executeUpdate(sql);
         conn.close();
-        return("Product Added!");
+        System.out.println("Product Added!");
+        return true;
     }
 }

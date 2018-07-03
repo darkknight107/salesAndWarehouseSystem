@@ -1,6 +1,6 @@
 package com.fellowshipofthe.searchProduct;
 
-public class Product {
+public class SearchProduct {
     String productCode;
     String productItemCode;
     String productSize;
