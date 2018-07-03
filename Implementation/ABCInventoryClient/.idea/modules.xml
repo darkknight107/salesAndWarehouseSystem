@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://E:/Uni Works/Uni Assignments/Semester 201830/Software Development Project 1/shirish/salesAndWarehouseSystem/Implementation/ABCInventoryClient/ABCInventoryClient.iml" filepath="E:/Uni Works/Uni Assignments/Semester 201830/Software Development Project 1/shirish/salesAndWarehouseSystem/Implementation/ABCInventoryClient/ABCInventoryClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ABCInventoryClient.iml" filepath="$PROJECT_DIR$/ABCInventoryClient.iml" />
     </modules>
   </component>
 </project>

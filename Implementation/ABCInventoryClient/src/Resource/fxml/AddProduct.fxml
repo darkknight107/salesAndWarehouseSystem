@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductController">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextField fx:id="productCodeField" layoutX="164.0" layoutY="133.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="productNameField" layoutX="164.0" layoutY="175.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="priceField" layoutX="164.0" layoutY="215.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="descriptionField" layoutX="164.0" layoutY="255.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="80.0" layoutY="137.0" text="Product Code" />
+      <Label layoutX="80.0" layoutY="179.0" text="Product Name" />
+      <Label layoutX="80.0" layoutY="219.0" text="Price" />
+      <Label layoutX="80.0" layoutY="259.0" text="Description" />
+      <Button layoutX="164.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleAddProductNext" text="Next" />
+      <Button layoutX="225.0" layoutY="307.0" mnemonicParsing="false" text="Reset" />
+      <CheckBox layoutX="153.0" layoutY="48.0" mnemonicParsing="false" text="Add Product" />
+      <CheckBox layoutX="283.0" layoutY="48.0" mnemonicParsing="false" text="Add Product Item" />
+   </children>
+</AnchorPane>
