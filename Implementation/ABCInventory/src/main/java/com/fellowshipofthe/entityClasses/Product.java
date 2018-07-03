@@ -1,7 +1,7 @@
 package com.fellowshipofthe.entityClasses;
 
 public class Product {
-    private String productCode;
+    protected String productCode;
     private String productName;
     private String price;
     private String description;
@@ -35,5 +35,9 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public class ProductItem{
+
     }
 }
