@@ -2,6 +2,7 @@ package com.fellowshipofthe.manageProduct;
 
 import com.fellowshipofthe.entityClasses.Product;
 import com.fellowshipofthe.entityClasses.ProductItem;
+import com.fellowshipofthe.entityClasses.StoredProduct;
 import com.fellowshipofthe.searchProduct.SearchProductDAO;
 
 
@@ -54,6 +55,23 @@ public class AddProductResource {
         newProductItemList.add(newProductSize);
         System.out.println(newProductItemList.get(0) + newProductItemList.get(1) + newProductItemList.get(2));
         return productDAO.addProductItem(newProductItemList);
+    }
 
+    //resource for adding stored product (allocating product to location)
+    @POST
+    @Path("addstoredproduct")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Boolean addStoredProduct(StoredProduct newStoredProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        System.out.println("addStoredProduct called!");
+        String productItemCode= newStoredProduct.getProductItemCode();
+        String locationID= newStoredProduct.getLocationID();
+        String productQuantity= newStoredProduct.getProductQuantity();
+        ArrayList<String> newStoredProductList= new ArrayList<>();
+        newStoredProductList.add(productItemCode);
+        newStoredProductList.add(locationID);
+        newStoredProductList.add(productQuantity);
+        System.out.println(newStoredProductList.get(0) + newStoredProductList.get(1) + newStoredProductList.get(2));
+        return productDAO.addStoredProduct(newStoredProductList);
     }
 }

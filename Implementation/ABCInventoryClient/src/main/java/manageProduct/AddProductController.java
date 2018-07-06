@@ -7,18 +7,14 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import searchProduct.SearchProductController;
+import javafx.scene.layout.BorderPane;
 
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.*;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 public class AddProductController {
 
@@ -35,7 +31,7 @@ public class AddProductController {
     WebTarget target;
 
     @FXML
-    public void handleAddProductNext() throws ExecutionException, InterruptedException {
+    public void handleAddProductNext() throws ExecutionException, InterruptedException, IOException {
 
         //creating variables to get product details entered by user in text fields
         String productCode= productCodeField.getText();
@@ -63,17 +59,25 @@ public class AddProductController {
         AppScreen screen= new AppScreen();
         if (x.equals("true")){
             screen.alertMessages("Product Added", "Product has been added.");
-            clearTextFields();
+            AnchorPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("fxml/AddProductItem.fxml"));
+            anchorPane.getChildren().setAll(pane);
         }
         else{
             screen.alertMessages("Error", "Error! Please try again.");
             clearTextFields();
         }
     }
+    @FXML
     private void clearTextFields(){
         productCodeField.setText("");
         productNameField.setText("");
         priceField.setText("");
         descriptionField.setText("");
     }
+    @FXML
+    public void handleFromExistingProduct() throws IOException {
+        BorderPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
+        anchorPane.getChildren().setAll(pane);
+    }
+
 }

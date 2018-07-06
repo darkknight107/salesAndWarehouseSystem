@@ -165,4 +165,22 @@ public class SearchProductDAO {
         System.out.println("ProductItem Added!");
         return true;
     }
+
+    //method to access database and add new stored product to the database
+    public Boolean addStoredProduct(List<String> newStoredProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        String itemCode= newStoredProduct.get(0);
+        String locationID= newStoredProduct.get(1);
+        String quantity= newStoredProduct.get(2);
+        //opening a connection with the database and creating a statement
+        dbconnet= new DatabaseConnection();
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+        String sql= "INSERT INTO StoredProduct(productItemCode, locationID, productQuantity)" +
+                "VALUES (\"" + itemCode +"\",\""+ locationID+ "\",\"" + quantity + "\");";
+        System.out.println(itemCode + locationID + quantity);
+        stmt.executeUpdate(sql);
+        conn.close();
+        System.out.println("StoredProduct Added!");
+        return true;
+    }
 }
