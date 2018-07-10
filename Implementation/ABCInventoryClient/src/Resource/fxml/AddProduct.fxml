@@ -23,11 +23,11 @@
       <TextField fx:id="productNameField" layoutX="161.0" layoutY="137.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter a new product name" />
       <TextField fx:id="priceField" layoutX="161.0" layoutY="171.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter price" />
       <TextField fx:id="descriptionField" layoutX="161.0" layoutY="209.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter description" />
-      <Label layoutX="74.0" layoutY="101.0" text="Product Code" />
-      <Label layoutX="72.0" layoutY="141.0" text="Product Name" />
-      <Label layoutX="121.0" layoutY="175.0" text="Price" />
-      <Label layoutX="91.0" layoutY="213.0" text="Description" />
-      <Button layoutX="127.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleAddProductNext" text="Next" />
+      <Label fx:id="productCodeLabel" layoutX="74.0" layoutY="101.0" text="Product Code" />
+      <Label fx:id="productNameLabel" layoutX="72.0" layoutY="141.0" text="Product Name" />
+      <Label fx:id="priceLabel" layoutX="121.0" layoutY="175.0" text="Price" />
+      <Label fx:id="descriptionLabel" layoutX="91.0" layoutY="213.0" text="Description" />
+      <Button fx:id="nextButton" layoutX="127.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleAddProductNext" text="Next" />
       <Button layoutX="177.0" layoutY="261.0" mnemonicParsing="false" onAction="#clearTextFields" text="Reset" />
       <Button layoutX="234.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleFromExistingProduct" text="Add From Existing Product" />
    </children>

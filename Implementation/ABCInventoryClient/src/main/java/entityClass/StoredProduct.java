@@ -1,0 +1,31 @@
+package entityClass;
+
+public class StoredProduct {
+    private String productItemCode;
+    private String locationID;
+    private String productQuantity;
+
+    public String getProductItemCode() {
+        return productItemCode;
+    }
+
+    public void setProductItemCode(String productItemCode) {
+        this.productItemCode = productItemCode;
+    }
+
+    public String getLocationID() {
+        return locationID;
+    }
+
+    public void setLocationID(String locationID) {
+        this.locationID = locationID;
+    }
+
+    public String getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(String productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+}
