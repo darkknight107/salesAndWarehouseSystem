@@ -45,21 +45,14 @@ public class AddProductController {
     private Label descriptionLabel;
     @FXML
     private Button nextButton;
-    WebTarget target;
 
     @FXML
     public void handleAddProductNext() throws ExecutionException, InterruptedException, IOException {
-
         //creating variables to get product details entered by user in text fields
         String productCode= productCodeField.getText();
         String productName= productNameField.getText();
         String price= priceField.getText();
         String description= descriptionField.getText();
-
-        //creating a new client to send post request
-        ClientConfig clientConfig= new DefaultClientConfig();
-        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-        Client client= Client.create(clientConfig);
 
         //set textfield values to Product Entity
         Product newProduct= new Product();
@@ -67,27 +60,23 @@ public class AddProductController {
         newProduct.setProductName(productName);
         newProduct.setPrice(price);
         newProduct.setDescription(description);
-        String postURL= "http://localhost:8080/rest/manageproduct";
-        WebResource webResourcePost= client.resource(postURL);
-        ClientResponse response= webResourcePost.type("application/json").post(ClientResponse.class, newProduct);
-        response.bufferEntity();
-        String x= response.getEntity(String.class);
-        System.out.println(x);
+
+        //call the clientRequest method to send a request to the server
+        String response= clientRequest(newProduct,"");
+        System.out.println(response);
         AppScreen screen= new AppScreen();
-        if (x.equals("true")){
+        if (response.equals("true")){
             screen.alertMessages("Product Added", "Product has been added.");
             clearTextFields();
+            //load text fields and labels for adding product item
             handleAddProductItem(newProduct.getProductCode());
-            //AnchorPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("fxml/AddProductItem.fxml"));
-            //anchorPane.getChildren().setAll(pane);
-            //productNameLabel.setText("Product Item Code");
-
         }
         else{
             screen.alertMessages("Error", "Error! Please try again.");
             clearTextFields();
         }
     }
+
     @FXML
     private void clearTextFields(){
         productCodeField.setText("");
@@ -102,17 +91,18 @@ public class AddProductController {
     }
 
     public void handleAddProductItem(String productCode){
+        //changing button, label and prompt texts for adding product item
         productCodeField.setText(productCode);
         priceLabel.setText("Size");
+        priceField.setPromptText("Please enter a valid Size");
         productNameLabel.setVisible(false);
         productNameField.setVisible(false);
         descriptionLabel.setVisible(false);
         descriptionField.setVisible(false);
-
+        //variables to store required values for product item
         final String[] productItemCode = {null};
         final String[] productSize = new String[1];
         nextButton.setOnAction((ActionEvent event)-> {
-            //since productName changed to productItem code field once product is added and product item needs to be added
             productSize[0] = priceField.getText();
             //conditional statements to set rear value of product item code according to product size
             if (productSize[0].equals("XS")){
@@ -131,27 +121,17 @@ public class AddProductController {
                 productItemCode[0] = productCode + "500";
             }
 
-            //creating a new client to send post request
-            ClientConfig clientConfig= new DefaultClientConfig();
-            clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-            Client client= Client.create(clientConfig);
-
             //set textfield values to ProductItem Entity
             ProductItem newProductItem= new ProductItem();
             newProductItem.setProductCode(productCode);
-
             newProductItem.setProductItemCode(productItemCode[0]);
-            //since product price changed to product size once product is added and product item needs to be added
             newProductItem.setProductSize(productSize[0]);
-            String postURL= "http://localhost:8080/rest/manageproduct/addproductitem";
-            WebResource webResourcePost= client.resource(postURL);
-            ClientResponse response= webResourcePost.type("application/json").post(ClientResponse.class, newProductItem);
-            response.bufferEntity();
-            String x= response.getEntity(String.class);
-            System.out.println(x);
-            AppScreen screen= new AppScreen();
-            if (x.equals("true")){
 
+            //calling clientRequest to send a request to the server
+            String response= clientRequest(newProductItem, "addproductitem");
+            System.out.println(response);
+            AppScreen screen= new AppScreen();
+            if (response.equals("true")){
                 screen.alertMessages("Product Item Added!", "Added product Item code is " + productItemCode[0]);
                 clearTextFields();
                 handleAddStoredProduct(newProductItem.getProductItemCode());
@@ -161,11 +141,10 @@ public class AddProductController {
                 clearTextFields();
             }
         });
-
-
-
     }
+
     public void handleAddStoredProduct(String productItemCode){
+        //changing label, text field and prompt values for adding stored product
         productCodeLabel.setText("Item Code");
         productCodeField.setText(productItemCode);
         priceLabel.setText("Location");
@@ -174,13 +153,19 @@ public class AddProductController {
         productNameLabel.setText("Quantity");
         productNameField.setVisible(true);
         productNameField.setPromptText("Please enter the quantity");
+
+        //creating an app screen object for alert messages
         AppScreen screen= new AppScreen();
+        //variables to store required values
         final String [] locationName = {null};
         final String[] locationID = {null};
         final String [] productQuantity= {null};
-        nextButton.setOnAction((ActionEvent event)->{
 
+        //on pressing next button do the following
+        nextButton.setOnAction((ActionEvent event)->{
+            productQuantity[0]= productNameField.getText();
             locationName[0]= priceField.getText();
+            //getting and validating the location name entered with the available location
             if (locationName[0].equals("Oxford Store")){
                 locationID[0] = "STR1";
             }
@@ -193,33 +178,37 @@ public class AddProductController {
             /*else{
                 screen.alertMessages("Invalid Location", "Please enter a valid location name!");
             }*/
-            productQuantity[0]= productNameField.getText();
 
-            //creating a new client to send post request
-            ClientConfig clientConfig= new DefaultClientConfig();
-            clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-            Client client= Client.create(clientConfig);
-
-            //set textfield values to ProductItem Entity
+            //set textfield values to Stored Product Entity
             StoredProduct newStoredProduct= new StoredProduct();
             newStoredProduct.setProductItemCode(productItemCode);
-
             newStoredProduct.setLocationID(locationID[0]);
-            //since product price changed to product size once product is added and product item needs to be added
             newStoredProduct.setProductQuantity(productQuantity[0]);
-            String postURL= "http://localhost:8080/rest/manageproduct/addstoredproduct";
-            WebResource webResourcePost= client.resource(postURL);
-            ClientResponse response= webResourcePost.type("application/json").post(ClientResponse.class, newStoredProduct);
-            response.bufferEntity();
-            String x= response.getEntity(String.class);
-            System.out.println(x);
-            if (x.equals("true")){
-                screen.alertMessages("Product Allocated to location", "Proucts have been added to " + locationID[0]);
+            //calling the client request method to send a request to the server
+            String response= clientRequest(newStoredProduct, "addstoredproduct");
+            System.out.println(response);
+            if (response.equals("true")){
+                screen.alertMessages("Product Allocated to location", "Products have been added to " + locationID[0]);
                 clearTextFields();
             }
-
+            else{
+                screen.alertMessages("Cannot Add Product!", "The product could not be added to the entered location. Please try again.");
+            }
         });
+    }
 
+    public String clientRequest(Object entity, String path){
+        //creating a new client to send post request
+        ClientConfig clientConfig= new DefaultClientConfig();
+        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+        Client client= Client.create(clientConfig);
+        String postURL= "http://localhost:8080/rest/manageproduct/" + path;
+        WebResource webResourcePost= client.resource(postURL);
+        //use the object passed as a parameter to send a request
+        ClientResponse response= webResourcePost.type("application/json").post(ClientResponse.class, entity);
+        response.bufferEntity();
+        String responseValue= response.getEntity(String.class);
+        return responseValue;
     }
 
 }
