@@ -3,6 +3,7 @@ package com.fellowshipofthe.manageProduct;
 import com.fellowshipofthe.entityClasses.Product;
 import com.fellowshipofthe.entityClasses.ProductItem;
 import com.fellowshipofthe.entityClasses.StoredProduct;
+import com.fellowshipofthe.searchProduct.SearchProduct;
 import com.fellowshipofthe.searchProduct.SearchProductDAO;
 
 
@@ -74,4 +75,6 @@ public class AddProductResource {
         System.out.println(newStoredProductList.get(0) + newStoredProductList.get(1) + newStoredProductList.get(2));
         return productDAO.addStoredProduct(newStoredProductList);
     }
+
+
 }

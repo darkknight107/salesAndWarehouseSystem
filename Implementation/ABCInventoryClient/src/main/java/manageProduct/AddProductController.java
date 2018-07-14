@@ -210,5 +210,4 @@ public class AddProductController {
         String responseValue= response.getEntity(String.class);
         return responseValue;
     }
-
 }

@@ -183,4 +183,16 @@ public class SearchProductDAO {
         System.out.println("StoredProduct Added!");
         return true;
     }
+
+    //method to access database and delete product
+    public Boolean deleteProduct(String productCode) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        dbconnet= new DatabaseConnection();
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+        String sql= "delete from Product where productCode=\""+ productCode + "\";";
+        stmt.executeUpdate(sql);
+        conn.close();
+        System.out.println("Product Deleted!");
+        return true;
+    }
 }
