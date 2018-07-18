@@ -8,10 +8,13 @@ import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import entityClass.ProductItem;
 import entityClass.StoredProduct;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -45,6 +48,7 @@ public class AddProductController {
     private Label descriptionLabel;
     @FXML
     private Button nextButton;
+    ComboBox comboBox;
 
     @FXML
     public void handleAddProductNext() throws ExecutionException, InterruptedException, IOException {
@@ -93,8 +97,15 @@ public class AddProductController {
     public void handleAddProductItem(String productCode){
         //changing button, label and prompt texts for adding product item
         productCodeField.setText(productCode);
+        productCodeField.setDisable(true);
         priceLabel.setText("Size");
-        priceField.setPromptText("Please enter a valid Size");
+        //creating a combo box to select size
+        ObservableList<String> sizeOptions= FXCollections.observableArrayList("XS", "S", "M", "L", "XL");
+        comboBox= new ComboBox(sizeOptions);
+        anchorPane.getChildren().add(comboBox);
+        comboBox.setLayoutX((anchorPane.getWidth())/2);
+        comboBox.setLayoutY((anchorPane.getHeight())/2);
+        priceField.setVisible(false);
         productNameLabel.setVisible(false);
         productNameField.setVisible(false);
         descriptionLabel.setVisible(false);
@@ -103,7 +114,7 @@ public class AddProductController {
         final String[] productItemCode = {null};
         final String[] productSize = new String[1];
         nextButton.setOnAction((ActionEvent event)-> {
-            productSize[0] = priceField.getText();
+            productSize[0] = (String) comboBox.getValue();
             //conditional statements to set rear value of product item code according to product size
             if (productSize[0].equals("XS")){
                 productItemCode[0] = productCode +"100";
@@ -153,6 +164,10 @@ public class AddProductController {
         productNameLabel.setText("Quantity");
         productNameField.setVisible(true);
         productNameField.setPromptText("Please enter the quantity");
+        //putting location names in combo box
+        comboBox.getItems().clear();
+        ObservableList<String> locationOptions= FXCollections.observableArrayList("Newtown", "Epping", "Oxford Store");
+        comboBox.setItems(locationOptions);
 
         //creating an app screen object for alert messages
         AppScreen screen= new AppScreen();
@@ -164,7 +179,7 @@ public class AddProductController {
         //on pressing next button do the following
         nextButton.setOnAction((ActionEvent event)->{
             productQuantity[0]= productNameField.getText();
-            locationName[0]= priceField.getText();
+            locationName[0]= (String) comboBox.getValue();
             //getting and validating the location name entered with the available location
             if (locationName[0].equals("Oxford Store")){
                 locationID[0] = "STR1";
