@@ -13,10 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -110,48 +107,72 @@ public class AddProductController {
         productNameField.setVisible(false);
         descriptionLabel.setVisible(false);
         descriptionField.setVisible(false);
+        //creating an appscreen for alert messages
+        AppScreen screen= new AppScreen();
         //variables to store required values for product item
         final String[] productItemCode = {null};
         final String[] productSize = new String[1];
-        nextButton.setOnAction((ActionEvent event)-> {
-            productSize[0] = (String) comboBox.getValue();
-            //conditional statements to set rear value of product item code according to product size
-            if (productSize[0].equals("XS")){
-                productItemCode[0] = productCode +"100";
-            }
-            else if (productSize[0].equals("S")){
-                productItemCode[0] = productCode + "200";
-            }
-            else if (productSize[0].equals("M")){
-                productItemCode[0] = productCode + "300";
-            }
-            else if (productSize[0].equals("L")){
-                productItemCode[0] = productCode + "400";
-            }
-            else if (productSize[0].equals("XL")){
-                productItemCode[0] = productCode + "500";
-            }
+        final String[] repeat = {"Yes"};
+        while (repeat[0].equals("Yes")){
 
-            //set textfield values to ProductItem Entity
-            ProductItem newProductItem= new ProductItem();
-            newProductItem.setProductCode(productCode);
-            newProductItem.setProductItemCode(productItemCode[0]);
-            newProductItem.setProductSize(productSize[0]);
+                productSize[0] = (String) comboBox.getValue();
+                //conditional statements to set rear value of product item code according to product size
+                if (productSize[0].equals("XS")){
+                    productItemCode[0] = productCode +"100";
+                }
+                else if (productSize[0].equals("S")){
+                    productItemCode[0] = productCode + "200";
+                }
+                else if (productSize[0].equals("M")){
+                    productItemCode[0] = productCode + "300";
+                }
+                else if (productSize[0].equals("L")){
+                    productItemCode[0] = productCode + "400";
+                }
+                else if (productSize[0].equals("XL")){
+                    productItemCode[0] = productCode + "500";
+                }
+            nextButton.setOnAction((ActionEvent event)-> {
 
-            //calling clientRequest to send a request to the server
-            String response= clientRequest(newProductItem, "addproductitem");
-            System.out.println(response);
-            AppScreen screen= new AppScreen();
-            if (response.equals("true")){
-                screen.alertMessages("Product Item Added!", "Added product Item code is " + productItemCode[0]);
-                clearTextFields();
-                handleAddStoredProduct(newProductItem.getProductItemCode());
-            }
-            else{
-                screen.alertMessages("Error", "Error! Please try again.");
-                clearTextFields();
-            }
-        });
+                //set textfield values to ProductItem Entity
+                ProductItem newProductItem= new ProductItem();
+                newProductItem.setProductCode(productCode);
+                newProductItem.setProductItemCode(productItemCode[0]);
+                newProductItem.setProductSize(productSize[0]);
+
+                //calling clientRequest to send a request to the server
+                String response= clientRequest(newProductItem, "addproductitem");
+                System.out.println(response);
+
+                if (response.equals("true")){
+                    screen.alertMessages("Product Item Added!", "Added product Item code is " + productItemCode[0]);
+                    Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Add more sizes?");
+                    alert.setContentText("Do you want to add another size for product "+ productCode + "?");
+                    ButtonType yesButton= new ButtonType("Yes", ButtonBar.ButtonData.YES);
+                    ButtonType noButton= new ButtonType("No", ButtonBar.ButtonData.NO);
+                    alert.getButtonTypes().setAll(yesButton, noButton);
+                    alert.showAndWait().ifPresent(type ->{
+                        if (type == ButtonType.YES){
+                            repeat[0] = "Yes";
+                        }
+                        else{
+                            clearTextFields();
+                            handleAddStoredProduct(newProductItem.getProductItemCode());
+                            repeat[0]= "No";
+                        }
+                    });
+
+                }
+                else{
+                    screen.alertMessages("Error", "Error! Please try again.");
+                    clearTextFields();
+                }
+            });
+
+
+        }
+
     }
 
     public void handleAddStoredProduct(String productItemCode){
