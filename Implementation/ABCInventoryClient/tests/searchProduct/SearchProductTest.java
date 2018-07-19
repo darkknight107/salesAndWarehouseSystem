@@ -1,5 +1,6 @@
 package searchProduct;
 
+import entityClass.SearchProduct;
 import org.junit.Before;
 import org.junit.Test;
 

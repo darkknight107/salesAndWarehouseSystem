@@ -1,7 +1,7 @@
 package com.junittest;
 
-import com.fellowshipofthe.searchProduct.SearchProduct;
-import com.fellowshipofthe.searchProduct.SearchProductDAO;
+import com.fellowshipofthe.entityClasses.SearchProduct;
+import com.fellowshipofthe.DAO.ProductDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SearchProductDAOTest {
+public class ProductDAOTest {
     @Mock
     private DataSource dataSource;
     @Mock
@@ -64,7 +64,7 @@ public class SearchProductDAOTest {
 
     @Test
     public void searchProductTest() {
-        SearchProductDAO dao= new SearchProductDAO();
+        ProductDAO dao= new ProductDAO();
         dao.searchProduct(searchProduct.getProductCode());
 
         assertEquals(searchProduct.getProductItemCode(),"S3100");
