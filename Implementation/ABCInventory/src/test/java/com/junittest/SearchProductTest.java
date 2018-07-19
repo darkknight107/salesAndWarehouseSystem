@@ -1,6 +1,6 @@
 package com.junittest;
 
-import com.fellowshipofthe.searchProduct.SearchProduct;
+import com.fellowshipofthe.entityClasses.SearchProduct;
 import org.junit.Before;
 import org.junit.Test;
 

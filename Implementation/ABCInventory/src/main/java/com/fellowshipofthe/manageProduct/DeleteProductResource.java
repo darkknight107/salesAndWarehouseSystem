@@ -1,7 +1,7 @@
 package com.fellowshipofthe.manageProduct;
 
 
-import com.fellowshipofthe.searchProduct.SearchProductDAO;
+import com.fellowshipofthe.DAO.ProductDAO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,8 +18,8 @@ public class DeleteProductResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Boolean deleteProduct(@PathParam("productcode") String productCode) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("deleteProduct called!");
-        SearchProductDAO searchProductDAO= new SearchProductDAO();
-        return searchProductDAO.deleteProduct(productCode);
+        ProductDAO productDAO = new ProductDAO();
+        return productDAO.deleteProduct(productCode);
     }
 
 }

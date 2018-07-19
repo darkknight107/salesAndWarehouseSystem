@@ -1,19 +1,17 @@
-package searchProduct;
+package com.fellowshipofthe.entityClasses;
 
-import java.io.Serializable;
-
-public class SearchProduct implements Serializable {
-
-    private String productCode;
-    private String productItemCode;
-    private String productSize;
-    private String productName;
-    private String productQuantity;
-    private String price;
-    private String locationID;
-    private String locationName;
-    private String locationAddress;
-    private String phone;
+public class SearchProduct {
+    String productCode;
+    String productItemCode;
+    String productSize;
+    String productName;
+    int productQuantity;
+    String price;
+    String locationID;
+    String locationName;
+    String locationAddress;
+    String phone;
+    String description;
 
     public String getProductItemCode() {
         return productItemCode;
@@ -31,7 +29,6 @@ public class SearchProduct implements Serializable {
         this.productSize = productSize;
     }
 
-
     public String getProductCode() {
         return productCode;
     }
@@ -48,11 +45,11 @@ public class SearchProduct implements Serializable {
         this.productName = productName;
     }
 
-    public String getProductQuantity() {
+    public int getProductQuantity() {
         return productQuantity;
     }
 
-    public void setProductQuantity(String productQuantity) {
+    public void setProductQuantity(int productQuantity) {
         this.productQuantity = productQuantity;
     }
 
@@ -95,4 +92,13 @@ public class SearchProduct implements Serializable {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
+

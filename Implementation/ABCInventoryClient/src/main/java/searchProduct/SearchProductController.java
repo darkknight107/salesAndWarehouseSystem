@@ -1,14 +1,20 @@
 package searchProduct;
 
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.GenericType;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.json.JSONConfiguration;
+import entityClass.SearchProduct;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import manageProduct.AppScreen;
 
-import javax.security.auth.callback.Callback;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericType;
+import javax.ws.rs.WebApplicationException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -20,16 +26,25 @@ public class SearchProductController {
     @FXML
     private TableView<SearchProduct> tblSearchProduct;
     @FXML
-    private  TextField txtSearchProductItemCode;
-    @FXML
     private TableColumn size;
     @FXML
     private  TableColumn productItemCode;
     @FXML
     private TableColumn displayView;
-    WebTarget clientTarget = null;
+
+    AppScreen screen = new AppScreen();
+
     ObservableList<SearchProduct> data;
 
+    // Variables for create the client
+    Client client;
+    WebResource webResourceGet;
+    ClientResponse response;
+    GenericType<List<SearchProduct>> listc = new GenericType<List<SearchProduct>>() {
+    };
+    List<SearchProduct> searchProductList;
+
+    String getProductURL;
 
     // Initialize method for handle the action when pressing button
     public void initialize(URL url, ResourceBundle rb){
@@ -37,13 +52,62 @@ public class SearchProductController {
     }
 
     @FXML
+    // Event handler for search button
     private void handleSearchProductCodeAction(){
-        // Get the data from Webservice
+        initializeDataConnect();
+
+        // GET request to searchproductcode resource with a query parameter
+
+        String code = txtSearch.getText().toUpperCase();
+        getProductURL = "http://localhost:8080/rest/searchproduct/searchproductcode/";
+
+        if (code.matches("[A-Z][0-9]")){
+            searchProductByCodes(getProductURL,"productcode", code);
+            clearproductItems();
+            addDetailButton();
+        }else if(code.matches("[A-Z][0-9]100") || code.matches("[A-Z][0-9]200") || code.matches("[A-Z][0-9]300")){
+            searchProductByCodes(getProductURL,"productcode", code);
+            clearproductItems();
+            addProductItems();
+        }
+        else if(code.equals("")){
+            showAllProducts();
+        } else {
+            screen.alertMessages("Wrong Format Input","Please enter the code in the right format! \nEg: Produc Code: S1, Product Item Code: S1100 ");
+        }
+    }
+
+    // Search Product or Product Item
+    private  void searchProductByCodes(String URL ,String searchField, String code) {
+        data.clear();
+        webResourceGet = client.resource(URL).queryParam(searchField, code);
+        response = webResourceGet.get(ClientResponse.class);
+        searchProductList = response.getEntity(listc);
+        if (response.getStatus() != 200) {
+            throw new WebApplicationException();
+        }
+        if (searchProductList.isEmpty()) {
+            screen.alertMessages("Non-Existent Product", "Product does not exist!");
+        } else {
+            for (SearchProduct s : searchProductList) {
+                data.add(s);
+            }
+        }
+    }
+
+    //connect to the server to retrieve the data
+    private void initializeDataConnect(){
         data = tblSearchProduct.getItems();
         data.clear();
-        Client client = ClientBuilder.newClient();
-        client.register(SearchProductMessageBodyReader.class);
 
+        //creating a new client to send post request
+        ClientConfig clientConfig= new DefaultClientConfig();
+        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+        client = Client.create(clientConfig);
+    }
+
+    //Add the button for each row
+    private void addDetailButton(){
         // Create the "Detail" button for each row and define the action for it
         displayView.setCellFactory(col ->{
             Button viewButton = new Button("Detail");
@@ -59,74 +123,28 @@ public class SearchProductController {
                     }
                 }
             };
-
             // When clicked the button, the button will show the product item of selected product
             viewButton.setOnAction(e -> {
                 tblSearchProduct.getSelectionModel().select(cell.getIndex());
-                viewProductItems(tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode(),tblSearchProduct.getSelectionModel().getSelectedItem().getLocationID());
+                webResourceGet = client.resource("http://localhost:8080/rest/searchproduct/viewproductitem/").queryParam("productcode", tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode()).queryParam("locationID",tblSearchProduct.getSelectionModel().getSelectedItem().getLocationID());
+                response = webResourceGet.get(ClientResponse.class);
+                searchProductList = response.getEntity(listc);
+
+                data.clear();
+                tblSearchProduct.getColumns().remove(displayView);
+                addProductItems();
+
+                if (response.getStatus() != 200) {
+                    throw new WebApplicationException();
+                }
+                for (SearchProduct s : searchProductList) {
+                    data.add(s);
+                }
             });
 
             return cell ;
         });
-        if(txtSearch.getText().length() == 0 && txtSearchProductItemCode.getText().length() == 0){
-            alertMessages("No Product Searched","Please input the Product Code/ Product Item Code you want to search.");
-            clearTextFields();
-        }
-        else if(txtSearch.getText().length() > 0 && txtSearchProductItemCode.getText().length() > 0){
-            alertMessages("Duplicate Search","Cannot search the Product Code and Product Item Code at the same time.");
-            clearTextFields();
-        }
-//         The results will be displayed when user searching the product code or product item code
-        else if (txtSearch.getText().length() > 0  && txtSearchProductItemCode.getText().length() == 0) {
-            clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode/{beginBy}");
-            clientTarget = clientTarget.resolveTemplate("beginBy", txtSearch.getText());
-            clearproductItems();
-            tblSearchProduct.getColumns().add(0,displayView);
-        }
-        else if (txtSearch.getText().length() == 0  && txtSearchProductItemCode.getText().length() > 0) {
-            clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode/{beginBy}");
-            clientTarget = clientTarget.resolveTemplate("beginBy", txtSearchProductItemCode.getText());
-            clearproductItems();
-            addProductItems();
-        }
-        // Get the json data from web service
-        GenericType<List<SearchProduct>> listc = new GenericType<List<SearchProduct>>() {
-        };
-        List<SearchProduct> searchProductList = clientTarget.request("application/json").get(listc);
-        if(searchProductList.isEmpty()){
-            alertMessages("Non-Existent Product", "Product does not exist!");
-        }else {
-            if (txtSearch.getText().length() > 0 || txtSearchProductItemCode.getText().length() > 0) {
-                // Add data to SearchProduct for displaying
-                for (SearchProduct s : searchProductList) {
-                    data.add(s);
-                    System.out.println(s.toString());
-                }
-                clearTextFields();
-            }
-        }
-        }
-
-
-    // When clicked the button, the button will show the product item of selected product
-    private void viewProductItems(String productCode, String locationID){
-//        ObservableList<SearchProduct> data = tblSearchProduct.getItems();
-        data.clear();
-        Client client = ClientBuilder.newClient();
-        client.register(SearchProductMessageBodyReader.class);
-        clientTarget = client.target("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/viewproductitems/{beginBy}");
-        String s = productCode + "-" + locationID;
-        clientTarget = clientTarget.resolveTemplate("beginBy", s);
-        tblSearchProduct.getColumns().remove(displayView);
-        addProductItems();
-        GenericType<List<SearchProduct>> listc = new GenericType<List<SearchProduct>>() {
-        };
-        List<SearchProduct> searchProductList = clientTarget.request("application/json").get(listc);
-
-        for (SearchProduct a : searchProductList) {
-            data.add(a);
-            System.out.println(a.toString());
-        }
+        tblSearchProduct.getColumns().add(0,displayView);
     }
 
     // Update the table depends on the searching input
@@ -142,18 +160,11 @@ public class SearchProductController {
         tblSearchProduct.getColumns().remove(displayView);
     }
 
-    private void clearTextFields(){
-        txtSearch.setText("");
-        txtSearchProductItemCode.setText("");
-    }
-
-    private void alertMessages(String title, String contentText){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(contentText);
-        alert.showAndWait();
-        clearTextFields();
-        return;
+    // Show all the products and product items
+    public void showAllProducts(){
+        initializeDataConnect();
+        getProductURL="http://localhost:8080/rest/searchproduct/viewallproducts/";
+        searchProductByCodes(getProductURL,"","");
+        tblSearchProduct.getColumns().remove(displayView);
     }
 }

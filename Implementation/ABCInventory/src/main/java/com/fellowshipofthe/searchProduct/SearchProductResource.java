@@ -1,9 +1,9 @@
 package com.fellowshipofthe.searchProduct;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import com.fellowshipofthe.DAO.ProductDAO;
+import com.fellowshipofthe.entityClasses.SearchProduct;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
 import java.util.List;
@@ -11,28 +11,57 @@ import java.util.List;
 @Path("searchproduct")
 public class SearchProductResource{
 
-
+    // Client calls the search product
     @GET
-    @Path("searchproductcode/{productcode}")
+    @Path("/searchproductcode")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<SearchProduct> searchProduct(@PathParam("productcode") String productCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-        SearchProductDAO searchProductDAO= new SearchProductDAO();
+    public List<SearchProduct>searchProduct(@QueryParam("productcode") String productCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        ProductDAO productDAO = new ProductDAO();
 
-        System.out.println("search product called!");
+        System.out.println(" product called!");
 
-        return searchProductDAO.searchProduct(productCode);
+        return productDAO.searchProduct(productCode);
 
     }
 
+
+
+    // Client calls the view product details by location id
     @GET
-    @Path("viewproductitems/{productcode}-{locationID}")
+    @Path("/viewproductitem")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<SearchProduct> viewProduct(@PathParam("productcode") String productItemCode, @PathParam("locationID") String locationID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-        SearchProductDAO searchProductDAO= new SearchProductDAO();
+    public List<SearchProduct> viewProductItem(@QueryParam("productcode") String productItemCode, @QueryParam("locationID") String locationID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        ProductDAO productDAO = new ProductDAO();
 
         System.out.println("view product items called!");
 
-        return searchProductDAO.viewProductItems(productItemCode,locationID);
+        return productDAO.viewProductItem(productItemCode,locationID);
+
+    }
+
+    // Client calls the view all products
+    @GET
+    @Path("/viewallproducts")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SearchProduct> viewAllProducts() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        ProductDAO productDAO = new ProductDAO();
+
+        System.out.println("view all products called!");
+
+        return productDAO.viewAllProducts();
+
+    }
+
+    // Client calls search product items in a specific product code
+    @GET
+    @Path("/searchProductItemsInProductCode")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SearchProduct> searchProductItemsInProductCode(@QueryParam("productcode") String productCode, @QueryParam("productitemcode") String productItemCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        ProductDAO productDAO = new ProductDAO();
+
+        System.out.println("Search Product Items In Product Code call called!");
+
+        return productDAO.searchProductItemsInProductCode(productCode,productItemCode);
 
     }
 
