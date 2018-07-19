@@ -3,19 +3,17 @@ package com.fellowshipofthe.manageProduct;
 import com.fellowshipofthe.entityClasses.Product;
 import com.fellowshipofthe.entityClasses.ProductItem;
 import com.fellowshipofthe.entityClasses.StoredProduct;
-import com.fellowshipofthe.searchProduct.SearchProduct;
-import com.fellowshipofthe.searchProduct.SearchProductDAO;
+import com.fellowshipofthe.DAO.ProductDAO;
 
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 @Path("manageproduct")
 public class AddProductResource {
-    SearchProductDAO productDAO = new SearchProductDAO();
+    ProductDAO productDAO = new ProductDAO();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
