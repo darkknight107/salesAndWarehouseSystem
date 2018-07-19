@@ -1,7 +1,7 @@
 package com.junittest;
 
-import com.fellowshipofthe.SearchProduct;
-import com.fellowshipofthe.SearchProductDAO;
+import com.fellowshipofthe.searchProduct.SearchProduct;
+import com.fellowshipofthe.searchProduct.SearchProductDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,11 +13,9 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SearchProductDAOTest {
