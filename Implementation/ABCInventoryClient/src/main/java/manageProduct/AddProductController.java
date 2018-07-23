@@ -71,15 +71,23 @@ public class AddProductController {
         String response= clientRequest(newProduct,"");
         System.out.println(response);
         AppScreen screen= new AppScreen();
-        if (response.equals("true")){
-            screen.alertMessages("Product Added", "Product has been added.");
+        //test if product already exists
+        //add if does not exist
+        if (response.equals("exists")){
+            screen.alertMessages("Product already exists.", "The Product entered already exists.");
+            clearTextFields();
+            //load text fields and labels for adding product item for existing product
+            handleAddProductItem(newProduct.getProductCode());
+        }
+
+        else if(response.equals("true")){
+            screen.alertMessages("Product Added.", "Product " + newProduct.getProductCode() + " has been added.");
             clearTextFields();
             //load text fields and labels for adding product item
             handleAddProductItem(newProduct.getProductCode());
         }
         else{
-            screen.alertMessages("Error", "Error! Please try again.");
-            clearTextFields();
+            screen.alertMessages("Error!", "An Error occurred. Please try again!");
         }
     }
 
@@ -185,7 +193,7 @@ public class AddProductController {
             System.out.println(response1);
             System.out.println("Product Item added and allocated!");
             AppScreen screen= new AppScreen();
-            screen.alertMessages("Items Added", newProductItem.getProductItemCode() + " has been added to" + locationID[0] + ".");
+            screen.alertMessages("Items Added", newProductItem.getProductItemCode() + " has been added to " + locationID[0] + ".");
             //clearing all values for user
             sizeComboBox.getSelectionModel().clearSelection();
             //sizeComboBox.getItems().clear();

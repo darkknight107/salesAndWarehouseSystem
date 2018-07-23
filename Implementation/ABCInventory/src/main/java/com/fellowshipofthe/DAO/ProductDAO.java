@@ -160,7 +160,7 @@ public class ProductDAO {
         }
     }
     //method to access database and add new product to the database
-    public Boolean addProduct(List<String> newProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public String addProduct(List<String> newProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         //creating new variables to store new product details
         String code= newProduct.get(0);
         String name= newProduct.get(1);
@@ -170,13 +170,23 @@ public class ProductDAO {
         dbconnet = new DatabaseConnection();
         conn = dbconnet.connect();
         Statement stmt= conn.createStatement();
-        String sql= "INSERT INTO Product (productCode, productName, price, description)" +
-                "VALUES (\"" + code +"\",\""+ name+ "\",\"" + price + "\",\"" + description +"\");";
-        System.out.println(code + name + price + description);
-        stmt.executeUpdate(sql);
-        conn.close();
-        System.out.println("Product Added!");
-        return true;
+        String sqlQueryToCheckProduct= "SELECT productCode FROM Product WHERE productCode= \"" + code + "\"";
+        ResultSet resultSet= stmt.executeQuery(sqlQueryToCheckProduct);
+        if(resultSet.next()){
+            conn.close();
+            System.out.println("Product Already Exists.");
+            return "exists";
+        }
+        else{
+            String sql= "INSERT INTO Product (productCode, productName, price, description)" +
+                    "VALUES (\"" + code +"\",\""+ name+ "\",\"" + price + "\",\"" + description +"\");";
+            System.out.println(code + name + price + description);
+            stmt.executeUpdate(sql);
+            conn.close();
+            System.out.println("Product Added!");
+            return "true";
+        }
+
     }
 
     //method to access database and add new product item to the database
