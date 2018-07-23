@@ -43,7 +43,7 @@ public class AddProductResource {
     @Path("addproductitem")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Boolean addProductItem(ProductItem newProductItem) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public String addProductItem(ProductItem newProductItem) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("addProductItem called!");
         String newProductItemCode= newProductItem.getProductItemCode();
         String productCode= newProductItem.getProductCode();

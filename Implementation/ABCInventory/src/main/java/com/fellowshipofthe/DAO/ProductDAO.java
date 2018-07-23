@@ -180,21 +180,35 @@ public class ProductDAO {
     }
 
     //method to access database and add new product item to the database
-    public Boolean addProductItem(List<String> newProductItem) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public String addProductItem(List<String> newProductItem) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        //productItemCode
         String itemCode= newProductItem.get(0);
+        //productCode
         String code= newProductItem.get(1);
         String itemSize= newProductItem.get(2);
         //opening a connection with the database and creating a statement
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
-        String sql= "INSERT INTO ProductItem (productItemCode, productCode, productSize)" +
-                "VALUES (\"" + itemCode +"\",\""+ code+ "\",\"" + itemSize + "\");";
-        System.out.println(itemCode + code + itemSize);
-        stmt.executeUpdate(sql);
-        conn.close();
-        System.out.println("ProductItem Added!");
-        return true;
+        //check if productItem already exists
+        String sqlQueryToCheckProductItem= "SELECT productItemCode FROM ProductItem WHERE productItemCode= \"" + itemCode + "\"";
+        ResultSet resultSet= stmt.executeQuery(sqlQueryToCheckProductItem);
+        if(resultSet.next()){
+            conn.close();
+            System.out.println("Product Item Already Exists.");
+            return "true";
+        }
+        else{
+            String sql= "INSERT INTO ProductItem (productItemCode, productCode, productSize)" +
+                    "VALUES (\"" + itemCode +"\",\""+ code+ "\",\"" + itemSize + "\");";
+            System.out.println(itemCode + code + itemSize);
+            stmt.executeUpdate(sql);
+            conn.close();
+            System.out.println("ProductItem Added!");
+            return "true";
+
+        }
+
     }
 
     //method to access database and add new stored product to the database

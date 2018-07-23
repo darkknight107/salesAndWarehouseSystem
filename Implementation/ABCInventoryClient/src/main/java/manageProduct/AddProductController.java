@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 
 
 import java.io.IOException;
@@ -43,7 +44,13 @@ public class AddProductController {
     private Label descriptionLabel;
     @FXML
     private Button nextButton;
-    ComboBox comboBox;
+    @FXML
+    private Button resetButton;
+    @FXML
+    private Button addFromExistingButton;
+
+    ComboBox sizeComboBox;
+    ComboBox locationComboBox;
 
     @FXML
     public void handleAddProductNext() throws ExecutionException, InterruptedException, IOException {
@@ -90,115 +97,74 @@ public class AddProductController {
     }
 
     public void handleAddProductItem(String productCode){
-        //changing button, label and prompt texts for adding product item
         productCodeField.setText(productCode);
         productCodeField.setDisable(true);
-        priceLabel.setText("Size");
-        //creating a combo box to select size
-        ObservableList<String> sizeOptions= FXCollections.observableArrayList("XS", "S", "M", "L", "XL");
-        comboBox= new ComboBox(sizeOptions);
-        anchorPane.getChildren().add(comboBox);
-        comboBox.setLayoutX((anchorPane.getWidth())/2);
-        comboBox.setLayoutY((anchorPane.getHeight())/2);
-        priceField.setVisible(false);
-        productNameLabel.setVisible(false);
+        productNameLabel.setText("Size");
         productNameField.setVisible(false);
-        descriptionLabel.setVisible(false);
-        descriptionField.setVisible(false);
-        //creating an appscreen for alert messages
-        AppScreen screen= new AppScreen();
-        //variables to store required values for product item
+        priceLabel.setText("Location");
+        priceField.setVisible(false);
+        descriptionLabel.setText("Quantity");
+        descriptionField.setPromptText("Enter Quantity");
+        nextButton.setText("Add");
+        //various buttons, fields and combo boxes required for adding product item and allocating it to location
+        ObservableList<String> sizeOptions= FXCollections.observableArrayList("XS", "S", "M", "L", "XL");
+        sizeComboBox= new ComboBox(sizeOptions);
+        ObservableList<String> locationOptions= FXCollections.observableArrayList("Newtown", "Epping", "Oxford Store");
+        locationComboBox= new ComboBox(locationOptions);
+        anchorPane.getChildren().add(locationComboBox);
+        GridPane gridPane= new GridPane();
+        gridPane.add(productCodeLabel, 0, 0);
+        gridPane.add(productCodeField, 1, 0);
+        gridPane.add(productNameLabel, 0, 1);
+        gridPane.add(sizeComboBox, 1,1);
+        gridPane.add(priceLabel, 0, 2);
+        gridPane.add(locationComboBox, 1, 2);
+        gridPane.add(descriptionLabel, 0, 3);
+        gridPane.add(descriptionField, 1,3);
+        gridPane.add(nextButton, 0, 4);
+        gridPane.add(resetButton, 1, 4);
+        gridPane.add(addFromExistingButton, 2, 4);
+
+        anchorPane.getChildren().add(gridPane);
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setLayoutX(anchorPane.getWidth()/2);
+        gridPane.setLayoutY(anchorPane.getHeight()/2);
         final String[] productItemCode = {null};
         final String[] productSize = new String[1];
-        final String[] repeat = {"Yes"};
-        while (repeat[0].equals("Yes")){
-
-                productSize[0] = (String) comboBox.getValue();
-                //conditional statements to set rear value of product item code according to product size
-                if (productSize[0].equals("XS")){
-                    productItemCode[0] = productCode +"100";
-                }
-                else if (productSize[0].equals("S")){
-                    productItemCode[0] = productCode + "200";
-                }
-                else if (productSize[0].equals("M")){
-                    productItemCode[0] = productCode + "300";
-                }
-                else if (productSize[0].equals("L")){
-                    productItemCode[0] = productCode + "400";
-                }
-                else if (productSize[0].equals("XL")){
-                    productItemCode[0] = productCode + "500";
-                }
-            nextButton.setOnAction((ActionEvent event)-> {
-
-                //set textfield values to ProductItem Entity
-                ProductItem newProductItem= new ProductItem();
-                newProductItem.setProductCode(productCode);
-                newProductItem.setProductItemCode(productItemCode[0]);
-                newProductItem.setProductSize(productSize[0]);
-
-                //calling clientRequest to send a request to the server
-                String response= clientRequest(newProductItem, "addproductitem");
-                System.out.println(response);
-
-                if (response.equals("true")){
-                    screen.alertMessages("Product Item Added!", "Added product Item code is " + productItemCode[0]);
-                    Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Add more sizes?");
-                    alert.setContentText("Do you want to add another size for product "+ productCode + "?");
-                    ButtonType yesButton= new ButtonType("Yes", ButtonBar.ButtonData.YES);
-                    ButtonType noButton= new ButtonType("No", ButtonBar.ButtonData.NO);
-                    alert.getButtonTypes().setAll(yesButton, noButton);
-                    alert.showAndWait().ifPresent(type ->{
-                        if (type == ButtonType.YES){
-                            repeat[0] = "Yes";
-                        }
-                        else{
-                            clearTextFields();
-                            handleAddStoredProduct(newProductItem.getProductItemCode());
-                            repeat[0]= "No";
-                        }
-                    });
-
-                }
-                else{
-                    screen.alertMessages("Error", "Error! Please try again.");
-                    clearTextFields();
-                }
-            });
-
-
-        }
-
-    }
-
-    public void handleAddStoredProduct(String productItemCode){
-        //changing label, text field and prompt values for adding stored product
-        productCodeLabel.setText("Item Code");
-        productCodeField.setText(productItemCode);
-        priceLabel.setText("Location");
-        priceField.setPromptText("Please enter a valid location");
-        productNameLabel.setVisible(true);
-        productNameLabel.setText("Quantity");
-        productNameField.setVisible(true);
-        productNameField.setPromptText("Please enter the quantity");
-        //putting location names in combo box
-        comboBox.getItems().clear();
-        ObservableList<String> locationOptions= FXCollections.observableArrayList("Newtown", "Epping", "Oxford Store");
-        comboBox.setItems(locationOptions);
-
-        //creating an app screen object for alert messages
-        AppScreen screen= new AppScreen();
-        //variables to store required values
         final String [] locationName = {null};
         final String[] locationID = {null};
         final String [] productQuantity= {null};
 
-        //on pressing next button do the following
         nextButton.setOnAction((ActionEvent event)->{
-            productQuantity[0]= productNameField.getText();
-            locationName[0]= (String) comboBox.getValue();
+            locationName[0]= (String) locationComboBox.getValue();
+            productSize[0]= (String) sizeComboBox.getValue();
+            //conditional statements to set rear value of product item code according to product size
+            if (productSize[0].equals("XS")){
+                productItemCode[0] = productCode +"100";
+            }
+            else if (productSize[0].equals("S")){
+                productItemCode[0] = productCode + "200";
+            }
+            else if (productSize[0].equals("M")){
+                productItemCode[0] = productCode + "300";
+            }
+            else if (productSize[0].equals("L")){
+                productItemCode[0] = productCode + "400";
+            }
+            else if (productSize[0].equals("XL")){
+                productItemCode[0] = productCode + "500";
+            }
+
+            //set textfield values to ProductItem Entity
+            ProductItem newProductItem= new ProductItem();
+            newProductItem.setProductCode(productCode);
+            newProductItem.setProductItemCode(productItemCode[0]);
+            newProductItem.setProductSize(productSize[0]);
+
+            //calling clientRequest to send a request to the server
+            String response= clientRequest(newProductItem, "addproductitem");
+            System.out.println(response);
             //getting and validating the location name entered with the available location
             if (locationName[0].equals("Oxford Store")){
                 locationID[0] = "STR1";
@@ -209,25 +175,24 @@ public class AddProductController {
             else if(locationName[0].equals("Newtown")){
                 locationID[0]= "WRH1";
             }
-            /*else{
-                screen.alertMessages("Invalid Location", "Please enter a valid location name!");
-            }*/
-
-            //set textfield values to Stored Product Entity
+            productQuantity[0]= descriptionField.getText();
             StoredProduct newStoredProduct= new StoredProduct();
-            newStoredProduct.setProductItemCode(productItemCode);
+            newStoredProduct.setProductItemCode(productItemCode[0]);
             newStoredProduct.setLocationID(locationID[0]);
             newStoredProduct.setProductQuantity(productQuantity[0]);
             //calling the client request method to send a request to the server
-            String response= clientRequest(newStoredProduct, "addstoredproduct");
-            System.out.println(response);
-            if (response.equals("true")){
-                screen.alertMessages("Product Allocated to location", "Products have been added to " + locationID[0]);
-                clearTextFields();
-            }
-            else{
-                screen.alertMessages("Cannot Add Product!", "The product could not be added to the entered location. Please try again.");
-            }
+            String response1= clientRequest(newStoredProduct, "addstoredproduct");
+            System.out.println(response1);
+            System.out.println("Product Item added and allocated!");
+            AppScreen screen= new AppScreen();
+            screen.alertMessages("Items Added", newProductItem.getProductItemCode() + " has been added to" + locationID[0] + ".");
+            //clearing all values for user
+            sizeComboBox.getSelectionModel().clearSelection();
+            //sizeComboBox.getItems().clear();
+            locationComboBox.getSelectionModel().clearSelection();
+            //locationComboBox.getItems().clear();
+            descriptionField.clear();
+
         });
     }
 
