@@ -11,7 +11,7 @@
   <title>ABC Inventory</title>
 </head>
 <body>
-<p><a href="rest/searchproduct/searchproductcode">Search Product</a>
+<p><a href="rest/searchproduct/viewallproducts/">Search Product</a>
 <p><a href="rest/searchproduct/searchproductitemcode">Search Item Product</a>
   <input type="text" name="productName">
 

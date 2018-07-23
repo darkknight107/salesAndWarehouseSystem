@@ -60,6 +60,8 @@ public class AddProductController {
         newProduct.setPrice(price);
         newProduct.setDescription(description);
 
+        System.out.println(newProduct);
+
         //call the clientRequest method to send a request to the server
         String response= clientRequest(newProduct,"");
         System.out.println(response);

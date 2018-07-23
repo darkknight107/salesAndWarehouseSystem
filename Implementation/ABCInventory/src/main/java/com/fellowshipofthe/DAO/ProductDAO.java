@@ -15,10 +15,10 @@ public class ProductDAO {
     List<SearchProduct> searchProducts;
     DatabaseConnection dbconnet;
     Connection conn;
+    Statement stmt;
 
     public ProductDAO() {
         searchProducts= new ArrayList<SearchProduct>();
-
     }
     //     Search Product Item or Product Item Code
     public List<SearchProduct> searchProduct(String code){
@@ -125,7 +125,7 @@ public class ProductDAO {
         try {
             dbconnet = new DatabaseConnection();
             conn = dbconnet.connect();
-            Statement stmt = conn.createStatement();
+            stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(sqlQuery);
             while (resultSet.next()) {
                 SearchProduct viewProductItem = new SearchProduct();
@@ -153,6 +153,8 @@ public class ProductDAO {
             {
                 if (conn != null)
                     conn.close ();
+                if (stmt != null)
+                    stmt.close();
             }
             catch (SQLException ignore)
             {

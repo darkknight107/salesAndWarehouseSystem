@@ -35,8 +35,6 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.4" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="ABCInventory/web/Web2" />
-      <element id="javaee-facet-resources" facet="ABCInventory/web/Web" />
       <element id="javaee-facet-resources" facet="ABCInventory/web/Web3" />
     </root>
   </artifact>

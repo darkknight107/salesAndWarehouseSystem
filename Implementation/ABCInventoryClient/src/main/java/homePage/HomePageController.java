@@ -28,11 +28,7 @@ public class HomePageController {
 
         //Set Data to FXML through controller
         myController.showAllProducts();
-
         anchorPane.getChildren().setAll(pane);
-        //Creating border pane for SearchProductFXML root pane
-//        BorderPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
-//        anchorPane.getChildren().setAll(pane);
     }
     @FXML
     public void handleManageProduct() throws IOException{
@@ -40,4 +36,14 @@ public class HomePageController {
         AnchorPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
         anchorPane.getChildren().setAll(pane);
     }
+
+    @FXML
+    public void handleSendProduct() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferFXML.fxml"));
+        BorderPane pane = loader.load();
+
+        anchorPane.getChildren().setAll(pane);
+    }
+
+
 }
