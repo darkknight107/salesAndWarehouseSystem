@@ -200,7 +200,6 @@ public class AddProductController {
             locationComboBox.getSelectionModel().clearSelection();
             //locationComboBox.getItems().clear();
             descriptionField.clear();
-
         });
     }
 

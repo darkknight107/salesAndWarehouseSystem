@@ -1,7 +1,10 @@
 package com.fellowshipofthe.DAO;
 
 import com.fellowshipofthe.DatabaseConnection;
+import com.fellowshipofthe.entityClasses.Product;
+import com.fellowshipofthe.entityClasses.ProductItem;
 import com.fellowshipofthe.entityClasses.SearchProduct;
+import com.fellowshipofthe.entityClasses.StoredProduct;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -160,12 +163,12 @@ public class ProductDAO {
         }
     }
     //method to access database and add new product to the database
-    public String addProduct(List<String> newProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public String addProduct(Product newProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         //creating new variables to store new product details
-        String code= newProduct.get(0);
-        String name= newProduct.get(1);
-        String price= newProduct.get(2);
-        String description= newProduct.get(3);
+        String code= newProduct.getProductCode();
+        String name= newProduct.getProductName();
+        String price= newProduct.getPrice();
+        String description= newProduct.getDescription();
         //opening a connection with the database and creating a statement
         dbconnet = new DatabaseConnection();
         conn = dbconnet.connect();
@@ -190,12 +193,12 @@ public class ProductDAO {
     }
 
     //method to access database and add new product item to the database
-    public String addProductItem(List<String> newProductItem) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public String addProductItem(ProductItem newProductItem) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         //productItemCode
-        String itemCode= newProductItem.get(0);
+        String itemCode= newProductItem.getProductItemCode();
         //productCode
-        String code= newProductItem.get(1);
-        String itemSize= newProductItem.get(2);
+        String code= newProductItem.getProductCode();
+        String itemSize= newProductItem.getProductSize();
         //opening a connection with the database and creating a statement
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
@@ -222,10 +225,10 @@ public class ProductDAO {
     }
 
     //method to access database and add new stored product to the database
-    public Boolean addStoredProduct(List<String> newStoredProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        String itemCode= newStoredProduct.get(0);
-        String locationID= newStoredProduct.get(1);
-        String quantity= newStoredProduct.get(2);
+    public Boolean addStoredProduct(StoredProduct newStoredProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        String itemCode= newStoredProduct.getProductItemCode();
+        String locationID= newStoredProduct.getLocationID();
+        String quantity= newStoredProduct.getProductQuantity();
         //opening a connection with the database and creating a statement
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
@@ -249,5 +252,27 @@ public class ProductDAO {
         conn.close();
         System.out.println("Product Deleted!");
         return true;
+    }
+
+    public String updateProduct(Product updatedProduct) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        String productCode= updatedProduct.getProductCode();
+        String name= updatedProduct.getProductName();
+        String price= updatedProduct.getPrice();
+        String description= updatedProduct.getDescription();
+        dbconnet= new DatabaseConnection();
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+        String sql= "UPDATE Product \n" +
+                "SET productName = \"" + name + "\"" + ", price = \"" + price + "\"" + ", description= \"" + description + "\""+ "\n" +
+                "WHERE productCode= \"" + productCode + "\"; ";
+        int i= stmt.executeUpdate(sql);
+        if (i > 0){
+            System.out.println("Product updated!");
+            return "updated";
+        }
+        else{
+            System.out.println("Error! Product could not be updated!");
+            return "fail";
+        }
     }
 }
