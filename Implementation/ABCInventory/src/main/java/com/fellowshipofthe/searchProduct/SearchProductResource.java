@@ -24,8 +24,6 @@ public class SearchProductResource{
 
     }
 
-
-
     // Client calls the view product details by location id
     @GET
     @Path("/viewproductitem")
@@ -62,7 +60,6 @@ public class SearchProductResource{
         System.out.println("Search Product Items In Product Code call called!");
 
         return productDAO.searchProductItemsInProductCode(productCode,productItemCode);
-
     }
 
 

@@ -59,35 +59,42 @@ public class AddProductController {
         String productName= productNameField.getText();
         String price= priceField.getText();
         String description= descriptionField.getText();
-
-        //set textfield values to Product Entity
-        Product newProduct= new Product();
-        newProduct.setProductCode(productCode);
-        newProduct.setProductName(productName);
-        newProduct.setPrice(price);
-        newProduct.setDescription(description);
-
-        //call the clientRequest method to send a request to the server
-        String response= clientRequest(newProduct,"");
-        System.out.println(response);
         AppScreen screen= new AppScreen();
-        //test if product already exists
-        //add if does not exist
-        if (response.equals("exists")){
-            screen.alertMessages("Product already exists.", "The Product entered already exists.");
-            clearTextFields();
-            //load text fields and labels for adding product item for existing product
-            handleAddProductItem(newProduct.getProductCode());
-        }
+        //validate entered productCode
+        if (productCode.matches("[A-Z][0-9]")){
+            //set textfield values to Product Entity
+            Product newProduct= new Product();
+            newProduct.setProductCode(productCode);
+            newProduct.setProductName(productName);
+            newProduct.setPrice(price);
+            newProduct.setDescription(description);
 
-        else if(response.equals("true")){
-            screen.alertMessages("Product Added.", "Product " + newProduct.getProductCode() + " has been added.");
-            clearTextFields();
-            //load text fields and labels for adding product item
-            handleAddProductItem(newProduct.getProductCode());
+            //call the clientRequest method to send a request to the server
+            String response= clientRequest(newProduct,"");
+            System.out.println(response);
+
+            //test if product already exists
+            //add if does not exist
+            if (response.equals("exists")){
+                screen.alertMessages("Product already exists.", "The Product entered already exists.");
+                clearTextFields();
+                //load text fields and labels for adding product item for existing product
+                handleAddProductItem(newProduct.getProductCode());
+            }
+
+            else if(response.equals("true")){
+                screen.alertMessages("Product Added.", "Product " + newProduct.getProductCode() + " has been added.");
+                clearTextFields();
+                //load text fields and labels for adding product item
+                handleAddProductItem(newProduct.getProductCode());
+            }
+            else{
+                screen.alertMessages("Error!", "An Error occurred. Please try again!");
+            }
         }
         else{
-            screen.alertMessages("Error!", "An Error occurred. Please try again!");
+            screen.alertMessages("Invalid Code", "Please use a valid code. Code must contain one Alphabet followed by a numeral! \n" +
+                    "For instance: D4 is a valid code!");
         }
     }
 
