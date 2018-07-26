@@ -12,6 +12,7 @@ import entityClass.SearchProduct;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import manageProduct.AppScreen;
 
 import javax.ws.rs.WebApplicationException;
@@ -99,6 +100,8 @@ public class SearchProductController {
         // Create the "Detail" button for each row and define the action for it
         displayView.setCellFactory(col ->{
             Button viewButton = new Button("Detail");
+            Button deleteButton= new Button("Delete");
+            HBox hBox= new HBox(viewButton, deleteButton);
             TableCell<SearchProduct, SearchProduct> cell = new TableCell<SearchProduct, SearchProduct>() {
                 @Override
                 //the buttons are only displayed for the row have data
@@ -107,7 +110,8 @@ public class SearchProductController {
                     if (empty) {
                         setGraphic(null);
                     } else {
-                        setGraphic(viewButton);
+                        setGraphic(hBox);
+
                     }
                 }
             };
@@ -129,7 +133,28 @@ public class SearchProductController {
                     data.add(s);
                 }
             });
-
+            //when user click delete button do this
+            deleteButton.setOnAction(e ->{
+                tblSearchProduct.getSelectionModel().select(cell.getIndex());
+                //getting the selected product code
+                String toDeleteProduct= tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode();
+                System.out.println(toDeleteProduct);
+                //creating a new client to delete the selected product
+                ClientConfig clientConfig= new DefaultClientConfig();
+                clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+                Client client= Client.create(clientConfig);
+                WebResource deleteResource= client.resource("http://localhost:8080/rest/delete/deleteproduct/"+ toDeleteProduct);
+                //converting the response to string
+                ClientResponse response= deleteResource.delete(ClientResponse.class);
+                response.bufferEntity();
+                String responseValue= response.getEntity(String.class);
+                if (responseValue.equals("true")){
+                    screen.alertMessages("Product Deleted!", "The Product " + toDeleteProduct + " has been deleted.");
+                }
+                else{
+                    screen.alertMessages("Error!", "An error occurred. Could not delete the product!");
+                }
+            });
             return cell ;
         });
         tblSearchProduct.getColumns().add(0,displayView);
