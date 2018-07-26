@@ -1,17 +1,17 @@
 package com.fellowshipofthe.entityClasses;
 
 public class SearchProduct {
-    String productCode;
-    String productItemCode;
-    String productSize;
-    String productName;
-    int productQuantity;
-    String price;
-    String locationID;
-    String locationName;
-    String locationAddress;
-    String phone;
-    String description;
+    private String productCode;
+    private String productItemCode;
+    private String productSize;
+    private String productName;
+    private int productQuantity;
+    private String price;
+    private String locationID;
+    private String locationName;
+    private String locationAddress;
+    private String phone;
+    private String description;
 
     public String getProductItemCode() {
         return productItemCode;

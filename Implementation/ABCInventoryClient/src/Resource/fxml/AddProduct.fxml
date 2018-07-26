@@ -28,7 +28,7 @@
       <Label fx:id="priceLabel" layoutX="121.0" layoutY="175.0" text="Price" />
       <Label fx:id="descriptionLabel" layoutX="91.0" layoutY="213.0" text="Description" />
       <Button fx:id="nextButton" layoutX="127.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleAddProductNext" text="Next" />
-      <Button layoutX="177.0" layoutY="261.0" mnemonicParsing="false" onAction="#clearTextFields" text="Reset" />
-      <Button layoutX="234.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleFromExistingProduct" text="Add From Existing Product" />
+      <Button fx:id="resetButton" layoutX="177.0" layoutY="261.0" mnemonicParsing="false" onAction="#clearTextFields" text="Reset" />
+      <Button fx:id="addFromExistingButton" layoutX="234.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleFromExistingProduct" text="Add From Existing Product" />
    </children>
 </AnchorPane>
