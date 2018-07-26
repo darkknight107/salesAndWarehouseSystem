@@ -54,12 +54,11 @@ public class SearchProductController {
     @FXML
     // Event handler for search button
     private void handleSearchProductCodeAction(){
-        initializeDataConnect();
 
         // GET request to searchproductcode resource with a query parameter
-
         String code = txtSearch.getText().toUpperCase();
         getProductURL = "http://localhost:8080/rest/searchproduct/searchproductcode/";
+
 
         if (code.matches("[A-Z][0-9]")){
             searchProductByCodes(getProductURL,"productcode", code);
@@ -93,17 +92,6 @@ public class SearchProductController {
                 data.add(s);
             }
         }
-    }
-
-    //connect to the server to retrieve the data
-    private void initializeDataConnect(){
-        data = tblSearchProduct.getItems();
-        data.clear();
-
-        //creating a new client to send post request
-        ClientConfig clientConfig= new DefaultClientConfig();
-        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-        client = Client.create(clientConfig);
     }
 
     //Add the button for each row
@@ -162,7 +150,15 @@ public class SearchProductController {
 
     // Show all the products and product items
     public void showAllProducts(){
-        initializeDataConnect();
+        //connect to the server to retrieve the data
+        data = tblSearchProduct.getItems();
+        data.clear();
+
+        //creating a new client to send get request
+        ClientConfig clientConfig= new DefaultClientConfig();
+        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+        client = Client.create(clientConfig);
+
         getProductURL="http://localhost:8080/rest/searchproduct/viewallproducts/";
         searchProductByCodes(getProductURL,"","");
         tblSearchProduct.getColumns().remove(displayView);
