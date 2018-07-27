@@ -150,21 +150,30 @@ public class SearchProductController {
                 //getting the selected product code
                 String toDeleteProduct= tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode();
                 System.out.println(toDeleteProduct);
-                //creating a new client to delete the selected product
-                ClientConfig clientConfig= new DefaultClientConfig();
-                clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-                Client client= Client.create(clientConfig);
-                WebResource deleteResource= client.resource("http://localhost:8080/rest/delete/deleteproduct/"+ toDeleteProduct);
-                //converting the response to string
-                ClientResponse response= deleteResource.delete(ClientResponse.class);
-                response.bufferEntity();
-                String responseValue= response.getEntity(String.class);
-                if (responseValue.equals("true")){
-                    screen.alertMessages("Product Deleted!", "The Product " + toDeleteProduct + " has been deleted.");
+                Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete product " + toDeleteProduct + "?", ButtonType.YES, ButtonType.NO);
+                alert.showAndWait();
+                alert.setTitle("Warning!");
+                if (alert.getResult()== ButtonType.YES){
+                    //creating a new client to delete the selected product
+                    ClientConfig clientConfig= new DefaultClientConfig();
+                    clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+                    Client client= Client.create(clientConfig);
+                    WebResource deleteResource= client.resource("http://localhost:8080/rest/delete/deleteproduct/"+ toDeleteProduct);
+                    //converting the response to string
+                    ClientResponse response= deleteResource.delete(ClientResponse.class);
+                    response.bufferEntity();
+                    String responseValue= response.getEntity(String.class);
+                    if (responseValue.equals("true")){
+                        screen.alertMessages("Product Deleted!", "The Product " + toDeleteProduct + " has been deleted.");
+                    }
+                    else{
+                        screen.alertMessages("Error!", "An error occurred. Could not delete the product!");
+                    }
                 }
                 else{
-                    screen.alertMessages("Error!", "An error occurred. Could not delete the product!");
+
                 }
+
             });
             updateButton.setOnAction(e ->{
                 AnchorPane pane;
