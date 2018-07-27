@@ -8,15 +8,22 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
+import entityClass.Product;
 import entityClass.SearchProduct;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import manageProduct.AppScreen;
+import manageProduct.UpdateProductController;
 
 import javax.ws.rs.WebApplicationException;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -32,6 +39,10 @@ public class SearchProductController {
     private  TableColumn productItemCode;
     @FXML
     private TableColumn displayView;
+    @FXML
+    private BorderPane mainPanel;
+
+
 
     AppScreen screen = new AppScreen();
 
@@ -101,7 +112,8 @@ public class SearchProductController {
         displayView.setCellFactory(col ->{
             Button viewButton = new Button("Detail");
             Button deleteButton= new Button("Delete");
-            HBox hBox= new HBox(viewButton, deleteButton);
+            Button updateButton= new Button("Update");
+            HBox hBox= new HBox(viewButton, deleteButton, updateButton);
             TableCell<SearchProduct, SearchProduct> cell = new TableCell<SearchProduct, SearchProduct>() {
                 @Override
                 //the buttons are only displayed for the row have data
@@ -111,7 +123,6 @@ public class SearchProductController {
                         setGraphic(null);
                     } else {
                         setGraphic(hBox);
-
                     }
                 }
             };
@@ -155,6 +166,36 @@ public class SearchProductController {
                     screen.alertMessages("Error!", "An error occurred. Could not delete the product!");
                 }
             });
+            updateButton.setOnAction(e ->{
+                AnchorPane pane;
+                try {
+                    tblSearchProduct.getSelectionModel().select(cell.getIndex());
+                    //creating a new Product object to store the product information which needs to be updated
+                    String selectedProductCode = tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode();
+                    String selectedProductName = tblSearchProduct.getSelectionModel().getSelectedItem().getProductName();
+                    String selectedPrice = tblSearchProduct.getSelectionModel().getSelectedItem().getPrice();
+                    String selectedDescription = tblSearchProduct.getSelectionModel().getSelectedItem().getDescription();
+                    Product productToBeUpdated= new Product();
+                    productToBeUpdated.setProductCode(selectedProductCode);
+                    productToBeUpdated.setProductName(selectedProductName);
+                    productToBeUpdated.setPrice(selectedPrice);
+                    productToBeUpdated.setDescription(selectedDescription);
+
+                    //passing data from selected product to be updated to UpdateProductController
+                    FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/UpdateProduct.fxml"));
+                    pane = loader.load();
+                    mainPanel.getChildren().setAll(pane);
+                    UpdateProductController updateProductController= loader.<UpdateProductController>getController();
+                    updateProductController.setData(productToBeUpdated);
+
+
+
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+
+            });
             return cell ;
         });
         tblSearchProduct.getColumns().add(0,displayView);
@@ -188,4 +229,5 @@ public class SearchProductController {
         searchProductByCodes(getProductURL,"","");
         tblSearchProduct.getColumns().remove(displayView);
     }
+
 }
