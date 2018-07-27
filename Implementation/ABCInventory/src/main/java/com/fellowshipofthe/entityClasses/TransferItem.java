@@ -1,9 +1,10 @@
 package com.fellowshipofthe.entityClasses;
 
-public class TransferItem {
+public class TransferItem extends Transfer{
     protected int transferID;
     private String productItemCode;
     private String productQuantity;
+    private String locationID;
 
     public int getTransferID() {
         return transferID;
@@ -27,5 +28,13 @@ public class TransferItem {
 
     public void setProductQuantity(String productQuantity) {
         this.productQuantity = productQuantity;
+    }
+
+    public String getLocationID() {
+        return locationID;
+    }
+
+    public void setLocationID(String locationID) {
+        this.locationID = locationID;
     }
 }

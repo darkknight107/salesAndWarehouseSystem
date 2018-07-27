@@ -20,7 +20,6 @@ public class HomePageController {
     }
     @FXML
     public void handleSearchProduct() throws IOException {
-//        //Creating border pane for SearchProductFXML root pane
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
         BorderPane pane = loader.load();
 
@@ -40,7 +39,7 @@ public class HomePageController {
     @FXML
     public void handleSendProduct() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferFXML.fxml"));
-        BorderPane pane = loader.load();
+        AnchorPane pane = loader.load();
 
         anchorPane.getChildren().setAll(pane);
     }

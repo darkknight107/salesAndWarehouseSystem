@@ -1,6 +1,7 @@
 package com.fellowshipofthe.entityClasses;
 
 public class StoredProduct extends ProductItem {
+    private String productItemCode;
     private String productQuantity;
     private String locationID;
 
@@ -11,6 +12,7 @@ public class StoredProduct extends ProductItem {
     }
 
    @Override
+
    public String getProductItemCode(){
         return this.productItemCode;
    }
@@ -29,4 +31,5 @@ public class StoredProduct extends ProductItem {
     public void setProductQuantity(String productQuantity) {
         this.productQuantity = productQuantity;
     }
+
 }

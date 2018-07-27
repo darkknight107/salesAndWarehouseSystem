@@ -8,10 +8,14 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Transfer;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import manageProduct.AppScreen;
+import searchProduct.SearchProductController;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,6 +29,8 @@ public class TransferController {
     private ComboBox cbSendLocation;
     @FXML
     private ComboBox cbDestinationLocation;
+    @FXML
+    private AnchorPane anchorPane;
 
 
     //Get current date and formatting the date
@@ -32,7 +38,7 @@ public class TransferController {
 
 
     @FXML
-    public void handleNextButton() {
+    public void handleNextButton() throws IOException {
         SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
 
@@ -55,8 +61,13 @@ public class TransferController {
         if (response.equals("true")){
             screen.alertMessages("Transfer Added", "Transfer has been added.");
             //load text fields and labels for adding product item
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferItemFXML.fxml"));
+            BorderPane pane = loader.load();
+            anchorPane.getChildren().setAll(pane);
         }
     }
+
+
 
     private String clientRequest(Object entity, String path) {
         //creating a new client to send post request

@@ -8,6 +8,7 @@ import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import entityClass.ProductItem;
 import entityClass.StoredProduct;
+import homePage.HomePageController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import searchProduct.SearchProductController;
 
 
 import java.io.IOException;
@@ -107,7 +109,13 @@ public class AddProductController {
     }
     @FXML
     public void handleFromExistingProduct() throws IOException {
-        BorderPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
+        BorderPane pane = loader.load();
+
+        SearchProductController myController = loader.getController();
+
+        //Set Data to FXML through controller
+        myController.showAllProducts();
         anchorPane.getChildren().setAll(pane);
     }
 
