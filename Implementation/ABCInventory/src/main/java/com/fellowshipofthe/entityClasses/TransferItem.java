@@ -1,18 +1,10 @@
 package com.fellowshipofthe.entityClasses;
 
-public class TransferItem extends Transfer{
-    protected int transferID;
+public class TransferItem{
     private String productItemCode;
     private String productQuantity;
     private String locationID;
 
-    public int getTransferID() {
-        return transferID;
-    }
-
-    public void setTransferID(int transferID) {
-        this.transferID = transferID;
-    }
 
     public String getProductItemCode() {
         return productItemCode;

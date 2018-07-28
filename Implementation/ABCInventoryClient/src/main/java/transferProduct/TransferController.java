@@ -62,7 +62,7 @@ public class TransferController {
             screen.alertMessages("Transfer Added", "Transfer has been added.");
             //load text fields and labels for adding product item
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferItemFXML.fxml"));
-            BorderPane pane = loader.load();
+            AnchorPane pane = loader.load();
 
             TransferItemController myController = loader.getController();
 

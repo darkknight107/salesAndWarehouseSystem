@@ -44,14 +44,12 @@ public class TransferDAO {
         conn = dbconnet.connect();
         stmt= conn.createStatement();
         String transferID="";
-        String sqlGetCurrentTransferID = "SELECT `AUTO_INCREMENT`" +
-                "FROM  INFORMATION_SCHEMA.TABLES" +
-        "WHERE TABLE_SCHEMA = 'abcinventorydatabase'" +
-        "AND   TABLE_NAME   = 'Transfer';";
+        String sqlGetCurrentTransferID = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'abcinventorydatabase' AND TABLE_NAME = 'Transfer';";
         ResultSet resultSet = stmt.executeQuery(sqlGetCurrentTransferID);
-        while (resultSet.next()) {
-            transferID = resultSet.getString(1);
-        }
+        resultSet.beforeFirst();
+        resultSet.next();
+        transferID = resultSet.getString(1);
+
         conn.close();
         stmt.close();
         return transferID;
@@ -59,19 +57,23 @@ public class TransferDAO {
 
     public Boolean addTransferItem(List<TransferItem> transferList) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 
-        //opening a connection with the database and creating a statement
-        conn = dbconnet.connect();
-        stmt= conn.createStatement();
+
+
         int transferID = Integer.parseInt(getCurrentTransferID()) - 1;
+        System.out.println(transferID);
 
         for (TransferItem ti : transferList) {
+            //opening a connection with the database and creating a statement
+            conn = dbconnet.connect();
+            stmt= conn.createStatement();
+
             String sqlAddTransferItem= "INSERT into TransferItem" +
                     " VALUES (\"" + transferID +"\",\""+ ti.getProductItemCode()+ "\",\"" + ti.getProductQuantity() +"\");";
             stmt.executeUpdate(sqlAddTransferItem);
-        }
 
-        stmt.close();
-        conn.close();
+            stmt.close();
+            conn.close();
+        }
         System.out.println("Transfers Item Added!");
         return true;
     }

@@ -9,17 +9,24 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.SearchProduct;
 import entityClass.StoredProduct;
+import entityClass.Transfer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import manageProduct.AppScreen;
 
 import javax.ws.rs.WebApplicationException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class TransferItemController {
@@ -32,6 +39,8 @@ public class TransferItemController {
     private TableView<StoredProduct> tblCart;
     @FXML
     private TableColumn productQuantityCart;
+    @FXML
+    AnchorPane anchorPane;
 
     ObservableList<StoredProduct> dataStoredProduct;
     ObservableList<StoredProduct> dataCart;
@@ -131,8 +140,33 @@ public class TransferItemController {
 
 
     @FXML
-    public void handleSendProducts(){
+    public void handleSendProducts() throws IOException {
+        addTransferItem();
+    }
 
+    public void addTransferItem() throws IOException {
+        StoredProduct storedProduct;
+        List<StoredProduct> storedProductList = new ArrayList<StoredProduct>();
+        //creating variables to get product details entered by user in text fields
+        for (StoredProduct st : dataCart) {
+            String productItemCode= st.getProductItemCode();
+            String locationID= st.getLocationID();
+            String productQuantity = st.getProductQuantity();
+            storedProduct = new StoredProduct(productItemCode,locationID,productQuantity);
+            storedProductList.add(storedProduct);
+        }
+
+        //call the clientRequest method to send a request to the server
+        String response = clientRequest(storedProductList,"addtransferitem");
+        if (response.equals("true")){
+            screen.alertMessages("Transfer Items Added", "Transfer Items has been added.");
+            dataCart.clear();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferFXML.fxml"));
+            AnchorPane pane = loader.load();
+
+            anchorPane.getChildren().setAll(pane);
+        }
     }
 
     // Search Product or Product Item
@@ -151,6 +185,16 @@ public class TransferItemController {
                 dataStoredProduct.add(s);
             }
         }
+    }
+
+    public String clientRequest(Object entity, String path){
+        String postURL= "http://localhost:8080/rest/transferproduct/" + path;
+        WebResource webResourcePost= client.resource(postURL);
+        //use the object passed as a parameter to send a request
+        response= webResourcePost.type("application/json").post(ClientResponse.class, entity);
+        response.bufferEntity();
+        String responseValue= response.getEntity(String.class);
+        return responseValue;
     }
 
     public void showAllStoredProducts(){
