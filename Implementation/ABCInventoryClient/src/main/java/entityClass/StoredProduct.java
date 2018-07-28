@@ -5,6 +5,15 @@ public class StoredProduct {
     private String locationID;
     private String productQuantity;
 
+    public StoredProduct(String productItemCode, String locationID, String productQuantity) {
+        this.productItemCode = productItemCode;
+        this.locationID = locationID;
+        this.productQuantity = productQuantity;
+    }
+
+    public StoredProduct() {
+    }
+
     public String getProductItemCode() {
         return productItemCode;
     }

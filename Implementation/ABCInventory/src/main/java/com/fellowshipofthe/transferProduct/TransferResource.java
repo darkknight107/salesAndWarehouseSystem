@@ -51,15 +51,27 @@ public class TransferResource {
 
     }
 
-    // Client calls the search product
+    // Client calls the search stored product
     @GET
     @Path("/searchstoredproducts")
     @Produces(MediaType.APPLICATION_JSON)
     public List<StoredProduct>searchStoredProduct(@QueryParam("productitemcode") String productItemCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-        System.out.println(" product called!");
+        System.out.println("search product called!");
 
         return transferDAO.searchStoredProduct(productItemCode);
+
+    }
+
+    // Client calls the search stored product by location id
+    @GET
+    @Path("/searchstoredproductsbylocation")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<StoredProduct>searchStoredProductByLocation(@QueryParam("locationID") String locationID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+        System.out.println("search product by location called!");
+
+        return transferDAO.searchStoredProductByLocation(locationID);
 
     }
 }

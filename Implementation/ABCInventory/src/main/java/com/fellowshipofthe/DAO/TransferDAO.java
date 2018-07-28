@@ -78,7 +78,7 @@ public class TransferDAO {
 
     public List<StoredProduct> viewAllStoredProducts() {
 
-        String viewAllStoredProductsSqlQuery = " SELECT * from StoredProduct;";
+        String viewAllStoredProductsSqlQuery = "SELECT * from StoredProduct;";
 
         executeSearchStoredProductSQLQueries(viewAllStoredProductsSqlQuery);
 
@@ -89,6 +89,16 @@ public class TransferDAO {
     public List<StoredProduct> searchStoredProduct(String productItemCode) {
 
         String searchStoredProductsSqlQuery = " SELECT * from StoredProduct WHERE productItemCode = \"" + productItemCode +"\";";
+
+        executeSearchStoredProductSQLQueries(searchStoredProductsSqlQuery);
+
+        return storedProducts;
+
+    }
+
+    public List<StoredProduct> searchStoredProductByLocation(String locationID) {
+
+        String searchStoredProductsSqlQuery = " SELECT * from StoredProduct WHERE locationID = \"" + locationID +"\";";
 
         executeSearchStoredProductSQLQueries(searchStoredProductsSqlQuery);
 

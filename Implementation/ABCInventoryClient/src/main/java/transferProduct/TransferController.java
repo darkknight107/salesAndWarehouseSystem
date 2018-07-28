@@ -63,6 +63,11 @@ public class TransferController {
             //load text fields and labels for adding product item
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferItemFXML.fxml"));
             BorderPane pane = loader.load();
+
+            TransferItemController myController = loader.getController();
+
+            //Set Data to FXML through controller
+            myController.showAllStoredProducts();
             anchorPane.getChildren().setAll(pane);
         }
     }
