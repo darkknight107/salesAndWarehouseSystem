@@ -100,12 +100,39 @@ public class TransferItemController {
     @FXML
     private void onEditChange(TableColumn.CellEditEvent<StoredProduct,String> productStringCellEditEvent){
         StoredProduct storedProduct = tblCart.getSelectionModel().getSelectedItem();
-        storedProduct.setProductQuantity(productStringCellEditEvent.getNewValue());
+        String locationIDCart = tblCart.getSelectionModel().getSelectedItem().getLocationID();
+        String productItemCodeCart = tblCart.getSelectionModel().getSelectedItem().getProductItemCode();
+        String productQuantityCart = productStringCellEditEvent.getNewValue();
+        Boolean flag = false;
+        int qtyCart = Integer.parseInt(productQuantityCart);
+
+        for (StoredProduct st: dataStoredProduct) {
+            int qtyStoredProduct = Integer.parseInt(st.getProductQuantity());
+            if ((locationIDCart == st.getLocationID()) & (productItemCodeCart == st.getProductItemCode())) {
+                if (qtyCart>qtyStoredProduct) {
+                    screen.alertMessages("Not Enough Product", "The quantity of product should be less than the quantity of current stock");
+                    flag = true;
+                    // workaround for refreshing rendered values
+                    productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(false);
+                    productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(true);
+                }
+            }
+        }
+        if (flag == false) {
+            storedProduct.setProductQuantity(productStringCellEditEvent.getNewValue());
+        }
     }
 
     @FXML
     public void handleRemoveFromCartAction(){
         dataCart.remove(tblCart.getSelectionModel().getSelectedItem());
+    }
+
+
+
+    @FXML
+    public void handleSendProducts(){
+
     }
 
     // Search Product or Product Item
@@ -125,7 +152,6 @@ public class TransferItemController {
             }
         }
     }
-
 
     public void showAllStoredProducts(){
         //connect to the server to retrieve the data

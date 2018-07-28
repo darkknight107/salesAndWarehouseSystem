@@ -96,7 +96,7 @@
          <rowConstraints>
             <RowConstraints />
          </rowConstraints>
-
+                    <Button fx:id="btnSend" mnemonicParsing="false" onAction="#handleSendProducts" prefHeight="27.0" prefWidth="132.0" text="Send Products" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 </GridPane>
 
             </center>
