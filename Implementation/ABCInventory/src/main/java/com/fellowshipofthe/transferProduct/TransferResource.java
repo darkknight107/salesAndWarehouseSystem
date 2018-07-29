@@ -2,10 +2,7 @@ package com.fellowshipofthe.transferProduct;
 
 import com.fellowshipofthe.DAO.ProductDAO;
 import com.fellowshipofthe.DAO.TransferDAO;
-import com.fellowshipofthe.entityClasses.SearchProduct;
-import com.fellowshipofthe.entityClasses.StoredProduct;
-import com.fellowshipofthe.entityClasses.Transfer;
-import com.fellowshipofthe.entityClasses.TransferItem;
+import com.fellowshipofthe.entityClasses.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -31,12 +28,7 @@ public class TransferResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Boolean addTransferItem(List<TransferItem> newTransferItem) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("addTransferItem called!");
-        if(transferDAO.addTransferItem(newTransferItem)) {
-            transferDAO.updateTransferItemsQuantity(newTransferItem);
-            return true;
-        }else{
-            return false;
-        }
+        return transferDAO.addTransferItem(newTransferItem);
     }
 
     // Client calls the view all stored products
@@ -73,5 +65,26 @@ public class TransferResource {
 
         return transferDAO.searchStoredProductByLocation(locationID);
 
+    }
+
+    // Client calls the search stored product by combination codes
+    @GET
+    @Path("/searchstoredproductsbycominationcodes")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<StoredProduct>searchStoredProductByCombinationCodes(@QueryParam("locationID") String locationID, @QueryParam("productItemCode") String productItemCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+        System.out.println("search product by combination code called!");
+
+        return transferDAO.searchStoredProductByCombinationCodes(locationID,productItemCode);
+
+    }
+
+    @Path("/updateproductquantity")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateTransferItemsQuantity(List<StoredProduct> storedProducts) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        System.out.println("updateProduct called!");
+        return transferDAO.updateTransferItemsQuantity(storedProducts);
     }
 }

@@ -108,6 +108,16 @@ public class TransferDAO {
 
     }
 
+    public List<StoredProduct> searchStoredProductByCombinationCodes(String locationID, String productItemCode) {
+
+        String searchStoredProductsSqlQuery = "SELECT * from StoredProduct WHERE locationID = \"" + locationID +"\" AND productItemCode = \"" + productItemCode + "\";";
+
+        executeSearchStoredProductSQLQueries(searchStoredProductsSqlQuery);
+
+        return storedProducts;
+
+    }
+
     public void executeSearchStoredProductSQLQueries(String sqlQuery){
         try {
             dbconnet = new DatabaseConnection();
@@ -141,14 +151,14 @@ public class TransferDAO {
         }
     }
 
-    public String updateTransferItemsQuantity(List<TransferItem> transferList) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public String updateTransferItemsQuantity(List<StoredProduct> storedProducts) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
         int i = 0;
-        for (TransferItem ti : transferList){
+        for (StoredProduct st : storedProducts){
             String sql= "UPDATE StoredProduct \n" +
-                    "SET productQuantity = productQuantity - \"" + ti.getProductQuantity() + "\""+ "\n" +
-                    "WHERE productItemCode= \"" + ti.getProductItemCode() + "\"" + " AND locationID = \"" + ti.getLocationID() +"\"; ";
+                    "SET productQuantity = productQuantity - \"" + st.getProductQuantity() + "\""+ "\n" +
+                    "WHERE productItemCode= \"" + st.getProductItemCode() + "\"" + " AND locationID = \"" + st.getLocationID() +"\"; ";
             i = stmt.executeUpdate(sql);
         }
         conn.close();
