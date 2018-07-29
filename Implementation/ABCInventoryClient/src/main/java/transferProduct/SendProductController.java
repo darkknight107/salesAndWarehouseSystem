@@ -207,7 +207,7 @@ public class SendProductController {
         //creating variables to get product details entered by user in text fields
         String destinationLocation= cbDestinationLocation.getValue().toString();
         String date = dtf.format(cal.getTime());
-        String status= "Send";
+        String status= "Sending";
         String description= txtDescription.getText();
 
         //set textfield values to Product Entity
@@ -242,7 +242,6 @@ public class SendProductController {
         String responseAddTransferItem = clientRequestPost(storedProductList,"addtransferitem");
         if (responseAddTransferItem.equals("true")){
             String responseUpdate = clientRequestPut(storedProductList,"updateproductquantity");
-            System.out.println(responseUpdate);
             screen.alertMessages("Transfer Items Added", "Transfer Items has been added.");
             dataCart.clear();
 

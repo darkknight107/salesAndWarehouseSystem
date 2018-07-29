@@ -1,6 +1,5 @@
 package com.fellowshipofthe.transferProduct;
 
-import com.fellowshipofthe.DAO.ProductDAO;
 import com.fellowshipofthe.DAO.TransferDAO;
 import com.fellowshipofthe.entityClasses.*;
 
@@ -10,9 +9,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Path("transferproduct")
-public class SendProductResources {
+public class TransferProductResources {
     TransferDAO transferDAO = new TransferDAO();
 
+    // add new Transfer
     @POST
     @Path("/addtransfer")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -22,6 +22,7 @@ public class SendProductResources {
         return transferDAO.addTransfer(newTransfer);
     }
 
+    // add new transfer item
     @POST
     @Path("/addtransferitem")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -79,12 +80,56 @@ public class SendProductResources {
 
     }
 
+    // update product quantity after sent products
     @Path("/updateproductquantity")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String updateTransferItemsQuantity(List<StoredProduct> storedProducts) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("updateProduct called!");
-        return transferDAO.updateTransferItemsQuantity(storedProducts);
+        return transferDAO.updateTransferItemsQuantitySend(storedProducts);
+    }
+
+    // Client calls the display sending transfers
+    @GET
+    @Path("/displaysendingtransfer")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Transfer> displaySendingTransfer() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+        System.out.println("display sending transfers called!");
+
+        return transferDAO.displaySendingTransfer();
+    }
+
+    // Client calls the display sending transfer item
+    @GET
+    @Path("/displaysendingtransferitem")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<TransferItem>displaySendingTransferItem(@QueryParam("transferID") String productItemCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+        System.out.println("display sending transfer item called!");
+
+        return transferDAO.displaySendingTransferItem(productItemCode);
+
+    }
+
+    // update stored product quantity after accept products
+    @Path("/updatetransferitemquantityaccept")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateTransferItemsQuantityAccept(List<TransferItem> transferItems) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        System.out.println("update Transfer Item quantity accept called!");
+        return transferDAO.updateTransferItemsQuantityAccept(transferItems);
+    }
+
+    // update transfer status after accept product
+    @Path("/updatetransferstatusaccept")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateTransfersStatusAccept(@QueryParam("transferID") String transferID) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        System.out.println("update Transfer status called!");
+        return transferDAO.updateTransferStatusAccept(transferID);
     }
 }

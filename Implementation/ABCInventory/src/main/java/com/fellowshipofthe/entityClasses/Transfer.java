@@ -1,11 +1,20 @@
 package com.fellowshipofthe.entityClasses;
 
 public class Transfer {
+    private String transferID;
     private String sendingLocationID;
     private String destinationLocationID;
     private String transferDate;
     private String status;
     private String description;
+
+    public String getTransferID() {
+        return transferID;
+    }
+
+    public void setTransferID(String transferID) {
+        this.transferID = transferID;
+    }
 
     public String getSendingLocationID() {
         return sendingLocationID;

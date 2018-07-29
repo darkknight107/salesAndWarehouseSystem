@@ -16,11 +16,17 @@ public class TransferDAO {
     Connection conn;
     Statement stmt;
     List<StoredProduct> storedProducts;
+    List<Transfer> transferList;
+    List<TransferItem> transferItemList;
 
+    //Constructor without any elements
     public TransferDAO(){
         storedProducts = new ArrayList<StoredProduct>();
+        transferList = new ArrayList<Transfer>();
+        transferItemList = new ArrayList<TransferItem>();
     }
 
+    //add Transfer to database
     public Boolean addTransfer(List<Transfer> transferList) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 
         //opening a connection with the database and creating a statement
@@ -39,6 +45,7 @@ public class TransferDAO {
         return true;
     }
 
+    //get the current transfer ID for adding
     public String getCurrentTransferID() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
         //opening a connection with the database and creating a statement
         conn = dbconnet.connect();
@@ -55,6 +62,7 @@ public class TransferDAO {
         return transferID;
     }
 
+    // add transfer item to database
     public Boolean addTransferItem(List<TransferItem> transferList) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 
 
@@ -78,6 +86,7 @@ public class TransferDAO {
         return true;
     }
 
+    // display all stored products
     public List<StoredProduct> viewAllStoredProducts() {
 
         String viewAllStoredProductsSqlQuery = "SELECT * from StoredProduct;";
@@ -88,6 +97,7 @@ public class TransferDAO {
 
     }
 
+    // search stored product by product item code
     public List<StoredProduct> searchStoredProduct(String productItemCode) {
 
         String searchStoredProductsSqlQuery = " SELECT * from StoredProduct WHERE productItemCode = \"" + productItemCode +"\";";
@@ -98,6 +108,7 @@ public class TransferDAO {
 
     }
 
+    // search stored product by location id
     public List<StoredProduct> searchStoredProductByLocation(String locationID) {
 
         String searchStoredProductsSqlQuery = " SELECT * from StoredProduct WHERE locationID = \"" + locationID +"\";";
@@ -108,6 +119,7 @@ public class TransferDAO {
 
     }
 
+    // search stored product by combination codes
     public List<StoredProduct> searchStoredProductByCombinationCodes(String locationID, String productItemCode) {
 
         String searchStoredProductsSqlQuery = "SELECT * from StoredProduct WHERE locationID = \"" + locationID +"\" AND productItemCode = \"" + productItemCode + "\";";
@@ -118,6 +130,7 @@ public class TransferDAO {
 
     }
 
+    // execute all the sql query for Stored Products
     public void executeSearchStoredProductSQLQueries(String sqlQuery){
         try {
             dbconnet = new DatabaseConnection();
@@ -151,7 +164,8 @@ public class TransferDAO {
         }
     }
 
-    public String updateTransferItemsQuantity(List<StoredProduct> storedProducts) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    // update transfer item quantity after sent products
+    public String updateTransferItemsQuantitySend(List<StoredProduct> storedProducts) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
         int i = 0;
@@ -170,6 +184,110 @@ public class TransferDAO {
         else{
             System.out.println("Error! Product Item could not be updated!");
             return "fail";
+        }
+    }
+
+    // display sending transfer
+    public List<Transfer> displaySendingTransfer() {
+        String status = "Sending";
+        String displaySendingTransferSqlQuery = "SELECT * from Transfer WHERE status = \"" + status +"\";";
+
+        executeSearchTransferSQLQueries(displaySendingTransferSqlQuery);
+
+        return transferList;
+
+    }
+
+    // display sending transfer item
+    public List<TransferItem> displaySendingTransferItem(String transferID) {
+        String displaySendingTransferItemSqlQuery = "SELECT * from TransferItem WHERE transferID = \"" + transferID +"\";";
+
+        executeSearchTransferSQLQueries(displaySendingTransferItemSqlQuery);
+
+        return transferItemList;
+
+    }
+
+    // update stored product quantity after accept products
+    public String updateTransferItemsQuantityAccept(List<TransferItem> transferItems) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+        int i = 0;
+        for (TransferItem ti : transferItems){
+            String sql= "UPDATE StoredProduct \n" +
+                    "SET productQuantity = productQuantity + \"" + ti.getProductQuantity() + "\""+ "\n" +
+                    "WHERE productItemCode= \"" + ti.getProductItemCode() + "\"" + " AND locationID = \"" + ti.getLocationID() +"\"; ";
+            i = stmt.executeUpdate(sql);
+        }
+        conn.close();
+        stmt.close();
+        if (i > 0){
+            System.out.println("Stored Product updated!");
+            return "updated";
+        }
+        else{
+            System.out.println("Error! Stored Product could not be updated!");
+            return "fail";
+        }
+    }
+
+    // update transfer after sent products
+    public String updateTransferStatusAccept(String transferID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+        String status = "Accepted";
+        int i = 0;
+
+        String sql= "UPDATE Transfer \n" +
+                "SET status = \"" + status + "\""+ "\n" +
+                "WHERE transferID= \"" + transferID +"\"; ";
+        i = stmt.executeUpdate(sql);
+        conn.close();
+        stmt.close();
+        if (i > 0){
+            System.out.println("Transfer updated");
+            return "updated";
+        }
+        else{
+            System.out.println("Error! Transfer could not be updated!");
+            return "fail";
+        }
+    }
+
+    // execute all the sql query for Stored Products
+    public void executeSearchTransferSQLQueries(String sqlQuery){
+        try {
+            dbconnet = new DatabaseConnection();
+            conn = dbconnet.connect();
+            stmt = conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                Transfer transfer = new Transfer();
+                transfer.setTransferID(resultSet.getString(1));
+                transfer.setSendingLocationID(resultSet.getString(2));
+                transfer.setDestinationLocationID(resultSet.getString(3));
+                transfer.setTransferDate(resultSet.getString(4));
+                transfer.setStatus(resultSet.getString(5));
+                transfer.setDescription(resultSet.getString(6));
+
+                transferList.add(transfer);
+            }
+        }catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException  e){
+            e.printStackTrace();
+        } finally
+        {
+            // Always make sure result sets and statements are closed,
+            // and the connection is returned to the pool
+            try
+            {
+                if (conn != null)
+                    conn.close ();
+                if (stmt != null)
+                    stmt.close();
+            }
+            catch (SQLException ignore)
+            {
+            }
         }
     }
 
