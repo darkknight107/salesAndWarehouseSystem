@@ -103,13 +103,25 @@ public class TransferProductResources {
 
     // Client calls the display sending transfer item
     @GET
+    @Path("/searchsendingtransferitem")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Transfer>searchSendingTransfer(@QueryParam("transferID") String transferID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+        System.out.println("search sending transfer called!");
+
+        return transferDAO.searchSendingTransfer(transferID);
+
+    }
+
+    // Client calls the display sending transfer item
+    @GET
     @Path("/displaysendingtransferitem")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<TransferItem>displaySendingTransferItem(@QueryParam("transferID") String productItemCode) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public List<TransferItem>displaySendingTransferItem(@QueryParam("transferID") String transferID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
         System.out.println("display sending transfer item called!");
 
-        return transferDAO.displaySendingTransferItem(productItemCode);
+        return transferDAO.displaySendingTransferItem(transferID);
 
     }
 

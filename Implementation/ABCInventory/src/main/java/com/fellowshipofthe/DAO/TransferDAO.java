@@ -198,6 +198,17 @@ public class TransferDAO {
 
     }
 
+    // search sending transfer
+    public List<Transfer> searchSendingTransfer(String transferID) {
+        String status = "Sending";
+        String searchSendingTransferSqlQuery = "SELECT * from Transfer WHERE status = \"" + status + "\" AND  transferID = \"" + transferID + "\";";
+
+        executeSearchTransferSQLQueries(searchSendingTransferSqlQuery);
+
+        return transferList;
+
+    }
+
     // display sending transfer item
     public List<TransferItem> displaySendingTransferItem(String transferID) {
         String displaySendingTransferItemSqlQuery = "SELECT * from TransferItem WHERE transferID = \"" + transferID +"\";";
