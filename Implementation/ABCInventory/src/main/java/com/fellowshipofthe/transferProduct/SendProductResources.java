@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Path("transferproduct")
-public class TransferResource {
+public class SendProductResources {
     TransferDAO transferDAO = new TransferDAO();
 
     @POST

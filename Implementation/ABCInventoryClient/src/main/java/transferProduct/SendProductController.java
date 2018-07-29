@@ -7,7 +7,6 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
-import entityClass.SearchProduct;
 import entityClass.StoredProduct;
 import entityClass.Transfer;
 import javafx.collections.ObservableList;
@@ -16,10 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import manageProduct.AppScreen;
 
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -27,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class TransferItemController {
+public class SendProductController {
     //initialize variables
     @FXML
     private TextArea txtDescription;
@@ -250,10 +247,10 @@ public class TransferItemController {
             dataCart.clear();
 
             //load text fields and labels for adding product item
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferItemFXML.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SendProductFXML.fxml"));
             AnchorPane pane = loader.load();
 
-            TransferItemController myController = loader.getController();
+            SendProductController myController = loader.getController();
 
             //Set Data to FXML through controller
             myController.showAllStoredProducts();

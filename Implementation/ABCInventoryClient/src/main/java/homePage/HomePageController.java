@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import searchProduct.SearchProductController;
-import transferProduct.TransferItemController;
+import transferProduct.SendProductController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,10 +40,10 @@ public class HomePageController {
     @FXML
     public void handleSendProduct() throws IOException{
         //load text fields and labels for adding product item
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferItemFXML.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SendProductFXML.fxml"));
         AnchorPane pane = loader.load();
 
-        TransferItemController myController = loader.getController();
+        SendProductController myController = loader.getController();
 
         //Set Data to FXML through controller
         myController.showAllStoredProducts();

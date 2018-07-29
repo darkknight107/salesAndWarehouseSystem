@@ -16,7 +16,7 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextArea?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transferProduct.TransferItemController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transferProduct.SendProductController">
     <children>
         <BorderPane maxHeight="Infinity" maxWidth="Infinity" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" >
                 <top>
@@ -114,7 +114,7 @@
              </rowConstraints>
                 <GridPane hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
                     <Label text="Destination Location: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <ComboBox fx:id="cbDestinationLocation" promptText="Choose Location" GridPane.columnIndex="1" GridPane.rowIndex="0" onAction="#handleComboBoxDestination">
+                    <ComboBox fx:id="cbDestinationLocation" promptText="Choose Location" GridPane.columnIndex="1" GridPane.rowIndex="0" >
                         <items>
                             <FXCollections fx:factory="observableArrayList">
                                 <String fx:value="WRH1" />
