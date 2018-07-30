@@ -130,9 +130,9 @@ public class TransferProductResources {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateTransferItemsQuantityAccept(List<TransferItem> transferItems) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public String updateTransferItemsQuantityAccept(List<StoredProduct> storedProducts) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("update Transfer Item quantity accept called!");
-        return transferDAO.updateTransferItemsQuantityAccept(transferItems);
+        return transferDAO.updateTransferItemsQuantityAccept(storedProducts);
     }
 
     // update transfer status after accept product

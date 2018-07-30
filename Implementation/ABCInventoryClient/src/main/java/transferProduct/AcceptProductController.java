@@ -13,11 +13,13 @@ import entityClass.Transfer;
 import entityClass.TransferItem;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import manageProduct.AppScreen;
 
 import javax.ws.rs.WebApplicationException;
+import java.io.IOException;
 import java.util.List;
 
 public class AcceptProductController {
@@ -33,17 +35,13 @@ public class AcceptProductController {
     TableColumn displayView;
 
     ObservableList<Transfer> data;
-    ObservableList<TransferItem> dataTransferItems;
     List<Transfer> transferList;
-    List<TransferItem> transferItemList;
 
     // Variables for create the client
     Client client;
     WebResource webResourceGet;
     ClientResponse response;
     GenericType<List<Transfer>> listc = new GenericType<List<Transfer>>() {
-    };
-    GenericType<List<TransferItem>> listcTransferItems = new GenericType<List<TransferItem>>() {
     };
     AppScreen screen = new AppScreen();
 
@@ -53,7 +51,7 @@ public class AcceptProductController {
     }
 
     // Search Transfer or Transfer ID
-    private  void searchTransferTransferID(String URL ,String searchField, String code) {
+    private  void searchTransfer(String URL ,String searchField, String code) {
         data.clear();
         webResourceGet = client.resource(URL).queryParam(searchField, code);
         response = webResourceGet.get(ClientResponse.class);
@@ -81,7 +79,7 @@ public class AcceptProductController {
         client = Client.create(clientConfig);
 
         getTransferURL="http://localhost:8080/rest/transferproduct/displaysendingtransfer/";
-        searchTransferTransferID(getTransferURL,"","");
+        searchTransfer(getTransferURL,"","");
         addDetailButton();
     }
 
@@ -103,21 +101,25 @@ public class AcceptProductController {
                 }
             };
             // When clicked the button, the button will show the product item of selected product
-//            viewButton.setOnAction(e -> {
-//                tblTransfer.getSelectionModel().select(cell.getIndex());
-//                webResourceGet = client.resource("http://localhost:8080/rest/transferproduct/displaySendingTransferItem/").queryParam("transferID", tblTransfer.getSelectionModel().getSelectedItem().getTransferID());
-//                response = webResourceGet.get(ClientResponse.class);
-//                transferItemList = response.getEntity(listcTransferItems);
+            viewButton.setOnAction(e -> {
+                tblTransfer.getSelectionModel().select(cell.getIndex());
+                String selectedTransferID = tblTransfer.getSelectionModel().getSelectedItem().getTransferID();
+                System.out.println(selectedTransferID);
 //
-//                dataTransferItems.clear();
-//                tblTransfer.getColumns().remove(displayView);
+//                //load text fields and labels for adding product item
+//                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/AcceptTransferItemFXML.fxml"));
+//                AnchorPane pane = null;
+//                try {
+//                    pane = loader.load();
+//                } catch (IOException e1) {
+//                    e1.printStackTrace();
+//                }
 //
-//                if (response.getStatus() != 200) {
-//                    throw new WebApplicationException();
-//                }
-//                for (TransferItem s : transferItemList) {
-//                    dataTransferItems.add(s);
-//                }
+//                AcceptTransferItemController myController = loader.getController();
+//
+//                //Set Data to FXML through controller
+//                myController.showAllTransferItem(selectedTransferID);
+//                anchorPane.getChildren().setAll(pane);
 //            });
 
             return cell ;

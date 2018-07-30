@@ -3,7 +3,7 @@ package com.fellowshipofthe.entityClasses;
 public class TransferItem{
     private String productItemCode;
     private String productQuantity;
-    private String locationID;
+    private String transferID;
 
 
     public String getProductItemCode() {
@@ -22,11 +22,11 @@ public class TransferItem{
         this.productQuantity = productQuantity;
     }
 
-    public String getLocationID() {
-        return locationID;
+    public String getTransferID() {
+        return transferID;
     }
 
-    public void setLocationID(String locationID) {
-        this.locationID = locationID;
+    public void setTransferID(String transferID) {
+        this.transferID = transferID;
     }
 }

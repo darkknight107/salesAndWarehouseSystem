@@ -220,14 +220,14 @@ public class TransferDAO {
     }
 
     // update stored product quantity after accept products
-    public String updateTransferItemsQuantityAccept(List<TransferItem> transferItems) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public String updateTransferItemsQuantityAccept(List<StoredProduct> storedProducts) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
         int i = 0;
-        for (TransferItem ti : transferItems){
+        for (StoredProduct st : storedProducts){
             String sql= "UPDATE StoredProduct \n" +
-                    "SET productQuantity = productQuantity + \"" + ti.getProductQuantity() + "\""+ "\n" +
-                    "WHERE productItemCode= \"" + ti.getProductItemCode() + "\"" + " AND locationID = \"" + ti.getLocationID() +"\"; ";
+                    "SET productQuantity = productQuantity + \"" + st.getProductQuantity() + "\""+ "\n" +
+                    "WHERE productItemCode= \"" + st.getProductItemCode() + "\"" + " AND locationID = \"" + st.getLocationID() +"\"; ";
             i = stmt.executeUpdate(sql);
         }
         conn.close();

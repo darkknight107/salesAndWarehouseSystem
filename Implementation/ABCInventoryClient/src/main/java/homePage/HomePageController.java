@@ -54,7 +54,7 @@ public class HomePageController {
     @FXML
     public void handleAcceptProduct() throws IOException {
         //load text fields and labels for adding product item
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/AcceptProductFXML.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/AcceptTransferFXML.fxml"));
         AnchorPane pane = loader.load();
 
         AcceptProductController myController = loader.getController();
