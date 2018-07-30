@@ -18,6 +18,11 @@
                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                         </columnResizePolicy>
                         <columns>
+                            <TableColumn fx:id="transferID" prefWidth="124.0" text="Transfer ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="transferID" />
+                                </cellValueFactory>
+                            </TableColumn>
                             <TableColumn prefWidth="76.0" text="Product Item Code">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="productItemCode" />
@@ -28,14 +33,9 @@
                                     <PropertyValueFactory property="productQuantity" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="locationID" prefWidth="124.0" text="Location ID">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="locationID" />
-                                </cellValueFactory>
-                            </TableColumn>
                         </columns>
                     </TableView>
-                    <Button fx:id="btnAccpet" mnemonicParsing="false" onAction="#handleAcceptProducts" prefHeight="27.0" prefWidth="132.0" text="Send Products" alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Button fx:id="btnAccpet" mnemonicParsing="false" onAction="#handleAcceptProducts" prefHeight="27.0" prefWidth="132.0" text="Accept Products" alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                 </GridPane>
             </center>
             <padding>

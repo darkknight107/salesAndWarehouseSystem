@@ -6,6 +6,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import searchProduct.SearchProductController;
 import transferProduct.AcceptProductController;
+import transferProduct.AcceptTransferItemController;
 import transferProduct.SendProductController;
 
 import java.io.IOException;

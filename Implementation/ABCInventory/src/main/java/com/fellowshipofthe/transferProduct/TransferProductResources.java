@@ -140,8 +140,9 @@ public class TransferProductResources {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateTransfersStatusAccept(@QueryParam("transferID") String transferID) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public String updateTransfersStatusAccept(String transferID) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("update Transfer status called!");
+        System.out.println(transferID);
         return transferDAO.updateTransferStatusAccept(transferID);
     }
 }

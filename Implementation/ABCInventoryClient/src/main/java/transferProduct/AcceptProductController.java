@@ -34,6 +34,8 @@ public class AcceptProductController {
     @FXML
     TableColumn displayView;
 
+    private static String SELECTED_DESTINATION_LOCATION_ID;
+
     ObservableList<Transfer> data;
     List<Transfer> transferList;
 
@@ -47,7 +49,6 @@ public class AcceptProductController {
 
     String getTransferURL;
     public void handleSearchTransferAction(){
-        System.out.println(tblTransfer.getSelectionModel().getSelectedItem().getTransferID());
     }
 
     // Search Transfer or Transfer ID
@@ -104,27 +105,33 @@ public class AcceptProductController {
             viewButton.setOnAction(e -> {
                 tblTransfer.getSelectionModel().select(cell.getIndex());
                 String selectedTransferID = tblTransfer.getSelectionModel().getSelectedItem().getTransferID();
-                System.out.println(selectedTransferID);
-//
-//                //load text fields and labels for adding product item
-//                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/AcceptTransferItemFXML.fxml"));
-//                AnchorPane pane = null;
-//                try {
-//                    pane = loader.load();
-//                } catch (IOException e1) {
-//                    e1.printStackTrace();
-//                }
-//
-//                AcceptTransferItemController myController = loader.getController();
-//
-//                //Set Data to FXML through controller
-//                myController.showAllTransferItem(selectedTransferID);
-//                anchorPane.getChildren().setAll(pane);
-//            });
+                String selectedDestination = tblTransfer.getSelectionModel().getSelectedItem().getDestinationLocationID();
+                setSELECTED_DESTINATION_LOCATION_ID(selectedDestination);
+                //load text fields and labels for adding product item
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/AcceptTransferItemFXML.fxml"));
+                AnchorPane pane = null;
+                try {
+                    pane = loader.load();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+                AcceptTransferItemController myController = loader.getController();
+
+                //Set Data to FXML through controller
+                myController.showAllTransferItem(selectedTransferID);
+                anchorPane.getChildren().setAll(pane);
+            });
 
             return cell ;
         });
-//        tblTransfer.getColumns().add(0,displayView);
+    }
+
+    public void setSELECTED_DESTINATION_LOCATION_ID(String SELECTED_DESTINATION_LOCATION_ID){
+        this.SELECTED_DESTINATION_LOCATION_ID = SELECTED_DESTINATION_LOCATION_ID;
+    }
+    public String getSELECTED_DESTINATION_LOCATIO_ID(){
+        return SELECTED_DESTINATION_LOCATION_ID;
     }
 
 }

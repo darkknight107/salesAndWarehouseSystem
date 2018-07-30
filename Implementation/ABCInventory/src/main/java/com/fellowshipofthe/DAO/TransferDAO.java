@@ -213,7 +213,7 @@ public class TransferDAO {
     public List<TransferItem> displaySendingTransferItem(String transferID) {
         String displaySendingTransferItemSqlQuery = "SELECT * from TransferItem WHERE transferID = \"" + transferID +"\";";
 
-        executeSearchTransferSQLQueries(displaySendingTransferItemSqlQuery);
+        executeSearchTransferItemSQLQueries(displaySendingTransferItemSqlQuery);
 
         return transferItemList;
 
@@ -248,7 +248,6 @@ public class TransferDAO {
         Statement stmt= conn.createStatement();
         String status = "Accepted";
         int i = 0;
-
         String sql= "UPDATE Transfer \n" +
                 "SET status = \"" + status + "\""+ "\n" +
                 "WHERE transferID= \"" + transferID +"\"; ";
@@ -265,7 +264,7 @@ public class TransferDAO {
         }
     }
 
-    // execute all the sql query for Stored Products
+    // execute all the sql query for Transfer
     public void executeSearchTransferSQLQueries(String sqlQuery){
         try {
             dbconnet = new DatabaseConnection();
@@ -282,6 +281,40 @@ public class TransferDAO {
                 transfer.setDescription(resultSet.getString(6));
 
                 transferList.add(transfer);
+            }
+        }catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException  e){
+            e.printStackTrace();
+        } finally
+        {
+            // Always make sure result sets and statements are closed,
+            // and the connection is returned to the pool
+            try
+            {
+                if (conn != null)
+                    conn.close ();
+                if (stmt != null)
+                    stmt.close();
+            }
+            catch (SQLException ignore)
+            {
+            }
+        }
+    }
+
+    // execute all the sql query for Stored Products
+    public void executeSearchTransferItemSQLQueries(String sqlQuery){
+        try {
+            dbconnet = new DatabaseConnection();
+            conn = dbconnet.connect();
+            stmt = conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                TransferItem transferItem = new TransferItem();
+                transferItem.setTransferID(resultSet.getString(1));
+                transferItem.setProductItemCode(resultSet.getString(2));
+                transferItem.setProductQuantity(resultSet.getString(3));
+
+                transferItemList.add(transferItem);
             }
         }catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException  e){
             e.printStackTrace();
