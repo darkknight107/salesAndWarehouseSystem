@@ -74,11 +74,8 @@ public class SendProductController {
             if(code.matches("[A-Z][0-9]100") || code.matches("[A-Z][0-9]200") || code.matches("[A-Z][0-9]300")){
                 searchStoredProductByCodes(getProductURL,"productitemcode", code);
             }
-            else if(code.matches("[A-Z][A-Z][A-Z][0-9]")){
-                searchStoredProductByCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbylocation/","locationID", code);
-            }
             else if(code.equals("")){
-                showAllStoredProducts();
+                searchStoredProductByCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbylocation/","locationID", cbSendLocation.getSelectionModel().getSelectedItem().toString());
             } else {
                 screen.alertMessages("Wrong Format Input","Please enter the code in the right format! \nEg: Product Item Code: S1100, Location ID: WRH1");
             }
@@ -125,27 +122,33 @@ public class SendProductController {
         String locationID = tblCurrentStoredProduct.getSelectionModel().getSelectedItem().getLocationID();
         String productItemCode = tblCurrentStoredProduct.getSelectionModel().getSelectedItem().getProductItemCode();
         String productQuantity = "1";
+        String sendingLocation;
         Boolean flag = false;
         StoredProduct cartStoredProduct = new StoredProduct(productItemCode,locationID,productQuantity);;
 
         dataCart= tblCart.getItems();
-        if(dataCart.isEmpty()) {
-            dataCart.add(cartStoredProduct);
-        }else{
-            for (StoredProduct st: dataCart) {
-                if ((locationID.equals(st.getLocationID())) & (productItemCode.equals(st.getProductItemCode()))) {
-                    screen.alertMessages("Dupplicate Product", "The product has been added to cart!");
-                    flag = true;
-                }else if(!locationID.equals(st.getLocationID())){
-                    screen.alertMessages("Multiple Send Location", "The items should be sent from 1 location at a time.");
-                    flag = true;
-                    break;
+        if (!cbSendLocation.getSelectionModel().isEmpty()) {
+            if(dataCart.isEmpty()) {
+                dataCart.add(cartStoredProduct);
+            }else{
+                for (StoredProduct st: dataCart) {
+                    if ((locationID.equals(st.getLocationID())) & (productItemCode.equals(st.getProductItemCode()))) {
+                        screen.alertMessages("Dupplicate Product", "The product has been added to cart!");
+                        flag = true;
+                    }else if(!locationID.equals(st.getLocationID())){
+                        screen.alertMessages("Multiple Send Location", "The items should be sent from 1 location at a time.");
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag == false) {
+                    dataCart.add(cartStoredProduct);
                 }
             }
-            if (flag == false) {
-                dataCart.add(cartStoredProduct);
-            }
+        } else{
+            screen.alertMessages("Invalid Sending Location", "Please select the sending location");
         }
+
 
         tblCart.setEditable(true);
         productQuantityCart.setCellFactory(TextFieldTableCell.forTableColumn());

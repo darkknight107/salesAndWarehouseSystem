@@ -103,7 +103,7 @@ public class TransferProductResources {
 
     // Client calls the display sending transfer item
     @GET
-    @Path("/searchsendingtransferitem")
+    @Path("/searchsendingtransfer")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Transfer>searchSendingTransfer(@QueryParam("transferID") String transferID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 

@@ -48,7 +48,14 @@ public class AcceptProductController {
     AppScreen screen = new AppScreen();
 
     String getTransferURL;
+
     public void handleSearchTransferAction(){
+        String transferID = txtSearch.getText();
+        if(transferID.equals("")){
+            showAllTransfer();
+        }else {
+            searchTransfer("http://localhost:8080/rest/transferproduct/searchsendingtransfer/", "transferID", transferID);
+        }
     }
 
     // Search Transfer or Transfer ID
@@ -127,6 +134,7 @@ public class AcceptProductController {
         });
     }
 
+    //Gettter and Setter for SELECTED_DESTINATION_LOCATION_ID
     public void setSELECTED_DESTINATION_LOCATION_ID(String SELECTED_DESTINATION_LOCATION_ID){
         this.SELECTED_DESTINATION_LOCATION_ID = SELECTED_DESTINATION_LOCATION_ID;
     }

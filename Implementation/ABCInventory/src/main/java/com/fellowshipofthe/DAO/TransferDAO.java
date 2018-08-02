@@ -206,8 +206,8 @@ public class TransferDAO {
         executeSearchTransferSQLQueries(searchSendingTransferSqlQuery);
 
         return transferList;
-
     }
+
 
     // display sending transfer item
     public List<TransferItem> displaySendingTransferItem(String transferID) {
