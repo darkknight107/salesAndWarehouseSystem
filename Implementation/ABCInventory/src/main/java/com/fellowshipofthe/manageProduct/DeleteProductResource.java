@@ -17,7 +17,7 @@ public class DeleteProductResource {
     @Path("deleteproduct/{productcode}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Boolean deleteProduct(@PathParam("productcode") String productCode) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public String deleteProduct(@PathParam("productcode") String productCode) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("deleteProduct called!");
         ProductDAO productDAO = new ProductDAO();
         return productDAO.deleteProduct(productCode);

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @Path("update")
 public class EditProductResource {
 
-    @Path("updateProduct")
+    @Path("updateproduct")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -24,7 +24,7 @@ public class EditProductResource {
         return productDAO.updateProduct(updatedProduct);
     }
 
-    @Path("updateStoredProduct")
+    @Path("updatestoredproduct")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
