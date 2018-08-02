@@ -63,20 +63,20 @@ public class TransferDAO {
     }
 
     // add transfer item to database
-    public Boolean addTransferItem(List<TransferItem> transferList) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public Boolean addTransferItem(List<StoredProduct> storedProducts) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 
 
 
         int transferID = Integer.parseInt(getCurrentTransferID()) - 1;
         System.out.println(transferID);
 
-        for (TransferItem ti : transferList) {
+        for (StoredProduct st : storedProducts) {
             //opening a connection with the database and creating a statement
             conn = dbconnet.connect();
             stmt= conn.createStatement();
 
             String sqlAddTransferItem= "INSERT into TransferItem" +
-                    " VALUES (\"" + transferID +"\",\""+ ti.getProductItemCode()+ "\",\"" + ti.getProductQuantity() +"\");";
+                    " VALUES (\"" + transferID +"\",\""+ st.getProductItemCode()+ "\",\"" + st.getProductQuantity() +"\");";
             stmt.executeUpdate(sqlAddTransferItem);
 
             stmt.close();

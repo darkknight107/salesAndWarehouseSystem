@@ -27,9 +27,9 @@ public class TransferProductResources {
     @Path("/addtransferitem")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Boolean addTransferItem(List<TransferItem> newTransferItem) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public Boolean addTransferItem(List<StoredProduct> storedProducts) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("addTransferItem called!");
-        return transferDAO.addTransferItem(newTransferItem);
+        return transferDAO.addTransferItem(storedProducts);
     }
 
     // Client calls the view all stored products
