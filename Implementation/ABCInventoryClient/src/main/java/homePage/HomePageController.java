@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import searchProduct.SearchProductController;
+import transferProduct.AcceptProductController;
+import transferProduct.AcceptTransferItemController;
+import transferProduct.SendProductController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,7 +23,6 @@ public class HomePageController {
     }
     @FXML
     public void handleSearchProduct() throws IOException {
-//        //Creating border pane for SearchProductFXML root pane
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
         BorderPane pane = loader.load();
 
@@ -39,11 +41,27 @@ public class HomePageController {
 
     @FXML
     public void handleSendProduct() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/TransferFXML.fxml"));
-        BorderPane pane = loader.load();
+        //load text fields and labels for adding product item
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SendProductFXML.fxml"));
+        AnchorPane pane = loader.load();
 
+        SendProductController myController = loader.getController();
+
+        //Set Data to FXML through controller
+        myController.showAllStoredProducts();
         anchorPane.getChildren().setAll(pane);
     }
 
+    @FXML
+    public void handleAcceptProduct() throws IOException {
+        //load text fields and labels for adding product item
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/AcceptTransferFXML.fxml"));
+        AnchorPane pane = loader.load();
 
+        AcceptProductController myController = loader.getController();
+
+        //Set Data to FXML through controller
+        myController.showAllTransfer();
+        anchorPane.getChildren().setAll(pane);
+    }
 }

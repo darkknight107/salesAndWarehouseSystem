@@ -1,17 +1,10 @@
 package com.fellowshipofthe.entityClasses;
 
-public class TransferItem {
-    protected int transferID;
+public class TransferItem{
     private String productItemCode;
     private String productQuantity;
+    private String transferID;
 
-    public int getTransferID() {
-        return transferID;
-    }
-
-    public void setTransferID(int transferID) {
-        this.transferID = transferID;
-    }
 
     public String getProductItemCode() {
         return productItemCode;
@@ -27,5 +20,13 @@ public class TransferItem {
 
     public void setProductQuantity(String productQuantity) {
         this.productQuantity = productQuantity;
+    }
+
+    public String getTransferID() {
+        return transferID;
+    }
+
+    public void setTransferID(String transferID) {
+        this.transferID = transferID;
     }
 }
