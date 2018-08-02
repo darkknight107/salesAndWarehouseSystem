@@ -8,6 +8,7 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
+import entityClass.Product;
 import entityClass.SearchProduct;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +16,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import manageProduct.AppScreen;
+import manageProduct.UpdateProductController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
@@ -35,6 +38,8 @@ public class SearchProductController {
     private  TableColumn productItemCode;
     @FXML
     private TableColumn displayView;
+    @FXML
+    private BorderPane mainPanel;
 
     AppScreen screen = new AppScreen();
 
@@ -103,6 +108,9 @@ public class SearchProductController {
         // Create the "Detail" button for each row and define the action for it
         displayView.setCellFactory(col ->{
             Button viewButton = new Button("Detail");
+            Button deleteButton= new Button("Delete");
+            Button updateButton= new Button("Update");
+            HBox hBox= new HBox(viewButton, deleteButton, updateButton);
             TableCell<SearchProduct, SearchProduct> cell = new TableCell<SearchProduct, SearchProduct>() {
                 @Override
                 //the buttons are only displayed for the row have data
@@ -111,7 +119,7 @@ public class SearchProductController {
                     if (empty) {
                         setGraphic(null);
                     } else {
-                        setGraphic(viewButton);
+                        setGraphic(hBox);
                     }
                 }
             };
@@ -133,11 +141,72 @@ public class SearchProductController {
                     data.add(s);
                 }
             });
+            //when user click delete button do this
+            deleteButton.setOnAction(e ->{
+                tblSearchProduct.getSelectionModel().select(cell.getIndex());
+                //getting the selected product code
+                String toDeleteProduct= tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode();
+                System.out.println(toDeleteProduct);
+                Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete product " + toDeleteProduct + "?", ButtonType.YES, ButtonType.NO);
+                alert.showAndWait();
+                alert.setTitle("Warning!");
+                if (alert.getResult()== ButtonType.YES){
+                    //creating a new client to delete the selected product
+                    ClientConfig clientConfig= new DefaultClientConfig();
+                    clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+                    Client client= Client.create(clientConfig);
+                    WebResource deleteResource= client.resource("http://localhost:8080/rest/delete/deleteproduct/"+ toDeleteProduct);
+                    //converting the response to string
+                    ClientResponse response= deleteResource.delete(ClientResponse.class);
+                    response.bufferEntity();
+                    String responseValue= response.getEntity(String.class);
+                    if (responseValue.equals("true")){
+                        screen.alertMessages("Product Deleted!", "The Product " + toDeleteProduct + " has been deleted.");
+                    }
+                    else{
+                        screen.alertMessages("Error!", "An error occurred. Could not delete the product!");
+                    }
+                }
+                else{
 
+                }
+
+            });
+            updateButton.setOnAction(e ->{
+                AnchorPane pane;
+                try {
+                    tblSearchProduct.getSelectionModel().select(cell.getIndex());
+                    //creating a new Product object to store the product information which needs to be updated
+                    String selectedProductCode = tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode();
+                    String selectedProductName = tblSearchProduct.getSelectionModel().getSelectedItem().getProductName();
+                    String selectedPrice = tblSearchProduct.getSelectionModel().getSelectedItem().getPrice();
+                    String selectedDescription = tblSearchProduct.getSelectionModel().getSelectedItem().getDescription();
+                    Product productToBeUpdated= new Product();
+                    productToBeUpdated.setProductCode(selectedProductCode);
+                    productToBeUpdated.setProductName(selectedProductName);
+                    productToBeUpdated.setPrice(selectedPrice);
+                    productToBeUpdated.setDescription(selectedDescription);
+
+                    //passing data from selected product to be updated to UpdateProductController
+                    FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/UpdateProduct.fxml"));
+                    pane = loader.load();
+                    mainPanel.getChildren().setAll(pane);
+                    UpdateProductController updateProductController= loader.<UpdateProductController>getController();
+                    updateProductController.setData(productToBeUpdated);
+
+
+
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+
+            });
             return cell ;
         });
         tblSearchProduct.getColumns().add(0,displayView);
     }
+
 
     // Update the table depends on the searching input
     private void addProductItems(){
