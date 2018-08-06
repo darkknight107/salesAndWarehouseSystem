@@ -30,23 +30,12 @@ public class ManageStaffController {
     @FXML
     Button addNewStaffButton;
     @FXML
+    Button searchStaffButton;
+    @FXML
     TableView<Staff> staffTable;
     @FXML
     TableColumn actionColumn;
-    @FXML
-    TableColumn userNameColumn;
-    @FXML
-    TableColumn firstNameColumn;
-    @FXML
-    TableColumn lastNameColumn;
-    @FXML
-    TableColumn locationColumn;
-    @FXML
-    TableColumn emailColumn;
-    @FXML
-    TableColumn contactColumn;
-    @FXML
-    TableColumn dobColumn;
+
     private ObservableList<Staff> data= FXCollections.observableArrayList();
     Client client;
     WebResource webResourceGet;
@@ -99,10 +88,6 @@ public class ManageStaffController {
                         screen.alertMessages("Error!", "An error occurred. Could not delete the product!");
                     }
                 }
-                else{
-
-                }
-
             });
             return cell;
         });
@@ -140,5 +125,15 @@ public class ManageStaffController {
         String url="http://localhost:8080/rest/managestaff/viewallstaff";
         searchStaff(url, "", "");
         displayActionButtons();
+    }
+    public void handleSearchStaffButton(){
+        data= staffTable.getItems();
+        data.clear();
+        //creating a new client to send request
+        ClientConfig clientConfig= new DefaultClientConfig();
+        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+        client= Client.create(clientConfig);
+        String url= "http://localhost:8080/rest/managestaff/searchstaff";
+        searchStaff(url, "name", searchField.getText());
     }
 }

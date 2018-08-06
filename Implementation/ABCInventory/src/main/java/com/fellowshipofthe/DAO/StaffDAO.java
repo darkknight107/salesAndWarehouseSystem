@@ -1,6 +1,7 @@
 package com.fellowshipofthe.DAO;
 
 import com.fellowshipofthe.DatabaseConnection;
+import com.fellowshipofthe.entityClasses.Product;
 import com.fellowshipofthe.entityClasses.Staff;
 
 import java.sql.Connection;
@@ -99,6 +100,14 @@ public class StaffDAO {
         return staffSearchResult;
     }
 
+    public List<Staff> searchStaff(String name) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        String sql= "select userName, firstName, lastName, locationID, contact, dateOfBirth, address, email \n" +
+                "from Staff \n" +
+                "where userName= \"" + name + "\" or firstName= \"" + name + "\" or  lastName=\"" + name + "\";";
+        processSQL(sql);
+        return staffSearchResult;
+    }
+
     public void processSQL(String sqlQuery) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 
         dbconnet = new DatabaseConnection();
@@ -122,5 +131,28 @@ public class StaffDAO {
         }
         conn.close();
         stmt.close();
+    }
+
+    //allowing users to update staff details using userName(not allowing users to change productCode)
+    public Boolean updateStaff(Staff updatedStaff) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        dbconnet= new DatabaseConnection();
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+        String sql= "UPDATE Staff \n" +
+                "SET firstName = \"" + updatedStaff.getFirstName() + "\", lastName = \"" + updatedStaff.getLastName() + "\",\n" +
+                "locationID= \"" + updatedStaff.getLocationID() + "\", contact= \""+ updatedStaff.getContact() + "\", \n" +
+                "dateOfBirth= \""+ updatedStaff.getDateOfBirth()+ " \", address= \"" + updatedStaff.getAddress()+ "\", \n" +
+                "email = \"" + updatedStaff.getEmail() + "\" WHERE userName= \"" + updatedStaff.getUserName() + "\"; ";
+        int i= stmt.executeUpdate(sql);
+        conn.close();
+        stmt.close();
+        if (i > 0){
+            System.out.println("Staff updated!");
+            return true;
+        }
+        else{
+            System.out.println("Error! Staff could not be updated!");
+            return false;
+        }
     }
 }

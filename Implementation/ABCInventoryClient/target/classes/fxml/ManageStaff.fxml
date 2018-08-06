@@ -74,21 +74,26 @@
             </TableColumn>
         </columns>
       </TableView>
-      <HBox layoutX="59.0" layoutY="41.0" prefHeight="37.0" prefWidth="393.0">
+      <HBox layoutX="59.0" layoutY="41.0" prefHeight="37.0" prefWidth="453.0">
          <children>
-            <Label text="Search">
+            <Label text="Username">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="searchField" prefHeight="25.0" prefWidth="212.0">
+            <TextField fx:id="searchField" prefHeight="25.0" prefWidth="212.0" promptText="Please enter a staff Username">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </TextField>
-            <Button fx:id="addNewStaffButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#handleAddNewStaffButton" prefHeight="25.0" prefWidth="96.0" text="Add New Staff">
+            <Button fx:id="searchStaffButton" mnemonicParsing="false" onAction="#handleSearchStaffButton" text="Search">
                <HBox.margin>
-                  <Insets left="20.0" />
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="addNewStaffButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#handleAddNewStaffButton" prefHeight="25.0" prefWidth="94.0" text="Add New Staff">
+               <HBox.margin>
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
          </children>
