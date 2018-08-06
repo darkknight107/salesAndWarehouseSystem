@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StaffDAO {
     //variables to store staff details
@@ -24,6 +26,13 @@ public class StaffDAO {
     DatabaseConnection dbconnet;
     Connection conn;
     Statement stmt;
+    List<Staff> staffSearchResult;
+
+    //initializing list through constructor to avoid null pointer exception
+    public StaffDAO(){
+        staffSearchResult= new ArrayList<>();
+
+    }
 
     public String addStaff(Staff newStaff) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         userName= newStaff.getUserName();
@@ -69,5 +78,49 @@ public class StaffDAO {
 
         }
 
+    }
+
+    public Boolean deleteStaff(String userName) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        dbconnet= new DatabaseConnection();
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+        String sql= "delete from Staff where userName=\""+ userName + "\";";
+        stmt.executeUpdate(sql);
+        conn.close();
+        stmt.close();
+        System.out.println("Staff Deleted!");
+        return true;
+    }
+
+    public List<Staff> viewAllStaff() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        String sql= "select userName, firstName, lastName, locationID, contact, dateOfBirth, address, email\n" +
+                "from Staff;";
+        processSQL(sql);
+        return staffSearchResult;
+    }
+
+    public void processSQL(String sqlQuery) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+
+        dbconnet = new DatabaseConnection();
+        conn = dbconnet.connect();
+        stmt = conn.createStatement();
+        ResultSet resultSet = stmt.executeQuery(sqlQuery);
+       // System.out.println(resultSet.getString(1));
+        while (resultSet.next()){
+            Staff searchedStaff= new Staff();
+            searchedStaff.setUserName(resultSet.getString(1));
+            //searchedStaff.setMiddleName("");
+            //searchedStaff.setPassword("");
+            searchedStaff.setFirstName(resultSet.getString(2));
+            searchedStaff.setLastName(resultSet.getString(3));
+            searchedStaff.setLocationID(resultSet.getString(4));
+            searchedStaff.setContact(resultSet.getString(5));
+            searchedStaff.setDateOfBirth(resultSet.getString(6));
+            searchedStaff.setAddress(resultSet.getString(7));
+            searchedStaff.setEmail(resultSet.getString(8));
+            staffSearchResult.add(searchedStaff);
+        }
+        conn.close();
+        stmt.close();
     }
 }

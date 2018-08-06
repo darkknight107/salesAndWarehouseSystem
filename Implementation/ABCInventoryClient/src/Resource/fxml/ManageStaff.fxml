@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.ManageStaffController">
+   <children>
+      <MenuBar layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="staffTable" blendMode="SRC_ATOP" layoutX="11.0" layoutY="94.0">
+        <columns>
+          <TableColumn fx:id="actionColumn" editable="false" minWidth="-1.0" prefWidth="77.0" sortable="false" text="Action" />
+          <TableColumn fx:id="userNameColumn" editable="false" prefWidth="63.0" sortable="false" text="Username">
+              <cellValueFactory>
+                  <PropertyValueFactory property="userName" />
+              </cellValueFactory>
+          </TableColumn>
+            <TableColumn fx:id="firstNameColumn" editable="false" prefWidth="84.0" sortable="false" text="First Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="firstName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="lastNameColumn" editable="false" prefWidth="85.0" sortable="false" text="Last Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="lastName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="locationColumn" editable="false" prefWidth="68.0" sortable="false" text="Location ">
+                <cellValueFactory>
+                    <PropertyValueFactory property="locationID" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="emailColumn" editable="false" prefWidth="74.0" sortable="false" text="Email">
+                <cellValueFactory>
+                    <PropertyValueFactory property="email" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="contactColumn" editable="false" prefWidth="60.0" sortable="false" text="Contact">
+                <cellValueFactory>
+                    <PropertyValueFactory property="contact" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="dobColumn" editable="false" prefWidth="53.0" sortable="false" text="DOB">
+                <cellValueFactory>
+                    <PropertyValueFactory property="dateOfBirth" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+      <HBox layoutX="59.0" layoutY="41.0" prefHeight="37.0" prefWidth="453.0">
+         <children>
+            <Label text="Username">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="searchField" prefHeight="25.0" prefWidth="212.0" promptText="Please enter a staff Username">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="searchStaff" mnemonicParsing="false" text="Search">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="addNewStaffButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#handleAddNewStaffButton" prefHeight="25.0" prefWidth="94.0" text="Add New Staff">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

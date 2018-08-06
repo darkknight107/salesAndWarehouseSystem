@@ -109,14 +109,8 @@ public class AddProductController {
     }
     @FXML
     public void handleFromExistingProduct() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
-        BorderPane pane = loader.load();
-
-        SearchProductController myController = loader.getController();
-
-        //Set Data to FXML through controller
-        myController.showAllProducts();
-        anchorPane.getChildren().setAll(pane);
+        HomePageController controller= new HomePageController();
+        controller.handleSearchProduct();
     }
 
     public void handleAddProductItem(String productCode){
