@@ -187,6 +187,28 @@ public class TransferDAO {
         }
     }
 
+    // display all transfer
+    public List<Transfer> viewAllTransfer() {
+
+        String viewAllTransferSqlQuery = "SELECT * from Transfer;";
+
+        executeSearchTransferSQLQueries(viewAllTransferSqlQuery);
+
+        return transferList;
+
+    }
+
+    // display all transfer
+    public List<Transfer> searchTransfer(String transferID) {
+
+        String searchTransferSqlQuery = "SELECT * from Transfer WHERE transferID = \"" + transferID + "\";";
+
+        executeSearchTransferSQLQueries(searchTransferSqlQuery);
+
+        return transferList;
+
+    }
+
     // display sending transfer
     public List<Transfer> displaySendingTransfer() {
         String status = "Sending";

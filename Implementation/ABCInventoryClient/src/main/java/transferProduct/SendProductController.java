@@ -121,14 +121,19 @@ public class SendProductController {
     public void handleAddToCartAction(){
         String locationID = tblCurrentStoredProduct.getSelectionModel().getSelectedItem().getLocationID();
         String productItemCode = tblCurrentStoredProduct.getSelectionModel().getSelectedItem().getProductItemCode();
+        String storedProductQuantity = tblCurrentStoredProduct.getSelectionModel().getSelectedItem().getProductQuantity();
         String productQuantity = "1";
-        String sendingLocation;
+
         Boolean flag = false;
         StoredProduct cartStoredProduct = new StoredProduct(productItemCode,locationID,productQuantity);;
 
         dataCart= tblCart.getItems();
         if (!cbSendLocation.getSelectionModel().isEmpty()) {
-            if(dataCart.isEmpty()) {
+            if(Integer.parseInt(storedProductQuantity)<= 0){
+                System.out.println(true);
+                screen.alertMessages("Not Enough Product", "The selected product is out of stock at this moment, please select other products!");
+                flag = true;
+            }else if(dataCart.isEmpty()) {
                 dataCart.add(cartStoredProduct);
             }else{
                 for (StoredProduct st: dataCart) {
