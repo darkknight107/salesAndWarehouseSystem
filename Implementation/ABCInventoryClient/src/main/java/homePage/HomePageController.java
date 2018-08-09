@@ -4,12 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import manageProduct.UpdateProductController;
 import manageStaff.ManageStaffController;
 import reportTransfer.ReportTransferController;
 import searchProduct.SearchProductController;
 import transferProduct.AcceptProductController;
-import transferProduct.AcceptTransferItemController;
 import transferProduct.SendProductController;
 
 import java.io.IOException;
@@ -26,8 +24,17 @@ public class HomePageController {
     }
     @FXML
     public void handleSearchProduct() throws IOException {
+//        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemDetailsFXML.fxml"));
+//        BorderPane pane = loader.load();
+//
+//        SearchProductItemDetailsController myController = loader.getController();
+//
+//        //Set Data to FXML through controller
+//        myController.showAllProducts();
+//        anchorPane.getChildren().setAll(pane);
+
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
-        BorderPane pane = loader.load();
+        AnchorPane pane = loader.load();
 
         SearchProductController myController = loader.getController();
 

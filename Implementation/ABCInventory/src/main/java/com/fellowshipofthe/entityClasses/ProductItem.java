@@ -1,8 +1,9 @@
 package com.fellowshipofthe.entityClasses;
 
-public class ProductItem extends Product{
-    protected String productItemCode;
+public class ProductItem {
+    private String productItemCode;
     private String productSize;
+    private String productCode;
 
 
     public ProductItem(){
@@ -18,7 +19,10 @@ public class ProductItem extends Product{
         this.productItemCode = productItemCode;
     }
 
-    @Override
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }
+
     public String getProductCode(){
         return this.productCode;
     }
