@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.UpdateStaffController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="601.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -60,7 +59,7 @@
             <TextField fx:id="lastNameField" prefHeight="25.0" prefWidth="233.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ComboBox fx:id="locationComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="dateOfBirthPicker" prefHeight="25.0" prefWidth="119.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Hyperlink fx:id="changePasswordLink" text="Change Password?" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Hyperlink fx:id="changePasswordLink" onAction="#handleChangePasswordLink" text="Change Password?" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <HBox layoutX="185.0" layoutY="339.0" prefHeight="38.0" prefWidth="185.0">

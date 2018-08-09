@@ -12,15 +12,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TextField;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.util.Pair;
 import manageProduct.AppScreen;
+import sun.security.util.Password;
 
+import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
 import java.time.LocalDate;
+
+import static javafx.scene.control.ButtonBar.ButtonData.OK_DONE;
 
 public class UpdateStaffController {
     //initializing variables
@@ -46,6 +51,10 @@ public class UpdateStaffController {
     @FXML
     TextField emailField;
     ObservableList<String> locationList;
+    AppScreen screen;
+    public UpdateStaffController(){
+        screen= new AppScreen();
+    }
 
     public void handleUpdateButton() throws IOException {
         Staff updatedStaff= new Staff();
@@ -69,7 +78,7 @@ public class UpdateStaffController {
         ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updatedStaff);
         response.bufferEntity();
         //String responseValue= response.getEntity(String.class);
-        AppScreen screen= new AppScreen();
+
         if (response.getStatus()== 200){
             screen.alertMessages("Staff Updated!", "Staff " + userNameField.getText() + " has been updated!");
             FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
@@ -120,6 +129,68 @@ public class UpdateStaffController {
     }
 
     public void handleChangePasswordLink(){
+
+        Dialog<Pair<Password, Password>> dialog= new Dialog<>();
+        dialog.setTitle("Change Password");
+        dialog.setHeaderText("Please enter a new password: ");
+
+        Button updateButton= new Button(("Update"));
+        Button cancelButton= new Button("Cancel");
+
+        PasswordField newPassword= new PasswordField();
+        newPassword.setPromptText("Enter a new password");
+        PasswordField confirmPassword= new PasswordField();
+        confirmPassword.setPromptText("Confirm password");
+
+        GridPane grid= new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        grid.add(new Label("New Password:"), 0, 0);
+        grid.add(newPassword, 1, 0);
+        grid.add(new Label("Confirm Password:"), 0, 1);
+        grid.add(confirmPassword, 1, 1);
+        grid.add(updateButton, 0, 2);
+        grid.add(cancelButton, 1, 2);
+
+        if (newPassword.getText()== null && confirmPassword.getText() == null){
+            updateButton.setDisable(true);
+        }
+        dialog.showAndWait();
+
+        updateButton.setOnAction(e->{
+            // Create Jersey client
+            ClientConfig clientConfig = new DefaultClientConfig();
+            clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+            Client client = Client.create(clientConfig);
+
+            // GET request to findBook resource with a query parameter
+            String updatePasswordURL= "http://localhost:8080/rest/managestaff/updatepassword";
+            WebResource webResourceGet = client.resource(updatePasswordURL).queryParam(userNameField.getText(), newPassword.getText());
+            ClientResponse response = webResourceGet.get(ClientResponse.class);
+
+            if (response.getStatus()== 200) {
+                screen.alertMessages("Password upadted", "User "+ userNameField.getText()+ "'s password has been updated!");
+                try {
+                    FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
+                    pane = loader.load();
+                    ManageStaffController controller= loader.<ManageStaffController>getController();
+                    controller.showAllStaff();
+                    anchorPane.getChildren().setAll(pane);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+            else{
+                screen.alertMessages("Error", "Password could not be updated!");
+            }
+        });
+
+
+
+
+
 
 
     }
