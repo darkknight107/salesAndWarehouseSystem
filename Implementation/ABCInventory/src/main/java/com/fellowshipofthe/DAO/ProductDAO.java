@@ -20,6 +20,7 @@ public class ProductDAO {
     Connection conn;
     Statement stmt;
 
+    //initializing list through constructor to avoid null pointer exception
     public ProductDAO() {
         searchProducts= new ArrayList<SearchProduct>();
     }
