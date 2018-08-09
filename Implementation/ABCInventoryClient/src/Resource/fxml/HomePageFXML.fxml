@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homePage.HomePageController">
+   <children>
+      <Button fx:id="searchProduct" layoutX="87.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSearchProduct" prefHeight="36.0" prefWidth="115.0" text="Search Product" />
+      <Button fx:id="sendProduct" layoutX="243.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSendProduct" prefHeight="36.0" prefWidth="115.0" text="Send Product" />
+      <Button fx:id="acceptProduct" layoutX="389.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleAcceptProduct" prefHeight="36.0" prefWidth="115.0" text="Accept Product" />
+      <Button fx:id="manageProduct" layoutX="87.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageProduct" prefHeight="36.0" prefWidth="115.0" text="Manage Product " />
+      <Button fx:id="manageStaff" layoutX="243.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageStaff" prefHeight="36.0" prefWidth="115.0" text="Manage Staff" />
+      <Button fx:id="generateReport" layoutX="389.0" layoutY="200.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="115.0" text="Generate Report" />
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
