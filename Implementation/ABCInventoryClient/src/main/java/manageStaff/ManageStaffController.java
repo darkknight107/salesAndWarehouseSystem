@@ -17,12 +17,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import manageProduct.AppScreen;
+import manageProduct.UpdateProductController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
 import java.util.List;
 
 public class ManageStaffController {
+    AnchorPane pane;
     @FXML
     AnchorPane anchorPane;
     @FXML
@@ -47,9 +49,9 @@ public class ManageStaffController {
     public void displayActionButtons() {
         // Create the "Detail" button for each row and define the action for it
         actionColumn.setCellFactory(col -> {
-            Button editButton = new Button("Edit");
+            Button updateButton = new Button("Edit");
             Button deleteButton = new Button("Delete");
-            HBox hBox = new HBox(editButton, deleteButton);
+            HBox hBox = new HBox(updateButton, deleteButton);
             TableCell<Staff, Staff> cell = new TableCell<Staff, Staff>() {
                 @Override
                 //the buttons are only displayed for the row have data
@@ -65,7 +67,7 @@ public class ManageStaffController {
             };
             deleteButton.setOnAction(e ->{
                 staffTable.getSelectionModel().select(cell.getIndex());
-                //getting the selected product code
+                //getting the selected staff username
                 String toDeleteStaff= staffTable.getSelectionModel().getSelectedItem().getUserName();
                 System.out.println(toDeleteStaff);
                 Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete staff " + toDeleteStaff + "?", ButtonType.YES, ButtonType.NO);
@@ -89,6 +91,31 @@ public class ManageStaffController {
                     }
                 }
             });
+            updateButton.setOnAction(e ->{
+                try {
+                staffTable.getSelectionModel().select(cell.getIndex());
+                //getting the selected staff details and putting it into a staff object
+                Staff staffToBeUpdated= new Staff();
+                staffToBeUpdated.setUserName(staffTable.getSelectionModel().getSelectedItem().getUserName());
+                staffToBeUpdated.setFirstName(staffTable.getSelectionModel().getSelectedItem().getFirstName());
+                staffToBeUpdated.setLastName(staffTable.getSelectionModel().getSelectedItem().getLastName());
+                staffToBeUpdated.setLocationID(staffTable.getSelectionModel().getSelectedItem().getLocationID());
+                staffToBeUpdated.setContact(staffTable.getSelectionModel().getSelectedItem().getContact());
+                staffToBeUpdated.setDateOfBirth(staffTable.getSelectionModel().getSelectedItem().getDateOfBirth());
+                staffToBeUpdated.setAddress(staffTable.getSelectionModel().getSelectedItem().getAddress());
+                staffToBeUpdated.setEmail(staffTable.getSelectionModel().getSelectedItem().getEmail());
+
+                //passing data from selected staff to be updated to UpdateStaffController and displaying update staff page
+                FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/UpdateStaff.fxml"));
+                pane = loader.load();
+                anchorPane.getChildren().setAll(pane);
+                UpdateStaffController updateStaffController= loader.<UpdateStaffController>getController();
+                updateStaffController.setStaffData(staffToBeUpdated);
+                }
+                catch (IOException e1) {
+                }
+            });
+
             return cell;
         });
     }

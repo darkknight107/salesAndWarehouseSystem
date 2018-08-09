@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.AddStaffController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -35,7 +34,7 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -46,29 +45,29 @@
         </rowConstraints>
          <children>
             <Label prefHeight="17.0" prefWidth="65.0" text="First Name" />
-            <TextField fx:id="middleNameField" promptText="Please enter employee middle name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label prefHeight="17.0" prefWidth="94.0" text="Middle Name" GridPane.rowIndex="1" />
-            <Label prefHeight="17.0" prefWidth="71.0" text="Last Name" GridPane.rowIndex="2" />
-            <Label prefHeight="17.0" prefWidth="84.0" text="Email Address" GridPane.rowIndex="3" />
-            <Label prefHeight="17.0" prefWidth="65.0" text="Phone" GridPane.rowIndex="4" />
+            <Label prefHeight="17.0" prefWidth="71.0" text="Last Name" GridPane.rowIndex="1" />
+            <Label prefHeight="17.0" prefWidth="84.0" text="Email Address" GridPane.rowIndex="2" />
+            <Label prefHeight="17.0" prefWidth="65.0" text="Phone" GridPane.rowIndex="3" />
             <TextField fx:id="firstNameField" prefHeight="10.0" prefWidth="205.0" promptText="Please enter employee first name" GridPane.columnIndex="1" />
-            <TextField fx:id="lastNameField" promptText="Please enter employee last name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="emailField" promptText="Please enter employee email address" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="addressField" prefHeight="8.0" prefWidth="205.0" promptText="Please enter employee address" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label prefHeight="17.0" prefWidth="84.0" text="Address" GridPane.rowIndex="5" />
-            <Label prefHeight="17.0" prefWidth="84.0" text="Date of Birth" GridPane.rowIndex="6" />
-            <Label prefHeight="17.0" prefWidth="84.0" text="Username" GridPane.rowIndex="7" />
-            <Label prefHeight="17.0" prefWidth="84.0" text="Password" GridPane.rowIndex="8" />
-            <TextField fx:id="userNameField" prefHeight="8.0" prefWidth="205.0" promptText="Please enter a unique username" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField fx:id="phoneField" prefHeight="8.0" prefWidth="205.0" promptText="Please enter employee phone number" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="lastNameField" promptText="Please enter employee last name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="emailField" promptText="Please enter employee email address" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="addressField" prefHeight="8.0" prefWidth="205.0" promptText="Please enter employee address" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label prefHeight="17.0" prefWidth="84.0" text="Address" GridPane.rowIndex="4" />
+            <Label prefHeight="17.0" prefWidth="84.0" text="Date of Birth" GridPane.rowIndex="5" />
+            <Label prefHeight="17.0" prefWidth="84.0" text="Username" GridPane.rowIndex="6" />
+            <Label prefHeight="17.0" prefWidth="84.0" text="Password" GridPane.rowIndex="7" />
+            <TextField fx:id="userNameField" prefHeight="8.0" prefWidth="205.0" promptText="Please enter a unique username" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="phoneField" prefHeight="8.0" prefWidth="205.0" promptText="Please enter employee phone number" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label prefHeight="17.0" prefWidth="84.0" text="Base Location" GridPane.rowIndex="9" />
-            <PasswordField fx:id="passwordField" promptText="Please enter a strong password" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <PasswordField fx:id="passwordField" promptText="Please enter a strong password" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
                   <DatePicker fx:id="dobPicker" prefHeight="25.0" prefWidth="93.0" />
                </children>
             </HBox>
             <ComboBox fx:id="locationComboBox" onMouseClicked="#displayLocation" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label text="Confirm Password" GridPane.rowIndex="8" />
+            <PasswordField fx:id="passwordField1" promptText="Confrim password" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
       <Button fx:id="addStaffButton" layoutX="206.0" layoutY="355.0" mnemonicParsing="false" onAction="#addStaff" text="Add Staff" />

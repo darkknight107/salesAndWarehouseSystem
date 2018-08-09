@@ -16,7 +16,6 @@ public class StaffDAO {
     String userName;
     String password;
     String firstName;
-    String middleName;
     String lastName;
     String locationID;
     String contact;
@@ -39,7 +38,6 @@ public class StaffDAO {
         userName= newStaff.getUserName();
         password= newStaff.getPassword();
         firstName= newStaff.getFirstName();
-        middleName= newStaff.getMiddleName();
         lastName= newStaff.getLastName();
         locationID= newStaff.getLocationID();
         contact= newStaff.getContact();
@@ -60,10 +58,10 @@ public class StaffDAO {
             return "exists";
         }
         else{
-            String sql= "Insert into Staff(userName, pWord, firstName, middleName, lastName," +
+            String sql= "Insert into Staff(userName, pWord, firstName,lastName," +
                     "locationID, contact, dateOfBirth, address, email)" +
-                    "values(\"" + userName + "\", sha2(\"" + password + "\", 512), \"" + firstName + "\", \" \n" +
-                     middleName + "\", \"" + lastName + "\", \"" + locationID + "\", \"" + contact + "\", \" \n" +
+                    "values(\"" + userName + "\", sha2(\"" + password + "\", 512), \"" + firstName + "\", \"" +
+                     lastName + "\", \"" + locationID + "\", \"" + contact + "\", \"" +
                      dateOfBirth + "\", \"" + address + "\", \"" + email + "\");";
             int result= stmt.executeUpdate(sql);
             if (result > 0){
@@ -139,9 +137,9 @@ public class StaffDAO {
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
         String sql= "UPDATE Staff \n" +
-                "SET firstName = \"" + updatedStaff.getFirstName() + "\", lastName = \"" + updatedStaff.getLastName() + "\",\n" +
-                "locationID= \"" + updatedStaff.getLocationID() + "\", contact= \""+ updatedStaff.getContact() + "\", \n" +
-                "dateOfBirth= \""+ updatedStaff.getDateOfBirth()+ " \", address= \"" + updatedStaff.getAddress()+ "\", \n" +
+                "SET firstName = \"" + updatedStaff.getFirstName() + "\", lastName = \"" + updatedStaff.getLastName() + "\"," +
+                "locationID= \"" + updatedStaff.getLocationID() + "\", contact= \""+ updatedStaff.getContact() + "\", " +
+                "dateOfBirth= \""+ updatedStaff.getDateOfBirth()+ "\", address= \"" + updatedStaff.getAddress()+ "\", " +
                 "email = \"" + updatedStaff.getEmail() + "\" WHERE userName= \"" + updatedStaff.getUserName() + "\"; ";
         int i= stmt.executeUpdate(sql);
         conn.close();
