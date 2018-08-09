@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import reportTransfer.ReportTransferController;
 import searchProduct.SearchProductController;
 import transferProduct.AcceptProductController;
 import transferProduct.AcceptTransferItemController;
@@ -59,6 +60,19 @@ public class HomePageController {
         AnchorPane pane = loader.load();
 
         AcceptProductController myController = loader.getController();
+
+        //Set Data to FXML through controller
+        myController.showAllTransfer();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    public void handleGenerateReport() throws IOException {
+        //load text fields and labels for adding product item
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/ReportTransferFXML.fxml"));
+        AnchorPane pane = loader.load();
+
+        ReportTransferController myController = loader.getController();
 
         //Set Data to FXML through controller
         myController.showAllTransfer();
