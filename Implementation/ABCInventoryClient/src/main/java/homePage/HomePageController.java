@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import manageProduct.UpdateProductController;
+import manageStaff.ManageStaffController;
 import searchProduct.SearchProductController;
 import transferProduct.AcceptProductController;
 import transferProduct.AcceptTransferItemController;
@@ -63,5 +65,15 @@ public class HomePageController {
         //Set Data to FXML through controller
         myController.showAllTransfer();
         anchorPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    public void handleManageStaff() throws IOException {
+
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
+        AnchorPane pane= loader.load();
+        anchorPane.getChildren().setAll(pane);
+        ManageStaffController controller= loader.<ManageStaffController>getController();
+        controller.showAllStaff();
     }
 }

@@ -12,7 +12,7 @@
       <Button fx:id="sendProduct" layoutX="243.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSendProduct" prefHeight="36.0" prefWidth="115.0" text="Send Product" />
       <Button fx:id="acceptProduct" layoutX="389.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleAcceptProduct" prefHeight="36.0" prefWidth="115.0" text="Accept Product" />
       <Button fx:id="manageProduct" layoutX="87.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageProduct" prefHeight="36.0" prefWidth="115.0" text="Manage Product " />
-      <Button fx:id="manageStaff" layoutX="243.0" layoutY="200.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="115.0" text="Manage Staff" />
+      <Button fx:id="manageStaff" layoutX="243.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageStaff" prefHeight="36.0" prefWidth="115.0" text="Manage Staff" />
       <Button fx:id="generateReport" layoutX="389.0" layoutY="200.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="115.0" text="Generate Report" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>

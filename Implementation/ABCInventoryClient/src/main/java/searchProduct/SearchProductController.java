@@ -194,8 +194,6 @@ public class SearchProductController {
                     UpdateProductController updateProductController= loader.<UpdateProductController>getController();
                     updateProductController.setData(productToBeUpdated);
 
-
-
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }

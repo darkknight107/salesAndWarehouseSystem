@@ -1,4 +1,4 @@
-package com.fellowshipofthe.entityClasses;
+package entityClass;
 
 public class Staff {
     private String userName;
