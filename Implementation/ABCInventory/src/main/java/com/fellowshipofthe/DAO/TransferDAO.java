@@ -220,6 +220,26 @@ public class TransferDAO {
 
     }
 
+    // filter datetime range for transfer
+    public List<Transfer> searchTransferByDatetimeRange(String fromDate, String toDate) {
+
+        String searchTransferByDatetimeRangeSqlQuery = "SELECT * FROM Transfer WHERE transferDate BETWEEN \"" + fromDate + "\" AND \"" + toDate +"\";";
+
+        executeSearchTransferSQLQueries(searchTransferByDatetimeRangeSqlQuery);
+
+        return transferList;
+    }
+
+    // filter datetime range for searched transfer
+    public List<Transfer> searchSelectedTransferByDatetimeRange(String fromDate, String toDate, String transferID) {
+
+        String searchSelectedTransferByDatetimeRangeSqlQuery = "SELECT * FROM Transfer WHERE transferDate BETWEEN \"" + fromDate + "\" AND \"" + toDate + "\" AND transferID = \"" + transferID + "\";";
+
+        executeSearchTransferSQLQueries(searchSelectedTransferByDatetimeRangeSqlQuery);
+
+        return transferList;
+    }
+
     // search sending transfer
     public List<Transfer> searchSendingTransfer(String transferID) {
         String status = "Sending";

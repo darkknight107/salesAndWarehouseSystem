@@ -16,6 +16,8 @@ import java.util.List;
 public class ProductDAO {
     // initialize the variables
     List<SearchProduct> searchProducts;
+    List<Product> products;
+    List<ProductItem> productItems;
     DatabaseConnection dbconnet;
     Connection conn;
     Statement stmt;
@@ -23,102 +25,50 @@ public class ProductDAO {
     //initializing list through constructor to avoid null pointer exception
     public ProductDAO() {
         searchProducts= new ArrayList<SearchProduct>();
+        products = new ArrayList<Product>();
+        productItems = new ArrayList<ProductItem>();
     }
-    //     Search Product Item or Product Item Code
-    public List<SearchProduct> searchProduct(String code){
-        String searchProductSqlQuery = " SELECT p.productCode, \n" +
-                "        pi.productItemCode, \n" +
-                "        pi.productSize, \n" +
-                "        p.productName, \n" +
-                "        sum(sp.productQuantity) 'productQuantity',\n" +
-                "        p.price,\n" +
-                "        sp.locationID,\n" +
-                "        l.locationName,\n" +
-                "        l.locationAddress, \n" +
-                "        l.phone, \n" +
-                "        p.description\n" +
-                "FROM StoredProduct sp\n" +
-                "\tJOIN ProductItem pi ON sp.productItemCode = pi.productItemCode\n" +
-                "    JOIN Product p ON pi.productCode = p.productCode\n" +
-                "    JOIN Location l ON sp.locationID = l.locationID\n" +
-                "WHERE pi.productItemCode = \"" + code + "\" OR p.productCode = \"" + code + "\"" +
-                "group by l.locationID;";
-        executeSearchProductSQLQueries(searchProductSqlQuery);
-        return searchProducts;
+    //     View all Product
+    public List<Product> viewAllProducts(){
+        String viewAllProductSqlQuery = "SELECT * FROM Product;";
+        executeSearchProductSQLQueries(viewAllProductSqlQuery);
+        return products;
     }
 
-    // View the product items of selected product code
-    public List<SearchProduct> viewProductItem(String productCode, String locationID) {
-
-        String viewProductItemSqlQuery = " SELECT p.productCode, \n" +
-                "        pi.productItemCode, \n" +
-                "        pi.productSize, \n" +
-                "        p.productName, \n" +
-                "        sp.productQuantity,\n" +
-                "        p.price,\n" +
-                "        sp.locationID,\n" +
-                "        l.locationName,\n" +
-                "        l.locationAddress, \n" +
-                "        l.phone, \n" +
-                "        p.description\n" +
-                "FROM StoredProduct sp\n" +
-                "\tJOIN ProductItem pi ON sp.productItemCode = pi.productItemCode\n" +
-                "    JOIN Product p ON pi.productCode = p.productCode\n" +
-                "    JOIN Location l ON sp.locationID = l.locationID\n" +
-                "WHERE p.productCode = \"" + productCode + "\" AND l.locationID = \"" + locationID + "\";";
-        executeSearchProductSQLQueries(viewProductItemSqlQuery);
-
-        return searchProducts;
-
+    // Search Product Code
+    public List<Product> searchProductCode(String productCode){
+        String viewAllProductSqlQuery = "SELECT * FROM Product WHERE productCode = \"" + productCode + "\";";
+        executeSearchProductSQLQueries(viewAllProductSqlQuery);
+        return products;
     }
 
-    //View all products
-    public List<SearchProduct> viewAllProducts() {
-
-        String viewAllProductsSqlQuery = " SELECT pi.productCode, \n" +
-                "        pi.productItemCode, \n" +
-                "        pi.productSize, \n" +
-                "        p.productName, \n" +
-                "        sp.productQuantity,\n" +
-                "        p.price,\n" +
-                "        sp.locationID,\n" +
-                "        l.locationName,\n" +
-                "        l.locationAddress, \n" +
-                "        l.phone, \n" +
-                "        p.description\n" +
-                "FROM StoredProduct sp\n" +
-                "\tJOIN ProductItem pi ON sp.productItemCode = pi.productItemCode\n" +
-                "    JOIN Product p ON pi.productCode = p.productCode\n" +
-                "    JOIN Location l ON sp.locationID = l.locationID;";
-
-        executeSearchProductSQLQueries(viewAllProductsSqlQuery);
-
-        return searchProducts;
-
+    // View searched Product Item
+    public List<ProductItem> viewSeachedProductItems(String productCode){
+        String viewSearchedProductItemsSqlQuery = "SELECT * FROM ProductItem WHERE productCode = \"" + productCode + "\";";
+        executeSearchProductItemSQLQueries(viewSearchedProductItemsSqlQuery);
+        return productItems;
     }
 
-    //Search Product Items in a specific Product
-    public List<SearchProduct> searchProductItemsInProductCode(String productCode, String productItemCode) {
+    // Search Product Item Code
+    public List<ProductItem> searchProductItemCode(String productItemCode){
+        String searchProductItemCodeSqlQuery = "SELECT * FROM ProductItem WHERE productItemCode = \"" + productItemCode + "\";";
+        executeSearchProductItemSQLQueries(searchProductItemCodeSqlQuery);
+        return productItems;
+    }
 
-        String searchProductItemsInProductCodeSqlQuery = " SELECT p.productCode, \n" +
-                "        pi.productItemCode, \n" +
-                "        pi.productSize, \n" +
-                "        p.productName, \n" +
-                "        sum(sp.productQuantity) 'productQuantity',\n" +
-                "        p.price,\n" +
-                "        sp.locationID,\n" +
-                "        l.locationName,\n" +
-                "        l.locationAddress, \n" +
-                "        l.phone, \n" +
-                "        p.description\n" +
+    // View the product item details
+    public List<SearchProduct> viewProductItemDetails(String productItemCode) {
+
+        String viewProductItemDetails = " SELECT sp.productItemCode, \n" +
+                "        sp.productQuantity, \n" +
+                "        l.locationType, \n" +
+                "        l.locationName, \n" +
+                "        l.locationAddress,\n" +
+                "        l.phone\n" +
                 "FROM StoredProduct sp\n" +
-                "\tJOIN ProductItem pi ON sp.productItemCode = pi.productItemCode\n" +
-                "    JOIN Product p ON pi.productCode = p.productCode\n" +
-                "    JOIN Location l ON sp.locationID = l.locationID\n" +
-                "WHERE p.productCode = \"" + productCode + "\" AND pi.productItemCode = \"" + productItemCode + "\"" +
-                "group by l.locationID;";
-
-        executeSearchProductSQLQueries(searchProductItemsInProductCodeSqlQuery);
+                "JOIN Location l ON sp.locationID = l.locationID\n" +
+                "WHERE sp.productItemCode = \"" + productItemCode + "\";";
+        executeViewProductItemDetailSQLQueries(viewProductItemDetails);
 
         return searchProducts;
 
@@ -132,20 +82,13 @@ public class ProductDAO {
             stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(sqlQuery);
             while (resultSet.next()) {
-                SearchProduct viewProductItem = new SearchProduct();
-                viewProductItem.setProductCode(resultSet.getString(1));
-                viewProductItem.setProductItemCode(resultSet.getString(2));
-                viewProductItem.setProductSize(resultSet.getString(3));
-                viewProductItem.setProductName(resultSet.getString(4));
-                viewProductItem.setProductQuantity(resultSet.getInt(5));
-                viewProductItem.setPrice(resultSet.getString(6));
-                viewProductItem.setLocationID(resultSet.getString(7));
-                viewProductItem.setLocationName(resultSet.getString(8));
-                viewProductItem.setLocationAddress(resultSet.getString(9));
-                viewProductItem.setPhone(resultSet.getString(10));
-                viewProductItem.setDescription(resultSet.getString(11));
+                Product product = new Product();
+                product.setProductCode(resultSet.getString(1));
+                product.setProductName(resultSet.getString(2));
+                product.setPrice(resultSet.getString(3));
+                product.setDescription(resultSet.getString(4));
 
-                searchProducts.add(viewProductItem);
+                products.add(product);
             }
         }catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException  e){
             e.printStackTrace();
@@ -165,6 +108,78 @@ public class ProductDAO {
             }
         }
     }
+
+    //Execute the queries for Search Product Item methods
+    public void executeSearchProductItemSQLQueries(String sqlQuery){
+        try {
+            dbconnet = new DatabaseConnection();
+            conn = dbconnet.connect();
+            stmt = conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                ProductItem productItem = new ProductItem();
+                productItem.setProductItemCode(resultSet.getString(1));
+                productItem.setProductCode(resultSet.getString(2));
+                productItem.setProductSize(resultSet.getString(3));
+
+                productItems.add(productItem);
+            }
+        }catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException  e){
+            e.printStackTrace();
+        } finally
+        {
+            // Always make sure result sets and statements are closed,
+            // and the connection is returned to the pool
+            try
+            {
+                if (conn != null)
+                    conn.close ();
+                if (stmt != null)
+                    stmt.close();
+            }
+            catch (SQLException ignore)
+            {
+            }
+        }
+    }
+
+    //Execute the queries for View Product Item Details methods
+    public void executeViewProductItemDetailSQLQueries(String sqlQuery){
+        try {
+            dbconnet = new DatabaseConnection();
+            conn = dbconnet.connect();
+            stmt = conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                SearchProduct searchProduct = new SearchProduct();
+                searchProduct.setProductItemCode(resultSet.getString(1));
+                searchProduct.setProductQuantity(resultSet.getString(2));
+                searchProduct.setLocationType(resultSet.getString(3));
+                searchProduct.setLocationName(resultSet.getString(4));
+                searchProduct.setLocationAddress(resultSet.getString(5));
+                searchProduct.setPhone(resultSet.getString(6));
+
+                searchProducts.add(searchProduct);
+            }
+        }catch(SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException  e){
+            e.printStackTrace();
+        } finally
+        {
+            // Always make sure result sets and statements are closed,
+            // and the connection is returned to the pool
+            try
+            {
+                if (conn != null)
+                    conn.close ();
+                if (stmt != null)
+                    stmt.close();
+            }
+            catch (SQLException ignore)
+            {
+            }
+        }
+    }
+
     //method to access database and add new product to the database
     public String addProduct(Product newProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         //creating new variables to store new product details

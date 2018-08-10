@@ -36,17 +36,17 @@ public class ProductDAOTest {
         //when(connection.prepareStatement(any(String.class))).thenReturn(stmt);
        // when(dataSource.getConnection()).thenReturn(connection);
 
-        searchProduct= new SearchProduct();
-        searchProduct.setProductItemCode("S3100");
-        searchProduct.setProductSize("XS");
-        searchProduct.setProductCode("S3");
-        searchProduct.setProductName("Surry Coat");
-        searchProduct.setProductQuantity(20);
-        searchProduct.setPrice("200");
-        searchProduct.setLocationID("WRH3");
-        searchProduct.setLocationName("Surry Hills");
-        searchProduct.setLocationAddress("2 Howard Street");
-        searchProduct.setPhone("344556");
+//        searchProduct= new SearchProduct();
+//        searchProduct.setProductItemCode("S3100");
+//        searchProduct.setProductSize("XS");
+//        searchProduct.setProductCode("S3");
+//        searchProduct.setProductName("Surry Coat");
+//        searchProduct.setProductQuantity(20);
+//        searchProduct.setPrice("200");
+//        searchProduct.setLocationID("WRH3");
+//        searchProduct.setLocationName("Surry Hills");
+//        searchProduct.setLocationAddress("2 Howard Street");
+//        searchProduct.setPhone("344556");
 
         /*when(rs.first()).thenReturn(true);
         when(rs.getString(1)).thenReturn(searchProduct.getProductItemCode());
@@ -62,12 +62,12 @@ public class ProductDAOTest {
 
     }
 
-    @Test
-    public void searchProductTest() {
-        ProductDAO dao= new ProductDAO();
-        dao.searchProduct(searchProduct.getProductCode());
-
-        assertEquals(searchProduct.getProductItemCode(),"S3100");
-
-    }
+//    @Test
+//    public void searchProductTest() {
+//        ProductDAO dao= new ProductDAO();
+//        dao.searchProduct(searchProduct.getProductCode());
+//
+//        assertEquals(searchProduct.getProductItemCode(),"S3100");
+//
+//    }
 }

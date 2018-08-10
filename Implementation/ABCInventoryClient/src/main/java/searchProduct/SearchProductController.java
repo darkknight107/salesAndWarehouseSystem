@@ -1,6 +1,5 @@
 package searchProduct;
 
-
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
@@ -19,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import manageProduct.AppScreen;
 import manageProduct.UpdateProductController;
+import transferProduct.AcceptTransferItemController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
@@ -31,29 +31,24 @@ public class SearchProductController {
     @FXML
     private TextField txtSearch;
     @FXML
-    private TableView<SearchProduct> tblSearchProduct;
-    @FXML
-    private TableColumn size;
-    @FXML
-    private  TableColumn productItemCode;
+    private TableView<Product> tblSearchProductCode;
     @FXML
     private TableColumn displayView;
     @FXML
-    private BorderPane mainPanel;
+    private AnchorPane anchorPane;
+    private static String SELECTED_PRODUCT_CODE;
 
     AppScreen screen = new AppScreen();
 
-    ObservableList<SearchProduct> data;
+    ObservableList<Product> data;
 
     // Variables for create the client
     Client client;
     WebResource webResourceGet;
     ClientResponse response;
-    GenericType<List<SearchProduct>> listc = new GenericType<List<SearchProduct>>() {
+    GenericType<List<Product>> listc = new GenericType<List<Product>>() {
     };
-    List<SearchProduct> searchProductList;
-
-    String getProductURL;
+    List<Product> productList;
 
     // Initialize method for handle the action when pressing button
     public void initialize(URL url, ResourceBundle rb){
@@ -66,39 +61,31 @@ public class SearchProductController {
 
         // GET request to searchproductcode resource with a query parameter
         String code = txtSearch.getText().toUpperCase();
-        getProductURL = "http://localhost:8080/rest/searchproduct/searchproductcode/";
-
 
         if (code.matches("[A-Z][0-9]")){
-            searchProductByCodes(getProductURL,"productcode", code);
-            clearproductItems();
-            addDetailButton();
-        }else if(code.matches("[A-Z][0-9]100") || code.matches("[A-Z][0-9]200") || code.matches("[A-Z][0-9]300")){
-            searchProductByCodes(getProductURL,"productcode", code);
-            clearproductItems();
-            addProductItems();
+            searchProductCode("searchproductcode","productcode", code);
         }
         else if(code.equals("")){
             showAllProducts();
         } else {
-            screen.alertMessages("Wrong Format Input","Please enter the code in the right format! \nEg: Produc Code: S1, Product Item Code: S1100 ");
+            screen.alertMessages("Wrong Format Input","Please enter the code in the right format! \nEg: Produc Code: S1");
         }
     }
 
-    // Search Product or Product Item
-    private  void searchProductByCodes(String URL ,String searchField, String code) {
+    // Search Product
+    private  void searchProductCode(String path ,String searchField, String code) {
         data.clear();
-        webResourceGet = client.resource(URL).queryParam(searchField, code);
+        webResourceGet = client.resource("http://localhost:8080/rest/searchproduct/" + path).queryParam(searchField, code);
         response = webResourceGet.get(ClientResponse.class);
-        searchProductList = response.getEntity(listc);
+        productList = response.getEntity(listc);
         if (response.getStatus() != 200) {
             throw new WebApplicationException();
         }
-        if (searchProductList.isEmpty()) {
+        if (productList.isEmpty()) {
             screen.alertMessages("Non-Existent Product", "Product does not exist!");
         } else {
-            for (SearchProduct s : searchProductList) {
-                data.add(s);
+            for (Product p : productList) {
+                data.add(p);
             }
         }
     }
@@ -108,13 +95,11 @@ public class SearchProductController {
         // Create the "Detail" button for each row and define the action for it
         displayView.setCellFactory(col ->{
             Button viewButton = new Button("Detail");
-            Button deleteButton= new Button("Delete");
-            Button updateButton= new Button("Update");
-            HBox hBox= new HBox(viewButton, deleteButton, updateButton);
-            TableCell<SearchProduct, SearchProduct> cell = new TableCell<SearchProduct, SearchProduct>() {
+            HBox hBox= new HBox(viewButton);
+            TableCell<Product, Product> cell = new TableCell<Product, Product>() {
                 @Override
                 //the buttons are only displayed for the row have data
-                public void updateItem(SearchProduct product, boolean empty) {
+                public void updateItem(Product product, boolean empty) {
                     super.updateItem(product, empty);
                     if (empty) {
                         setGraphic(null);
@@ -125,104 +110,33 @@ public class SearchProductController {
             };
             // When clicked the button, the button will show the product item of selected product
             viewButton.setOnAction(e -> {
-                tblSearchProduct.getSelectionModel().select(cell.getIndex());
-                webResourceGet = client.resource("http://localhost:8080/rest/searchproduct/viewproductitem/").queryParam("productcode", tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode()).queryParam("locationID",tblSearchProduct.getSelectionModel().getSelectedItem().getLocationID());
-                response = webResourceGet.get(ClientResponse.class);
-                searchProductList = response.getEntity(listc);
-
-                data.clear();
-                tblSearchProduct.getColumns().remove(displayView);
-                addProductItems();
-
-                if (response.getStatus() != 200) {
-                    throw new WebApplicationException();
-                }
-                for (SearchProduct s : searchProductList) {
-                    data.add(s);
-                }
-            });
-            //when user click delete button do this
-            deleteButton.setOnAction(e ->{
-                tblSearchProduct.getSelectionModel().select(cell.getIndex());
-                //getting the selected product code
-                String toDeleteProduct= tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode();
-                System.out.println(toDeleteProduct);
-                Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete product " + toDeleteProduct + "?", ButtonType.YES, ButtonType.NO);
-                alert.showAndWait();
-                alert.setTitle("Warning!");
-                if (alert.getResult()== ButtonType.YES){
-                    //creating a new client to delete the selected product
-                    ClientConfig clientConfig= new DefaultClientConfig();
-                    clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-                    Client client= Client.create(clientConfig);
-                    WebResource deleteResource= client.resource("http://localhost:8080/rest/delete/deleteproduct/"+ toDeleteProduct);
-                    //converting the response to string
-                    ClientResponse response= deleteResource.delete(ClientResponse.class);
-                    response.bufferEntity();
-                    String responseValue= response.getEntity(String.class);
-                    if (responseValue.equals("true")){
-                        screen.alertMessages("Product Deleted!", "The Product " + toDeleteProduct + " has been deleted.");
-                    }
-                    else{
-                        screen.alertMessages("Error!", "An error occurred. Could not delete the product!");
-                    }
-                }
-                else{
-
-                }
-
-            });
-            updateButton.setOnAction(e ->{
-                AnchorPane pane;
+                tblSearchProductCode.getSelectionModel().select(cell.getIndex());
+                String selectedProductCode = tblSearchProductCode.getSelectionModel().getSelectedItem().getProductCode();
+                setSELECTED_PRODUCT_CODE(selectedProductCode);
+                //load text fields and labels for adding product item
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemFXML.fxml"));
+                AnchorPane pane = null;
                 try {
-                    tblSearchProduct.getSelectionModel().select(cell.getIndex());
-                    //creating a new Product object to store the product information which needs to be updated
-                    String selectedProductCode = tblSearchProduct.getSelectionModel().getSelectedItem().getProductCode();
-                    String selectedProductName = tblSearchProduct.getSelectionModel().getSelectedItem().getProductName();
-                    String selectedPrice = tblSearchProduct.getSelectionModel().getSelectedItem().getPrice();
-                    String selectedDescription = tblSearchProduct.getSelectionModel().getSelectedItem().getDescription();
-                    Product productToBeUpdated= new Product();
-                    productToBeUpdated.setProductCode(selectedProductCode);
-                    productToBeUpdated.setProductName(selectedProductName);
-                    productToBeUpdated.setPrice(selectedPrice);
-                    productToBeUpdated.setDescription(selectedDescription);
-
-                    //passing data from selected product to be updated to UpdateProductController
-                    FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/UpdateProduct.fxml"));
                     pane = loader.load();
-                    mainPanel.getChildren().setAll(pane);
-                    UpdateProductController updateProductController= loader.<UpdateProductController>getController();
-                    updateProductController.setData(productToBeUpdated);
-
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
 
+                SearchProductItemController myController = loader.getController();
 
+                //Set Data to FXML through controller
+                myController.showAllProductItems(selectedProductCode);
+                anchorPane.getChildren().setAll(pane);
             });
             return cell ;
         });
-        tblSearchProduct.getColumns().add(0,displayView);
-    }
-
-
-    // Update the table depends on the searching input
-    private void addProductItems(){
-        tblSearchProduct.getColumns().add(1,productItemCode);
-        tblSearchProduct.getColumns().add(2,size);
-    }
-
-    // Update the table depends on the searching input
-    private void clearproductItems(){
-        tblSearchProduct.getColumns().remove(size);
-        tblSearchProduct.getColumns().remove(productItemCode);
-        tblSearchProduct.getColumns().remove(displayView);
+        tblSearchProductCode.getColumns().add(0,displayView);
     }
 
     // Show all the products and product items
     public void showAllProducts(){
         //connect to the server to retrieve the data
-        data = tblSearchProduct.getItems();
+        data = tblSearchProductCode.getItems();
         data.clear();
 
         //creating a new client to send get request
@@ -230,8 +144,16 @@ public class SearchProductController {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
-        getProductURL="http://localhost:8080/rest/searchproduct/viewallproducts/";
-        searchProductByCodes(getProductURL,"","");
-        tblSearchProduct.getColumns().remove(displayView);
+        searchProductCode("viewallproducts","","");
+        tblSearchProductCode.getColumns().remove(displayView);
+        addDetailButton();
+    }
+
+    //Gettter and Setter for SELECTED_PRODUCT_CODE
+    public void setSELECTED_PRODUCT_CODE(String SELECTED_PRODUCT_CODE){
+        this.SELECTED_PRODUCT_CODE = SELECTED_PRODUCT_CODE;
+    }
+    public String getSELECTED_PRODUCT_CODE(){
+        return SELECTED_PRODUCT_CODE;
     }
 }
