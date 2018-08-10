@@ -58,7 +58,9 @@ public class AddStaffController {
     }
 
     public void addStaff() throws IOException {
-        if (firstNameField.getText() != null && lastNameField.getText() != null && emailField !=null && phoneField.getText() != null && userNameField != null && passwordField != null && passwordField1 != null && locationComboBox.getValue() != null){
+        if (!(firstNameField.getText().isEmpty()) && !(lastNameField.getText().isEmpty()) && !(emailField.getText().isEmpty()) &&
+                !(phoneField.getText().isEmpty()) && !(userNameField.getText().isEmpty()) && !(passwordField.getText().isEmpty())
+                && !(passwordField1.getText().isEmpty()) && locationComboBox.getValue() != null){
             staff.setFirstName(firstNameField.getText());
             staff.setLastName(lastNameField.getText());
             staff.setEmail(emailField.getText());
@@ -79,8 +81,6 @@ public class AddStaffController {
                 passwordField.setStyle("-fx-border-color:red; -fx-border-width: 2px");
                 passwordField1.setStyle("-fx-border-color:red; -fx-border-width: 2px");
             }
-
-
             //creating a new client to send post request
             ClientConfig clientConfig= new DefaultClientConfig();
             clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
