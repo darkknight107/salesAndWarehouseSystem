@@ -20,6 +20,7 @@ import transferProduct.AcceptTransferItemController;
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class ReportTransferController {
@@ -56,38 +57,39 @@ public class ReportTransferController {
     @FXML
     public void handleSearchTransferAction(){
         String transferID = txtSearch.getText();
-        String fromDate = fromDatePicker.getValue().toString();
-        String toDate = toDatePicker.getValue().toString();
+        LocalDate fromDate = fromDatePicker.getValue();
+        LocalDate toDate = toDatePicker.getValue();
 
         if(transferID.equals("")){
-            if(fromDate.equals("")&toDate.equals("")){
+            if(fromDate == null & toDate == null){
                 showAllTransfer();
             }
-//            else if(!fromDate.equals("")&toDate.equals("")) {
-//                toDate = LocalDate.now().toString();
-//                System.out.println(toDate);
-//                filterDatetime(fromDate, toDate);
-//            }
-//            } else if(fromDate.equals("")&!toDate.equals("")){
-//                fromDate = "2000-01-01";
-//                filterDatetime(fromDate,toDate);
-//            }
-            else if(!fromDate.equals("")&!toDate.equals("")){
-                filterDatetime(fromDate,toDate);
+            else if(fromDate != null & toDate == null) {
+                toDate = LocalDate.now();
+                System.out.println(toDate);
+                filterDatetime(fromDate.toString(), toDate.toString());
+            }
+            else if(fromDate == null & toDate != null){
+                fromDate = LocalDate.of(2000,1,1);
+                filterDatetime(fromDate.toString(),toDate.toString());
+            }
+            else if(fromDate != null & toDate != null){
+                filterDatetime(fromDate.toString(),toDate.toString());
             }
         }else if (!transferID.equals("")){
-            if (fromDate.equals("")&toDate.equals("")){
+            if (fromDate == null & toDate == null){
                 searchTransfer("http://localhost:8080/rest/transferproduct/searchTransfer/", "transferID", transferID);
             }
-//            else if(!fromDate.equals("")&toDate.equals("")){
-//                toDate = LocalDate.now().toString();
-//                filterDatetimeOnSearchingTransfer(fromDate,toDate,transferID);
-//            } else if(fromDate.equals("")&!toDate.equals("")){
-//                fromDate = "2000-01-01";
-//                filterDatetimeOnSearchingTransfer(fromDate,toDate,transferID);
-//            }
-            else if(!fromDate.equals("")&!toDate.equals("")){
-                filterDatetimeOnSearchingTransfer(fromDate,toDate,transferID);
+            else if(fromDate != null & toDate == null){
+                toDate = LocalDate.now();
+                filterDatetimeOnSearchingTransfer(fromDate.toString(),toDate.toString(),transferID);
+            }
+            else if(fromDate == null & toDate != null){
+                fromDate = LocalDate.of(2000,1,1);
+                filterDatetime(fromDate.toString(),toDate.toString());
+            }
+            else if(fromDate != null & toDate != null){
+                filterDatetimeOnSearchingTransfer(fromDate.toString(),toDate.toString(),transferID);
             }
         }
     }
