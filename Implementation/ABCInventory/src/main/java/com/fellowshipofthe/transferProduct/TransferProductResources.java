@@ -148,6 +148,28 @@ public class TransferProductResources {
         return transferDAO.searchTransfer(transferID);
     }
 
+    // Client calls the filter datetime for transfer
+    @GET
+    @Path("/searchtransferbydatetimerange")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Transfer>searchTransferByDatetimeRange(@QueryParam("fromdate") String fromDate, @QueryParam("todate") String toDate) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+        System.out.println("search transfer by datetime range called!");
+
+        return transferDAO.searchTransferByDatetimeRange(fromDate,toDate);
+    }
+
+    // Client calls the filter datetime for searching transfer
+    @GET
+    @Path("/searchselectedtransferbydatetimerange")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Transfer>searchSelectedTransferByDatetimeRange(@QueryParam("fromdate") String fromDate, @QueryParam("todate") String toDate, @QueryParam("transferid") String transferID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+
+        System.out.println("search selected transfer by datetime range called!");
+
+        return transferDAO.searchSelectedTransferByDatetimeRange(fromDate,toDate,transferID);
+    }
+
         // update stored product quantity after accept products
     @Path("/updatetransferitemquantityaccept")
     @PUT

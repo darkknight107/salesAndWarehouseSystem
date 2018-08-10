@@ -13,11 +13,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 import manageProduct.AppScreen;
 import transferProduct.AcceptTransferItemController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class ReportTransferController {
@@ -31,6 +34,10 @@ public class ReportTransferController {
     AnchorPane anchorPane;
     @FXML
     TableColumn displayView;
+    @FXML
+    DatePicker fromDatePicker;
+    @FXML
+    DatePicker toDatePicker;
 
     private static String SELECTED_DESTINATION_LOCATION_ID;
 
@@ -50,11 +57,53 @@ public class ReportTransferController {
     @FXML
     public void handleSearchTransferAction(){
         String transferID = txtSearch.getText();
+        LocalDate fromDate = fromDatePicker.getValue();
+        LocalDate toDate = toDatePicker.getValue();
+
         if(transferID.equals("")){
-            showAllTransfer();
-        }else {
-            searchTransfer("http://localhost:8080/rest/transferproduct/searchTransfer/", "transferID", transferID);
+            if(fromDate == null & toDate == null){
+                showAllTransfer();
+            }
+            else if(fromDate != null & toDate == null) {
+                toDate = LocalDate.now();
+                System.out.println(toDate);
+                filterDatetime(fromDate.toString(), toDate.toString());
+            }
+            else if(fromDate == null & toDate != null){
+                fromDate = LocalDate.of(2000,1,1);
+                filterDatetime(fromDate.toString(),toDate.toString());
+            }
+            else if(fromDate != null & toDate != null){
+                filterDatetime(fromDate.toString(),toDate.toString());
+            }
+        }else if (!transferID.equals("")){
+            if (fromDate == null & toDate == null){
+                searchTransfer("http://localhost:8080/rest/transferproduct/searchTransfer/", "transferID", transferID);
+            }
+            else if(fromDate != null & toDate == null){
+                toDate = LocalDate.now();
+                filterDatetimeOnSearchingTransfer(fromDate.toString(),toDate.toString(),transferID);
+            }
+            else if(fromDate == null & toDate != null){
+                fromDate = LocalDate.of(2000,1,1);
+                filterDatetime(fromDate.toString(),toDate.toString());
+            }
+            else if(fromDate != null & toDate != null){
+                filterDatetimeOnSearchingTransfer(fromDate.toString(),toDate.toString(),transferID);
+            }
         }
+    }
+
+    //Cannot select the from date behind the to date
+    @FXML
+    public void handleFromDatePicker(){
+        setEndDateBounds(toDatePicker, fromDatePicker.getValue());
+    }
+
+    //Cannot select the to date behind the from date
+    @FXML
+    public void handleToDatePicker(){
+        setBeginDateBounds(fromDatePicker, toDatePicker.getValue());
     }
 
     //show all the Transfer when initialize the sceen
@@ -70,6 +119,42 @@ public class ReportTransferController {
         getTransferURL="http://localhost:8080/rest/transferproduct/viewalltransfer/";
         searchTransfer(getTransferURL,"","");
         addDetailButton();
+    }
+
+    //Filter Datetime when user dont search transferID
+    public void filterDatetime(String fromDate, String toDate){
+        data.clear();
+        webResourceGet = client.resource("http://localhost:8080/rest/transferproduct/searchtransferbydatetimerange/").queryParam("fromdate", fromDate).queryParam("todate",toDate);
+        response = webResourceGet.get(ClientResponse.class);
+        transferList = response.getEntity(listc);
+        if (response.getStatus() != 200) {
+            throw new WebApplicationException();
+        }
+        if (transferList.isEmpty()) {
+            screen.alertMessages("Non-Existent Transfer", "Transfer does not exist!");
+        } else {
+            for (Transfer t : transferList) {
+                data.add(t);
+            }
+        }
+    }
+
+    //Filter Datetime when user searching transferID
+    public void filterDatetimeOnSearchingTransfer(String fromDate, String toDate,String transferID){
+        data.clear();
+        webResourceGet = client.resource("http://localhost:8080/rest/transferproduct/searchselectedtransferbydatetimerange/").queryParam("fromdate", fromDate).queryParam("todate",toDate).queryParam("transferid",transferID);
+        response = webResourceGet.get(ClientResponse.class);
+        transferList = response.getEntity(listc);
+        if (response.getStatus() != 200) {
+            throw new WebApplicationException();
+        }
+        if (transferList.isEmpty()) {
+            screen.alertMessages("Non-Existent Transfer", "Transfer does not exist!");
+        } else {
+            for (Transfer t : transferList) {
+                data.add(t);
+            }
+        }
     }
 
     // Search Transfer or Transfer ID
@@ -129,5 +214,57 @@ public class ReportTransferController {
 
             return cell ;
         });
+    }
+
+    public static void setBeginDateBounds(DatePicker begin_date, LocalDate end_date ){
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        boolean cond = (!item.isBefore(end_date));
+                        if (cond){
+                            setDisable(true);
+                            setStyle("-fx-background-color: #d3d3d3;");
+                        }else{
+                            setDisable(false);
+                            setStyle("-fx-background-color: #CCFFFF;");
+                            setStyle("-fx-font-fill: black;");
+                        }
+                    }
+                };
+            }
+        };
+        begin_date.setDayCellFactory(dayCellFactory);
+    }
+
+    public static void setEndDateBounds(DatePicker end_date, LocalDate begin_date ){
+         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        boolean cond = (!item.isAfter(begin_date));
+                        if (cond){
+                            setDisable(true);
+                            setStyle("-fx-background-color: #d3d3d3;");
+                        }else{
+                            setDisable(false);
+                            setStyle("-fx-background-color: #CCFFFF;");
+                            setStyle("-fx-font-fill: black;");
+                        }
+                    }
+                };
+            }
+        };
+        end_date.setDayCellFactory(dayCellFactory);
     }
 }
