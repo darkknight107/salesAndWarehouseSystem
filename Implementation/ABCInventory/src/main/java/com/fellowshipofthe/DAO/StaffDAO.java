@@ -158,9 +158,8 @@ public class StaffDAO {
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
-        String sql= "UPDATE Staff" +
-                "SET password= sha2(\"" + password + "\", 512)" +
-                "WHERE userName= \"" + userName + "\"";
+        System.out.println(userName + " " + password);
+        String sql= "UPDATE Staff SET pWord= sha2(\"" + password + "\", 512) WHERE userName= \"" + userName + "\"";
         int i= stmt.executeUpdate(sql);
         conn.close();
         stmt.close();

@@ -24,12 +24,13 @@ public class EditStaffResource {
         return staffDAO.updateStaff(updatedStaff);
     }
 
-    @Path("updatepassword")
+    @Path("/updatepassword")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Boolean updatePassword(@QueryParam("userName") String userName, @QueryParam("password") String password) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public Boolean updatePassword(@QueryParam("username") String userName, @QueryParam("password") String password) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         System.out.println("updatePassword called!");
+        System.out.println(userName + " " + password);
         return staffDAO.updatePassword(userName, password);
     }
 }

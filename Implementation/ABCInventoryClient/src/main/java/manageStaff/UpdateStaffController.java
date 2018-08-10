@@ -8,15 +8,23 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import entityClass.Staff;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 import manageProduct.AppScreen;
 import sun.security.util.Password;
@@ -24,6 +32,7 @@ import sun.security.util.Password;
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static javafx.scene.control.ButtonBar.ButtonData.OK_DONE;
 
@@ -129,69 +138,96 @@ public class UpdateStaffController {
     }
 
     public void handleChangePasswordLink(){
-
-        Dialog<Pair<Password, Password>> dialog= new Dialog<>();
+        //creating a dialog
+        final Stage dialog= new Stage();
         dialog.setTitle("Change Password");
-        dialog.setHeaderText("Please enter a new password: ");
 
-        Button updateButton= new Button(("Update"));
+        //different elements in the dialog box
+        Label displayLabel= new Label("Enter new password:");
+        displayLabel.setFont(Font.font(null, FontWeight.BOLD, 14));
+        Button updateButton= new Button("Update");
         Button cancelButton= new Button("Cancel");
-
         PasswordField newPassword= new PasswordField();
         newPassword.setPromptText("Enter a new password");
         PasswordField confirmPassword= new PasswordField();
         confirmPassword.setPromptText("Confirm password");
 
+        //adding fields to a gridpane
         GridPane grid= new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.add(displayLabel, 0, 0);
+        grid.add(new Label("New Password:"), 0, 1);
+        grid.add(newPassword, 1, 1);
+        grid.add(new Label("Confirm Password:"), 0, 2);
+        grid.add(confirmPassword, 1, 2);
+        grid.add(updateButton, 0, 3);
+        grid.add(cancelButton, 1, 3);
 
-        grid.add(new Label("New Password:"), 0, 0);
-        grid.add(newPassword, 1, 0);
-        grid.add(new Label("Confirm Password:"), 0, 1);
-        grid.add(confirmPassword, 1, 1);
-        grid.add(updateButton, 0, 2);
-        grid.add(cancelButton, 1, 2);
+        //using boolean bind to disable update button when password fields are empty
+        BooleanBinding bb= new BooleanBinding() {
+            {
+                super.bind(newPassword.textProperty(), confirmPassword.textProperty());
+            }
+            @Override
+            protected boolean computeValue() {
+                return (newPassword.getText().isEmpty() || confirmPassword.getText().isEmpty());
+            }
+        };
+        updateButton.disableProperty().bind(bb);
 
-        if (newPassword.getText()== null && confirmPassword.getText() == null){
-            updateButton.setDisable(true);
-        }
-        dialog.showAndWait();
-
-        updateButton.setOnAction(e->{
-            // Create Jersey client
-            ClientConfig clientConfig = new DefaultClientConfig();
-            clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-            Client client = Client.create(clientConfig);
-
-            // GET request to findBook resource with a query parameter
-            String updatePasswordURL= "http://localhost:8080/rest/managestaff/updatepassword";
-            WebResource webResourceGet = client.resource(updatePasswordURL).queryParam(userNameField.getText(), newPassword.getText());
-            ClientResponse response = webResourceGet.get(ClientResponse.class);
-
-            if (response.getStatus()== 200) {
-                screen.alertMessages("Password upadted", "User "+ userNameField.getText()+ "'s password has been updated!");
-                try {
-                    FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
-                    pane = loader.load();
-                    ManageStaffController controller= loader.<ManageStaffController>getController();
-                    controller.showAllStaff();
-                    anchorPane.getChildren().setAll(pane);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
+        //do this when updateButton is pressed
+        updateButton.setOnAction(e-> {
+            //validate password
+            if (newPassword.getText().equals(confirmPassword.getText())){
+                // Create Jersey client
+                ClientConfig clientConfig = new DefaultClientConfig();
+                clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+                Client client = Client.create(clientConfig);
+                // GET request to update password resource with a query parameter
+                String updatePasswordURL= "http://localhost:8080/rest/managestaff/updatepassword";
+                WebResource webResourceGet = client.resource(updatePasswordURL).queryParam("username", userNameField.getText()).queryParam("password", newPassword.getText());
+                ClientResponse response = webResourceGet.put(ClientResponse.class);
+                Boolean responseValue= response.getEntity(Boolean.class);
+                if (responseValue == true) {
+                    screen.alertMessages("Password updated", "User "+ userNameField.getText()+ "'s password has been updated!");
+                    try {
+                        dialog.close();
+                        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
+                        pane = loader.load();
+                        dialog.close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                else{
+                    screen.alertMessages("Error", "Password could not be updated!");
+                    dialog.close();
                 }
             }
             else{
-                screen.alertMessages("Error", "Password could not be updated!");
+                screen.alertMessages("Re-enter password", "Passwords do not match. Please try again.");
+                newPassword.setText("");
+                confirmPassword.setText("");
             }
+
+            });
+        cancelButton.setOnAction(e ->{
+            dialog.close();
         });
-
-
-
-
-
-
+        //display the dialog
+        HBox dialogHBox= new HBox(20);
+        dialogHBox.setAlignment(Pos.CENTER);
+        dialogHBox.getChildren().add(grid);
+        Scene dialogScene= new Scene(dialogHBox, 500, 150);
+        dialog.setScene(dialogScene);
+        dialog.setResizable(false);
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner((Stage) anchorPane.getScene().getWindow());
+        dialog.show();
 
     }
+
+
 }
