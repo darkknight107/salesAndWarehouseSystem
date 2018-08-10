@@ -153,4 +153,24 @@ public class StaffDAO {
             return false;
         }
     }
+
+    public Boolean updatePassword(String userName, String password) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        dbconnet= new DatabaseConnection();
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+        System.out.println(userName + " " + password);
+        String sql= "UPDATE Staff SET pWord= sha2(\"" + password + "\", 512) WHERE userName= \"" + userName + "\"";
+        int i= stmt.executeUpdate(sql);
+        conn.close();
+        stmt.close();
+        if(i>0){
+            System.out.println("Password Updated!");
+            return true;
+        }
+        else{
+            System.out.println("Error! Password could not be updated.");
+            return false;
+        }
+
+    }
 }
