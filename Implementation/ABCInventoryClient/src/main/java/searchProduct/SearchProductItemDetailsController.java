@@ -11,6 +11,7 @@ import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import entityClass.ProductItem;
 import entityClass.SearchProduct;
+import entityClass.StoredProduct;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import manageProduct.AppScreen;
+import manageProduct.ManageProductController;
 import manageProduct.UpdateProductController;
 
 import javax.ws.rs.WebApplicationException;
@@ -30,9 +32,14 @@ import java.util.ResourceBundle;
 public class SearchProductItemDetailsController {
     // Initialize variables
     @FXML
+    AnchorPane anchorPane;
+    @FXML
     private TableView<SearchProduct> tblViewSearchedProductDetails;
     @FXML
     private BorderPane mainPanel;
+    @FXML
+    private TableColumn quantityColumn;
+    BorderPane pane;
 
     AppScreen screen = new AppScreen();
 
@@ -76,5 +83,51 @@ public class SearchProductItemDetailsController {
                 data.add(s);
             }
         }
+    }
+    public void editQuantity(){
+        quantityColumn.setEditable(true);
+    }
+    public void handleEditCommit() throws IOException {
+
+        TableCell<StoredProduct, StoredProduct> cell = new TableCell<StoredProduct, StoredProduct>() {
+            @Override
+            //the buttons are only displayed for the row have data
+            public void updateItem(StoredProduct storedProduct, boolean empty) {
+                super.updateItem(storedProduct, empty);
+            }
+        };
+        String productItemCode = tblViewSearchedProductDetails.getSelectionModel().getSelectedItem().getProductItemCode();
+        String locationID = tblViewSearchedProductDetails.getSelectionModel().getSelectedItem().getLocationID();
+        String quantity = tblViewSearchedProductDetails.getSelectionModel().getSelectedItem().getProductQuantity();
+        tblViewSearchedProductDetails.getSelectionModel().select(cell.getIndex());
+        StoredProduct updateStoredProduct= new StoredProduct();
+        updateStoredProduct.setProductItemCode(productItemCode);
+        updateStoredProduct.setLocationID(locationID);
+        updateStoredProduct.setProductQuantity(quantity);
+        //creating a new client to send post request
+        ClientConfig clientConfig= new DefaultClientConfig();
+        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+        Client client= Client.create(clientConfig);
+        String updateURL= "http://localhost:8080/rest/update/updatestoredproduct";
+        WebResource webResourcePost= client.resource(updateURL);
+        //use the object passed as a parameter to send a request
+        ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updateStoredProduct);
+        response.bufferEntity();
+        String responseValue= response.getEntity(String.class);
+        AppScreen screen= new AppScreen();
+        if (responseValue.equals("updated")){
+            screen.alertMessages("Product Updated!", "The Product Quantity of " + productItemCode + " has been updated in " + locationID);
+            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+            pane = loader.load();
+            ManageProductController manageProductController= loader.getController();
+            manageProductController.showAllProducts();
+            anchorPane.getChildren().setAll(pane);
+        }
+        else{
+            screen.alertMessages("Error!", "Product could not be updated!");
+        }
+
+
+
     }
 }

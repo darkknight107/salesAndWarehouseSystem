@@ -4,7 +4,7 @@ public class SearchProduct {
     private String productItemCode;
     private String productQuantity;
     private String locationName;
-    private String locationType;
+    private String locationID;
     private String locationAddress;
     private String phone;
 
@@ -32,12 +32,12 @@ public class SearchProduct {
         this.locationName = locationName;
     }
 
-    public String getLocationType() {
-        return locationType;
+    public String getLocationID() {
+        return locationID;
     }
 
-    public void setLocationType(String locationType) {
-        this.locationType = locationType;
+    public void setLocationID(String locationID) {
+        this.locationID = locationID;
     }
 
     public String getLocationAddress() {

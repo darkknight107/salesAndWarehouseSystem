@@ -33,6 +33,7 @@ public class SearchProductItemController {
     @FXML
     private AnchorPane anchorPane;
 
+
     AppScreen screen = new AppScreen();
     SearchProductController searchProductController = new SearchProductController();
 
@@ -135,5 +136,7 @@ public class SearchProductItemController {
         });
         tblSearchProductItemCode.getColumns().add(0,displayView);
     }
+
+
 
 }

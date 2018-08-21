@@ -87,7 +87,7 @@ public class ManageStaffController {
                         showAllStaff();
                     }
                     else{
-                        screen.alertMessages("Error!", "An error occurred. Could not delete the product!");
+                        screen.alertMessages("Error!", "An error occurred. Could not delete the staff!");
                     }
                 }
             });
