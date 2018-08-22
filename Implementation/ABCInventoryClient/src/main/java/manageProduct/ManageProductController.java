@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import searchProduct.SearchProductItemController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class ManageProductController{
     TableView<Product> productView;
     @FXML
     TableColumn actionColumn;
+    private static String SELECTED_PRODUCT_CODE;
 
     private ObservableList<Product> data;
     Client client;
@@ -136,6 +138,24 @@ public class ManageProductController{
                 }
             });
             showStoredProducts.setOnAction(e -> {
+                productView.getSelectionModel().select(cell.getIndex());
+                String selectedProductCode = productView.getSelectionModel().getSelectedItem().getProductCode();
+                setSELECTED_PRODUCT_CODE(selectedProductCode);
+                //load text fields and labels for adding product item
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemFXML.fxml"));
+                AnchorPane pane = null;
+                try {
+                    pane = loader.load();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+                SearchProductItemController myController = loader.getController();
+
+                //Set Data to FXML through controller
+                myController.showAllProductItems(selectedProductCode);
+                myController.changeQuantity();
+                borderPane.getChildren().setAll(pane);
 
             });
             return cell;
@@ -193,6 +213,13 @@ public class ManageProductController{
             screen.alertMessages("Wrong format!","Please enter the code in the right format! \nEg: Product Code: S1");
         }
 
+    }
+    //Gettter and Setter for SELECTED_PRODUCT_CODE
+    public void setSELECTED_PRODUCT_CODE(String SELECTED_PRODUCT_CODE){
+        this.SELECTED_PRODUCT_CODE = SELECTED_PRODUCT_CODE;
+    }
+    public String getSELECTED_PRODUCT_CODE(){
+        return SELECTED_PRODUCT_CODE;
     }
 
 

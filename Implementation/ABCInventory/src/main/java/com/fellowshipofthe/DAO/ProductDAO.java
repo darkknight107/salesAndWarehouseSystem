@@ -331,6 +331,7 @@ public class ProductDAO {
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
+        System.out.println(locationID + productItemCode + quantity);
         String sql= "UPDATE StoredProduct \n" +
                 "SET productQuantity = \"" + quantity + "\" \n" +
                 "WHERE productItemCode= \"" + productItemCode + "\" AND locationID= \"" + locationID + "\"; ";

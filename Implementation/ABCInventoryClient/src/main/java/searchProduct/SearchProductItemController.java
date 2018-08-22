@@ -14,8 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import manageProduct.AppScreen;
+import manageProduct.ManageProductController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
@@ -32,6 +34,7 @@ public class SearchProductItemController {
     private TableColumn displayView;
     @FXML
     private AnchorPane anchorPane;
+    Boolean editQuantity= false;
 
 
     AppScreen screen = new AppScreen();
@@ -72,7 +75,17 @@ public class SearchProductItemController {
             throw new WebApplicationException();
         }
         if (productItemList.isEmpty()) {
-            screen.alertMessages("Non-Existent Product", "Product does not exist!");
+            screen.alertMessages("Product Item does not exist.", "Sorry no product items exist for this product!");
+            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+            try {
+                BorderPane pane = loader.load();
+                ManageProductController manageProductController= loader.getController();
+                manageProductController.showAllProducts();
+                anchorPane.getChildren().setAll(pane);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
         } else {
             for (ProductItem pi : productItemList) {
                 data.add(pi);
@@ -89,8 +102,9 @@ public class SearchProductItemController {
         ClientConfig clientConfig= new DefaultClientConfig();
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
+        System.out.println(searchProductController.getSELECTED_PRODUCT_CODE());
 
-        searchProductItemCode("viewsearchedproductitems","productcode",searchProductController.getSELECTED_PRODUCT_CODE());
+        searchProductItemCode("viewsearchedproductitems","productcode",productCode);//CHanged this from searchProductController.getSelectedProductCode
         tblSearchProductItemCode.getColumns().remove(displayView);
         addDetailButton();
     }
@@ -115,28 +129,55 @@ public class SearchProductItemController {
             };
             // When clicked the button, the button will show the product item of selected product
             viewButton.setOnAction(e -> {
-                tblSearchProductItemCode.getSelectionModel().select(cell.getIndex());
-                String selectedProductItemCode = tblSearchProductItemCode.getSelectionModel().getSelectedItem().getProductItemCode();
-                //load text fields and labels for adding product item
-                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemDetailsFXML.fxml"));
-                AnchorPane pane = null;
-                try {
-                    pane = loader.load();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
+                if(editQuantity== false){
+                    System.out.println("uneditable");
+                    tblSearchProductItemCode.getSelectionModel().select(cell.getIndex());
+                    String selectedProductItemCode = tblSearchProductItemCode.getSelectionModel().getSelectedItem().getProductItemCode();
+                    //load text fields and labels for adding product item
+                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemDetailsFXML.fxml"));
+                    AnchorPane pane = null;
+                    try {
+                        pane = loader.load();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    SearchProductItemDetailsController myController = loader.getController();
+
+                    //Set Data to FXML through controller
+                    myController.showAllProductItemDetails(selectedProductItemCode);
+                    anchorPane.getChildren().setAll(pane);
                 }
+                else{
+                    System.out.println("editabe");
+                    tblSearchProductItemCode.getSelectionModel().select(cell.getIndex());
+                    String selectedProductItemCode = tblSearchProductItemCode.getSelectionModel().getSelectedItem().getProductItemCode();
+                    //load text fields and labels for adding product item
+                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemDetailsFXML.fxml"));
+                    AnchorPane pane = null;
+                    try {
+                        pane = loader.load();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
 
-                SearchProductItemDetailsController myController = loader.getController();
+                    SearchProductItemDetailsController myController = loader.getController();
+                    myController.editQuantity();
 
-                //Set Data to FXML through controller
-                myController.showAllProductItemDetails(selectedProductItemCode);
-                anchorPane.getChildren().setAll(pane);
+                    //Set Data to FXML through controller
+                    myController.showAllProductItemDetails(selectedProductItemCode);
+
+                    anchorPane.getChildren().setAll(pane);
+
+                }
             });
+
             return cell ;
         });
         tblSearchProductItemCode.getColumns().add(0,displayView);
     }
 
-
-
+    public void changeQuantity(){
+        this.editQuantity= true;
+    }
 }
