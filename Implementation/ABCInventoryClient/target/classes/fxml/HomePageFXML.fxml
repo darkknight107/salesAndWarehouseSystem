@@ -9,11 +9,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.Tooltip?>
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homePage.HomePageController">
+<?import javafx.util.Duration?>
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homePage.HomePageController" >
    <children>
-      <Button fx:id="searchProduct" layoutX="87.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSearchProduct" prefHeight="36.0" prefWidth="115.0"  >
+      <Button fx:id="searchProduct"  layoutX="87.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSearchProduct" prefHeight="36.0" prefWidth="115.0"  >
           <tooltip>
-              <Tooltip text="Search Product"/>
+              <Tooltip text="Search Product">
+                  <showDelay>
+                      <Duration millis="10"/>
+                  </showDelay>
+              </Tooltip>
           </tooltip>
           <graphic>
               <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
@@ -26,7 +31,11 @@
 
        <Button fx:id="sendProduct" layoutX="243.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSendProduct" prefHeight="36.0" prefWidth="115.0">
            <tooltip>
-               <Tooltip text="Send Product"/>
+               <Tooltip text="Send Product">
+                   <showDelay>
+                       <Duration millis="10"/>
+                   </showDelay>
+               </Tooltip>
            </tooltip>
            <graphic>
                <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
@@ -38,7 +47,11 @@
        </Button>
        <Button fx:id="acceptProduct" layoutX="389.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleAcceptProduct" prefHeight="36.0" prefWidth="115.0"  >
            <tooltip>
-               <Tooltip text="Accept Product"/>
+               <Tooltip text="Accept Product">
+                   <showDelay>
+                       <Duration millis="10"/>
+                   </showDelay>
+               </Tooltip>
            </tooltip>
            <graphic>
                <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
@@ -50,7 +63,11 @@
        </Button>
        <Button fx:id="manageProduct" layoutX="87.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageProduct" prefHeight="36.0" prefWidth="115.0" >
            <tooltip>
-               <Tooltip text="Manage Product"/>
+               <Tooltip text="Manage Product">
+                   <showDelay>
+                       <Duration millis="10"/>
+                   </showDelay>
+               </Tooltip>
            </tooltip>
            <graphic>
                <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
@@ -62,7 +79,11 @@
        </Button>
       <Button fx:id="manageStaff" layoutX="243.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageStaff" prefHeight="36.0" prefWidth="115.0"  >
           <tooltip>
-              <Tooltip text="Manage Staff"/>
+              <Tooltip text="Manage Staff">
+                  <showDelay>
+                      <Duration millis="10"/>
+                  </showDelay>
+              </Tooltip>
           </tooltip>
           <graphic>
               <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
@@ -75,7 +96,11 @@
 
        <Button fx:id="generateReport" layoutX="389.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleGenerateReport" prefHeight="36.0" prefWidth="115.0" >
            <tooltip>
-               <Tooltip text="Generate Report"/>
+               <Tooltip text="Generate Report">
+                   <showDelay>
+                       <Duration millis="10"/>
+                   </showDelay>
+               </Tooltip>
            </tooltip>
            <graphic>
                <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
