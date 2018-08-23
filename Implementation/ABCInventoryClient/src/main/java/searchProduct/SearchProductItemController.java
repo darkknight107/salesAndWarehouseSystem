@@ -13,9 +13,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import manageProduct.AppScreen;
 import manageProduct.ManageProductController;
 
@@ -113,7 +116,16 @@ public class SearchProductItemController {
     private void addDetailButton(){
         // Create the "Detail" button for each row and define the action for it
         displayView.setCellFactory(col ->{
-            Button viewButton = new Button("Detail");
+            Image image = new Image("image/DetailButtonIcon.png");
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(15);
+            imageView.setFitWidth(15);
+
+            Button viewButton = new Button("", imageView);
+            Tooltip tooltip = new Tooltip("View product location and quantity of this product");
+            tooltip.setShowDelay(Duration.millis(10));
+            viewButton.setTooltip(tooltip);
+
             HBox hBox= new HBox(viewButton);
             TableCell<ProductItem, ProductItem> cell = new TableCell<ProductItem, ProductItem>() {
                 @Override
