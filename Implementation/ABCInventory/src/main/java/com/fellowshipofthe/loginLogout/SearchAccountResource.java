@@ -2,6 +2,7 @@ package com.fellowshipofthe.loginLogout;
 
 import com.fellowshipofthe.entityClasses.SearchAccount;
 import com.fellowshipofthe.DAO.AccountDAO;
+import com.sun.tools.javac.comp.Check;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,15 +14,14 @@ public class SearchAccountResource{
 
 
     @GET
-    @Path("searchAccount/{user}")
+    @Path("/account")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<SearchAccount> searchAccount(@QueryParam("user") String username, @QueryParam("user") String password) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public Boolean searchAccount(@QueryParam("username") String username, @QueryParam ("password") String password) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
         AccountDAO AccountDAO = new AccountDAO();
 
         System.out.println("search account called!");
 
-        return AccountDAO.searchAccount(username, password);
-
+        return AccountDAO.searchAccount (username, password);
 
     }
 
