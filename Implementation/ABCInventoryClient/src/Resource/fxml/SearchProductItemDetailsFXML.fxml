@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="searchProduct.SearchProductItemDetailsController">
     <children>
-        <BorderPane fx:id="mainPanel" prefHeight="574.0" prefWidth="939.0" >
+        <BorderPane fx:id="mainPanel" layoutX="14.0" prefHeight="574.0" prefWidth="939.0">
             <center>
                 <TableView fx:id="tblViewSearchedProductDetails" layoutX="23.0" layoutY="92.0" prefHeight="398.0" prefWidth="919.0">
                     <columnResizePolicy>
@@ -28,14 +21,14 @@
                                 <PropertyValueFactory property="productItemCode" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="93.0" text="Quantity">
+                        <TableColumn fx:id="quantityColumn" onEditCommit="#onCommit" prefWidth="93.0" text="Quantity">
                             <cellValueFactory>
                                 <PropertyValueFactory property="productQuantity" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="124.0" text="Location Type">
+                        <TableColumn prefWidth="124.0" text="Location ID">
                             <cellValueFactory>
-                                <PropertyValueFactory property="locationType" />
+                                <PropertyValueFactory property="locationID" />
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="101.0" text="Location Name">

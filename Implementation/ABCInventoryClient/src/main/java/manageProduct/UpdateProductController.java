@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+
 import java.io.IOException;
 
 
@@ -26,7 +28,7 @@ public class UpdateProductController {
     private TextField priceField;
     @FXML
     private TextField descriptionField;
-    private AnchorPane pane;
+    private BorderPane pane;
     //method to set existing values to the field
     @FXML
     public void setData(Product updatedProduct){
@@ -62,8 +64,10 @@ public class UpdateProductController {
         AppScreen screen= new AppScreen();
         if (responseValue.equals("updated")){
             screen.alertMessages("Product Updated!", "The Product " + productCode + " has been updated!");
-            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
             pane = loader.load();
+            ManageProductController manageProductController= loader.getController();
+            manageProductController.showAllProducts();
             anchorPane.getChildren().setAll(pane);
         }
         else{
@@ -71,4 +75,5 @@ public class UpdateProductController {
         }
 
     }
+
 }

@@ -61,7 +61,7 @@ public class ProductDAO {
 
         String viewProductItemDetails = " SELECT sp.productItemCode, \n" +
                 "        sp.productQuantity, \n" +
-                "        l.locationType, \n" +
+                "        l.locationID, \n" +
                 "        l.locationName, \n" +
                 "        l.locationAddress,\n" +
                 "        l.phone\n" +
@@ -154,7 +154,7 @@ public class ProductDAO {
                 SearchProduct searchProduct = new SearchProduct();
                 searchProduct.setProductItemCode(resultSet.getString(1));
                 searchProduct.setProductQuantity(resultSet.getString(2));
-                searchProduct.setLocationType(resultSet.getString(3));
+                searchProduct.setLocationID(resultSet.getString(3));
                 searchProduct.setLocationName(resultSet.getString(4));
                 searchProduct.setLocationAddress(resultSet.getString(5));
                 searchProduct.setPhone(resultSet.getString(6));
@@ -270,6 +270,7 @@ public class ProductDAO {
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
+        System.out.println("a " + productCode);
         String sql= "delete from Product where productCode=\""+ productCode + "\";";
         stmt.executeUpdate(sql);
         conn.close();
@@ -330,9 +331,10 @@ public class ProductDAO {
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
+        System.out.println(locationID + productItemCode + quantity);
         String sql= "UPDATE StoredProduct \n" +
                 "SET productQuantity = \"" + quantity + "\" \n" +
-                "WHERE productItemCode= \"" + productItemCode + "\" & locationID= \"" + locationID + "\"; ";
+                "WHERE productItemCode= \"" + productItemCode + "\" AND locationID= \"" + locationID + "\"; ";
         int i= stmt.executeUpdate(sql);
         conn.close();
         stmt.close();

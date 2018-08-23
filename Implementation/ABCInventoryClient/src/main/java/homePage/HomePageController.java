@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import manageProduct.ManageProductController;
 import manageStaff.ManageStaffController;
 import reportTransfer.ReportTransferController;
 import searchProduct.SearchProductController;
@@ -44,8 +45,13 @@ public class HomePageController {
     }
     @FXML
     public void handleManageProduct() throws IOException{
-        //creating anchor pane for ManageProduct (add product) console
-        AnchorPane pane= FXMLLoader.load(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+        BorderPane pane = loader.load();
+
+        ManageProductController myController = loader.getController();
+
+        //Set Data to FXML through controller
+        myController.showAllProducts();
         anchorPane.getChildren().setAll(pane);
     }
 
