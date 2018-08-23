@@ -8,6 +8,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.util.Duration?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transferProduct.AcceptTransferItemController">
     <children>
         <BorderPane fx:id="mainPanel" prefHeight="574.0" prefWidth="939.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
@@ -35,7 +38,25 @@
                             </TableColumn>
                         </columns>
                     </TableView>
-                    <Button fx:id="btnAccpet" mnemonicParsing="false" onAction="#handleAcceptProducts" prefHeight="27.0" prefWidth="132.0" text="Accept Products" alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" alignment="CENTER">
+                        <Button fx:id="btnAccpet" mnemonicParsing="false" prefHeight="30" prefWidth="125" onAction="#handleAcceptProducts"  >
+                            <tooltip>
+                                <Tooltip text="Accept this Transfer">
+                                    <showDelay>
+                                        <Duration millis="10"/>
+                                    </showDelay>
+                                </Tooltip>
+                            </tooltip>
+                            <graphic>
+                                <ImageView fitHeight="30" fitWidth="125" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="/image/SubmitIcon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </VBox>
+
                 </GridPane>
             </center>
             <padding>

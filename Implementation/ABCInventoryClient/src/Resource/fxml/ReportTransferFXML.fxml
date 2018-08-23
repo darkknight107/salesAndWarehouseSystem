@@ -9,18 +9,53 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.shape.Box?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reportTransfer.ReportTransferController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.util.Duration?>
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/css/TableView.css" fx:controller="reportTransfer.ReportTransferController">
     <children>
         <BorderPane fx:id="mainPanel" prefHeight="574.0" prefWidth="939.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
             <top>
                 <GridPane hgap="10.0" vgap="10.0">
                     <Label text="Enter Transfer ID:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                     <TextField fx:id="txtSearch" onAction="#handleSearchTransferAction" prefHeight="27.0" prefWidth="402.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    <Label text="From: " GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                    <DatePicker fx:id="fromDatePicker" onAction="#handleFromDatePicker" prefHeight="25.0" prefWidth="119.0" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-                    <Label text="To: " GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                    <DatePicker fx:id="toDatePicker" onAction="#handleToDatePicker" prefHeight="25.0" prefWidth="119.0"  GridPane.columnIndex="5" GridPane.rowIndex="1"/>
-                    <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#handleSearchTransferAction"  text="Search" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#handleSearchTransferAction"  GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <tooltip>
+                            <Tooltip text="Search Transfer ID">
+                                <showDelay>
+                                    <Duration millis="10"/>
+                                </showDelay>
+                            </Tooltip>
+                        </tooltip>
+                        <graphic>
+                            <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="/image/SearchIcon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Label text="From: " GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                    <DatePicker fx:id="fromDatePicker" onAction="#handleFromDatePicker" prefHeight="25.0" prefWidth="119.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                        <tooltip>
+                            <Tooltip text="From Date">
+                                <showDelay>
+                                    <Duration millis="10"/>
+                                </showDelay>
+                            </Tooltip>
+                        </tooltip>
+                    </DatePicker>
+                    <Label text="To: " GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                    <DatePicker fx:id="toDatePicker" onAction="#handleToDatePicker" prefHeight="25.0" prefWidth="119.0"  GridPane.columnIndex="6" GridPane.rowIndex="1">
+                        <tooltip>
+                            <Tooltip text="To Date">
+                                <showDelay>
+                                    <Duration millis="10"/>
+                                </showDelay>
+                            </Tooltip>
+                        </tooltip>
+                    </DatePicker>
+                    <Label text="" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
 
                 </GridPane>
             </top>
