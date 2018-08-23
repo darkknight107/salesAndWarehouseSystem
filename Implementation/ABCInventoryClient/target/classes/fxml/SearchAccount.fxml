@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="searchAccount.SearchAccountController">
+   <children>
+      <AnchorPane layoutX="-39.0" layoutY="-10.0" prefHeight="416.0" prefWidth="611.0">
+         <children>
+            <TextField fx:id="usernameTextField" layoutX="133.0" layoutY="161.0" prefHeight="27.0" prefWidth="345.0" promptText="ENTER USERNAME" />
+            <Text layoutX="185.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTORY MANAGEMENT SYSTEM" wrappingWidth="292.322265625" />
+            <Button fx:id="btnLogin" layoutX="145.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleSearchAccountCodeAction" prefHeight="27.0" prefWidth="154.0" text="Log In" />
+            <Button fx:id="btnClear" layoutX="361.0" layoutY="312.0" mnemonicParsing="false" onAction="#clear" prefHeight="27.0" prefWidth="102.0" text="Clear" />
+            <PasswordField fx:id="passwordTextField" layoutX="133.0" layoutY="235.0" prefHeight="27.0" prefWidth="345.0" promptText="ENTER PASSWORD" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
