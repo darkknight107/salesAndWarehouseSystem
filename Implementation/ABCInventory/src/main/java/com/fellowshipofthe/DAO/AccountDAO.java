@@ -2,52 +2,46 @@ package com.fellowshipofthe.DAO;
 
 import com.fellowshipofthe.DatabaseConnection;
 import com.fellowshipofthe.entityClasses.SearchAccount;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class AccountDAO {
-    private static List<SearchAccount> userAccounts;
     private static DatabaseConnection dbconnet;
     private static Connection conn;
 
 
-    public AccountDAO() {userAccounts = new ArrayList<>();}
+    public AccountDAO() {}
 
 
-    public static List<SearchAccount>  searchAccount(String username, String password) {
-        try {
+    public Boolean  searchAccount(String username, String password) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
             dbconnet = new DatabaseConnection();
             conn = dbconnet.connect();
-            String sql = " SELECT USER.username, \n" +
-                    "   AND USER.password. \n" +
-                    "FROM user \n" ;
+            System.out.println(username + password);
+            String sql = " SELECT Staff.userName, \n" +
+                    "   Staff.pWord \n" +
+                    "FROM Staff \n" +
+                    "WHERE Staff.userName = \"" + username + "\" AND Staff.pWord =  \"" + password + "\";";
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(sql);
-            while (resultSet.next()) {
-                SearchAccount userAccount = new SearchAccount();
-                userAccount.setUsername(resultSet.getString(2));
-                userAccount.setPassword(resultSet.getString(4));
 
-                userAccounts.add(userAccount);
+            if (resultSet.next()) {
+                conn.close ( );
+                stmt.close ( );
+                System.out.println ("matched");
+                return true;
             }
-        } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            // Always make sure result sets and statements are closed,
-            // and the connection is returned to the pool
-            try {
-                if (conn != null)
-                    conn.close();
-            } catch (SQLException ignore) {
+            else{
+                conn.close ();
+                stmt.close ();
+                System.out.println ("not found");
+                return false;
             }
-        }
-        return userAccounts;
+
+
     }
 
 
