@@ -6,14 +6,85 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
 <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homePage.HomePageController">
    <children>
-      <Button fx:id="searchProduct" layoutX="87.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSearchProduct" prefHeight="36.0" prefWidth="115.0" text="Search Product" />
-      <Button fx:id="sendProduct" layoutX="243.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSendProduct" prefHeight="36.0" prefWidth="115.0" text="Send Product" />
-      <Button fx:id="acceptProduct" layoutX="389.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleAcceptProduct" prefHeight="36.0" prefWidth="115.0" text="Accept Product" />
-      <Button fx:id="manageProduct" layoutX="87.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageProduct" prefHeight="36.0" prefWidth="115.0" text="Manage Product " />
-      <Button fx:id="manageStaff" layoutX="243.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageStaff" prefHeight="36.0" prefWidth="115.0" text="Manage Staff" />
-       <Button fx:id="generateReport" layoutX="389.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleGenerateReport" prefHeight="36.0" prefWidth="115.0" text="Generate Report" />
+      <Button fx:id="searchProduct" layoutX="87.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSearchProduct" prefHeight="36.0" prefWidth="115.0"  >
+          <tooltip>
+              <Tooltip text="Search Product"/>
+          </tooltip>
+          <graphic>
+              <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="/image/SearchIcon.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+
+       <Button fx:id="sendProduct" layoutX="243.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSendProduct" prefHeight="36.0" prefWidth="115.0">
+           <tooltip>
+               <Tooltip text="Send Product"/>
+           </tooltip>
+           <graphic>
+               <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="/image/SendProductIcon.png" />
+                   </image>
+               </ImageView>
+           </graphic>
+       </Button>
+       <Button fx:id="acceptProduct" layoutX="389.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleAcceptProduct" prefHeight="36.0" prefWidth="115.0"  >
+           <tooltip>
+               <Tooltip text="Accept Product"/>
+           </tooltip>
+           <graphic>
+               <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="/image/AcceptProductIcon.png" />
+                   </image>
+               </ImageView>
+           </graphic>
+       </Button>
+       <Button fx:id="manageProduct" layoutX="87.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageProduct" prefHeight="36.0" prefWidth="115.0" >
+           <tooltip>
+               <Tooltip text="Manage Product"/>
+           </tooltip>
+           <graphic>
+               <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="/image/ManageProductIcon.png" />
+                   </image>
+               </ImageView>
+           </graphic>
+       </Button>
+      <Button fx:id="manageStaff" layoutX="243.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleManageStaff" prefHeight="36.0" prefWidth="115.0"  >
+          <tooltip>
+              <Tooltip text="Manage Staff"/>
+          </tooltip>
+          <graphic>
+              <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="/image/ManageStaffIcon.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+
+       <Button fx:id="generateReport" layoutX="389.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleGenerateReport" prefHeight="36.0" prefWidth="115.0" >
+           <tooltip>
+               <Tooltip text="Generate Report"/>
+           </tooltip>
+           <graphic>
+               <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="/image/GenerateReportIcon.png" />
+                   </image>
+               </ImageView>
+           </graphic>
+       </Button>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
