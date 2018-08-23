@@ -7,20 +7,20 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Staff;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import manageProduct.AddProductController;
 import manageProduct.AppScreen;
 
 import java.io.IOException;
+
+import static java.lang.System.exit;
 
 
 public class AddStaffController {
@@ -29,6 +29,8 @@ public class AddStaffController {
     //listing fxml elements
     @FXML
     AnchorPane anchorPane;
+    @FXML
+    Button addStaffButton;
     @FXML
     TextField firstNameField;
     @FXML
@@ -58,10 +60,11 @@ public class AddStaffController {
     }
 
     public void addStaff() throws IOException {
+        resetTextStyle();
         if (!(firstNameField.getText().isEmpty()) && !(lastNameField.getText().isEmpty()) && !(emailField.getText().isEmpty()) &&
                 !(phoneField.getText().isEmpty()) && !(userNameField.getText().isEmpty()) && !(passwordField.getText().isEmpty())
                 && !(passwordField1.getText().isEmpty()) && locationComboBox.getValue() != null){
-            resetTextStyle();
+
             staff.setFirstName(firstNameField.getText());
             staff.setLastName(lastNameField.getText());
             staff.setEmail(emailField.getText());
@@ -69,9 +72,28 @@ public class AddStaffController {
             staff.setAddress(addressField.getText());
             String locationID= convertLocationName((String) locationComboBox.getValue());
             staff.setDateOfBirth(String.valueOf(dobPicker.getValue()));
-            System.out.println(String.valueOf(dobPicker.getValue()));
             staff.setUserName(userNameField.getText());
-            verifyPassword();
+            staff.setPassword(passwordField.getText());
+            /*//using boolean bind to disable update button when password fields are empty
+            BooleanBinding bb= new BooleanBinding() {
+                {
+                    super.bind(passwordField.textProperty(), passwordField1.textProperty());
+                }
+                @Override
+                protected boolean computeValue() {
+                    return (passwordField.getText().isEmpty() || passwordField1.getText().isEmpty());
+                }
+            };
+            addStaffButton.disableProperty().bind(bb);
+            //verifyPassword();
+            if (passwordField.getText().equals(passwordField1.getText())){
+                staff.setPassword(passwordField.getText());
+            }
+            else{
+                screen.alertMessages("Passwords do not match.", "The passwords you entered do not match.");
+                passwordField.setText("");
+                passwordField1.setText("");
+            }*/
             staff.setLocationID(locationID);
             //creating a new client to send post request
             ClientConfig clientConfig= new DefaultClientConfig();
@@ -94,6 +116,7 @@ public class AddStaffController {
             else if(responseValue.equals("exists")){
                 screen.alertMessages("Username already exists!", "The username entered already exists. Please enter a unique username.");
                 userNameField.setText("");
+                exit(0);
             }
             else{
                 screen.alertMessages("Error!", "An Error occured! Please try again.");
@@ -103,28 +126,28 @@ public class AddStaffController {
             screen.alertMessages("Incomplete Field!", "Please fill in all the required fields.");
 
             if (firstNameField.getText().isEmpty()) {
-                firstNameField.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+                firstNameField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
             if (lastNameField.getText().isEmpty()) {
-                lastNameField.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+                lastNameField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
             if (emailField.getText().isEmpty()) {
-                emailField.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+                emailField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
             if (phoneField.getText().isEmpty()) {
-                phoneField.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+                phoneField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
             if (userNameField.getText().isEmpty()) {
-                userNameField.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+                userNameField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
             if (passwordField.getText().isEmpty()) {
-                passwordField.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+                passwordField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
             if (passwordField1.getText().isEmpty()) {
-                passwordField1.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+                passwordField1.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
             if (locationComboBox.getValue() == null) {
-                locationComboBox.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+                locationComboBox.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
         }
 
@@ -148,18 +171,19 @@ public class AddStaffController {
         }
         return locationID;
     }
-    public void verifyPassword(){
+    /*public void verifyPassword(){
         if(passwordField.getText().equals(passwordField1.getText())){
             passwordField.setStyle(null);
             passwordField1.setStyle(null);
             staff.setPassword(passwordField.getText());
         }
         else{
-            passwordField.setStyle("-fx-border-color:red; -fx-border-width: 2px");
-            passwordField1.setStyle("-fx-border-color:red; -fx-border-width: 2px");
+            passwordField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            passwordField1.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+
         }
 
-    }
+    }*/
 
     public void resetTextStyle(){
         firstNameField.setStyle(null);
