@@ -34,7 +34,7 @@ public class HomePageController {
 //        myController.showAllProducts();
 //        anchorPane.getChildren().setAll(pane);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
         AnchorPane pane = loader.load();
 
         SearchProductController myController = loader.getController();
