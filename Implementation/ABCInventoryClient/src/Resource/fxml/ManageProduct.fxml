@@ -13,10 +13,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.ManageProductController">
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.ManageProductController">
    <top>
-      <VBox prefHeight="86.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="100.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar>
               <menus>
@@ -26,7 +27,50 @@
                   </items>
                 </Menu>
               </menus>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
             </MenuBar>
+            <HBox prefHeight="57.0" prefWidth="700.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Button">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="400.0" text="ABC INVENTORY MANAGEMENT">
+                     <font>
+                        <Font name="Roboto" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" right="50.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Button">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Button">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="700.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox prefHeight="328.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
             <HBox prefHeight="60.0" prefWidth="600.0">
                <children>
                   <Label prefHeight="37.0" prefWidth="105.0" text="Product Code">
@@ -50,39 +94,40 @@
                      </HBox.margin>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="10.0" />
+               </VBox.margin>
             </HBox>
+            <TableView fx:id="productView" maxWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
+              <columns>
+                <TableColumn fx:id="actionColumn" prefWidth="187.0" resizable="false" text="Action">
+          </TableColumn>
+                <TableColumn fx:id="productCodeColumn" prefWidth="104.0" resizable="false" text="Product Code">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="productCode" />
+                    </cellValueFactory>
+                </TableColumn>
+                  <TableColumn fx:id="productNameColumn" minWidth="0.0" prefWidth="153.0" resizable="false" text="Product Name">
+                      <cellValueFactory>
+                          <PropertyValueFactory property="productName" />
+                      </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="priceColumn" prefWidth="78.0" resizable="false" text="Price">
+                      <cellValueFactory>
+                          <PropertyValueFactory property="price" />
+                      </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="descriptionColumn" editable="false" prefWidth="178.0" resizable="false" text="Description ">
+                      <cellValueFactory>
+                          <PropertyValueFactory property="description" />
+                      </cellValueFactory>
+                  </TableColumn>
+              </columns>
+            </TableView>
          </children>
-      </VBox>
-   </top>
-   <left>
-      <TableView fx:id="productView" maxWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="actionColumn" prefWidth="187.0" resizable="false" text="Action">
-          </TableColumn>
-          <TableColumn fx:id="productCodeColumn" prefWidth="104.0" resizable="false" text="Product Code">
-              <cellValueFactory>
-                  <PropertyValueFactory property="productCode" />
-              </cellValueFactory>
-          </TableColumn>
-            <TableColumn fx:id="productNameColumn" minWidth="0.0" prefWidth="153.0" resizable="false" text="Product Name">
-                <cellValueFactory>
-                    <PropertyValueFactory property="productName" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="priceColumn" prefWidth="78.0" resizable="false" text="Price">
-                <cellValueFactory>
-                    <PropertyValueFactory property="price" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="descriptionColumn" editable="false" prefWidth="178.0" resizable="false" text="Description ">
-                <cellValueFactory>
-                    <PropertyValueFactory property="description" />
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
          <BorderPane.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" />
+            <Insets left="50.0" />
          </BorderPane.margin>
-      </TableView>
-   </left>
+      </VBox>
+   </center>
 </BorderPane>

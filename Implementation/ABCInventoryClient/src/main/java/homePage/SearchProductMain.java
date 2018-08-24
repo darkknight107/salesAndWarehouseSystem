@@ -10,9 +10,14 @@ public class SearchProductMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/SearchAccount.fxml"));
+
         primaryStage.setTitle("ABC Inventory Management Tool");
         primaryStage.setScene(new Scene(root, 1400, 750));
+        primaryStage.setMaximized(true);
+        //primaryStage.setFullScreen(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
