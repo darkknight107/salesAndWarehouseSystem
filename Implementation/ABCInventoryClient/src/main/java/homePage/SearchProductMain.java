@@ -15,6 +15,9 @@ public class SearchProductMain extends Application {
 
         primaryStage.setTitle("ABC Inventory Management Tool");
         primaryStage.setScene(new Scene(root, 1400, 750));
+        primaryStage.setMaximized(true);
+        //primaryStage.setFullScreen(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

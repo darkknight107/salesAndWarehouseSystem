@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Shirish
-=======
-Built-By: arik
->>>>>>> 7e5dc083e67de30c3c7badf4f301f2bd370b7729
 Created-By: IntelliJ IDEA
 Build-Jdk: 1.8.0_171
 
