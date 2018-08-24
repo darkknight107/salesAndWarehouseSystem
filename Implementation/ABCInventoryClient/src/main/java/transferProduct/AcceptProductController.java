@@ -15,7 +15,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import manageProduct.AppScreen;
 
 import javax.ws.rs.WebApplicationException;
@@ -95,7 +98,16 @@ public class AcceptProductController {
     private void addDetailButton(){
         // Create the "Detail" button for each row and define the action for it
         displayView.setCellFactory(col ->{
-            Button viewButton = new Button("Detail");
+            Image image = new Image("image/DetailButtonIcon.png");
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(15);
+            imageView.setFitWidth(15);
+
+            Button viewButton = new Button("", imageView);
+            Tooltip tooltip = new Tooltip("View products in this transfer");
+            tooltip.setShowDelay(Duration.millis(10));
+            viewButton.setTooltip(tooltip);
+
             TableCell<Transfer, Transfer> cell = new TableCell<Transfer, Transfer>() {
                 @Override
                 //the buttons are only displayed for the row have data

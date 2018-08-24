@@ -8,6 +8,9 @@
 
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.util.Duration?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="searchProduct.SearchProductItemController">
     <children>
         <BorderPane fx:id="mainPanel" prefHeight="574.0" prefWidth="939.0">
@@ -15,7 +18,22 @@
                 <GridPane hgap="10.0" vgap="10.0">
                     <Label text="Enter Product Item Code:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                     <TextField fx:id="txtSearch" onAction="#handleSearchProductItemCodeAction" prefHeight="27.0" prefWidth="502.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                    <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#handleSearchProductItemCodeAction"  text="Search" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#handleSearchProductItemCodeAction"  GridPane.columnIndex="2" GridPane.rowIndex="1" >
+                        <tooltip>
+                            <Tooltip text="Search Product">
+                                <showDelay>
+                                    <Duration millis="10"/>
+                                </showDelay>
+                            </Tooltip>
+                        </tooltip>
+                        <graphic>
+                            <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="/image/SearchIcon.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
                 </GridPane>
             </top>
             <center>
