@@ -14,9 +14,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import searchProduct.SearchProductItemController;
 
 import javax.ws.rs.WebApplicationException;
@@ -57,11 +60,51 @@ public class ManageProductController{
     public void displayActionButtons() {
         // Create the "Detail" button for each row and define the action for it
         actionColumn.setCellFactory(col -> {
-            Button updateButton = new Button("Edit");
-            Button deleteButton = new Button("Delete");
-            Button addProductItem= new Button("Add PI");
-            Button showStoredProducts= new Button ("Show SP");
-            HBox hBox = new HBox(updateButton, deleteButton, addProductItem, showStoredProducts);
+            //Tooltip and image icon for edit button
+            Image editImage = new Image("image/UpdateButtonIcon.png");
+            ImageView editImageView = new ImageView(editImage);
+            editImageView.setFitHeight(15);
+            editImageView.setFitWidth(15);
+
+            Button updateButton = new Button("", editImageView);
+            Tooltip editTooltip = new Tooltip("Edit details for this product");
+            editTooltip.setShowDelay(Duration.millis(10));
+            updateButton.setTooltip(editTooltip);
+
+            //Tooltip and image icon for delete button
+            Image deleteImage = new Image("image/DeleteButtonIcon.png");
+            ImageView deleteImageView = new ImageView(deleteImage);
+            deleteImageView.setFitHeight(15);
+            deleteImageView.setFitWidth(15);
+
+            Button deleteButton = new Button("", deleteImageView);
+            Tooltip deleteTooltip = new Tooltip("Delete this product");
+            deleteTooltip.setShowDelay(Duration.millis(10));
+            deleteButton.setTooltip(deleteTooltip);
+
+            //Tooltip and image icon for add product item button
+            Image addProductItemImage = new Image("image/InsertButtonIcon.png");
+            ImageView addProductItemImageView = new ImageView(addProductItemImage);
+            addProductItemImageView.setFitHeight(15);
+            addProductItemImageView.setFitWidth(15);
+
+            Button addProductItemButton = new Button("", addProductItemImageView);
+            Tooltip addProductItemTooltip = new Tooltip("Add product item for this product");
+            addProductItemTooltip.setShowDelay(Duration.millis(10));
+            addProductItemButton.setTooltip(addProductItemTooltip);
+
+            //Tooltip and image icon for show product detail button
+            Image showProductDetailImage = new Image("image/DetailButtonIcon.png");
+            ImageView showProductDetailImageView = new ImageView(showProductDetailImage);
+            showProductDetailImageView.setFitHeight(15);
+            showProductDetailImageView.setFitWidth(15);
+
+            Button showProductDetailButton = new Button("", showProductDetailImageView);
+            Tooltip showProductDetailTooltip = new Tooltip("Show details of this product");
+            showProductDetailTooltip.setShowDelay(Duration.millis(10));
+            showProductDetailButton.setTooltip(showProductDetailTooltip);
+
+            HBox hBox = new HBox(updateButton, deleteButton, addProductItemButton, showProductDetailButton);
             TableCell<Product, Product> cell = new TableCell<Product, Product>() {
                 @Override
                 //the buttons are only displayed for the row have data
@@ -121,7 +164,7 @@ public class ManageProductController{
                 catch (IOException e1) {
                 }
             });
-            addProductItem.setOnAction(e ->{
+            addProductItemButton.setOnAction(e ->{
                 try {
                     productView.getSelectionModel().select(cell.getIndex());
                     //getting the selected staff username
@@ -137,7 +180,7 @@ public class ManageProductController{
                     e1.printStackTrace();
                 }
             });
-            showStoredProducts.setOnAction(e -> {
+            showProductDetailButton.setOnAction(e -> {
                 productView.getSelectionModel().select(cell.getIndex());
                 String selectedProductCode = productView.getSelectionModel().getSelectedItem().getProductCode();
                 setSELECTED_PRODUCT_CODE(selectedProductCode);

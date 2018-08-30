@@ -15,7 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.ManageProductController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.util.Duration?>
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/css/TableView.css" fx:controller="manageProduct.ManageProductController">
    <top>
       <VBox prefHeight="100.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
@@ -83,13 +87,41 @@
                         <Insets right="5.0" top="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearchButton" text="Search">
-                     <HBox.margin>
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearchButton">
+                      <tooltip>
+                          <Tooltip text="Search Product">
+                              <showDelay>
+                                  <Duration millis="10"/>
+                              </showDelay>
+                          </Tooltip>
+                      </tooltip>
+                      <graphic>
+                          <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="/image/SearchIcon.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="addNewProductButton" mnemonicParsing="false" onAction="#handleAddNewProductButton" prefHeight="25.0" prefWidth="77.0" text="Add New Product">
-                     <HBox.margin>
+                  <Button fx:id="addNewProductButton" mnemonicParsing="false" onAction="#handleAddNewProductButton">
+                      <tooltip>
+                          <Tooltip text="Add New Product">
+                              <showDelay>
+                                  <Duration millis="10"/>
+                              </showDelay>
+                          </Tooltip>
+                      </tooltip>
+                      <graphic>
+                          <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="/image/AddNewProductIcon.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                      <HBox.margin>
                         <Insets left="5.0" top="20.0" />
                      </HBox.margin>
                   </Button>

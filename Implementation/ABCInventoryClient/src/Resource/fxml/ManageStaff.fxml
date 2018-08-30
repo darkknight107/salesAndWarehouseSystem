@@ -13,7 +13,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.ManageStaffController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.util.Duration?>
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/css/TableView.css" fx:controller="manageStaff.ManageStaffController">
    <children>
       <MenuBar layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -86,13 +90,41 @@
                   <Insets />
                </HBox.margin>
             </TextField>
-            <Button fx:id="searchStaffButton" mnemonicParsing="false" onAction="#handleSearchStaffButton" text="Search">
-               <HBox.margin>
+            <Button fx:id="searchStaffButton" mnemonicParsing="false" onAction="#handleSearchStaffButton">
+                <tooltip>
+                    <Tooltip text="Search Staff">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/SearchIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="addNewStaffButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#handleAddNewStaffButton" prefHeight="25.0" prefWidth="94.0" text="Add New Staff">
-               <HBox.margin>
+            <Button fx:id="addNewStaffButton" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#handleAddNewStaffButton">
+                <tooltip>
+                    <Tooltip text="Add New Staff">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/InsertButtonIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </Button>
