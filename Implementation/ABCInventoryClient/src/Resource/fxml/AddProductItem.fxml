@@ -15,7 +15,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductItemController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.util.Duration?>
+<BorderPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductItemController">
    <center>
       <GridPane maxHeight="400.0" maxWidth="700.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -51,7 +55,22 @@
                </GridPane.margin>
             </ComboBox>
             <ComboBox fx:id="locationComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" text="Add Products" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" GridPane.columnIndex="1" GridPane.rowIndex="4" >
+                <tooltip>
+                    <Tooltip text="Add this product to system">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/SubmitIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
             <Label text="Size" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="100.0" />
