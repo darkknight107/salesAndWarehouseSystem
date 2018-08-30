@@ -15,7 +15,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.AddStaffController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.util.Duration?>
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.AddStaffController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -70,7 +74,37 @@
             <PasswordField fx:id="passwordField1" promptText="Confrim password" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
-      <Button fx:id="addStaffButton" layoutX="206.0" layoutY="355.0" mnemonicParsing="false" onAction="#addStaff" text="Add Staff" />
-      <Button fx:id="resetButton" layoutX="284.0" layoutY="355.0" mnemonicParsing="false" text="Reset" />
+      <Button fx:id="addStaffButton" layoutX="206.0" layoutY="355.0" mnemonicParsing="false" onAction="#addStaff" >
+          <tooltip>
+              <Tooltip text="Add new staff">
+                  <showDelay>
+                      <Duration millis="10"/>
+                  </showDelay>
+              </Tooltip>
+          </tooltip>
+          <graphic>
+              <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="/image/SubmitIcon.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+      <Button fx:id="resetButton" layoutX="284.0" layoutY="355.0" mnemonicParsing="false" >
+          <tooltip>
+              <Tooltip text="Clear texts">
+                  <showDelay>
+                      <Duration millis="10"/>
+                  </showDelay>
+              </Tooltip>
+          </tooltip>
+          <graphic>
+              <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="/image/ClearButtonIcon.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
    </children>
 </AnchorPane>

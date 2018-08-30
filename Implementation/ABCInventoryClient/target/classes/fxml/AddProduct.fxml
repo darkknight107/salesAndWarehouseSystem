@@ -8,7 +8,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.util.Duration?>
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -27,7 +31,37 @@
       <Label fx:id="productNameLabel" layoutX="72.0" layoutY="141.0" text="Product Name" />
       <Label fx:id="priceLabel" layoutX="121.0" layoutY="175.0" text="Price" />
       <Label fx:id="descriptionLabel" layoutX="91.0" layoutY="213.0" text="Description" />
-      <Button fx:id="nextButton" layoutX="127.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleAddProductNext" text="Next" />
-      <Button fx:id="resetButton" layoutX="177.0" layoutY="261.0" mnemonicParsing="false" onAction="#clearTextFields" text="Reset" />
+      <Button fx:id="nextButton" layoutX="127.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleAddProductNext">
+          <tooltip>
+              <Tooltip text="Add Product Items for this new Product">
+                  <showDelay>
+                      <Duration millis="10"/>
+                  </showDelay>
+              </Tooltip>
+          </tooltip>
+          <graphic>
+              <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="/image/SubmitIcon.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
+      <Button fx:id="resetButton" layoutX="177.0" layoutY="261.0" mnemonicParsing="false" onAction="#clearTextFields" >
+          <tooltip>
+              <Tooltip text="Clear texts">
+                  <showDelay>
+                      <Duration millis="10"/>
+                  </showDelay>
+              </Tooltip>
+          </tooltip>
+          <graphic>
+              <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="/image/ClearButtonIcon.png" />
+                  </image>
+              </ImageView>
+          </graphic>
+      </Button>
    </children>
 </AnchorPane>

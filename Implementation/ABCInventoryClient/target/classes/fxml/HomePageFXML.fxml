@@ -10,7 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.util.Duration?>
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homePage.HomePageController" >
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="homePage.HomePageController" >
    <children>
       <Button fx:id="searchProduct"  layoutX="87.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleSearchProduct" prefHeight="36.0" prefWidth="115.0"  >
           <tooltip>

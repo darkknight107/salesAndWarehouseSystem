@@ -11,7 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.util.Duration?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/css/TableView.css" fx:controller="searchProduct.SearchProductController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9"  xmlns:fx="http://javafx.com/fxml/1" stylesheets="/css/TableView.css" fx:controller="searchProduct.SearchProductController">
     <children>
         <BorderPane fx:id="mainPanel" prefHeight="574.0" prefWidth="939.0">
             <top>
@@ -44,7 +44,6 @@
                     </columnResizePolicy>
                     <columns>
                         <TableColumn fx:id="displayView" text="Action">
-
                         </TableColumn>
                         <TableColumn prefWidth="76.0" text="Product Code">
                             <cellValueFactory>

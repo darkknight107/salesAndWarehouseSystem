@@ -14,8 +14,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import manageProduct.AppScreen;
 import manageProduct.UpdateProductController;
 
@@ -49,8 +52,28 @@ public class ManageStaffController {
     public void displayActionButtons() {
         // Create the "Detail" button for each row and define the action for it
         actionColumn.setCellFactory(col -> {
-            Button updateButton = new Button("Edit");
-            Button deleteButton = new Button("Delete");
+            //Tooltip and image icon for edit button
+            Image editImage = new Image("image/UpdateButtonIcon.png");
+            ImageView editImageView = new ImageView(editImage);
+            editImageView.setFitHeight(15);
+            editImageView.setFitWidth(15);
+
+            Button updateButton = new Button("", editImageView);
+            Tooltip editTooltip = new Tooltip("Update details for this staff");
+            editTooltip.setShowDelay(Duration.millis(10));
+            updateButton.setTooltip(editTooltip);
+
+            //Tooltip and image icon for delete button
+            Image deleteImage = new Image("image/DeleteButtonIcon.png");
+            ImageView deleteImageView = new ImageView(deleteImage);
+            deleteImageView.setFitHeight(15);
+            deleteImageView.setFitWidth(15);
+
+            Button deleteButton = new Button("", deleteImageView);
+            Tooltip deleteTooltip = new Tooltip("Delete this staff detail");
+            deleteTooltip.setShowDelay(Duration.millis(10));
+            deleteButton.setTooltip(deleteTooltip);
+
             HBox hBox = new HBox(updateButton, deleteButton);
             TableCell<Staff, Staff> cell = new TableCell<Staff, Staff>() {
                 @Override

@@ -15,7 +15,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.UpdateStaffController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.util.Duration?>
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.UpdateStaffController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="601.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -64,7 +68,22 @@
       </GridPane>
       <HBox layoutX="185.0" layoutY="339.0" prefHeight="38.0" prefWidth="185.0">
          <children>
-            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#handleUpdateButton" text="Update" />
+            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#handleUpdateButton" >
+                <tooltip>
+                    <Tooltip text="Update Staff">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/SubmitIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
          </children>
       </HBox>
    </children>
