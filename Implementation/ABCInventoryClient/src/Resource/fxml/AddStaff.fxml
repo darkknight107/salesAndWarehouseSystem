@@ -19,7 +19,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.util.Duration?>
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.AddStaffController">
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.AddStaffController" styleClass="mainPane" stylesheets="@../css/Pane.css">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>

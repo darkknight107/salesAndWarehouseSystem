@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.util.Duration?>
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/css/TableView.css" fx:controller="searchAccount.SearchAccountController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="searchAccount.SearchAccountController" styleClass="mainPane" stylesheets="@../css/Pane.css">
    <children>
       <AnchorPane layoutX="-39.0" layoutY="-10.0" prefHeight="416.0" prefWidth="611.0">
          <children>

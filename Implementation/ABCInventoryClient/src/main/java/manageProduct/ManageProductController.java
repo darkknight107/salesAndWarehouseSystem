@@ -36,6 +36,8 @@ public class ManageProductController{
     @FXML
     Button searchButton;
     @FXML
+    Button backButton;
+    @FXML
     Button addNewProductButton;
     @FXML
     TableView<Product> productView;
@@ -67,6 +69,7 @@ public class ManageProductController{
             editImageView.setFitWidth(15);
 
             Button updateButton = new Button("", editImageView);
+            updateButton.setLineSpacing(5);
             Tooltip editTooltip = new Tooltip("Edit details for this product");
             editTooltip.setShowDelay(Duration.millis(10));
             updateButton.setTooltip(editTooltip);
@@ -78,6 +81,7 @@ public class ManageProductController{
             deleteImageView.setFitWidth(15);
 
             Button deleteButton = new Button("", deleteImageView);
+            deleteButton.setLineSpacing(5);
             Tooltip deleteTooltip = new Tooltip("Delete this product");
             deleteTooltip.setShowDelay(Duration.millis(10));
             deleteButton.setTooltip(deleteTooltip);
@@ -89,6 +93,7 @@ public class ManageProductController{
             addProductItemImageView.setFitWidth(15);
 
             Button addProductItemButton = new Button("", addProductItemImageView);
+            addProductItemButton.setLineSpacing(5);
             Tooltip addProductItemTooltip = new Tooltip("Add product item for this product");
             addProductItemTooltip.setShowDelay(Duration.millis(10));
             addProductItemButton.setTooltip(addProductItemTooltip);
@@ -100,6 +105,7 @@ public class ManageProductController{
             showProductDetailImageView.setFitWidth(15);
 
             Button showProductDetailButton = new Button("", showProductDetailImageView);
+            showProductDetailButton.setLineSpacing(5);
             Tooltip showProductDetailTooltip = new Tooltip("Show details of this product");
             showProductDetailTooltip.setShowDelay(Duration.millis(10));
             showProductDetailButton.setTooltip(showProductDetailTooltip);
@@ -263,6 +269,12 @@ public class ManageProductController{
     }
     public String getSELECTED_PRODUCT_CODE(){
         return SELECTED_PRODUCT_CODE;
+    }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        pane = loader.load();
+        borderPane.getChildren().setAll(pane);
     }
 
 

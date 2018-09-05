@@ -100,7 +100,7 @@ public class UpdateStaffController {
             screen.alertMessages("Error!", "Product could not be updated!");
         }
 
-    }
+    }ssh
     public void setStaffData(Staff staff){
         //setting the items that can be selected in the combo box
         locationList= FXCollections.observableArrayList("Newtown Warehouse", "Epping Store", "Oxford Store");
