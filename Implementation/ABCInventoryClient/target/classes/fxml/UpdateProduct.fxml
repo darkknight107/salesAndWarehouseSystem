@@ -33,7 +33,7 @@
          <children>
             <Label text="Product Code" />
             <TextField fx:id="productCodeField" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" />
-            <Label prefHeight="17.0" prefWidth="86.0" text="Product Name" GridPane.rowIndex="1" />
+            <Label prefHeight="17.0" prefWidth="149.0" text="Product Name" GridPane.rowIndex="1" />
             <Label text="Price" GridPane.rowIndex="2" />
             <Label text="Description" GridPane.rowIndex="3" />
             <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
