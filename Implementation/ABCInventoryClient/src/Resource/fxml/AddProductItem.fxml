@@ -19,7 +19,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.util.Duration?>
-<BorderPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductItemController">
+<BorderPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductItemController" styleClass="mainPane" stylesheets="@../css/Pane.css">
    <center>
       <GridPane maxHeight="400.0" maxWidth="700.0" BorderPane.alignment="CENTER">
         <columnConstraints>

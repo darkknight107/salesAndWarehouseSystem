@@ -10,18 +10,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.util.Duration?>
-<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/css/TableView.css" fx:controller="manageProduct.ManageProductController">
+<BorderPane fx:id="borderPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.ManageProductController" styleClass="mainPane" stylesheets="@../css/Pane.css">
    <top>
-      <VBox prefHeight="100.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar>
               <menus>
@@ -32,48 +29,63 @@
                 </Menu>
               </menus>
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets />
                </VBox.margin>
             </MenuBar>
-            <HBox prefHeight="57.0" prefWidth="700.0">
+            <HBox prefHeight="77.0" prefWidth="750.0" styleClass="optionsBar" stylesheets="@../css/OptionsBar.css">
                <children>
-                  <Button mnemonicParsing="false" text="Button">
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton">
+                      <graphic>
+                      <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="/image/BackButtonIcon.png" />
+                          </image>
+                      </ImageView>
+                      </graphic>
                      <HBox.margin>
-                        <Insets left="20.0" top="10.0" />
+                        <Insets left="50.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Label maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="400.0" text="ABC INVENTORY MANAGEMENT">
-                     <font>
-                        <Font name="Roboto" size="25.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="50.0" right="50.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button fx:id="mainMenuButton" mnemonicParsing="false">
+                            <graphic>
+                                <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="/image/HomePageIcon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
                            <VBox.margin>
-                              <Insets />
+                              <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button fx:id="logoutButton" mnemonicParsing="false">
+                            <graphic>
+                                <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="/image/LogoutIcon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
                            <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Button>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></Button>
                      </children>
                      <HBox.margin>
-                        <Insets left="700.0" />
+                        <Insets left="1200.0" top="10.0" />
                      </HBox.margin>
                   </VBox>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
    </top>
    <center>
-      <VBox prefHeight="328.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="328.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="60.0" prefWidth="600.0">
                <children>
@@ -88,13 +100,14 @@
                      </HBox.margin>
                   </TextField>
                   <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearchButton">
-                      <tooltip>
+                      <!--<tooltip>
                           <Tooltip text="Search Product">
                               <showDelay>
+
                                   <Duration millis="10"/>
                               </showDelay>
                           </Tooltip>
-                      </tooltip>
+                      </tooltip>-->
                       <graphic>
                           <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
                               <image>
@@ -107,13 +120,13 @@
                      </HBox.margin>
                   </Button>
                   <Button fx:id="addNewProductButton" mnemonicParsing="false" onAction="#handleAddNewProductButton">
-                      <tooltip>
+                     <!-- <tooltip>
                           <Tooltip text="Add New Product">
                               <showDelay>
                                   <Duration millis="10"/>
                               </showDelay>
                           </Tooltip>
-                      </tooltip>
+                      </tooltip>-->
                       <graphic>
                           <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
                               <image>
@@ -127,39 +140,45 @@
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" top="10.0" />
+                  <Insets bottom="20.0" right="10.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="productView" maxWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
+            <TableView fx:id="productView" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0"  styleClass="table-column " stylesheets="/css/TableView.css">
               <columns>
-                <TableColumn fx:id="actionColumn" prefWidth="187.0" resizable="false" text="Action">
+                <TableColumn fx:id="actionColumn" prefWidth="200.0" resizable="false" text="Action">
           </TableColumn>
-                <TableColumn fx:id="productCodeColumn" prefWidth="104.0" resizable="false" text="Product Code">
+                <TableColumn fx:id="productCodeColumn" minWidth="3.0" prefWidth="250.0" resizable="false" text="Product Code">
                     <cellValueFactory>
                         <PropertyValueFactory property="productCode" />
                     </cellValueFactory>
                 </TableColumn>
-                  <TableColumn fx:id="productNameColumn" minWidth="0.0" prefWidth="153.0" resizable="false" text="Product Name">
+                  <TableColumn fx:id="productNameColumn" minWidth="0.0" prefWidth="250.0" resizable="false" text="Product Name">
                       <cellValueFactory>
                           <PropertyValueFactory property="productName" />
                       </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="priceColumn" prefWidth="78.0" resizable="false" text="Price">
+                  <TableColumn fx:id="priceColumn" prefWidth="150.0" resizable="false" text="Price">
                       <cellValueFactory>
                           <PropertyValueFactory property="price" />
                       </cellValueFactory>
                   </TableColumn>
-                  <TableColumn fx:id="descriptionColumn" editable="false" prefWidth="178.0" resizable="false" text="Description ">
+                  <TableColumn fx:id="descriptionColumn" editable="false" prefWidth="350.0" resizable="false" text="Description ">
                       <cellValueFactory>
                           <PropertyValueFactory property="description" />
                       </cellValueFactory>
                   </TableColumn>
               </columns>
+               <VBox.margin>
+                  <Insets bottom="50.0" right="60.0" />
+               </VBox.margin>
             </TableView>
          </children>
          <BorderPane.margin>
             <Insets left="50.0" />
          </BorderPane.margin>
+         <VBox.margin>
+            <Insets bottom="20.0" right="60.0" />
+         </VBox.margin>
       </VBox>
    </center>
 </BorderPane>
