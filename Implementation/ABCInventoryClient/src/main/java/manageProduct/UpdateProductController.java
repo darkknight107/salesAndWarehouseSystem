@@ -9,6 +9,9 @@ import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -26,6 +29,10 @@ public class UpdateProductController {
     private TextField productNameField;
     @FXML
     private TextField priceField;
+    @FXML
+    private Button backButton;
+    @FXML
+    private Button mainMenuButton;
     @FXML
     private TextField descriptionField;
     private BorderPane pane;
@@ -74,6 +81,29 @@ public class UpdateProductController {
             screen.alertMessages("Error!", "Product could not be updated!");
         }
 
+    }
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+        pane = loader.load();
+        ManageProductController controller= loader.getController();
+        controller.showAllProducts();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane aPane = loader.load();
+        anchorPane.getChildren().setAll(aPane);
+    }
+    public void handleLogoutButton() throws IOException {
+        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        alert.setTitle("Confirmation");
+        if (alert.getResult()== ButtonType.YES) {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
+            AnchorPane aPane = loader.load();
+            anchorPane.getChildren().setAll(aPane);
+        }
     }
 
 }

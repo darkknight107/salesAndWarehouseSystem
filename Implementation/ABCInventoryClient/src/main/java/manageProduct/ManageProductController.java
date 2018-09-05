@@ -40,6 +40,8 @@ public class ManageProductController{
     @FXML
     Button addNewProductButton;
     @FXML
+    Button mainMenuButton;
+    @FXML
     TableView<Product> productView;
     @FXML
     TableColumn actionColumn;
@@ -277,6 +279,21 @@ public class ManageProductController{
         borderPane.getChildren().setAll(pane);
     }
 
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        pane = loader.load();
+        borderPane.getChildren().setAll(pane);
+    }
+    public void handleLogoutButton() throws IOException {
+        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        alert.setTitle("Confirmation");
+        if (alert.getResult()== ButtonType.YES){
+            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
+            pane = loader.load();
+            borderPane.getChildren().setAll(pane);
+        }
 
+    }
 
 }
