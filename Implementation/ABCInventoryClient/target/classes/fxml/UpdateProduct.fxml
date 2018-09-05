@@ -68,7 +68,7 @@
                     </Tooltip>
                 </tooltip>
                 <graphic>
-                    <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="/image/BackButtonIcon.png" />
                         </image>
@@ -94,7 +94,7 @@
                     </Tooltip>
                 </tooltip>
                 <graphic>
-                    <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="/image/HomePageIcon.png" />
                         </image>
@@ -112,7 +112,7 @@
                     </Tooltip>
                 </tooltip>
                 <graphic>
-                    <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="/image/LogoutIcon.png" />
                         </image>

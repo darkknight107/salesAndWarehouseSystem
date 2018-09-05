@@ -41,6 +41,7 @@ public class SearchProductItemDetailsController {
     @FXML
     private TableColumn quantityColumn;
     BorderPane pane;
+    AnchorPane aPane;
 
     AppScreen screen = new AppScreen();
 
@@ -155,5 +156,32 @@ public class SearchProductItemDetailsController {
         this.quantityEdited= true;
         quantity = tblViewSearchedProductDetails.getSelectionModel().getSelectedItem().getProductQuantity();
         updateStoredProduct.setProductQuantity(productStringCellEditEvent.getNewValue());
+    }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemFXML.fxml"));
+        aPane = loader.load();
+        SearchProductItemController controller= loader.getController();
+        productItemCode = tblViewSearchedProductDetails.getSelectionModel().getSelectedItem().getProductItemCode();
+        String productCode= productItemCode.substring(0, 2);
+        System.out.println(productCode);
+        controller.showAllProductItems(productCode);
+        anchorPane.getChildren().setAll(aPane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        aPane = loader.load();
+        anchorPane.getChildren().setAll(aPane);
+    }
+    public void handleLogoutButton() throws IOException {
+        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        alert.setTitle("Confirmation");
+        if (alert.getResult()== ButtonType.YES) {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
+            aPane = loader.load();
+            anchorPane.getChildren().setAll(aPane);
+        }
     }
 }

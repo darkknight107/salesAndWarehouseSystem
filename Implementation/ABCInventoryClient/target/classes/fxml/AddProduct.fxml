@@ -1,67 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
 <?import javafx.util.Duration?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductController" styleClass="mainPane" stylesheets="@../css/Pane.css">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" styleClass="mainPane" stylesheets="@../css/Pane.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductController">
    <children>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TextField fx:id="productCodeField" layoutX="161.0" layoutY="97.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter a new product code" />
-      <TextField fx:id="productNameField" layoutX="161.0" layoutY="137.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter a new product name" />
-      <TextField fx:id="priceField" layoutX="161.0" layoutY="171.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter price" />
-      <TextField fx:id="descriptionField" layoutX="161.0" layoutY="209.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter description" />
-      <Label fx:id="productCodeLabel" layoutX="74.0" layoutY="101.0" text="Product Code" />
-      <Label fx:id="productNameLabel" layoutX="72.0" layoutY="141.0" text="Product Name" />
-      <Label fx:id="priceLabel" layoutX="121.0" layoutY="175.0" text="Price" />
-      <Label fx:id="descriptionLabel" layoutX="91.0" layoutY="213.0" text="Description" />
-      <Button fx:id="nextButton" layoutX="127.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleAddProductNext">
-          <tooltip>
-              <Tooltip text="Add Product Items for this new Product">
+      <GridPane layoutX="400.0" layoutY="236.0" prefHeight="312.0" prefWidth="557.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="productCodeField" prefHeight="25.0" prefWidth="174.0" promptText="Enter a new product code" GridPane.columnIndex="1" />
+            <Label fx:id="productCodeLabel" prefHeight="15.0" prefWidth="177.0" text="Product Code">
+               <padding>
+                  <Insets left="80.0" />
+               </padding></Label>
+            <TextField fx:id="productNameField" prefHeight="25.0" prefWidth="174.0" promptText="Enter a new product name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="productNameLabel" text="Product Name" GridPane.rowIndex="1">
+               <padding>
+                  <Insets left="80.0" />
+               </padding></Label>
+            <TextField fx:id="priceField" prefHeight="25.0" prefWidth="174.0" promptText="Enter price" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="priceLabel" text="Price" GridPane.rowIndex="2">
+               <padding>
+                  <Insets left="80.0" />
+               </padding></Label>
+            <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="174.0" promptText="Enter description" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="descriptionLabel" text="Description" GridPane.rowIndex="3">
+               <padding>
+                  <Insets left="80.0" />
+               </padding></Label>
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#clearTextFields" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <tooltip>
+                    <Tooltip text="Clear texts">
                   <showDelay>
                       <Duration millis="10"/>
                   </showDelay>
               </Tooltip>
-          </tooltip>
-          <graphic>
-              <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                      <Image url="/image/SubmitIcon.png" />
-                  </image>
-              </ImageView>
-          </graphic>
-      </Button>
-      <Button fx:id="resetButton" layoutX="177.0" layoutY="261.0" mnemonicParsing="false" onAction="#clearTextFields" >
-          <tooltip>
-              <Tooltip text="Clear texts">
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/ClearButtonIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+               <GridPane.margin>
+                  <Insets top="30.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#handleAddProductNext" GridPane.rowIndex="4">
+                <tooltip>
+                    <Tooltip text="Add Product">
                   <showDelay>
                       <Duration millis="10"/>
                   </showDelay>
               </Tooltip>
-          </tooltip>
-          <graphic>
-              <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                      <Image url="/image/ClearButtonIcon.png" />
-                  </image>
-              </ImageView>
-          </graphic>
-      </Button>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/SubmitIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+               <GridPane.margin>
+                  <Insets left="220.0" top="30.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+      <HBox prefHeight="110.0" prefWidth="1400.0" styleClass="optionsBar" stylesheets="@../css/OptionsBar.css">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton">
+                <tooltip>
+                    <Tooltip text="Back">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/BackButtonIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+               <HBox.margin>
+                  <Insets left="30.0" top="37.0" />
+               </HBox.margin></Button>
+            <ImageView fitHeight="75.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/ABC%20Icon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="500.0" top="27.0" />
+               </HBox.margin>
+            </ImageView>
+            <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#handleMainMenuButton">
+                <tooltip>
+                    <Tooltip text="Main Menu">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/HomePageIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+               <HBox.margin>
+                  <Insets left="400.0" top="37.0" />
+               </HBox.margin></Button>
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
+                <tooltip>
+                    <Tooltip text="Logout">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/LogoutIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" top="37.0" right="30" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

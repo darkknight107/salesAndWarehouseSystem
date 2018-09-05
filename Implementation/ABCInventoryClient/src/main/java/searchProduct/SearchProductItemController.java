@@ -192,4 +192,28 @@ public class SearchProductItemController {
     public void changeQuantity(){
         this.editQuantity= true;
     }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+        BorderPane pane = loader.load();
+        ManageProductController controller= loader.getController();
+        controller.showAllProducts();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane aPane = loader.load();
+        anchorPane.getChildren().setAll(aPane);
+    }
+    public void handleLogoutButton() throws IOException {
+        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        alert.setTitle("Confirmation");
+        if (alert.getResult()== ButtonType.YES) {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
+            AnchorPane aPane = loader.load();
+            anchorPane.getChildren().setAll(aPane);
+        }
+    }
 }
