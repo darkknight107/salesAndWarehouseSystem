@@ -16,25 +16,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="borderPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.ManageProductController" styleClass="mainPane" stylesheets="@../css/Pane.css">
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.util.Duration?>
+<BorderPane fx:id="borderPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" styleClass="mainPane" stylesheets="@../css/Pane.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.ManageProductController">
    <top>
-      <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="116.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-              </menus>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </MenuBar>
-            <HBox prefHeight="77.0" prefWidth="750.0" styleClass="optionsBar" stylesheets="@../css/OptionsBar.css">
+            <HBox prefHeight="110.0" prefWidth="750.0" styleClass="optionsBar" stylesheets="@../css/OptionsBar.css">
                <children>
                   <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton">
+                      <tooltip>
+                          <Tooltip text="Back">
+                              <showDelay>
+                                  <Duration millis="10"/>
+                              </showDelay>
+                          </Tooltip>
+                      </tooltip>
                       <graphic>
                       <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
                           <image>
@@ -43,39 +40,55 @@
                       </ImageView>
                       </graphic>
                      <HBox.margin>
-                        <Insets left="50.0" top="10.0" />
+                        <Insets left="50.0" top="37.0" />
                      </HBox.margin>
                   </Button>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Button fx:id="mainMenuButton" mnemonicParsing="false">
-                            <graphic>
-                                <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="/image/HomePageIcon.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="logoutButton" mnemonicParsing="false">
-                            <graphic>
-                                <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="/image/LogoutIcon.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin></Button>
-                     </children>
+                  <ImageView fitHeight="75.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/ABC%20Icon.png" />
+                     </image>
                      <HBox.margin>
-                        <Insets left="1200.0" top="10.0" />
+                        <Insets left="500.0" top="27.0" />
                      </HBox.margin>
-                  </VBox>
+                  </ImageView>
+                  <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#handleMainMenuButton">
+                      <tooltip>
+                          <Tooltip text="Main Menu">
+                              <showDelay>
+                                  <Duration millis="10"/>
+                              </showDelay>
+                          </Tooltip>
+                      </tooltip>
+                      <graphic>
+                          <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="/image/HomePageIcon.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                     <HBox.margin>
+                        <Insets left="400.0" top="37.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
+                      <tooltip>
+                          <Tooltip text="Logout">
+                              <showDelay>
+                                  <Duration millis="10"/>
+                              </showDelay>
+                          </Tooltip>
+                      </tooltip>
+                      <graphic>
+                          <ImageView fitHeight="20" fitWidth="180" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="/image/LogoutIcon.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" top="37.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets />
@@ -85,7 +98,7 @@
       </VBox>
    </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="328.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="650.0" prefWidth="1416.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="60.0" prefWidth="600.0">
                <children>
@@ -100,14 +113,14 @@
                      </HBox.margin>
                   </TextField>
                   <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearchButton">
-                      <!--<tooltip>
+                      <tooltip>
                           <Tooltip text="Search Product">
                               <showDelay>
 
                                   <Duration millis="10"/>
                               </showDelay>
                           </Tooltip>
-                      </tooltip>-->
+                      </tooltip>
                       <graphic>
                           <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
                               <image>
@@ -120,13 +133,13 @@
                      </HBox.margin>
                   </Button>
                   <Button fx:id="addNewProductButton" mnemonicParsing="false" onAction="#handleAddNewProductButton">
-                     <!-- <tooltip>
+                     <tooltip>
                           <Tooltip text="Add New Product">
                               <showDelay>
                                   <Duration millis="10"/>
                               </showDelay>
                           </Tooltip>
-                      </tooltip>-->
+                      </tooltip>
                       <graphic>
                           <ImageView fitHeight="15" fitWidth="150" pickOnBounds="true" preserveRatio="true">
                               <image>
@@ -140,10 +153,10 @@
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" right="10.0" top="10.0" />
+                  <Insets bottom="20.0" left="30.0" right="10.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="productView" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0"  styleClass="table-column " stylesheets="/css/TableView.css">
+            <TableView fx:id="productView" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="table-column " stylesheets="/css/TableView.css">
               <columns>
                 <TableColumn fx:id="actionColumn" prefWidth="200.0" resizable="false" text="Action">
           </TableColumn>
@@ -169,7 +182,7 @@
                   </TableColumn>
               </columns>
                <VBox.margin>
-                  <Insets bottom="50.0" right="60.0" />
+                  <Insets bottom="50.0" right="100.0" />
                </VBox.margin>
             </TableView>
          </children>
