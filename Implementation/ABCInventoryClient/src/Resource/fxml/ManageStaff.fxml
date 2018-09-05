@@ -17,7 +17,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.util.Duration?>
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" stylesheets="/css/TableView.css" fx:controller="manageStaff.ManageStaffController">
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="manageStaff.ManageStaffController" styleClass="mainPane" stylesheets="@../css/Pane.css">
    <children>
       <MenuBar layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -38,7 +38,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TableView fx:id="staffTable" blendMode="SRC_ATOP" layoutX="11.0" layoutY="94.0">
+      <TableView fx:id="staffTable" blendMode="SRC_ATOP" layoutX="11.0" layoutY="94.0" stylesheets="/css/TableView.css">
         <columns>
           <TableColumn fx:id="actionColumn" editable="false" minWidth="-1.0" prefWidth="77.0" sortable="false" text="Action" />
           <TableColumn fx:id="userNameColumn" editable="false" prefWidth="63.0" sortable="false" text="Username">
