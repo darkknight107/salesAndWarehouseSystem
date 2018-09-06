@@ -3,6 +3,7 @@ package homePage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +26,12 @@ public class HomePageController {
     private AnchorPane anchorPane;
     @FXML
     private Label loggedInAs;
+    @FXML
+    Button manageProduct;
+
+    @FXML
+    Button manageStaff;
+
 
     public void initialize(URL url, ResourceBundle rb) throws IOException {
 
@@ -122,6 +129,7 @@ public class HomePageController {
     }
 
     public void setUserType(String locationID){
+        loggedInAs.setStyle("-fx-color: white;");
         if(locationID.equals("WRH1")){
             loggedInAs.setText("Warehouse Staff");
         }
@@ -130,4 +138,9 @@ public class HomePageController {
         }
 
     }
+    public void storeStaffOptionsDisable(){
+        manageProduct.setDisable(true);
+        manageStaff.setDisable(true);
+    }
+
 }
