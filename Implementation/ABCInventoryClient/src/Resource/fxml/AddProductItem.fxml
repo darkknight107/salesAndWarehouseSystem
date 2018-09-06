@@ -110,12 +110,12 @@
                     </ImageView>
                 </graphic>
                <HBox.margin>
-                  <Insets left="35.0" top="37.0" />
+                  <Insets left="60.0" top="37.0" />
                </HBox.margin>
             </Button>
             <ImageView fitHeight="75.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
-                  <Insets left="450.0" top="27.0" />
+                  <Insets left="480.0" top="27.0" />
                </HBox.margin>
                <image>
                   <Image url="@../image/ABC%20Icon.png" />
@@ -137,26 +137,8 @@
                     </ImageView>
                 </graphic>
                <HBox.margin>
-                  <Insets left="400.0" top="37.0" />
+                  <Insets left="390.0" top="37.0" />
                </HBox.margin></Button>
-            <!--<Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
-                <tooltip>
-                    <Tooltip text="Logout">
-                        <showDelay>
-                            <Duration millis="10"/>
-                        </showDelay>
-                    </Tooltip>
-                </tooltip>
-                <graphic>
-                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="/image/LogoutIcon.png" />
-                        </image>
-                    </ImageView>
-                </graphic>
-               <HBox.margin>
-                  <Insets left="10.0" top="37.0" />
-               </HBox.margin></Button>-->
          </children></HBox>
    </top>
 </BorderPane>

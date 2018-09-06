@@ -30,7 +30,7 @@
             <Button fx:id="searchProduct" mnemonicParsing="false" onAction="#handleSearchProduct" prefHeight="50.0" prefWidth="115.0">
                 <tooltip>
                     <Tooltip text="Search Product">
-                  <showDelay>
+                 <showDelay>
                       <Duration millis="10"/>
                   </showDelay>
               </Tooltip>
@@ -63,7 +63,7 @@
              <Button fx:id="acceptProduct" mnemonicParsing="false" onAction="#handleAcceptProduct" prefHeight="50.0" prefWidth="115.0" GridPane.columnIndex="2">
                  <tooltip>
                      <Tooltip text="Accept Product">
-                  <showDelay>
+                 <showDelay>
                        <Duration millis="10"/>
                    </showDelay>
                </Tooltip>
@@ -112,7 +112,7 @@
              <Button fx:id="generateReport" mnemonicParsing="false" onAction="#handleGenerateReport" prefHeight="50.0" prefWidth="115.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                  <tooltip>
                      <Tooltip text="Generate Report">
-                   <showDelay>
+                 <showDelay>
                        <Duration millis="10"/>
                    </showDelay>
                </Tooltip>
@@ -142,7 +142,7 @@
                   <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
                       <tooltip>
                           <Tooltip text="Logout">
-                              <showDelay>
+                             <showDelay>
                                   <Duration millis="10"/>
                               </showDelay>
                           </Tooltip>
@@ -158,9 +158,9 @@
                         <Insets top="60.0" />
                      </VBox.margin>
                   </Button>
-                  <Label fx:id="loggedInAs" text="Logged in as ">
+                  <Label fx:id="loggedInAs" styleClass="loggedinas" text="Logged in as " textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="10.0" right="5.0" />
                      </VBox.margin>
                   </Label>
                </children>
