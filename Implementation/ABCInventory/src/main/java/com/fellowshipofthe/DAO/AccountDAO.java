@@ -17,33 +17,38 @@ public class AccountDAO {
     public AccountDAO() {}
 
 
-    public Boolean  searchAccount(String username, String password) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-            dbconnet = new DatabaseConnection();
-            conn = dbconnet.connect();
-            System.out.println(username + password);
-            String sql = " SELECT Staff.userName, \n" +
-                    "   Staff.pWord \n" +
-                    "FROM Staff \n" +
-                    "WHERE Staff.userName = \"" + username + "\" AND Staff.pWord =  \"" + password + "\";";
-            Statement stmt = conn.createStatement();
-            ResultSet resultSet = stmt.executeQuery(sql);
+    public String  searchAccount(String username, String password) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+        String locationID = null;
+        dbconnet = new DatabaseConnection();
+        conn = dbconnet.connect();
+        System.out.println(username + password);
+        String sql = " SELECT Staff.userName, \n" +
+                "   Staff.pWord, \n" +
+                " Staff.locationID \n" +
+                "FROM Staff \n" +
+                "WHERE Staff.userName = \"" + username + "\" AND Staff.pWord =  \"" + password + "\";";
+        Statement stmt = conn.createStatement();
+        ResultSet resultSet = stmt.executeQuery(sql);
 
-            if (resultSet.next()) {
-                conn.close ( );
-                stmt.close ( );
-                System.out.println ("matched");
-                return true;
-            }
-            else{
-                conn.close ();
-                stmt.close ();
-                System.out.println ("not found");
-                return false;
-            }
+        if (resultSet.next()) {
+
+            System.out.println ("matched");
+            SearchAccount searchAccount = new SearchAccount ();
+            searchAccount.setLocationID (resultSet.getString (3));
+            locationID = searchAccount.getLocationID ();
+            System.out.println (searchAccount.getLocationID ());
+            conn.close ();
+            stmt.close ();
+            return locationID;
+
+        }
+        else{
+            System.out.println ("not found");
+            return locationID;
+        }
 
 
     }
 
 
 }
-

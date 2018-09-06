@@ -6,6 +6,7 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
+import homePage.HomePageController;
 import javafx.animation.ParallelTransition;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -101,17 +102,29 @@ public class SearchAccountController {
         //creating a new client to send get request
         webResource = client.resource(URL).queryParam(usernameField, username).queryParam (passwordField,password);
         response = webResource.get(ClientResponse.class);
-        Boolean responseValue= response.getEntity (Boolean.class);
-        System.out.println (response );
-        if(responseValue == true){
-            AnchorPane pane = FXMLLoader.load (getClass ().getClassLoader ().getResource ("fxml/HomePageFXML.fxml"));
-            anchorPane.getChildren ().setAll (pane);
+        String responseValue= response.getEntity (String.class);
+        System.out.println (responseValue);
+        if(responseValue.equals ("WRH1")){
+            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+            AnchorPane pane= loader.load();
+            anchorPane.getChildren().setAll(pane);
+            HomePageController controller= loader.<HomePageController>getController();
+            controller.setUserType("WRH1");
+            System.out.println ("Location of the employee" + responseValue);
 
         }
-        else if (responseValue== false){
+        else if(responseValue.equals ("STR1") || responseValue.equals ("STR2")){
+            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+            AnchorPane pane= loader.load();
+            anchorPane.getChildren().setAll(pane);
+            HomePageController controller= loader.<HomePageController>getController();
+            controller.storeStaffOptionsDisable ();
+            controller.setUserType("STR");
+
+        }
+        else if (!responseValue.isEmpty ()){
 
             appScreen.alertMessages ("Unsuccessful","Username or Password does not match.");
-
         }
         else{
             appScreen.alertMessages ("Error!", "An error occurred. Please try again!");
@@ -126,6 +139,7 @@ public class SearchAccountController {
         usernameTextField.setText ("");
         passwordTextField.setText ("");
     }
+
 
 
 }
