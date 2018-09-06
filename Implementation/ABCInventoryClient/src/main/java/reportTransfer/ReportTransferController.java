@@ -210,18 +210,16 @@ public class ReportTransferController {
                 String selectedTransferID = tblTransfer.getSelectionModel().getSelectedItem().getTransferID();
                 //load text fields and labels for adding product item
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/ReportTransferItemFXML.fxml"));
-                AnchorPane pane = null;
+
                 try {
-                    pane = loader.load();
+                    AnchorPane pane = loader.load();
+                    AcceptTransferItemController myController = loader.getController();
+                    //Set Data to FXML through controller
+                    myController.showAllTransferItem(selectedTransferID);
+                    anchorPane.getChildren().setAll(pane);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-
-                AcceptTransferItemController myController = loader.getController();
-
-                //Set Data to FXML through controller
-                myController.showAllTransferItem(selectedTransferID);
-                anchorPane.getChildren().setAll(pane);
             });
 
             return cell ;
@@ -279,4 +277,16 @@ public class ReportTransferController {
         };
         end_date.setDayCellFactory(dayCellFactory);
     }
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
+    }
 }
+

@@ -4,32 +4,19 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.util.Duration?>
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.AddStaffController" styleClass="mainPane" stylesheets="@../css/Pane.css">
+<AnchorPane fx:id="anchorPane" styleClass="mainPane" stylesheets="@../css/Pane.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageStaff.AddStaffController">
    <children>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <GridPane layoutX="38.0" layoutY="57.0" prefHeight="290.0" prefWidth="537.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="132.0" />
@@ -74,12 +61,12 @@
             <PasswordField fx:id="passwordField1" promptText="Confrim password" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
-      <Button fx:id="addStaffButton" layoutX="206.0" layoutY="355.0" mnemonicParsing="false" onAction="#addStaff" >
+      <Button fx:id="addStaffButton" layoutX="206.0" layoutY="355.0" mnemonicParsing="false" onAction="#addStaff">
           <tooltip>
               <Tooltip text="Add new staff">
-                  <showDelay>
+                  <!--<showDelay>
                       <Duration millis="10"/>
-                  </showDelay>
+                  </showDelay>-->
               </Tooltip>
           </tooltip>
           <graphic>
@@ -90,12 +77,12 @@
               </ImageView>
           </graphic>
       </Button>
-      <Button fx:id="resetButton" layoutX="284.0" layoutY="355.0" mnemonicParsing="false" >
+      <Button fx:id="resetButton" layoutX="284.0" layoutY="355.0" mnemonicParsing="false">
           <tooltip>
               <Tooltip text="Clear texts">
-                  <showDelay>
+                  <!--<showDelay>
                       <Duration millis="10"/>
-                  </showDelay>
+                  </showDelay>-->
               </Tooltip>
           </tooltip>
           <graphic>

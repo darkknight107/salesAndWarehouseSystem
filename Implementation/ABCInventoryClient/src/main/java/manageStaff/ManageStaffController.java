@@ -186,4 +186,16 @@ public class ManageStaffController {
         String url= "http://localhost:8080/rest/managestaff/searchstaff";
         searchStaff(url, "name", searchField.getText());
     }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
+    }
 }

@@ -18,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import manageProduct.AppScreen;
+import reportTransfer.ReportTransferController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
@@ -128,5 +129,26 @@ public class AcceptTransferItemController {
 
         getTransferItemURL="http://localhost:8080/rest/transferproduct/displaysendingtransferitem/";
         searchTransferItem(getTransferItemURL,"transferID",transferID);
+    }
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ReportTransferFXML.fxml"));
+        AnchorPane pane = loader.load();
+        ReportTransferController controller= loader.getController();
+        controller.showAllTransfer();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleAcceptInstanceBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/AcceptTransferFXML.fxml"));
+        AnchorPane pane = loader.load();
+        AcceptProductController controller= loader.getController();
+        controller.showAllTransfer();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
     }
 }
