@@ -168,4 +168,16 @@ public class SearchProductController {
     public String getSELECTED_PRODUCT_CODE(){
         return SELECTED_PRODUCT_CODE;
     }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
+    }
 }

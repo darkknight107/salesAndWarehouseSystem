@@ -1,3 +1,4 @@
+/*
 package reportTransfer;
 
 import com.sun.jersey.api.client.Client;
@@ -11,6 +12,7 @@ import entityClass.StoredProduct;
 import entityClass.TransferItem;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import manageProduct.AppScreen;
@@ -18,6 +20,7 @@ import transferProduct.AcceptProductController;
 import transferProduct.SendProductController;
 
 import javax.ws.rs.WebApplicationException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,4 +77,7 @@ public class ReportTransferItemController {
             }
         }
     }
+
+
 }
+*/
