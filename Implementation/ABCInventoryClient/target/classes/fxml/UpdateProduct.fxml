@@ -103,24 +103,6 @@
                <HBox.margin>
                   <Insets left="400.0" right="10.0" top="37.0" />
                </HBox.margin></Button>
-           <!-- <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
-                <tooltip>
-                    <Tooltip text="Logout">
-                        <showDelay>
-                            <Duration millis="10"/>
-                        </showDelay>
-                    </Tooltip>
-                </tooltip>
-                <graphic>
-                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="/image/LogoutIcon.png" />
-                        </image>
-                    </ImageView>
-                </graphic>
-               <HBox.margin>
-                  <Insets top="37.0" />
-               </HBox.margin></Button>-->
          </children></HBox>
    </children>
 </AnchorPane>
