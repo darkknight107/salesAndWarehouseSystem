@@ -112,7 +112,6 @@ public class SearchAccountController {
 
             appScreen.alertMessages ("Unsuccessful","Username or Password does not match.");
 
-
         }
         else{
             appScreen.alertMessages ("Error!", "An error occurred. Please try again!");

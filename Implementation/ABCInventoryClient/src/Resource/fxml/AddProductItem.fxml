@@ -4,24 +4,20 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.util.Duration?>
-<BorderPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductItemController" styleClass="mainPane" stylesheets="@../css/Pane.css">
+<BorderPane fx:id="borderPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" styleClass="mainPane" stylesheets="@../css/Pane.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.AddProductItemController">
    <center>
-      <GridPane maxHeight="400.0" maxWidth="700.0" BorderPane.alignment="CENTER">
+      <GridPane maxHeight="400.0" maxWidth="700.0" prefHeight="336.0" prefWidth="616.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="216.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.0" minWidth="10.0" prefWidth="384.0" />
@@ -55,7 +51,7 @@
                </GridPane.margin>
             </ComboBox>
             <ComboBox fx:id="locationComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" GridPane.columnIndex="1" GridPane.rowIndex="4" >
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" GridPane.columnIndex="1" GridPane.rowIndex="4">
                 <tooltip>
                     <Tooltip text="Add this product to system">
                         <showDelay>
@@ -87,34 +83,80 @@
                </GridPane.margin>
             </Label>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </GridPane>
    </center>
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
-      <VBox prefHeight="69.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="110.0" prefWidth="1400.0" styleClass="optionsBar" stylesheets="@../css/OptionsBar.css" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-         </children>
-      </VBox>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton">
+                <tooltip>
+                    <Tooltip text="Back">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/BackButtonIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+               <HBox.margin>
+                  <Insets left="35.0" top="37.0" />
+               </HBox.margin>
+            </Button>
+            <ImageView fitHeight="75.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="450.0" top="27.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../image/ABC%20Icon.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#handleMainMenuButton">
+                <tooltip>
+                    <Tooltip text="Main Menu">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/HomePageIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+               <HBox.margin>
+                  <Insets left="400.0" top="37.0" />
+               </HBox.margin></Button>
+            <!--<Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
+                <tooltip>
+                    <Tooltip text="Logout">
+                        <showDelay>
+                            <Duration millis="10"/>
+                        </showDelay>
+                    </Tooltip>
+                </tooltip>
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/image/LogoutIcon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" top="37.0" />
+               </HBox.margin></Button>-->
+         </children></HBox>
    </top>
 </BorderPane>

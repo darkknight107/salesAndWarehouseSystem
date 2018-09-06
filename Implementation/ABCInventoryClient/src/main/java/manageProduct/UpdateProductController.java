@@ -35,7 +35,7 @@ public class UpdateProductController {
     private Button mainMenuButton;
     @FXML
     private TextField descriptionField;
-    private BorderPane pane;
+    private AnchorPane pane;
     //method to set existing values to the field
     @FXML
     public void setData(Product updatedProduct){

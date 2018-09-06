@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 
 import java.io.IOException;
@@ -132,5 +133,29 @@ public class AddProductController {
         AddProductItemController addProductItemController= loader.<AddProductItemController>getController();
         addProductItemController.setSelectedProductCode(newProduct.getProductCode());
         addProductItemController.setComboBoxValues();
+    }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+        AnchorPane pane = loader.load();
+        ManageProductController controller= loader.getController();
+        controller.showAllProducts();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane aPane = loader.load();
+        anchorPane.getChildren().setAll(aPane);
+    }
+    public void handleLogoutButton() throws IOException {
+        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        alert.setTitle("Confirmation");
+        if (alert.getResult()== ButtonType.YES) {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
+            AnchorPane aPane = loader.load();
+            anchorPane.getChildren().setAll(aPane);
+        }
     }
 }

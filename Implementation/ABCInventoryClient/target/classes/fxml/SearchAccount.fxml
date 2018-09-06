@@ -1,55 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
 <?import javafx.util.Duration?>
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="searchAccount.SearchAccountController" styleClass="mainPane" stylesheets="@../css/Pane.css">
+<AnchorPane fx:id="anchorPane" prefHeight="750.0" prefWidth="1400.0" styleClass="loginPage" stylesheets="@../css/LoginPage.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="searchAccount.SearchAccountController">
    <children>
-      <AnchorPane layoutX="-39.0" layoutY="-10.0" prefHeight="416.0" prefWidth="611.0">
+      <VBox layoutX="500.0" layoutY="200.0" prefHeight="306.0" prefWidth="479.0">
          <children>
-            <TextField fx:id="usernameTextField" layoutX="133.0" layoutY="161.0" prefHeight="27.0" prefWidth="345.0" promptText="ENTER USERNAME" />
-            <Text layoutX="185.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTORY MANAGEMENT SYSTEM" wrappingWidth="292.322265625" />
-            <Button fx:id="btnLogin" layoutX="145.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleSearchAccountCodeAction" prefHeight="27.0" prefWidth="154.0" >
-               <tooltip>
-                  <Tooltip text="Login">
+            <ImageView fitHeight="99.0" fitWidth="424.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/ABC%20Icon.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </ImageView>
+            <TextField fx:id="usernameTextField" prefHeight="40.0" prefWidth="300.0" promptText="Username">
+               <VBox.margin>
+                  <Insets bottom="20.0" right="150.0" />
+               </VBox.margin></TextField>
+            <PasswordField fx:id="passwordTextField" prefHeight="40.0" prefWidth="300.0" promptText="Password">
+               <VBox.margin>
+                  <Insets bottom="20.0" right="150.0" />
+               </VBox.margin></PasswordField>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#handleSearchAccountCodeAction" prefHeight="27.0" prefWidth="100.0">
+                     <tooltip>
+                        <Tooltip text="Login">
                      <showDelay>
                         <Duration millis="10"/>
                      </showDelay>
                   </Tooltip>
-               </tooltip>
-               <graphic>
-                  <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="/image/LoginIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btnClear" layoutX="361.0" layoutY="312.0" mnemonicParsing="false" onAction="#clear" prefHeight="27.0" prefWidth="154.0">
-               <tooltip>
-                  <Tooltip text="Clear">
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/image/LoginIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clear" prefHeight="27.0" prefWidth="100.0">
+                     <tooltip>
+                        <Tooltip text="Clear">
                      <showDelay>
                         <Duration millis="10"/>
                      </showDelay>
                   </Tooltip>
-               </tooltip>
-               <graphic>
-                  <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="/image/ClearButtonIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <PasswordField fx:id="passwordTextField" layoutX="133.0" layoutY="235.0" prefHeight="27.0" prefWidth="345.0" promptText="ENTER PASSWORD" />
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="30" fitWidth="150" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/image/ClearButtonIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
-      </AnchorPane>
+      </VBox>
    </children>
 </AnchorPane>
