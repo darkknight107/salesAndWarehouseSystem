@@ -14,6 +14,7 @@ import searchProduct.SearchProductController;
 import transferProduct.AcceptProductController;
 import transferProduct.SendProductController;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,7 +52,7 @@ public class HomePageController {
     @FXML
     public void handleManageProduct() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
-        BorderPane pane = loader.load();
+        AnchorPane pane = loader.load();
 
         ManageProductController myController = loader.getController();
 

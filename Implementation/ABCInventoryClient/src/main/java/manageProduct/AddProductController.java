@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 
 import java.io.IOException;
@@ -136,7 +137,7 @@ public class AddProductController {
 
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
-        BorderPane pane = loader.load();
+        AnchorPane pane = loader.load();
         ManageProductController controller= loader.getController();
         controller.showAllProducts();
         anchorPane.getChildren().setAll(pane);

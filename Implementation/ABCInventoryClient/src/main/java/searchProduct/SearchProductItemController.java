@@ -37,6 +37,7 @@ public class SearchProductItemController {
     private TableColumn displayView;
     @FXML
     private AnchorPane anchorPane;
+    private static String SELECTED_PRODUCT_CODE;
     Boolean editQuantity= false;
 
 
@@ -144,6 +145,8 @@ public class SearchProductItemController {
                 if(editQuantity== false){
                     System.out.println("uneditable");
                     tblSearchProductItemCode.getSelectionModel().select(cell.getIndex());
+                    setSelectedProductCode(tblSearchProductItemCode.getSelectionModel().getSelectedItem().getProductCode());
+                    System.out.println(getSelectedProductCode());
                     String selectedProductItemCode = tblSearchProductItemCode.getSelectionModel().getSelectedItem().getProductItemCode();
                     //load text fields and labels for adding product item
                     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemDetailsFXML.fxml"));
@@ -163,6 +166,8 @@ public class SearchProductItemController {
                 else{
                     System.out.println("editabe");
                     tblSearchProductItemCode.getSelectionModel().select(cell.getIndex());
+                    setSelectedProductCode(tblSearchProductItemCode.getSelectionModel().getSelectedItem().getProductCode());
+                    System.out.println(getSelectedProductCode());
                     String selectedProductItemCode = tblSearchProductItemCode.getSelectionModel().getSelectedItem().getProductItemCode();
                     //load text fields and labels for adding product item
                     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemDetailsFXML.fxml"));
@@ -195,7 +200,7 @@ public class SearchProductItemController {
 
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
-        BorderPane pane = loader.load();
+        AnchorPane pane = loader.load();
         ManageProductController controller= loader.getController();
         controller.showAllProducts();
         anchorPane.getChildren().setAll(pane);
@@ -216,4 +221,12 @@ public class SearchProductItemController {
             anchorPane.getChildren().setAll(aPane);
         }
     }
+    public String getSelectedProductCode() {
+        return SELECTED_PRODUCT_CODE;
+    }
+
+    public void setSelectedProductCode(String SELECTED_PRODUCT_CODE) {
+        this.SELECTED_PRODUCT_CODE = SELECTED_PRODUCT_CODE;
+    }
+
 }

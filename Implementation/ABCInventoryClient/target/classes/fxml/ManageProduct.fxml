@@ -18,7 +18,10 @@
 
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.util.Duration?>
-<BorderPane fx:id="borderPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" styleClass="mainPane" stylesheets="@../css/Pane.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.ManageProductController">
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="anchorPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" styleClass="mainPane" stylesheets="@../css/Pane.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manageProduct.ManageProductController">
+    <children>
+<BorderPane fx:id="borderPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0">
    <top>
       <VBox alignment="TOP_CENTER" prefHeight="116.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
          <children>
@@ -70,7 +73,7 @@
                         <Insets left="350.0" top="37.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
+                  <!--<Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
                       <tooltip>
                           <Tooltip text="Logout">
                               <showDelay>
@@ -88,7 +91,7 @@
                      <HBox.margin>
                         <Insets left="10.0" top="37.0" />
                      </HBox.margin>
-                  </Button>
+                  </Button>-->
                </children>
                <VBox.margin>
                   <Insets />
@@ -195,3 +198,5 @@
       </VBox>
    </center>
 </BorderPane>
+    </children>
+</AnchorPane>

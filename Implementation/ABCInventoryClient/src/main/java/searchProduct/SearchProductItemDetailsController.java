@@ -135,13 +135,14 @@ public class SearchProductItemDetailsController {
                 screen.alertMessages("Product Updated!", "The Product Quantity of " + productItemCode + " has been updated in " + locationID);
                 FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
                 try {
-                    pane = loader.load();
+                    AnchorPane aPane = loader.load();
+
+                ManageProductController manageProductController= loader.getController();
+                manageProductController.showAllProducts();
+                anchorPane.getChildren().setAll(aPane);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-                ManageProductController manageProductController= loader.getController();
-                manageProductController.showAllProducts();
-                anchorPane.getChildren().setAll(pane);
             }
             else{
                 screen.alertMessages("Error!", "Product could not be updated!");
@@ -162,10 +163,7 @@ public class SearchProductItemDetailsController {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemFXML.fxml"));
         aPane = loader.load();
         SearchProductItemController controller= loader.getController();
-        productItemCode = tblViewSearchedProductDetails.getSelectionModel().getSelectedItem().getProductItemCode();
-        String productCode= productItemCode.substring(0, 2);
-        System.out.println(productCode);
-        controller.showAllProductItems(productCode);
+        controller.showAllProductItems(controller.getSelectedProductCode());
         anchorPane.getChildren().setAll(aPane);
     }
 

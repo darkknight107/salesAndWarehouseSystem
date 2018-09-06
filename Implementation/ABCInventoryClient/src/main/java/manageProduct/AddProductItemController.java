@@ -135,10 +135,10 @@ public class AddProductItemController {
     }
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
-        BorderPane bPane = loader.load();
+        AnchorPane aPane = loader.load();
         ManageProductController controller= loader.getController();
         controller.showAllProducts();
-        borderPane.getChildren().setAll(bPane);
+        borderPane.getChildren().setAll(aPane);
     }
 
     public void handleMainMenuButton() throws IOException {

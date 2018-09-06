@@ -137,7 +137,7 @@
                <HBox.margin>
                   <Insets left="400.0" top="37.0" />
                </HBox.margin></Button>
-            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
+           <!-- <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutButton">
                 <tooltip>
                     <Tooltip text="Logout">
                         <showDelay>
@@ -154,7 +154,7 @@
                 </graphic>
                <HBox.margin>
                   <Insets left="10.0" top="37.0" right="30" />
-               </HBox.margin></Button>
+               </HBox.margin></Button>-->
          </children>
       </HBox>
    </children>
