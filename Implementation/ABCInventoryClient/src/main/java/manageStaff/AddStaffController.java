@@ -195,4 +195,5 @@ public class AddStaffController {
         passwordField1.setStyle(null);
         locationComboBox.setStyle(null);
     }
+
 }

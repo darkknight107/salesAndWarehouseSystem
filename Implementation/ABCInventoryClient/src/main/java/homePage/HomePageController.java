@@ -2,6 +2,9 @@ package homePage;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import manageProduct.ManageProductController;
@@ -11,6 +14,7 @@ import searchProduct.SearchProductController;
 import transferProduct.AcceptProductController;
 import transferProduct.SendProductController;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +23,8 @@ public class HomePageController {
     //initializing variables
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private Label loggedInAs;
 
     public void initialize(URL url, ResourceBundle rb) throws IOException {
 
@@ -46,7 +52,7 @@ public class HomePageController {
     @FXML
     public void handleManageProduct() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
-        BorderPane pane = loader.load();
+        AnchorPane pane = loader.load();
 
         ManageProductController myController = loader.getController();
 
@@ -102,5 +108,26 @@ public class HomePageController {
         //Set Data to FXML through controller
         myController.showAllTransfer();
         anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleLogoutButton() throws IOException {
+        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        alert.setTitle("Confirmation");
+        if (alert.getResult()== ButtonType.YES) {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
+            AnchorPane aPane = loader.load();
+            anchorPane.getChildren().setAll(aPane);
+        }
+    }
+
+    public void setUserType(String locationID){
+        if(locationID.equals("WRH1")){
+            loggedInAs.setText("Warehouse Staff");
+        }
+        else{
+            loggedInAs.setText("Store Staff");
+        }
+
     }
 }

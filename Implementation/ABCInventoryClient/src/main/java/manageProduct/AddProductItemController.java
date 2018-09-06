@@ -11,11 +11,17 @@ import entityClass.StoredProduct;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+
+import java.io.IOException;
 
 public class AddProductItemController {
+    @FXML
+    BorderPane borderPane;
     @FXML
     TextField productCodeField;
     @FXML
@@ -26,6 +32,8 @@ public class AddProductItemController {
     TextField quantityField;
     @FXML
     Button addButton;
+    @FXML
+    AnchorPane pane;
     AppScreen screen = new AppScreen();
 
 
@@ -124,6 +132,30 @@ public class AddProductItemController {
         response.bufferEntity();
         String responseValue= response.getEntity(String.class);
         return responseValue;
+    }
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+        AnchorPane aPane = loader.load();
+        ManageProductController controller= loader.getController();
+        controller.showAllProducts();
+        borderPane.getChildren().setAll(aPane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        pane = loader.load();
+        borderPane.getChildren().setAll(pane);
+    }
+    public void handleLogoutButton() throws IOException {
+        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        alert.setTitle("Confirmation");
+        if (alert.getResult()== ButtonType.YES){
+            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
+            pane = loader.load();
+            borderPane.getChildren().setAll(pane);
+        }
+
     }
 
 }
