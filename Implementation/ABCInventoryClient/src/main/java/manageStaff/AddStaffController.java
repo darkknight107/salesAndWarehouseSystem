@@ -163,10 +163,10 @@ public class AddStaffController {
                 locationID= "WRH1";
                 break;
             case "Epping Store":
-                locationID= "STR1";
+                locationID= "STR2";
                 break;
             case "Oxford Store":
-                locationID= "STR2";
+                locationID= "STR1";
                 break;
         }
         return locationID;

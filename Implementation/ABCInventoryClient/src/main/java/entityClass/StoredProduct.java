@@ -14,6 +14,8 @@ public class StoredProduct {
     public StoredProduct() {
     }
 
+
+
     public String getProductItemCode() {
         return productItemCode;
     }
