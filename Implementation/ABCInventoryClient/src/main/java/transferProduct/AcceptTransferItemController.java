@@ -42,6 +42,9 @@ public class AcceptTransferItemController {
     ClientResponse response;
     GenericType<List<TransferItem>> listc = new GenericType<List<TransferItem>>() {
     };
+
+    GenericType<List<StoredProduct>> listcStoredProduct = new GenericType<List<StoredProduct>>() {
+    };
     AppScreen screen = new AppScreen();
 
     String getTransferItemURL;
@@ -74,7 +77,6 @@ public class AcceptTransferItemController {
         data.clear();
         webResourceGet = client.resource(URL).queryParam(searchField, code);
         response = webResourceGet.get(ClientResponse.class);
-        System.out.println(response);
         transferItemList = response.getEntity(listc);
         if (response.getStatus() != 200) {
             throw new WebApplicationException();
@@ -88,6 +90,17 @@ public class AcceptTransferItemController {
         }
     }
 
+    //search the stored product by combining locationID and productItemCode
+    private  List<StoredProduct> searchStoredProductByCombinationCodes(String locationID, String productItemCode) {
+        webResourceGet = client.resource("http://localhost:8080/rest/transferproduct/searchstoredproductsbycominationcodes/").queryParam("locationID",locationID).queryParam("productItemCode",productItemCode);
+        response = webResourceGet.get(ClientResponse.class);
+        storedProductList = response.getEntity(listcStoredProduct);
+        if (response.getStatus() != 200) {
+            throw new WebApplicationException();
+        }
+        return storedProductList;
+    }
+
     public void updateProductQuantityAccept(){
         for (TransferItem ti: transferItemList) {
             StoredProduct storedProduct = new StoredProduct();
@@ -95,9 +108,26 @@ public class AcceptTransferItemController {
             storedProduct.setProductItemCode(ti.getProductItemCode());
             storedProduct.setLocationID(acceptProductController.getSELECTED_DESTINATION_LOCATIO_ID());
             storedProductList.add(storedProduct);
-            System.out.println(storedProduct);
         }
-        String responseUpdate = clientRequestPut(storedProductList,"updatetransferitemquantityaccept","","");
+        List<StoredProduct> updateStoredProductList = new ArrayList<StoredProduct>();
+        List<StoredProduct> addStoredProductList = new ArrayList<StoredProduct>();
+        for (StoredProduct st: storedProductList){
+            if(searchStoredProductByCombinationCodes(st.getLocationID(),st.getProductItemCode()).isEmpty()){
+                addStoredProductList.add(st);
+            }else{
+                updateStoredProductList.add(st);
+            }
+        }
+        clientRequestPut(updateStoredProductList,"updatetransferitemquantityaccept","","");
+
+        //add store product
+        String postURL= "http://localhost:8080/rest/transferproduct/addstoredproduct";
+        WebResource webResourcePost= client.resource(postURL);
+        //use the object passed as a parameter to send a request
+        response= webResourcePost.type("application/json").post(ClientResponse.class, addStoredProductList);
+        response.bufferEntity();
+        response.getEntity(String.class);
+
         data.clear();
     }
 
@@ -130,6 +160,7 @@ public class AcceptTransferItemController {
         getTransferItemURL="http://localhost:8080/rest/transferproduct/displaysendingtransferitem/";
         searchTransferItem(getTransferItemURL,"transferID",transferID);
     }
+
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ReportTransferFXML.fxml"));
         AnchorPane pane = loader.load();
