@@ -210,9 +210,9 @@ public class TransferDAO {
     }
 
     // display sending transfer
-    public List<Transfer> displaySendingTransfer() {
+    public List<Transfer> displaySendingTransfer(String destinationLocationID) {
         String status = "Sending";
-        String displaySendingTransferSqlQuery = "SELECT * from Transfer WHERE status = \"" + status +"\";";
+        String displaySendingTransferSqlQuery = "SELECT * from Transfer WHERE status = \"" + status + "\" AND destinationLocationID = \"" +destinationLocationID + "\";";
 
         executeSearchTransferSQLQueries(displaySendingTransferSqlQuery);
 

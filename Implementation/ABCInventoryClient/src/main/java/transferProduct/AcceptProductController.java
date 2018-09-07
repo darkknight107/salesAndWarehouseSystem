@@ -20,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import manageProduct.AppScreen;
+import searchAccount.SearchAccountController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
@@ -84,13 +85,15 @@ public class AcceptProductController {
         //connect to the server to retrieve the data
         data = tblTransfer.getItems();
         data.clear();
+        SearchAccountController searchAccountController = new SearchAccountController();
+        String destinationLocationID = searchAccountController.getCurrentLocationId();
         //creating a new client to send get request
         ClientConfig clientConfig= new DefaultClientConfig();
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
         getTransferURL="http://localhost:8080/rest/transferproduct/displaysendingtransfer/";
-        searchTransfer(getTransferURL,"","");
+        searchTransfer(getTransferURL,"destinationLocationID", destinationLocationID);
         addDetailButton();
     }
 
