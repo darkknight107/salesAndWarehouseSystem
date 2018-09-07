@@ -289,21 +289,6 @@ public class ManageProductController{
         pane = loader.load();
         anchorPane.getChildren().setAll(pane);
     }
-    public void handleLogoutButton() throws IOException {
-        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        alert.setTitle("Confirmation");
-        if (alert.getResult()== ButtonType.YES){
-            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
-            AnchorPane aPane = loader.load();
-            //assigning home page css to the anchorPane when logging out
-            /*File file= new File("F:\\shirish\\salesAndWarehouseSystem\\Implementation\\ABCInventoryClient\\src\\Resource\\css\\LoginPage.css");
-            aPane.getStylesheets().clear();
-            aPane.getStylesheets().setAll(file.toURI().toURL().toExternalForm());*/
-            aPane.getStyleClass().add("anchorpane");
-            anchorPane.getChildren().setAll(aPane);
-        }
 
-    }
 
 }

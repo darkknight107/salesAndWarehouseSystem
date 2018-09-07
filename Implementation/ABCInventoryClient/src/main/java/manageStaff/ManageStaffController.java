@@ -116,6 +116,7 @@ public class ManageStaffController {
             });
             updateButton.setOnAction(e ->{
                 try {
+                    System.out.println("Update button pressed");
                 staffTable.getSelectionModel().select(cell.getIndex());
                 //getting the selected staff details and putting it into a staff object
                 Staff staffToBeUpdated= new Staff();
@@ -128,12 +129,18 @@ public class ManageStaffController {
                 staffToBeUpdated.setAddress(staffTable.getSelectionModel().getSelectedItem().getAddress());
                 staffToBeUpdated.setEmail(staffTable.getSelectionModel().getSelectedItem().getEmail());
 
+                    System.out.println("staff instance created");
                 //passing data from selected staff to be updated to UpdateStaffController and displaying update staff page
                 FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/UpdateStaff.fxml"));
-                pane = loader.load();
-                anchorPane.getChildren().setAll(pane);
-                UpdateStaffController updateStaffController= loader.<UpdateStaffController>getController();
-                updateStaffController.setStaffData(staffToBeUpdated);
+                    System.out.println("loader instance created");
+                    pane = loader.load();
+                    anchorPane.getChildren().setAll(pane);
+                    UpdateStaffController updateStaffController= loader.<UpdateStaffController>getController();
+                    updateStaffController.setStaffData(staffToBeUpdated);
+                    System.out.println("Staff loaded");
+
+
+
                 }
                 catch (IOException e1) {
                 }
@@ -159,6 +166,7 @@ public class ManageStaffController {
         }
         if (staffList.isEmpty()) {
             screen.alertMessages("Staff does not exists!", "Error! Staff does not exist.");
+            showAllStaff();
         } else {
             for (Staff s : staffList) {
                 data.add(s);
