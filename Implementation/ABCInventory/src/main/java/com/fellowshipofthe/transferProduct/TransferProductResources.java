@@ -94,11 +94,11 @@ public class TransferProductResources {
     @GET
     @Path("/displaysendingtransfer")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Transfer> displaySendingTransfer() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public List<Transfer> displaySendingTransfer(@QueryParam("destinationLocationID") String destinationLocationID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
         System.out.println("display sending transfers called!");
 
-        return transferDAO.displaySendingTransfer();
+        return transferDAO.displaySendingTransfer(destinationLocationID);
     }
 
     // Client calls the display sending transfer item

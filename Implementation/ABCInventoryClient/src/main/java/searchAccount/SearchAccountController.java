@@ -50,6 +50,7 @@ public class SearchAccountController {
     ClientResponse response;
 
     String getAccountURL;
+    private static String CURRENT_LOCATION_ID;
     int count = 0;
     // Initialize method for handle the
     public void initialize(URL url,ResourceBundle rb) throws Exception {handleSearchAccountCodeAction (); }
@@ -105,6 +106,7 @@ public class SearchAccountController {
         String responseValue= response.getEntity (String.class);
         System.out.println (responseValue);
         if(responseValue.equals ("WRH1")){
+            setCurrentLocationId(responseValue);
             FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
             AnchorPane pane= loader.load();
             anchorPane.getChildren().setAll(pane);
@@ -114,20 +116,20 @@ public class SearchAccountController {
 
         }
         else if(responseValue.equals ("STR1") || responseValue.equals ("STR2")){
+            setCurrentLocationId(responseValue);
             FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
             AnchorPane pane= loader.load();
             anchorPane.getChildren().setAll(pane);
             HomePageController controller= loader.<HomePageController>getController();
             controller.storeStaffOptionsDisable ();
             controller.setUserType("STR");
-
         }
-        else if (!responseValue.isEmpty ()){
+        else if (responseValue.equals("false")){
 
             appScreen.alertMessages ("Unsuccessful","Username or Password does not match.");
         }
         else{
-            appScreen.alertMessages ("Error!", "An error occurred. Please try again!");
+            appScreen.alertMessages ("Error!", "An error occurred. Please make sure you are connected to the internet.");
         }
 
     }
@@ -140,6 +142,11 @@ public class SearchAccountController {
         passwordTextField.setText ("");
     }
 
+    public String getCurrentLocationId() {
+        return CURRENT_LOCATION_ID;
+    }
 
-
+    public void setCurrentLocationId(String currentLocationId) {
+        CURRENT_LOCATION_ID = currentLocationId;
+    }
 }
