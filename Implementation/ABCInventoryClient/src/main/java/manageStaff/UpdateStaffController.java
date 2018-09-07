@@ -59,10 +59,12 @@ public class UpdateStaffController {
     TextField addressField;
     @FXML
     TextField emailField;
+    Staff staff;
     ObservableList<String> locationList;
     AppScreen screen;
     public UpdateStaffController(){
         screen= new AppScreen();
+        staff= new Staff();
     }
 
     public void handleUpdateButton() throws IOException {
@@ -103,6 +105,7 @@ public class UpdateStaffController {
     }
     public void setStaffData(Staff staff){
         //setting the items that can be selected in the combo box
+        this.staff= staff;
         locationList= FXCollections.observableArrayList("Newtown Warehouse", "Epping Store", "Oxford Store");
         locationComboBox.setItems(locationList);
         //putting values of the staff to be updated in the field which  is editable
@@ -181,6 +184,7 @@ public class UpdateStaffController {
         updateButton.setOnAction(e-> {
             //validate password
             if (newPassword.getText().equals(confirmPassword.getText())){
+
                 // Create Jersey client
                 ClientConfig clientConfig = new DefaultClientConfig();
                 clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
@@ -228,6 +232,25 @@ public class UpdateStaffController {
         dialog.show();
 
     }
+    public void handleCancelButton(){
+        setStaffData(staff);
+    }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
+        AnchorPane pane = loader.load();
+        ManageStaffController controller= loader.getController();
+        controller.showAllStaff();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+
 
 
 }

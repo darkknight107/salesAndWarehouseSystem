@@ -51,6 +51,7 @@ public class AddStaffController {
     PasswordField passwordField1;
     @FXML
     ComboBox locationComboBox;
+
     Staff staff;
     AppScreen screen;
 
@@ -73,54 +74,41 @@ public class AddStaffController {
             String locationID= convertLocationName((String) locationComboBox.getValue());
             staff.setDateOfBirth(String.valueOf(dobPicker.getValue()));
             staff.setUserName(userNameField.getText());
-            staff.setPassword(passwordField.getText());
-            /*//using boolean bind to disable update button when password fields are empty
-            BooleanBinding bb= new BooleanBinding() {
-                {
-                    super.bind(passwordField.textProperty(), passwordField1.textProperty());
-                }
-                @Override
-                protected boolean computeValue() {
-                    return (passwordField.getText().isEmpty() || passwordField1.getText().isEmpty());
-                }
-            };
-            addStaffButton.disableProperty().bind(bb);
-            //verifyPassword();
             if (passwordField.getText().equals(passwordField1.getText())){
                 staff.setPassword(passwordField.getText());
+                staff.setLocationID(locationID);
+                //creating a new client to send post request
+                ClientConfig clientConfig= new DefaultClientConfig();
+                clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+                Client client= Client.create(clientConfig);
+                String postURL= "http://localhost:8080/rest/managestaff/addstaff";
+                WebResource webResourcePost= client.resource(postURL);
+                //use the object passed as a parameter to send a request
+                ClientResponse response= webResourcePost.type("application/json").post(ClientResponse.class, staff);
+                response.bufferEntity();
+                String responseValue= response.getEntity(String.class);
+                if (responseValue.equals("true")){
+                    screen.alertMessages("Staff Added!", "Staff " + staff.getUserName() + " added!");
+                    FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
+                    pane = loader.load();
+                    ManageStaffController controller= loader.<ManageStaffController>getController();
+                    controller.showAllStaff();
+                    anchorPane.getChildren().setAll(pane);
+                }
+                else if(responseValue.equals("exists")){
+                    screen.alertMessages("Username already exists!", "The username entered already exists. Please enter a unique username.");
+                    userNameField.setText("");
+                }
+                else{
+                    screen.alertMessages("Error!", "An Error occured! Please try again.");
+                }
             }
             else{
-                screen.alertMessages("Passwords do not match.", "The passwords you entered do not match.");
-                passwordField.setText("");
-                passwordField1.setText("");
-            }*/
-            staff.setLocationID(locationID);
-            //creating a new client to send post request
-            ClientConfig clientConfig= new DefaultClientConfig();
-            clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-            Client client= Client.create(clientConfig);
-            String postURL= "http://localhost:8080/rest/managestaff/addstaff";
-            WebResource webResourcePost= client.resource(postURL);
-            //use the object passed as a parameter to send a request
-            ClientResponse response= webResourcePost.type("application/json").post(ClientResponse.class, staff);
-            response.bufferEntity();
-            String responseValue= response.getEntity(String.class);
-            if (responseValue.equals("true")){
-                screen.alertMessages("Staff Added!", "Staff " + staff.getUserName() + " added!");
-                FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
-                pane = loader.load();
-                ManageStaffController controller= loader.<ManageStaffController>getController();
-                controller.showAllStaff();
-                anchorPane.getChildren().setAll(pane);
+                screen.alertMessages("Error!", "The passwords you entered do not match. Please try again.");
+                passwordField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+                passwordField1.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
-            else if(responseValue.equals("exists")){
-                screen.alertMessages("Username already exists!", "The username entered already exists. Please enter a unique username.");
-                userNameField.setText("");
-                exit(0);
-            }
-            else{
-                screen.alertMessages("Error!", "An Error occured! Please try again.");
-            }
+
         }
         else {
             screen.alertMessages("Incomplete Field!", "Please fill in all the required fields.");
@@ -163,27 +151,28 @@ public class AddStaffController {
                 locationID= "WRH1";
                 break;
             case "Epping Store":
-                locationID= "STR1";
+                locationID= "STR2";
                 break;
             case "Oxford Store":
-                locationID= "STR2";
+                locationID= "STR1";
                 break;
         }
         return locationID;
     }
-    /*public void verifyPassword(){
-        if(passwordField.getText().equals(passwordField1.getText())){
-            passwordField.setStyle(null);
-            passwordField1.setStyle(null);
-            staff.setPassword(passwordField.getText());
-        }
-        else{
-            passwordField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
-            passwordField1.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
 
-        }
+    public void handleResetButton(){
+        firstNameField.setText("");
+        lastNameField.setText("");
+        emailField.setText("");
+        dobPicker.setValue(null);
+        addressField.setText("");
+        phoneField.setText("");
+        userNameField.setText("");
+        passwordField.setText("");
+        passwordField1.setText("");
+        locationComboBox.setValue(null);
 
-    }*/
+    }
 
     public void resetTextStyle(){
         firstNameField.setStyle(null);
@@ -194,6 +183,20 @@ public class AddStaffController {
         passwordField.setStyle(null);
         passwordField1.setStyle(null);
         locationComboBox.setStyle(null);
+    }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
+        AnchorPane pane = loader.load();
+        ManageStaffController controller= loader.getController();
+        controller.showAllStaff();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        anchorPane.getChildren().setAll(pane);
     }
 
 }

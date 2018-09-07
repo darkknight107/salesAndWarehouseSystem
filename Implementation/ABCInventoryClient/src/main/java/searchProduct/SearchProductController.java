@@ -86,6 +86,8 @@ public class SearchProductController {
         }
         if (productList.isEmpty()) {
             screen.alertMessages("Non-Existent Product", "Product does not exist!");
+            txtSearch.setText("");
+            showAllProducts();
         } else {
             for (Product p : productList) {
                 data.add(p);
