@@ -255,14 +255,36 @@ public class ProductDAO {
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
-        String sql= "INSERT INTO StoredProduct(productItemCode, locationID, productQuantity)" +
-                "VALUES (\"" + itemCode +"\",\""+ locationID+ "\",\"" + quantity + "\");";
-        System.out.println(itemCode + locationID + quantity);
-        stmt.executeUpdate(sql);
-        conn.close();
-        stmt.close();
-        System.out.println("StoredProduct Added!");
-        return true;
+        String sqlQueryToCheckStoredProduct= "SELECT productQuantity FROM StoredProduct WHERE productItemCode= \"" + itemCode + "\"";
+        ResultSet resultSet= stmt.executeQuery(sqlQueryToCheckStoredProduct);
+        if(resultSet.next()){
+            int existingQty= Integer.parseInt(resultSet.getString(1));
+            int newQuantity= existingQty + Integer.parseInt(quantity);
+            System.out.println("Product Item in Stored Product already exists.");
+            String sqlQueryToUpdateQuantity= "UPDATE StoredProduct SET productQuantity= \"" + String.valueOf(newQuantity) + "\" WHERE productItemCode = \""+ itemCode + "\" AND locationID = \""+ locationID + "\";";
+            int i= stmt.executeUpdate(sqlQueryToUpdateQuantity);
+            conn.close();
+            stmt.close();
+            if (i > 0){
+                System.out.println("Stored product updated!");
+                return true;
+            }
+            else{
+                System.out.println("Error! Stored product could not be updated!");
+                return false;
+            }
+        }
+        else{
+            String sql= "INSERT INTO StoredProduct(productItemCode, locationID, productQuantity)" +
+                    "VALUES (\"" + itemCode +"\",\""+ locationID+ "\",\"" + quantity + "\");";
+            System.out.println(itemCode + locationID + quantity);
+            stmt.executeUpdate(sql);
+            conn.close();
+            stmt.close();
+            System.out.println("StoredProduct Added!");
+            return true;
+        }
+
     }
 
     //method to access database and delete product
