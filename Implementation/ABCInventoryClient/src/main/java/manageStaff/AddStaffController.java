@@ -107,6 +107,8 @@ public class AddStaffController {
                 screen.alertMessages("Error!", "The passwords you entered do not match. Please try again.");
                 passwordField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
                 passwordField1.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+                passwordField.setText("");
+                passwordField1.setText("");
             }
 
         }
