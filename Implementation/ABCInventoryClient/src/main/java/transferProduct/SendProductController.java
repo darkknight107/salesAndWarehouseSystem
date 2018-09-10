@@ -140,7 +140,6 @@ public class SendProductController {
                     }else if(!locationID.equals(st.getLocationID())){
                         screen.alertMessages("Multiple Send Location", "The items should be sent from 1 location at a time.");
                         flag = true;
-                        break;
                     }
                 }
                 if (flag == false) {
@@ -165,13 +164,17 @@ public class SendProductController {
         String productItemCodeCart = tblCart.getSelectionModel().getSelectedItem().getProductItemCode();
         String productQuantityCart = productStringCellEditEvent.getNewValue();
         Boolean flag = false;
-        int qtyCart = Integer.parseInt(productQuantityCart);
-
         for (StoredProduct st: dataStoredProduct) {
             int qtyStoredProduct = Integer.parseInt(st.getProductQuantity());
             if ((locationIDCart == st.getLocationID()) & (productItemCodeCart == st.getProductItemCode())) {
-                if (qtyCart>qtyStoredProduct) {
-                    screen.alertMessages("Not Enough Product", "The quantity of product should be less than the quantity of current stock");
+                if(!productQuantityCart.matches("[0-9]+") || Integer.parseInt(productQuantityCart) == 0) {
+                    screen.alertMessages("Invalid Quantity", "The quantity of sending product should be a number and greater than 0");
+                    flag = true;
+                    // workaround for refreshing rendered values
+                    productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(false);
+                    productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(true);
+                } else if (Integer.parseInt(productQuantityCart)>qtyStoredProduct) {
+                    screen.alertMessages("Not Enough Product", "The quantity of sending product should be less than the quantity of current stock");
                     flag = true;
                     // workaround for refreshing rendered values
                     productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(false);
@@ -236,7 +239,6 @@ public class SendProductController {
 
         //call the clientRequest method to send a request to the server
         String response= clientRequestPost(transferList,"addtransfer");
-        System.out.println(response);
         if (response.equals("true")){
             flag = true;
         }
