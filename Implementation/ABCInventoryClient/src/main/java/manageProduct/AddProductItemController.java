@@ -8,6 +8,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.ProductItem;
 import entityClass.StoredProduct;
+import homePage.HomePageController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -144,18 +145,9 @@ public class AddProductItemController {
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         borderPane.getChildren().setAll(pane);
-    }
-    public void handleLogoutButton() throws IOException {
-        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        alert.setTitle("Confirmation");
-        if (alert.getResult()== ButtonType.YES){
-            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
-            pane = loader.load();
-            borderPane.getChildren().setAll(pane);
-        }
-
     }
 
 }

@@ -146,16 +146,9 @@ public class AddProductController {
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane aPane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(aPane);
     }
-    public void handleLogoutButton() throws IOException {
-        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        alert.setTitle("Confirmation");
-        if (alert.getResult()== ButtonType.YES) {
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
-            AnchorPane aPane = loader.load();
-            anchorPane.getChildren().setAll(aPane);
-        }
-    }
+
 }

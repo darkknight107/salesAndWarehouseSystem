@@ -7,6 +7,7 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Staff;
+import homePage.HomePageController;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -198,6 +199,8 @@ public class AddStaffController {
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 

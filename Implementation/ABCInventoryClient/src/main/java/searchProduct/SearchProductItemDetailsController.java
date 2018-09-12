@@ -12,6 +12,7 @@ import entityClass.Product;
 import entityClass.ProductItem;
 import entityClass.SearchProduct;
 import entityClass.StoredProduct;
+import homePage.HomePageController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -170,16 +171,8 @@ public class SearchProductItemDetailsController {
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         aPane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(aPane);
-    }
-    public void handleLogoutButton() throws IOException {
-        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        alert.setTitle("Confirmation");
-        if (alert.getResult()== ButtonType.YES) {
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
-            aPane = loader.load();
-            anchorPane.getChildren().setAll(aPane);
-        }
     }
 }

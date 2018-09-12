@@ -9,6 +9,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Staff;
 import entityClass.Transfer;
+import homePage.HomePageController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -166,6 +167,7 @@ public class ManageStaffController {
         }
         if (staffList.isEmpty()) {
             screen.alertMessages("Staff does not exists!", "Error! Staff does not exist.");
+            this.searchField.setText("");
             showAllStaff();
         } else {
             for (Staff s : staffList) {
@@ -198,12 +200,16 @@ public class ManageStaffController {
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 }
