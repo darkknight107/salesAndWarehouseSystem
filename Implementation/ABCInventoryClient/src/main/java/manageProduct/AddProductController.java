@@ -50,56 +50,65 @@ public class AddProductController {
 
     @FXML
     public void handleAddProductNext() throws ExecutionException, InterruptedException, IOException {
-        if (!(productCodeField.getText().isEmpty() && !(productNameField.getText().isEmpty()) && !(priceField.getText().isEmpty()) && !(descriptionField.getText().isEmpty()))){
+        resetTextStyle();
+        //creating variables to get product details entered by user in text fields
+        String productCode= productCodeField.getText();
+        String productName= productNameField.getText();
+        String price= priceField.getText();
+        String description= descriptionField.getText();
 
-            //creating variables to get product details entered by user in text fields
-            String productCode= productCodeField.getText();
-            String productName= productNameField.getText();
-            String price= priceField.getText();
-            String description= descriptionField.getText();
+        if (!(productCode.isEmpty()) && !(productName.isEmpty()) && !(price.isEmpty()) && !(description.isEmpty())){
 
             //validate entered productCode
             if (productCode.matches("[A-Z][0-9]")){
-                //set textfield values to Product Entity
+                if(isNumeric(price) == true){
+                    //set textfield values to Product Entity
 
-                newProduct.setProductCode(productCode);
-                newProduct.setProductName(productName);
-                newProduct.setPrice(price);
-                newProduct.setDescription(description);
+                    newProduct.setProductCode(productCode);
+                    newProduct.setProductName(productName);
+                    newProduct.setPrice(price);
+                    newProduct.setDescription(description);
 
-                //send post request to add the new product
-                ClientConfig clientConfig= new DefaultClientConfig();
-                clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-                Client client= Client.create(clientConfig);
-                String postURL= "http://localhost:8080/rest/manageproduct";
-                WebResource webResourcePost= client.resource(postURL);
-                //use the object passed as a parameter to send a request
-                ClientResponse responseValue= webResourcePost.type("application/json").post(ClientResponse.class, newProduct);
-                responseValue.bufferEntity();
-                String response= responseValue.getEntity(String.class);
-                System.out.println(response);
+                    //send post request to add the new product
+                    ClientConfig clientConfig= new DefaultClientConfig();
+                    clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+                    Client client= Client.create(clientConfig);
+                    String postURL= "http://localhost:8080/rest/manageproduct";
+                    WebResource webResourcePost= client.resource(postURL);
+                    //use the object passed as a parameter to send a request
+                    ClientResponse responseValue= webResourcePost.type("application/json").post(ClientResponse.class, newProduct);
+                    responseValue.bufferEntity();
+                    String response= responseValue.getEntity(String.class);
+                    System.out.println(response);
 
-                //test if product already exists
-                //add if does not exist
-                if (response.equals("exists")){
-                    screen.alertMessages("Product already exists.", "The Product entered already exists.");
-                    clearTextFields();
-                    //load text fields and labels for adding product item for existing product
-                    //handleAddProductItem(newProduct.getProductCode());
-                    goToAddProductItem();
-                }
+                    //test if product already exists
+                    //add if does not exist
+                    if (response.equals("exists")){
+                        screen.alertMessages("Product already exists.", "The Product entered already exists.");
+                        clearTextFields();
+                        //load text fields and labels for adding product item for existing product
+                        //handleAddProductItem(newProduct.getProductCode());
+                        goToAddProductItem();
+                    }
 
-                else if(response.equals("true")){
-                    screen.alertMessages("Product Added.", "Product " + newProduct.getProductCode() + " has been added.");
-                    clearTextFields();
-                    //load text fields and labels for adding product item
-                    //handleAddProductItem(newProduct.getProductCode());
+                    else if(response.equals("true")){
+                        screen.alertMessages("Product Added.", "Product " + newProduct.getProductCode() + " has been added.");
+                        clearTextFields();
+                        //load text fields and labels for adding product item
+                        //handleAddProductItem(newProduct.getProductCode());
 
-                    goToAddProductItem();
+                        goToAddProductItem();
+                    }
+                    else{
+                        screen.alertMessages("Error!", "Error please check your internet  connection or try again later.");
+                    }
                 }
                 else{
-                    screen.alertMessages("Error!", "You may have not entered all the required values or check your internet  connection. Please try again.");
+                    screen.alertMessages("Invalid Price", "Please enter a numeric price value!");
+                    priceField.setText("");
+                    priceField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
                 }
+
             }
             else{
                 screen.alertMessages("Invalid Code", "Please use a valid code. Code must contain one Alphabet followed by a numeral! \n" +
@@ -108,6 +117,18 @@ public class AddProductController {
         }
         else{
             screen.alertMessages("Values not entered!", "You have not entered all the values. Please enter all values and try again.");
+            if (productCodeField.getText().isEmpty()) {
+                productCodeField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+            if (productNameField.getText().isEmpty()) {
+                productNameField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+            if (priceField.getText().isEmpty()) {
+                priceField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+            if (descriptionField.getText().isEmpty()) {
+                descriptionField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
         }
 
     }
@@ -118,6 +139,12 @@ public class AddProductController {
         productNameField.setText("");
         priceField.setText("");
         descriptionField.setText("");
+    }
+    public void resetTextStyle(){
+        productNameField.setStyle(null);
+        productCodeField.setStyle(null);
+        priceField.setStyle(null);
+        descriptionField.setStyle(null);
     }
 
     @FXML
@@ -134,6 +161,16 @@ public class AddProductController {
         addProductItemController.setSelectedProductCode(newProduct.getProductCode());
         addProductItemController.setComboBoxValues();
     }
+
+    public static boolean isNumeric(String str){
+        try{
+            double d= Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe){
+            return false;
+        }
+        return true;
+        }
 
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));

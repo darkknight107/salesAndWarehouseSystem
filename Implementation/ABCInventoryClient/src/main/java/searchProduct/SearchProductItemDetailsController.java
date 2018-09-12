@@ -112,7 +112,6 @@ public class SearchProductItemDetailsController {
             updateStoredProduct.setProductItemCode(productItemCode);
             updateStoredProduct.setLocationID(locationID);
             quantity = tblViewSearchedProductDetails.getSelectionModel().getSelectedItem().getProductQuantity();
-
             if (quantityEdited == false){
                 System.out.println("Non edited");
                 updateStoredProduct.setProductQuantity(quantity);
@@ -121,32 +120,43 @@ public class SearchProductItemDetailsController {
             else{
                 System.out.println("Edited value");
             }
+            String qty= updateStoredProduct.getProductQuantity();
+            System.out.println(qty);
+            if (new manageProduct.AddProductController().isNumeric(qty) == true){
+                if (!((Double.parseDouble(qty) <0))){
+                    //creating a new client to send post request
+                    ClientConfig clientConfig= new DefaultClientConfig();
+                    clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+                    Client client= Client.create(clientConfig);
+                    String updateURL= "http://localhost:8080/rest/update/updatestoredproduct";
+                    WebResource webResourcePost= client.resource(updateURL);
+                    //use the object passed as a parameter to send a request
+                    ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updateStoredProduct);
+                    response.bufferEntity();
+                    String responseValue= response.getEntity(String.class);
+                    if (responseValue.equals("updated")){
+                        screen.alertMessages("Product Updated!", "The Product Quantity of " + productItemCode + " has been updated in " + locationID);
+                        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+                        try {
+                            AnchorPane aPane = loader.load();
 
-            //creating a new client to send post request
-            ClientConfig clientConfig= new DefaultClientConfig();
-            clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-            Client client= Client.create(clientConfig);
-            String updateURL= "http://localhost:8080/rest/update/updatestoredproduct";
-            WebResource webResourcePost= client.resource(updateURL);
-            //use the object passed as a parameter to send a request
-            ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updateStoredProduct);
-            response.bufferEntity();
-            String responseValue= response.getEntity(String.class);
-            if (responseValue.equals("updated")){
-                screen.alertMessages("Product Updated!", "The Product Quantity of " + productItemCode + " has been updated in " + locationID);
-                FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
-                try {
-                    AnchorPane aPane = loader.load();
-
-                ManageProductController manageProductController= loader.getController();
-                manageProductController.showAllProducts();
-                anchorPane.getChildren().setAll(aPane);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
+                            ManageProductController manageProductController= loader.getController();
+                            manageProductController.showAllProducts();
+                            anchorPane.getChildren().setAll(aPane);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                    else{
+                        screen.alertMessages("Error!", "Product could not be updated!");
+                    }
+                }
+                else{
+                    screen.alertMessages("Error!", "Quantity cannot be negative. Please try again!");
                 }
             }
             else{
-                screen.alertMessages("Error!", "Product could not be updated!");
+                screen.alertMessages("Inavlid quantity!", "Quantity cannot be non numeric value!");
             }
         });
 
