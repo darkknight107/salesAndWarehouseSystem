@@ -31,9 +31,6 @@
                         <ComboBox fx:id="cbDestinationLocation" promptText="Choose Location" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="Newtown Warehouse" />
-                                    <String fx:value="Oxford Store" />
-                                    <String fx:value="Epping Store" />
                                 </FXCollections>
                             </items>
                         </ComboBox>
@@ -86,11 +83,6 @@
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                             <columns>
-                                <TableColumn fx:id="locationName" prefWidth="76.0" text="LocationID">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="locationID" />
-                                    </cellValueFactory>
-                                </TableColumn>
                                 <TableColumn fx:id="productItemCode" prefWidth="124.0" text="Product Item Code">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productItemCode" />
@@ -150,11 +142,6 @@
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                             <columns>
-                                <TableColumn fx:id="locationIDCart" prefWidth="76.0" text="LocationID">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="locationID" />
-                                    </cellValueFactory>
-                                </TableColumn>
                                 <TableColumn fx:id="productItemCodeCart" prefWidth="124.0" text="Product Item Code">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productItemCode" />

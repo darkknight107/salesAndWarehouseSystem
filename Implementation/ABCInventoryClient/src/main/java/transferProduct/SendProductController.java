@@ -94,19 +94,17 @@ public class SendProductController {
 
     //event handler for send location combo box
     public void handleComboBoxLocation(){
+            cbDestinationLocation.getItems().removeAll();
             switch (currentSendLocation){
-                case "Newtown Warehouse":
-                    cbDestinationLocation.getItems().removeAll();
+                case "WRH1":
                     cbDestinationLocation.getItems().add("Oxford Store");
                     cbDestinationLocation.getItems().add("Epping Store");
                     break;
-                case "Oxford Store":
-                    cbDestinationLocation.getItems().removeAll();
+                case "STR1":
                     cbDestinationLocation.getItems().add("Newtown Warehouse");
                     cbDestinationLocation.getItems().add("Epping Store");
                     break;
-                case "Epping Store":
-                    cbDestinationLocation.getItems().removeAll();
+                case "STR2":
                     cbDestinationLocation.getItems().add("Newtown Warehouse");
                     cbDestinationLocation.getItems().add("Oxford Store");
                     break;
@@ -129,6 +127,7 @@ public class SendProductController {
         StoredProduct cartStoredProduct = new StoredProduct(productItemCode,locationID,productQuantity);;
 
         dataCart= tblCart.getItems();
+        if (!cbDestinationLocation.getSelectionModel().isEmpty()) {
             if(Integer.parseInt(storedProductQuantity)<= 0){
                 screen.alertMessages("Not Enough Product", "The selected product is out of stock at this moment, please select other products!");
                 flag = true;
@@ -142,14 +141,15 @@ public class SendProductController {
                     }else if(!locationID.equals(st.getLocationID())){
                         screen.alertMessages("Multiple Send Location", "The items should be sent from 1 location at a time.");
                         flag = true;
-                        break;
                     }
                 }
                 if (flag == false) {
                     dataCart.add(cartStoredProduct);
                 }
             }
-
+        } else{
+            screen.alertMessages("Invalid Destination Location", "Please select the destination location");
+        }
 
         tblCart.setEditable(true);
         productQuantityCart.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -165,13 +165,17 @@ public class SendProductController {
         String productItemCodeCart = tblCart.getSelectionModel().getSelectedItem().getProductItemCode();
         String productQuantityCart = productStringCellEditEvent.getNewValue();
         Boolean flag = false;
-        int qtyCart = Integer.parseInt(productQuantityCart);
-
         for (StoredProduct st: dataStoredProduct) {
             int qtyStoredProduct = Integer.parseInt(st.getProductQuantity());
             if ((locationIDCart == st.getLocationID()) & (productItemCodeCart == st.getProductItemCode())) {
-                if (qtyCart>qtyStoredProduct) {
-                    screen.alertMessages("Not Enough Product", "The quantity of product should be less than the quantity of current stock");
+                if(!productQuantityCart.matches("[0-9]+") || Integer.parseInt(productQuantityCart) == 0) {
+                    screen.alertMessages("Invalid Quantity", "The quantity of sending product should be a number and greater than 0");
+                    flag = true;
+                    // workaround for refreshing rendered values
+                    productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(false);
+                    productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(true);
+                } else if (Integer.parseInt(productQuantityCart)>qtyStoredProduct) {
+                    screen.alertMessages("Not Enough Product", "The quantity of sending product should be less than the quantity of current stock");
                     flag = true;
                     // workaround for refreshing rendered values
                     productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(false);
@@ -210,19 +214,32 @@ public class SendProductController {
 
         //creating variables to get product details entered by user in text fields
         String destinationLocation= cbDestinationLocation.getValue().toString();
+        String destinationLocationID = "";
+        switch (destinationLocation){
+            case "Newtown Warehouse":
+                destinationLocationID = "WRH1";
+                break;
+            case "Oxford Store":
+                destinationLocationID = "STR1";
+                break;
+            case "Epping Store":
+                destinationLocationID = "STR2";
+                break;
+            default:
+                break;
+        }
         String date = dtf.format(cal.getTime());
         String status= "Sending";
         String description= txtDescription.getText();
 
         //set textfield values to Product Entity
-        Transfer t = new Transfer(currentSendLocation,destinationLocation,date,status,description);
+        Transfer t = new Transfer(currentSendLocation,destinationLocationID,date,status,description);
 
         List<Transfer> transferList = new ArrayList<Transfer>();
         transferList.add(t);
 
         //call the clientRequest method to send a request to the server
         String response= clientRequestPost(transferList,"addtransfer");
-        System.out.println(response);
         if (response.equals("true")){
             flag = true;
         }

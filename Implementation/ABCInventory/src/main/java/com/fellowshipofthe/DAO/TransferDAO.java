@@ -68,7 +68,7 @@ public class TransferDAO {
 
 
         int transferID = Integer.parseInt(getCurrentTransferID()) - 1;
-        System.out.println(transferID);
+        System.out.println("This is transferID:" + transferID);
 
         for (StoredProduct st : storedProducts) {
             //opening a connection with the database and creating a statement
@@ -261,6 +261,25 @@ public class TransferDAO {
 
     }
 
+    //Insert stored product when this product item does not have in destination location
+    public String addStoredProduct(List<StoredProduct> newStoredProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        //opening a connection with the database and creating a statement
+        dbconnet= new DatabaseConnection();
+        conn= dbconnet.connect();
+        Statement stmt= conn.createStatement();
+
+        for (StoredProduct st : newStoredProduct){
+
+            String sql= "INSERT INTO StoredProduct" +
+                    " VALUES (\"" + st.getProductItemCode() +"\",\""+ st.getLocationID()+ "\",\"" + st.getProductQuantity() + "\");";
+            stmt.executeUpdate(sql);
+        }
+        conn.close();
+        stmt.close();
+        System.out.println("Stored Product Added!");
+        return "true";
+    }
+
     // update stored product quantity after accept products
     public String updateTransferItemsQuantityAccept(List<StoredProduct> storedProducts) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
         conn= dbconnet.connect();
@@ -270,6 +289,7 @@ public class TransferDAO {
             String sql= "UPDATE StoredProduct \n" +
                     "SET productQuantity = productQuantity + \"" + st.getProductQuantity() + "\""+ "\n" +
                     "WHERE productItemCode= \"" + st.getProductItemCode() + "\"" + " AND locationID = \"" + st.getLocationID() +"\"; ";
+
             i = stmt.executeUpdate(sql);
         }
         conn.close();
@@ -343,7 +363,7 @@ public class TransferDAO {
         }
     }
 
-    // execute all the sql query for Stored Products
+    // execute all the sql query for TransferItem
     public void executeSearchTransferItemSQLQueries(String sqlQuery){
         try {
             dbconnet = new DatabaseConnection();
@@ -376,5 +396,7 @@ public class TransferDAO {
             }
         }
     }
+
+
 
 }
