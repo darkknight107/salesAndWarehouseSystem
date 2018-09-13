@@ -44,7 +44,7 @@ public class AccountDAO {
         }
         else{
             System.out.println ("not found");
-            return locationID;
+            return "false";
         }
 
 

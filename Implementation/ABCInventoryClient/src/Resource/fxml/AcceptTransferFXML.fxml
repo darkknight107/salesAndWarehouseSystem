@@ -73,11 +73,6 @@
                                 <PropertyValueFactory property="sendingLocationID" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn fx:id="destinationLocationID" prefWidth="124.0" text="Destination ID">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="destinationLocationID" />
-                            </cellValueFactory>
-                        </TableColumn>
                         <TableColumn fx:id="transferDate" prefWidth="101.0" text="Transfer Date">
                             <cellValueFactory>
                                 <PropertyValueFactory property="transferDate" />

@@ -94,11 +94,11 @@ public class TransferProductResources {
     @GET
     @Path("/displaysendingtransfer")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Transfer> displaySendingTransfer() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public List<Transfer> displaySendingTransfer(@QueryParam("destinationLocationID") String destinationLocationID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
         System.out.println("display sending transfers called!");
 
-        return transferDAO.displaySendingTransfer();
+        return transferDAO.displaySendingTransfer(destinationLocationID);
     }
 
     // Client calls the display sending transfer item
@@ -189,5 +189,15 @@ public class TransferProductResources {
         System.out.println("update Transfer status called!");
         System.out.println(transferID);
         return transferDAO.updateTransferStatusAccept(transferID);
+    }
+
+    //resource for adding stored product
+    @POST
+    @Path("/addstoredproduct")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String addStoredProduct(List<StoredProduct> storedProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        System.out.println("addStoredProduct called!");
+        return transferDAO.addStoredProduct(storedProduct);
     }
 }

@@ -11,6 +11,7 @@ import entityClass.SearchProduct;
 import entityClass.StoredProduct;
 import entityClass.Transfer;
 import entityClass.TransferItem;
+import homePage.HomePageController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import manageProduct.AppScreen;
+import searchAccount.SearchAccountController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
@@ -84,13 +86,15 @@ public class AcceptProductController {
         //connect to the server to retrieve the data
         data = tblTransfer.getItems();
         data.clear();
+        SearchAccountController searchAccountController = new SearchAccountController();
+        String destinationLocationID = searchAccountController.getCurrentLocationId();
         //creating a new client to send get request
         ClientConfig clientConfig= new DefaultClientConfig();
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
         getTransferURL="http://localhost:8080/rest/transferproduct/displaysendingtransfer/";
-        searchTransfer(getTransferURL,"","");
+        searchTransfer(getTransferURL,"destinationLocationID", destinationLocationID);
         addDetailButton();
     }
 
@@ -157,12 +161,16 @@ public class AcceptProductController {
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 

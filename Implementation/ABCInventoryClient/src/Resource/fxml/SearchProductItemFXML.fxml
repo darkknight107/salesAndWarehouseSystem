@@ -104,14 +104,14 @@
                     </ImageView>
                 </graphic>
                <HBox.margin>
-                  <Insets left="30.0" top="37.0" />
+                  <Insets left="60.0" top="37.0" />
                </HBox.margin></Button>
             <ImageView fitHeight="75.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/ABC%20Icon.png" />
                </image>
                <HBox.margin>
-                  <Insets left="530.0" top="27.0" />
+                  <Insets left="480.0" top="27.0" />
                </HBox.margin>
             </ImageView>
             <Button fx:id="mainMenuButton" mnemonicParsing="false" onAction="#handleMainMenuButton">
@@ -130,7 +130,7 @@
                     </ImageView>
                 </graphic>
                <HBox.margin>
-                  <Insets left="350.0" top="37.0" />
+                  <Insets left="390.0" top="37.0" />
                </HBox.margin></Button>
          </children>
       </HBox>

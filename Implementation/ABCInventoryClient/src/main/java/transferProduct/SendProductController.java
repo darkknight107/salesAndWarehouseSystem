@@ -7,15 +7,22 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
+import entityClass.Product;
 import entityClass.StoredProduct;
 import entityClass.Transfer;
+import homePage.HomePageController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import manageProduct.AppScreen;
+import searchAccount.SearchAccountController;
+import searchProduct.SearchProductItemController;
 
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
@@ -29,8 +36,6 @@ public class SendProductController {
     @FXML
     private TextArea txtDescription;
     @FXML
-    private ComboBox cbSendLocation;
-    @FXML
     private ComboBox cbDestinationLocation;
     @FXML
     private TextField txtSearch;
@@ -40,6 +45,8 @@ public class SendProductController {
     private TableView<StoredProduct> tblCart;
     @FXML
     private TableColumn productQuantityCart;
+    @FXML
+    private TableColumn locationName;
     @FXML
     AnchorPane anchorPane;
 
@@ -55,9 +62,11 @@ public class SendProductController {
     List<StoredProduct> storedProductList;
     AppScreen screen = new AppScreen();
 
+    SearchAccountController searchAccountController = new SearchAccountController();
+
     String getProductURL;
-    String sendLocation="";
     String code = "";
+    String currentSendLocation = searchAccountController.getCurrentLocationId();
 
 
 
@@ -67,15 +76,15 @@ public class SendProductController {
         code = txtSearch.getText().toUpperCase();
         getProductURL = "http://localhost:8080/rest/transferproduct/searchstoredproducts/";
 
-        if(!code.isEmpty() & !sendLocation.isEmpty()){
-            searchStoredProductByCombinationCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbycominationcodes/",sendLocation,code);
-        }else if(code.isEmpty() || sendLocation.isEmpty()){
+        if(!code.isEmpty()){
+            searchStoredProductByCombinationCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbycominationcodes/",currentSendLocation,code);
+        }else if(code.isEmpty()){
 
             if(code.matches("[A-Z][0-9]100") || code.matches("[A-Z][0-9]200") || code.matches("[A-Z][0-9]300")){
                 searchStoredProductByCodes(getProductURL,"productitemcode", code);
             }
             else if(code.equals("")){
-                searchStoredProductByCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbylocation/","locationID", cbSendLocation.getSelectionModel().getSelectedItem().toString());
+                searchStoredProductByCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbylocation/","locationID", currentSendLocation);
             } else {
                 screen.alertMessages("Wrong Format Input","Please enter the code in the right format! \nEg: Product Item Code: S1100, Location ID: WRH1");
             }
@@ -84,41 +93,31 @@ public class SendProductController {
     }
 
     //event handler for send location combo box
-    @FXML
     public void handleComboBoxLocation(){
-        sendLocation = cbSendLocation.getValue().toString();
-            switch (sendLocation){
+            cbDestinationLocation.getItems().removeAll();
+            switch (currentSendLocation){
                 case "WRH1":
-                    cbDestinationLocation.getItems().removeAll(cbSendLocation.getItems());
-                    cbDestinationLocation.getItems().add("STR1");
-                    cbDestinationLocation.getItems().add("STR2");
+                    cbDestinationLocation.getItems().add("Oxford Store");
+                    cbDestinationLocation.getItems().add("Epping Store");
                     break;
                 case "STR1":
-                    cbDestinationLocation.getItems().removeAll(cbSendLocation.getItems());
-                    cbDestinationLocation.getItems().add("WRH1");
-                    cbDestinationLocation.getItems().add("STR2");
+                    cbDestinationLocation.getItems().add("Newtown Warehouse");
+                    cbDestinationLocation.getItems().add("Epping Store");
                     break;
                 case "STR2":
-                    cbDestinationLocation.getItems().removeAll(cbSendLocation.getItems());
-                    cbDestinationLocation.getItems().add("WRH1");
-                    cbDestinationLocation.getItems().add("STR1");
+                    cbDestinationLocation.getItems().add("Newtown Warehouse");
+                    cbDestinationLocation.getItems().add("Oxford Store");
                     break;
                 default:
                     break;
             }
-        System.out.println(cbDestinationLocation.getItems());
-
-        if(code.isEmpty()){
-        searchStoredProductByCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbylocation/","locationID", sendLocation);}
-        else{
-            handleSearchProductCodeAction();
-        }
 
     }
 
     //event handler for add to cart button
     @FXML
     public void handleAddToCartAction(){
+
         String locationID = tblCurrentStoredProduct.getSelectionModel().getSelectedItem().getLocationID();
         String productItemCode = tblCurrentStoredProduct.getSelectionModel().getSelectedItem().getProductItemCode();
         String storedProductQuantity = tblCurrentStoredProduct.getSelectionModel().getSelectedItem().getProductQuantity();
@@ -128,9 +127,8 @@ public class SendProductController {
         StoredProduct cartStoredProduct = new StoredProduct(productItemCode,locationID,productQuantity);;
 
         dataCart= tblCart.getItems();
-        if (!cbSendLocation.getSelectionModel().isEmpty()) {
+        if (!cbDestinationLocation.getSelectionModel().isEmpty()) {
             if(Integer.parseInt(storedProductQuantity)<= 0){
-                System.out.println(true);
                 screen.alertMessages("Not Enough Product", "The selected product is out of stock at this moment, please select other products!");
                 flag = true;
             }else if(dataCart.isEmpty()) {
@@ -143,7 +141,6 @@ public class SendProductController {
                     }else if(!locationID.equals(st.getLocationID())){
                         screen.alertMessages("Multiple Send Location", "The items should be sent from 1 location at a time.");
                         flag = true;
-                        break;
                     }
                 }
                 if (flag == false) {
@@ -151,9 +148,8 @@ public class SendProductController {
                 }
             }
         } else{
-            screen.alertMessages("Invalid Sending Location", "Please select the sending location");
+            screen.alertMessages("Invalid Destination Location", "Please select the destination location");
         }
-
 
         tblCart.setEditable(true);
         productQuantityCart.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -169,13 +165,17 @@ public class SendProductController {
         String productItemCodeCart = tblCart.getSelectionModel().getSelectedItem().getProductItemCode();
         String productQuantityCart = productStringCellEditEvent.getNewValue();
         Boolean flag = false;
-        int qtyCart = Integer.parseInt(productQuantityCart);
-
         for (StoredProduct st: dataStoredProduct) {
             int qtyStoredProduct = Integer.parseInt(st.getProductQuantity());
             if ((locationIDCart == st.getLocationID()) & (productItemCodeCart == st.getProductItemCode())) {
-                if (qtyCart>qtyStoredProduct) {
-                    screen.alertMessages("Not Enough Product", "The quantity of product should be less than the quantity of current stock");
+                if(!productQuantityCart.matches("[0-9]+") || Integer.parseInt(productQuantityCart) == 0) {
+                    screen.alertMessages("Invalid Quantity", "The quantity of sending product should be a number and greater than 0");
+                    flag = true;
+                    // workaround for refreshing rendered values
+                    productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(false);
+                    productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(true);
+                } else if (Integer.parseInt(productQuantityCart)>qtyStoredProduct) {
+                    screen.alertMessages("Not Enough Product", "The quantity of sending product should be less than the quantity of current stock");
                     flag = true;
                     // workaround for refreshing rendered values
                     productStringCellEditEvent.getTableView().getColumns().get(2).setVisible(false);
@@ -214,12 +214,26 @@ public class SendProductController {
 
         //creating variables to get product details entered by user in text fields
         String destinationLocation= cbDestinationLocation.getValue().toString();
+        String destinationLocationID = "";
+        switch (destinationLocation){
+            case "Newtown Warehouse":
+                destinationLocationID = "WRH1";
+                break;
+            case "Oxford Store":
+                destinationLocationID = "STR1";
+                break;
+            case "Epping Store":
+                destinationLocationID = "STR2";
+                break;
+            default:
+                break;
+        }
         String date = dtf.format(cal.getTime());
         String status= "Sending";
         String description= txtDescription.getText();
 
         //set textfield values to Product Entity
-        Transfer t = new Transfer(sendLocation,destinationLocation,date,status,description);
+        Transfer t = new Transfer(currentSendLocation,destinationLocationID,date,status,description);
 
         List<Transfer> transferList = new ArrayList<Transfer>();
         transferList.add(t);
@@ -329,6 +343,8 @@ public class SendProductController {
     public void showAllStoredProducts(){
         //connect to the server to retrieve the data
         dataStoredProduct = tblCurrentStoredProduct.getItems();
+        String test1 = tblCurrentStoredProduct.getItems().toString();
+        System.out.println(test1);
         dataStoredProduct.clear();
 
         //creating a new client to send get request
@@ -336,19 +352,23 @@ public class SendProductController {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
-        getProductURL="http://localhost:8080/rest/transferproduct/viewallstoredproducts/";
-        searchStoredProductByCodes(getProductURL,"","");
+        searchStoredProductByCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbylocation/","locationID", currentSendLocation);
+        handleComboBoxLocation();
     }
 
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 }

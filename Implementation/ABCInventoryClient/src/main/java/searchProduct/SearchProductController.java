@@ -9,6 +9,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import entityClass.SearchProduct;
+import homePage.HomePageController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,6 +87,8 @@ public class SearchProductController {
         }
         if (productList.isEmpty()) {
             screen.alertMessages("Non-Existent Product", "Product does not exist!");
+            txtSearch.setText("");
+            showAllProducts();
         } else {
             for (Product p : productList) {
                 data.add(p);
@@ -127,15 +130,15 @@ public class SearchProductController {
                 setSELECTED_PRODUCT_CODE(selectedProductCode);
                 //load text fields and labels for adding product item
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemFXML.fxml"));
+
                 AnchorPane pane = null;
                 try {
                     pane = loader.load();
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-
                 SearchProductItemController myController = loader.getController();
-
+                myController.toSearchProduct();
                 //Set Data to FXML through controller
                 myController.showAllProductItems(selectedProductCode);
                 anchorPane.getChildren().setAll(pane);
@@ -172,12 +175,16 @@ public class SearchProductController {
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 }
