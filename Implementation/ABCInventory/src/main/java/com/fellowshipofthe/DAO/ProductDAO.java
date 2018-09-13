@@ -281,11 +281,6 @@ public class ProductDAO {
             return true;
         }
     }
-        /*else{
-
-        }*/
-
-
 
     //method to access database and delete product
     public String deleteProduct(String productCode) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {

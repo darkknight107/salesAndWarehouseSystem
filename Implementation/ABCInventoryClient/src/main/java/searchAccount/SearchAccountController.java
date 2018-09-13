@@ -57,7 +57,7 @@ public class SearchAccountController {
         String username = usernameTextField.getText ();
         String password = passwordTextField.getText ();
         System.out.println ("Got Data");
-        getAccountURL = "http://localhost:8080/rest/searchAccount/account/";
+        getAccountURL = "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchAccount/account/";
         ClientConfig clientConfig= new DefaultClientConfig();
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
