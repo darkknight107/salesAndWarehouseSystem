@@ -9,6 +9,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import entityClass.Staff;
+import homePage.HomePageController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -199,20 +200,19 @@ public class ManageProductController{
                 setSELECTED_PRODUCT_CODE(selectedProductCode);
                 //load text fields and labels for adding product item
                 FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductItemFXML.fxml"));
+
                 AnchorPane pane = null;
                 try {
                     pane = loader.load();
+                    SearchProductItemController myController = loader.getController();
+                    //Set Data to FXML through controller
+                    myController.showAllProductItems(selectedProductCode);
+                    myController.changeQuantity();
+                    myController.toManageProduct();
+                    borderPane.getChildren().setAll(pane);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-
-                SearchProductItemController myController = loader.getController();
-
-                //Set Data to FXML through controller
-                myController.showAllProductItems(selectedProductCode);
-                myController.changeQuantity();
-                borderPane.getChildren().setAll(pane);
-
             });
             return cell;
         });
@@ -281,12 +281,16 @@ public class ManageProductController{
     public void handleBackButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(pane);
     }
 

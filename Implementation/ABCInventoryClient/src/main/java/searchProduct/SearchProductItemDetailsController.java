@@ -12,14 +12,19 @@ import entityClass.Product;
 import entityClass.ProductItem;
 import entityClass.SearchProduct;
 import entityClass.StoredProduct;
+import homePage.HomePageController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import manageProduct.AppScreen;
 import manageProduct.ManageProductController;
 import manageProduct.UpdateProductController;
@@ -95,8 +100,20 @@ public class SearchProductItemDetailsController {
     public void editQuantity(){
         tblViewSearchedProductDetails.setEditable(true);
         quantityColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        Button commitButton= new Button("Confirm");
+        //Image for button
+        Image confirmImage = new Image("image/SubmitIcon.png");
+        ImageView confirmImageView = new ImageView(confirmImage);
+        confirmImageView.setFitHeight(30);
+        confirmImageView.setFitWidth(30);
+        //create confirm button
+        Button commitButton= new Button("", confirmImageView);
+        commitButton.setLineSpacing(10);
+        //tooltip for confirm button
+        Tooltip confirmTooltip = new Tooltip("Confirm Update");
+        confirmTooltip.setShowDelay(Duration.millis(10));
+        commitButton.setTooltip(confirmTooltip);
         mainPanel.setBottom(commitButton);
+        mainPanel.setAlignment(commitButton, Pos.CENTER);
         commitButton.setOnAction(e ->{
             TableCell<StoredProduct, StoredProduct> cell = new TableCell<StoredProduct, StoredProduct>() {
                 @Override
@@ -111,7 +128,6 @@ public class SearchProductItemDetailsController {
             updateStoredProduct.setProductItemCode(productItemCode);
             updateStoredProduct.setLocationID(locationID);
             quantity = tblViewSearchedProductDetails.getSelectionModel().getSelectedItem().getProductQuantity();
-
             if (quantityEdited == false){
                 System.out.println("Non edited");
                 updateStoredProduct.setProductQuantity(quantity);
@@ -120,32 +136,43 @@ public class SearchProductItemDetailsController {
             else{
                 System.out.println("Edited value");
             }
+            String qty= updateStoredProduct.getProductQuantity();
+            System.out.println(qty);
+            if (new manageProduct.AddProductController().isNumeric(qty) == true){
+                if (!((Double.parseDouble(qty) <0))){
+                    //creating a new client to send post request
+                    ClientConfig clientConfig= new DefaultClientConfig();
+                    clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+                    Client client= Client.create(clientConfig);
+                    String updateURL= "http://localhost:8080/rest/update/updatestoredproduct";
+                    WebResource webResourcePost= client.resource(updateURL);
+                    //use the object passed as a parameter to send a request
+                    ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updateStoredProduct);
+                    response.bufferEntity();
+                    String responseValue= response.getEntity(String.class);
+                    if (responseValue.equals("updated")){
+                        screen.alertMessages("Product Updated!", "The Product Quantity of " + productItemCode + " has been updated in " + locationID);
+                        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+                        try {
+                            AnchorPane aPane = loader.load();
 
-            //creating a new client to send post request
-            ClientConfig clientConfig= new DefaultClientConfig();
-            clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-            Client client= Client.create(clientConfig);
-            String updateURL= "http://localhost:8080/rest/update/updatestoredproduct";
-            WebResource webResourcePost= client.resource(updateURL);
-            //use the object passed as a parameter to send a request
-            ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updateStoredProduct);
-            response.bufferEntity();
-            String responseValue= response.getEntity(String.class);
-            if (responseValue.equals("updated")){
-                screen.alertMessages("Product Updated!", "The Product Quantity of " + productItemCode + " has been updated in " + locationID);
-                FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
-                try {
-                    AnchorPane aPane = loader.load();
-
-                ManageProductController manageProductController= loader.getController();
-                manageProductController.showAllProducts();
-                anchorPane.getChildren().setAll(aPane);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
+                            ManageProductController manageProductController= loader.getController();
+                            manageProductController.showAllProducts();
+                            anchorPane.getChildren().setAll(aPane);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                    else{
+                        screen.alertMessages("Error!", "Product could not be updated!");
+                    }
+                }
+                else{
+                    screen.alertMessages("Error!", "Quantity cannot be negative. Please try again!");
                 }
             }
             else{
-                screen.alertMessages("Error!", "Product could not be updated!");
+                screen.alertMessages("Inavlid quantity!", "Quantity cannot be non numeric value!");
             }
         });
 
@@ -170,16 +197,8 @@ public class SearchProductItemDetailsController {
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         aPane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(aPane);
-    }
-    public void handleLogoutButton() throws IOException {
-        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        alert.setTitle("Confirmation");
-        if (alert.getResult()== ButtonType.YES) {
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
-            aPane = loader.load();
-            anchorPane.getChildren().setAll(aPane);
-        }
     }
 }

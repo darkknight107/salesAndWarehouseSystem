@@ -9,6 +9,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import entityClass.ProductItem;
+import homePage.HomePageController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +40,7 @@ public class SearchProductItemController {
     private AnchorPane anchorPane;
     private static String SELECTED_PRODUCT_CODE;
     Boolean editQuantity= false;
+    static Boolean openManageProduct= false;
 
 
     AppScreen screen = new AppScreen();
@@ -198,29 +200,39 @@ public class SearchProductItemController {
         this.editQuantity= true;
     }
 
+    public void toManageProduct(){
+        setOpenManageProduct(true);
+    }
+    public void toSearchProduct(){
+        setOpenManageProduct(false);
+    }
+
     public void handleBackButton() throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
-        AnchorPane pane = loader.load();
-        ManageProductController controller= loader.getController();
-        controller.showAllProducts();
-        anchorPane.getChildren().setAll(pane);
+        if (getOpenManageProduct() == true) {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageProduct.fxml"));
+            AnchorPane pane = loader.load();
+            ManageProductController controller = loader.getController();
+            controller.showAllProducts();
+            anchorPane.getChildren().setAll(pane);
+        }
+        else{
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchProductFXML.fxml"));
+            AnchorPane pane = loader.load();
+            SearchProductController controller = loader.getController();
+            controller.showAllProducts();
+            anchorPane.getChildren().setAll(pane);
+
+        }
     }
 
     public void handleMainMenuButton() throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
         AnchorPane aPane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
         anchorPane.getChildren().setAll(aPane);
     }
-    public void handleLogoutButton() throws IOException {
-        Alert alert= new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        alert.setTitle("Confirmation");
-        if (alert.getResult()== ButtonType.YES) {
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/SearchAccount.fxml"));
-            AnchorPane aPane = loader.load();
-            anchorPane.getChildren().setAll(aPane);
-        }
-    }
+
     public String getSelectedProductCode() {
         return SELECTED_PRODUCT_CODE;
     }
@@ -229,4 +241,11 @@ public class SearchProductItemController {
         this.SELECTED_PRODUCT_CODE = SELECTED_PRODUCT_CODE;
     }
 
+    public static Boolean getOpenManageProduct() {
+        return openManageProduct;
+    }
+
+    public static void setOpenManageProduct(Boolean openManageProduct) {
+        SearchProductItemController.openManageProduct = openManageProduct;
+    }
 }

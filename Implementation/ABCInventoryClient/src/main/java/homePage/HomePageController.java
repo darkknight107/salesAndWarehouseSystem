@@ -31,6 +31,7 @@ public class HomePageController {
 
     @FXML
     Button manageStaff;
+    static Boolean loggedInAsWarehouseStaff= true;
 
 
     public void initialize(URL url, ResourceBundle rb) throws IOException {
@@ -131,16 +132,27 @@ public class HomePageController {
     public void setUserType(String locationID){
         loggedInAs.setStyle("-fx-color: white;");
         if(locationID.equals("WRH1")){
+            setLoggedInAsWarehouseStaff(true);
             loggedInAs.setText("Warehouse Staff");
         }
         else{
+            setLoggedInAsWarehouseStaff(false);
             loggedInAs.setText("Store Staff");
         }
 
     }
-    public void storeStaffOptionsDisable(){
-        manageProduct.setDisable(true);
-        manageStaff.setDisable(true);
+    public void checkStaff(){
+        if (getLoggedInAsWarehouseStaff()== false){
+            manageProduct.setDisable(true);
+            manageStaff.setDisable(true);
+        }
     }
 
+    public static Boolean getLoggedInAsWarehouseStaff() {
+        return loggedInAsWarehouseStaff;
+    }
+
+    public static void setLoggedInAsWarehouseStaff(Boolean loggedInAsWarehouseStaff) {
+        HomePageController.loggedInAsWarehouseStaff = loggedInAsWarehouseStaff;
+    }
 }
