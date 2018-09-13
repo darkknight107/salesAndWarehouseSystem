@@ -145,7 +145,7 @@ public class ManageProductController{
                     ClientConfig clientConfig= new DefaultClientConfig();
                     clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
                     Client client= Client.create(clientConfig);
-                    WebResource deleteResource= client.resource("http://localhost:8080/rest/delete/deleteproduct/"+ toDeleteProduct);
+                    WebResource deleteResource= client.resource("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/delete/deleteproduct/"+ toDeleteProduct);
                     //converting the response to string
                     ClientResponse response= deleteResource.delete(ClientResponse.class);
                     response.bufferEntity();
@@ -247,7 +247,7 @@ public class ManageProductController{
         ClientConfig clientConfig= new DefaultClientConfig();
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
-        String url="http://localhost:8080/rest/searchproduct/viewallproducts";
+        String url="http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/viewallproducts";
         searchProduct(url, "", "");
         displayActionButtons();
     }
@@ -260,7 +260,7 @@ public class ManageProductController{
             ClientConfig clientConfig= new DefaultClientConfig();
             clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
             client= Client.create(clientConfig);
-            String url= "http://localhost:8080/rest/searchproduct/searchproductcode";
+            String url= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/searchproductcode";
             searchProduct(url, "productcode", code);
         }
         else if(code.equals("")){

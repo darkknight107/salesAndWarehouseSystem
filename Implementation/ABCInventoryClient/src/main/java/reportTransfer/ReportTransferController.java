@@ -82,7 +82,7 @@ public class ReportTransferController {
             }
         }else if (!transferID.equals("")){
             if (fromDate == null & toDate == null){
-                searchTransfer("http://localhost:8080/rest/transferproduct/searchTransfer/", "transferID", transferID);
+                searchTransfer("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/searchTransfer/", "transferID", transferID);
             }
             else if(fromDate != null & toDate == null){
                 toDate = LocalDate.now();
@@ -120,7 +120,7 @@ public class ReportTransferController {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
-        getTransferURL="http://localhost:8080/rest/transferproduct/viewalltransfer/";
+        getTransferURL="http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/viewalltransfer/";
         searchTransfer(getTransferURL,"","");
         addDetailButton();
     }
@@ -128,7 +128,7 @@ public class ReportTransferController {
     //Filter Datetime when user dont search transferID
     public void filterDatetime(String fromDate, String toDate){
         data.clear();
-        webResourceGet = client.resource("http://localhost:8080/rest/transferproduct/searchtransferbydatetimerange/").queryParam("fromdate", fromDate).queryParam("todate",toDate);
+        webResourceGet = client.resource("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/searchtransferbydatetimerange/").queryParam("fromdate", fromDate).queryParam("todate",toDate);
         response = webResourceGet.get(ClientResponse.class);
         transferList = response.getEntity(listc);
         if (response.getStatus() != 200) {

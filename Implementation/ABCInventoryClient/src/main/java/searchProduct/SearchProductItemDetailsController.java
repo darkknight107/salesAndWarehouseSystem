@@ -83,7 +83,7 @@ public class SearchProductItemDetailsController {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
-        webResourceGet = client.resource("http://localhost:8080/rest/searchproduct/viewproductitemdetails").queryParam("productitemcode", productItemCode);
+        webResourceGet = client.resource("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/viewproductitemdetails").queryParam("productitemcode", productItemCode);
         response = webResourceGet.get(ClientResponse.class);
         searchProductList = response.getEntity(listc);
         if (response.getStatus() != 200) {
@@ -144,7 +144,7 @@ public class SearchProductItemDetailsController {
                     ClientConfig clientConfig= new DefaultClientConfig();
                     clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
                     Client client= Client.create(clientConfig);
-                    String updateURL= "http://localhost:8080/rest/update/updatestoredproduct";
+                    String updateURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/update/updatestoredproduct";
                     WebResource webResourcePost= client.resource(updateURL);
                     //use the object passed as a parameter to send a request
                     ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updateStoredProduct);

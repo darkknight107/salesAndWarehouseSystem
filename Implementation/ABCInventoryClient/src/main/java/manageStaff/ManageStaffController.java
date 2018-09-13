@@ -102,7 +102,7 @@ public class ManageStaffController {
                     ClientConfig clientConfig= new DefaultClientConfig();
                     clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
                     Client client= Client.create(clientConfig);
-                    WebResource deleteResource= client.resource("http://localhost:8080/rest/managestaff/deletestaff/"+ toDeleteStaff);
+                    WebResource deleteResource= client.resource("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/managestaff/deletestaff/"+ toDeleteStaff);
                     //converting the response to string
                     ClientResponse response= deleteResource.delete(ClientResponse.class);
                     response.bufferEntity();
@@ -182,7 +182,7 @@ public class ManageStaffController {
         ClientConfig clientConfig= new DefaultClientConfig();
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
-        String url="http://localhost:8080/rest/managestaff/viewallstaff";
+        String url="http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/managestaff/viewallstaff";
         searchStaff(url, "", "");
         displayActionButtons();
     }
@@ -193,7 +193,7 @@ public class ManageStaffController {
         ClientConfig clientConfig= new DefaultClientConfig();
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client= Client.create(clientConfig);
-        String url= "http://localhost:8080/rest/managestaff/searchstaff";
+        String url= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/managestaff/searchstaff";
         searchStaff(url, "name", searchField.getText());
     }
 
