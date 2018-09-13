@@ -74,17 +74,17 @@ public class SendProductController {
     @FXML
     public void handleSearchProductCodeAction(){
         code = txtSearch.getText().toUpperCase();
-        getProductURL = "http://localhost:8080/rest/transferproduct/searchstoredproducts/";
+        getProductURL = "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/searchstoredproducts/";
 
         if(!code.isEmpty()){
-            searchStoredProductByCombinationCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbycominationcodes/",currentSendLocation,code);
+            searchStoredProductByCombinationCodes("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/searchstoredproductsbycominationcodes/",currentSendLocation,code);
         }else if(code.isEmpty()){
 
             if(code.matches("[A-Z][0-9]100") || code.matches("[A-Z][0-9]200") || code.matches("[A-Z][0-9]300")){
                 searchStoredProductByCodes(getProductURL,"productitemcode", code);
             }
             else if(code.equals("")){
-                searchStoredProductByCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbylocation/","locationID", currentSendLocation);
+                searchStoredProductByCodes("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/searchstoredproductsbylocation/","locationID", currentSendLocation);
             } else {
                 screen.alertMessages("Wrong Format Input","Please enter the code in the right format! \nEg: Product Item Code: S1100, Location ID: WRH1");
             }
@@ -319,7 +319,7 @@ public class SendProductController {
 
     //client requests for insert
     public String clientRequestPost(Object entity, String path){
-        String postURL= "http://localhost:8080/rest/transferproduct/" + path;
+        String postURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/" + path;
         WebResource webResourcePost= client.resource(postURL);
         //use the object passed as a parameter to send a request
         response= webResourcePost.type("application/json").post(ClientResponse.class, entity);
@@ -330,7 +330,7 @@ public class SendProductController {
 
     //client request for update
     public String clientRequestPut(Object entity, String path){
-        String postURL= "http://localhost:8080/rest/transferproduct/" + path;
+        String postURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/" + path;
         WebResource webResourcePost= client.resource(postURL);
         //use the object passed as a parameter to send a request
         response= webResourcePost.type("application/json").put(ClientResponse.class, entity);
@@ -352,7 +352,7 @@ public class SendProductController {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
-        searchStoredProductByCodes("http://localhost:8080/rest/transferproduct/searchstoredproductsbylocation/","locationID", currentSendLocation);
+        searchStoredProductByCodes("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/searchstoredproductsbylocation/","locationID", currentSendLocation);
         handleComboBoxLocation();
     }
 

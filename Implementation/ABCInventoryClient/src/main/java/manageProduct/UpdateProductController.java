@@ -68,7 +68,7 @@ public class UpdateProductController {
                 ClientConfig clientConfig= new DefaultClientConfig();
                 clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
                 Client client= Client.create(clientConfig);
-                String updateURL= "http://localhost:8080/rest/update/updateproduct";
+                String updateURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/update/updateproduct";
                 WebResource webResourcePost= client.resource(updateURL);
                 //use the object passed as a parameter to send a request
                 ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updatedProduct);

@@ -73,7 +73,7 @@ public class AddProductController {
                     ClientConfig clientConfig= new DefaultClientConfig();
                     clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
                     Client client= Client.create(clientConfig);
-                    String postURL= "http://localhost:8080/rest/manageproduct";
+                    String postURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/manageproduct";
                     WebResource webResourcePost= client.resource(postURL);
                     //use the object passed as a parameter to send a request
                     ClientResponse responseValue= webResourcePost.type("application/json").post(ClientResponse.class, newProduct);

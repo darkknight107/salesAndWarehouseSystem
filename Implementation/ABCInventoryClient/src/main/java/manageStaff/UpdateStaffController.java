@@ -87,7 +87,7 @@ public class UpdateStaffController {
             ClientConfig clientConfig= new DefaultClientConfig();
             clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
             Client client= Client.create(clientConfig);
-            String updateURL= "http://localhost:8080/rest/managestaff/updatestaff";
+            String updateURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/managestaff/updatestaff";
             WebResource webResourcePost= client.resource(updateURL);
             //use the object passed as a parameter to send a request
             ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updatedStaff);
@@ -224,7 +224,7 @@ public class UpdateStaffController {
                 clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
                 Client client = Client.create(clientConfig);
                 // GET request to update password resource with a query parameter
-                String updatePasswordURL= "http://localhost:8080/rest/managestaff/updatepassword";
+                String updatePasswordURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/managestaff/updatepassword";
                 WebResource webResourceGet = client.resource(updatePasswordURL).queryParam("username", userNameField.getText()).queryParam("password", newPassword.getText());
                 ClientResponse response = webResourceGet.put(ClientResponse.class);
                 Boolean responseValue= response.getEntity(Boolean.class);
