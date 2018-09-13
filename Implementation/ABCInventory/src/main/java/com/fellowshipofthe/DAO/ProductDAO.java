@@ -255,15 +255,37 @@ public class ProductDAO {
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
-        String sql= "INSERT INTO StoredProduct(productItemCode, locationID, productQuantity)" +
-                "VALUES (\"" + itemCode +"\",\""+ locationID+ "\",\"" + quantity + "\");";
-        System.out.println(itemCode + locationID + quantity);
-        stmt.executeUpdate(sql);
-        conn.close();
-        stmt.close();
-        System.out.println("StoredProduct Added!");
-        return true;
+        System.out.println(itemCode);
+        String sqlQueryToCheckStoredProduct= "SELECT productQuantity FROM StoredProduct WHERE productItemCode= \"" + itemCode + "\" AND locationID =\"" + locationID + "\"";
+        System.out.println(sqlQueryToCheckStoredProduct);
+        ResultSet resultSet= stmt.executeQuery(sqlQueryToCheckStoredProduct);
+        if (resultSet.next()){
+                int existingQty = Integer.parseInt(resultSet.getString(1));
+                int newQuantity = existingQty + Integer.parseInt(quantity);
+                System.out.println("Product Item in Stored Product already exists. "+ newQuantity + " old quantity: " + existingQty);
+                String sqlQueryToUpdateQuantity = "UPDATE StoredProduct SET productQuantity= \"" + String.valueOf(newQuantity) + "\" WHERE productItemCode = \"" + itemCode + "\" AND locationID = \"" + locationID + "\";";
+                int i = stmt.executeUpdate(sqlQueryToUpdateQuantity);
+                System.out.println("Stored product updated!");
+                conn.close();
+                stmt.close();
+                return true;
+        }
+        else{
+            String sql= "INSERT INTO StoredProduct(productItemCode, locationID, productQuantity)" +
+                    "VALUES (\"" + itemCode +"\",\""+ locationID+ "\",\"" + quantity + "\");";
+            System.out.println(itemCode + locationID + quantity);
+            stmt.executeUpdate(sql);
+            conn.close();
+            stmt.close();
+            System.out.println("StoredProduct Added!");
+            return true;
+        }
     }
+        /*else{
+
+        }*/
+
+
 
     //method to access database and delete product
     public String deleteProduct(String productCode) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
