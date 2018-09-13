@@ -8,6 +8,7 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 import entityClass.Product;
 import entityClass.Staff;
+import homePage.HomePageController;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,50 +60,86 @@ public class UpdateStaffController {
     TextField addressField;
     @FXML
     TextField emailField;
+    Staff staff;
     ObservableList<String> locationList;
     AppScreen screen;
     public UpdateStaffController(){
         screen= new AppScreen();
+        staff= new Staff();
     }
 
     public void handleUpdateButton() throws IOException {
-        Staff updatedStaff= new Staff();
-        String locationID = new AddStaffController().convertLocationName((String) locationComboBox.getValue());
-        updatedStaff.setLocationID(locationID);
-        updatedStaff.setUserName(userNameField.getText());
-        updatedStaff.setFirstName(firstNameField.getText());
-        updatedStaff.setLastName(lastNameField.getText());
-        updatedStaff.setContact(contactField.getText());
-        updatedStaff.setDateOfBirth(String.valueOf(dateOfBirthPicker.getValue()));
-        updatedStaff.setAddress(addressField.getText());
-        updatedStaff.setEmail(emailField.getText());
+        resetTextStyle();
+        if (!(firstNameField.getText().isEmpty()) && !(lastNameField.getText().isEmpty()) && !(emailField.getText().isEmpty()) &&
+                !(contactField.getText().isEmpty()) && !(userNameField.getText().isEmpty()) && locationComboBox.getValue() != null){
+            Staff updatedStaff= new Staff();
+            String locationID = new AddStaffController().convertLocationName((String) locationComboBox.getValue());
+            updatedStaff.setLocationID(locationID);
+            updatedStaff.setUserName(userNameField.getText());
+            updatedStaff.setFirstName(firstNameField.getText());
+            updatedStaff.setLastName(lastNameField.getText());
+            updatedStaff.setContact(contactField.getText());
+            updatedStaff.setDateOfBirth(String.valueOf(dateOfBirthPicker.getValue()));
+            updatedStaff.setAddress(addressField.getText());
+            updatedStaff.setEmail(emailField.getText());
 
-        //creating a new client to send put request
-        ClientConfig clientConfig= new DefaultClientConfig();
-        clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
-        Client client= Client.create(clientConfig);
-        String updateURL= "http://localhost:8080/rest/managestaff/updatestaff";
-        WebResource webResourcePost= client.resource(updateURL);
-        //use the object passed as a parameter to send a request
-        ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updatedStaff);
-        response.bufferEntity();
-        //String responseValue= response.getEntity(String.class);
+            //creating a new client to send put request
+            ClientConfig clientConfig= new DefaultClientConfig();
+            clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
+            Client client= Client.create(clientConfig);
+            String updateURL= "http://localhost:8080/rest/managestaff/updatestaff";
+            WebResource webResourcePost= client.resource(updateURL);
+            //use the object passed as a parameter to send a request
+            ClientResponse response= webResourcePost.type("application/json").put(ClientResponse.class, updatedStaff);
+            response.bufferEntity();
+            //String responseValue= response.getEntity(String.class);
 
-        if (response.getStatus()== 200){
-            screen.alertMessages("Staff Updated!", "Staff " + userNameField.getText() + " has been updated!");
-            FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
-            pane = loader.load();
-            ManageStaffController controller= loader.<ManageStaffController>getController();
-            controller.showAllStaff();
-            anchorPane.getChildren().setAll(pane);
+            if (response.getStatus()== 200){
+                screen.alertMessages("Staff Updated!", "Staff " + userNameField.getText() + " has been updated!");
+                FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
+                pane = loader.load();
+                ManageStaffController controller= loader.<ManageStaffController>getController();
+                controller.showAllStaff();
+                anchorPane.getChildren().setAll(pane);
+            }
+            else{
+                screen.alertMessages("Error!", "Product could not be updated!");
+            }
         }
         else{
-            screen.alertMessages("Error!", "Product could not be updated!");
-        }
+            screen.alertMessages("Incomplete Field!", "Please fill in all the required fields.");
 
+            if (firstNameField.getText().isEmpty()) {
+                firstNameField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+            if (lastNameField.getText().isEmpty()) {
+                lastNameField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+            if (emailField.getText().isEmpty()) {
+                emailField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+            if (contactField.getText().isEmpty()) {
+                contactField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+            if (userNameField.getText().isEmpty()) {
+                userNameField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+            if (locationComboBox.getValue() == null) {
+                locationComboBox.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
+            }
+        }
+    }
+    public void resetTextStyle(){
+        firstNameField.setStyle(null);
+        lastNameField.setStyle(null);
+        emailField.setStyle(null);
+        contactField.setStyle(null);
+        userNameField.setStyle(null);
+        locationComboBox.setStyle(null);
     }
     public void setStaffData(Staff staff){
         //setting the items that can be selected in the combo box
+        this.staff= staff;
         locationList= FXCollections.observableArrayList("Newtown Warehouse", "Epping Store", "Oxford Store");
         locationComboBox.setItems(locationList);
         //putting values of the staff to be updated in the field which  is editable
@@ -113,10 +150,10 @@ public class UpdateStaffController {
                 locationComboBox.setValue("Newtown Warehouse");
                 break;
             case "STR1":
-                locationComboBox.setValue("Epping Store");
+                locationComboBox.setValue("Oxford Store");
                 break;
             case "STR2":
-                locationComboBox.setValue("Oxford Store");
+                locationComboBox.setValue("Epping Store");
                 break;
         }
         userNameField.setText(staff.getUserName());
@@ -181,6 +218,7 @@ public class UpdateStaffController {
         updateButton.setOnAction(e-> {
             //validate password
             if (newPassword.getText().equals(confirmPassword.getText())){
+
                 // Create Jersey client
                 ClientConfig clientConfig = new DefaultClientConfig();
                 clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
@@ -228,6 +266,27 @@ public class UpdateStaffController {
         dialog.show();
 
     }
+    public void handleCancelButton(){
+        setStaffData(staff);
+    }
+
+    public void handleBackButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/ManageStaff.fxml"));
+        AnchorPane pane = loader.load();
+        ManageStaffController controller= loader.getController();
+        controller.showAllStaff();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+    public void handleMainMenuButton() throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getClassLoader().getResource("fxml/HomePageFXML.fxml"));
+        AnchorPane pane = loader.load();
+        HomePageController controller= loader.getController();
+        controller.checkStaff();
+        anchorPane.getChildren().setAll(pane);
+    }
+
+
 
 
 }

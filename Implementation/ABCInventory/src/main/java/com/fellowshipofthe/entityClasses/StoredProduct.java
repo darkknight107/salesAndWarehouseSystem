@@ -34,5 +34,4 @@ public class StoredProduct {
     public void setProductQuantity(String productQuantity) {
         this.productQuantity = productQuantity;
     }
-
 }

@@ -27,23 +27,10 @@
         <BorderPane layoutX="38.0" layoutY="142.0" maxHeight="Infinity" maxWidth="Infinity" prefHeight="584.0" prefWidth="1272.0">
                 <top>
                     <GridPane hgap="10.0" prefHeight="212.0" prefWidth="1068.0" vgap="10.0">
-                        <Label text="Sending Location: " GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="cbSendLocation" onAction="#handleComboBoxLocation" prefWidth="270.0" promptText="Choose Location" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <items>
-                                <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="WRH1" />
-                                    <String fx:value="STR1" />
-                                    <String fx:value="STR2" />
-                                </FXCollections>
-                            </items>
-                        </ComboBox>
                         <Label text="Destination Location: " GridPane.columnIndex="0" GridPane.rowIndex="2" />
                         <ComboBox fx:id="cbDestinationLocation" promptText="Choose Location" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="WRH1" />
-                                    <String fx:value="STR1" />
-                                    <String fx:value="STR2" />
                                 </FXCollections>
                             </items>
                         </ComboBox>
@@ -96,11 +83,6 @@
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                             <columns>
-                                <TableColumn fx:id="locationID" prefWidth="76.0" text="LocationID">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="locationID" />
-                                    </cellValueFactory>
-                                </TableColumn>
                                 <TableColumn fx:id="productItemCode" prefWidth="124.0" text="Product Item Code">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productItemCode" />
@@ -160,11 +142,6 @@
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                             <columns>
-                                <TableColumn fx:id="locationIDCart" prefWidth="76.0" text="LocationID">
-                                    <cellValueFactory>
-                                        <PropertyValueFactory property="locationID" />
-                                    </cellValueFactory>
-                                </TableColumn>
                                 <TableColumn fx:id="productItemCodeCart" prefWidth="124.0" text="Product Item Code">
                                     <cellValueFactory>
                                         <PropertyValueFactory property="productItemCode" />

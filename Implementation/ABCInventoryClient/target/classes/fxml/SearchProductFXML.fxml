@@ -28,9 +28,9 @@
                     <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#handleSearchProductCodeAction" GridPane.columnIndex="2" GridPane.rowIndex="1">
                         <tooltip>
                             <Tooltip text="Search Product">
-                                <!--<showDelay>
+                                <showDelay>
                                     <Duration millis="10"/>
-                                </showDelay>-->
+                                </showDelay>
                             </Tooltip>
                         </tooltip>
                         <graphic>

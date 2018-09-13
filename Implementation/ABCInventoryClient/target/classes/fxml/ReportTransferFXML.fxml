@@ -29,9 +29,9 @@
                     <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#handleSearchTransferAction" GridPane.columnIndex="2" GridPane.rowIndex="1">
                         <tooltip>
                             <Tooltip text="Search Transfer ID">
-                                <!--<showDelay>
+                                <showDelay>
                                     <Duration millis="10"/>
-                                </showDelay>-->
+                                </showDelay>
                             </Tooltip>
                         </tooltip>
                         <graphic>
@@ -46,9 +46,9 @@
                     <DatePicker fx:id="fromDatePicker" onAction="#handleFromDatePicker" prefHeight="25.0" prefWidth="119.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                         <tooltip>
                             <Tooltip text="From Date">
-                                <!--<showDelay>
+                                <showDelay>
                                     <Duration millis="10"/>
-                                </showDelay>-->
+                                </showDelay>
                             </Tooltip>
                         </tooltip>
                     </DatePicker>
@@ -56,9 +56,9 @@
                     <DatePicker fx:id="toDatePicker" onAction="#handleToDatePicker" prefHeight="25.0" prefWidth="119.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
                         <tooltip>
                             <Tooltip text="To Date">
-                                <!--<showDelay>
+                                <showDelay>
                                     <Duration millis="10"/>
-                                </showDelay>-->
+                                </showDelay>
                             </Tooltip>
                         </tooltip>
                     </DatePicker>
