@@ -28,11 +28,6 @@
                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                            <columns>
-                               <TableColumn fx:id="transferID" prefWidth="124.0" text="Transfer ID">
-                                   <cellValueFactory>
-                                       <PropertyValueFactory property="transferID" />
-                                   </cellValueFactory>
-                               </TableColumn>
                                <TableColumn prefWidth="76.0" text="Product Item Code">
                                    <cellValueFactory>
                                        <PropertyValueFactory property="productItemCode" />

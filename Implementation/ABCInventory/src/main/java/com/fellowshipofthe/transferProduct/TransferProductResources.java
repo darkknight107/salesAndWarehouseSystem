@@ -190,4 +190,14 @@ public class TransferProductResources {
         System.out.println(transferID);
         return transferDAO.updateTransferStatusAccept(transferID);
     }
+
+    //resource for adding stored product
+    @POST
+    @Path("/addstoredproduct")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String addStoredProduct(List<StoredProduct> storedProduct) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        System.out.println("addStoredProduct called!");
+        return transferDAO.addStoredProduct(storedProduct);
+    }
 }
