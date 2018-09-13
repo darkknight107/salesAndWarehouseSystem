@@ -61,7 +61,7 @@ public class AddProductController {
 
             //validate entered productCode
             if (productCode.matches("[A-Z][0-9]")){
-                if(isNumeric(price) == true){
+                if(isNumeric(price) == true && !(Double.parseDouble(price) < 0)){
                     //set textfield values to Product Entity
 
                     newProduct.setProductCode(productCode);
@@ -104,7 +104,7 @@ public class AddProductController {
                     }
                 }
                 else{
-                    screen.alertMessages("Invalid Price", "Please enter a numeric price value!");
+                    screen.alertMessages("Invalid Price", "Please enter a valid price value!");
                     priceField.setText("");
                     priceField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
                 }
@@ -113,6 +113,8 @@ public class AddProductController {
             else{
                 screen.alertMessages("Invalid Code", "Please use a valid code. Code must contain one Alphabet followed by a numeral! \n" +
                         "For instance: D4 is a valid code!");
+                productCodeField.setText("");
+                productCodeField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }
         }
         else{

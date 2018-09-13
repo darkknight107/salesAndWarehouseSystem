@@ -57,7 +57,7 @@ public class UpdateProductController {
             String productName= productNameField.getText();
             String price= priceField.getText();
             String description= descriptionField.getText();
-            if(new AddProductController().isNumeric(price) == true){
+            if(new AddProductController().isNumeric(price) == true && !(Double.parseDouble(price) < 0)){
                 Product updatedProduct= new Product();
                 updatedProduct.setProductCode(productCode);
                 updatedProduct.setProductName(productName);
@@ -88,7 +88,7 @@ public class UpdateProductController {
                 }
             }
             else{
-                screen.alertMessages("Enter valid price.", "Please enter a numeric price value!");
+                screen.alertMessages("Enter valid price.", "Please enter a valid price value!");
                 priceField.setText("");
                 priceField.setStyle("-fx-border-color:red; -fx-border-width: 0.5px");
             }

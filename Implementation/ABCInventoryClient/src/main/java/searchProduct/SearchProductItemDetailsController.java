@@ -16,11 +16,15 @@ import homePage.HomePageController;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import manageProduct.AppScreen;
 import manageProduct.ManageProductController;
 import manageProduct.UpdateProductController;
@@ -96,8 +100,20 @@ public class SearchProductItemDetailsController {
     public void editQuantity(){
         tblViewSearchedProductDetails.setEditable(true);
         quantityColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        Button commitButton= new Button("Confirm");
+        //Image for button
+        Image confirmImage = new Image("image/SubmitIcon.png");
+        ImageView confirmImageView = new ImageView(confirmImage);
+        confirmImageView.setFitHeight(30);
+        confirmImageView.setFitWidth(30);
+        //create confirm button
+        Button commitButton= new Button("", confirmImageView);
+        commitButton.setLineSpacing(10);
+        //tooltip for confirm button
+        Tooltip confirmTooltip = new Tooltip("Confirm Update");
+        confirmTooltip.setShowDelay(Duration.millis(10));
+        commitButton.setTooltip(confirmTooltip);
         mainPanel.setBottom(commitButton);
+        mainPanel.setAlignment(commitButton, Pos.CENTER);
         commitButton.setOnAction(e ->{
             TableCell<StoredProduct, StoredProduct> cell = new TableCell<StoredProduct, StoredProduct>() {
                 @Override

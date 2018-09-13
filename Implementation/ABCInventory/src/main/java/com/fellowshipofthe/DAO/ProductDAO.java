@@ -255,24 +255,20 @@ public class ProductDAO {
         dbconnet= new DatabaseConnection();
         conn= dbconnet.connect();
         Statement stmt= conn.createStatement();
-        String sqlQueryToCheckStoredProduct= "SELECT productQuantity FROM StoredProduct WHERE productItemCode= \"" + itemCode + "\"";
+        System.out.println(itemCode);
+        String sqlQueryToCheckStoredProduct= "SELECT productQuantity FROM StoredProduct WHERE productItemCode= \"" + itemCode + "\" AND locationID =\"" + locationID + "\"";
+        System.out.println(sqlQueryToCheckStoredProduct);
         ResultSet resultSet= stmt.executeQuery(sqlQueryToCheckStoredProduct);
-        if(resultSet.next()){
-            int existingQty= Integer.parseInt(resultSet.getString(1));
-            int newQuantity= existingQty + Integer.parseInt(quantity);
-            System.out.println("Product Item in Stored Product already exists.");
-            String sqlQueryToUpdateQuantity= "UPDATE StoredProduct SET productQuantity= \"" + String.valueOf(newQuantity) + "\" WHERE productItemCode = \""+ itemCode + "\" AND locationID = \""+ locationID + "\";";
-            int i= stmt.executeUpdate(sqlQueryToUpdateQuantity);
-            conn.close();
-            stmt.close();
-            if (i > 0){
+        if (resultSet.next()){
+                int existingQty = Integer.parseInt(resultSet.getString(1));
+                int newQuantity = existingQty + Integer.parseInt(quantity);
+                System.out.println("Product Item in Stored Product already exists. "+ newQuantity + " old quantity: " + existingQty);
+                String sqlQueryToUpdateQuantity = "UPDATE StoredProduct SET productQuantity= \"" + String.valueOf(newQuantity) + "\" WHERE productItemCode = \"" + itemCode + "\" AND locationID = \"" + locationID + "\";";
+                int i = stmt.executeUpdate(sqlQueryToUpdateQuantity);
                 System.out.println("Stored product updated!");
+                conn.close();
+                stmt.close();
                 return true;
-            }
-            else{
-                System.out.println("Error! Stored product could not be updated!");
-                return false;
-            }
         }
         else{
             String sql= "INSERT INTO StoredProduct(productItemCode, locationID, productQuantity)" +
@@ -284,8 +280,12 @@ public class ProductDAO {
             System.out.println("StoredProduct Added!");
             return true;
         }
-
     }
+        /*else{
+
+        }*/
+
+
 
     //method to access database and delete product
     public String deleteProduct(String productCode) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
