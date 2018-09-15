@@ -79,7 +79,7 @@ public class SearchProductController {
     // Search Product
     private  void searchProductCode(String path ,String searchField, String code) {
         data.clear();
-        webResourceGet = client.resource("http://localhost:8080/rest/searchproduct/" + path).queryParam(searchField, code);
+        webResourceGet = client.resource("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/searchproduct/" + path).queryParam(searchField, code);
         response = webResourceGet.get(ClientResponse.class);
         productList = response.getEntity(listc);
         if (response.getStatus() != 200) {

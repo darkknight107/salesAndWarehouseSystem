@@ -93,7 +93,7 @@ public class AcceptTransferItemController {
 
     //search the stored product by combining locationID and productItemCode
     private  List<StoredProduct> searchStoredProductByCombinationCodes(String locationID, String productItemCode) {
-        webResourceGet = client.resource("http://localhost:8080/rest/transferproduct/searchstoredproductsbycominationcodes/").queryParam("locationID",locationID).queryParam("productItemCode",productItemCode);
+        webResourceGet = client.resource("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/searchstoredproductsbycominationcodes/").queryParam("locationID",locationID).queryParam("productItemCode",productItemCode);
         response = webResourceGet.get(ClientResponse.class);
         storedProductList = response.getEntity(listcStoredProduct);
         if (response.getStatus() != 200) {
@@ -122,7 +122,7 @@ public class AcceptTransferItemController {
         clientRequestPut(updateStoredProductList,"updatetransferitemquantityaccept","","");
 
         //add store product
-        String postURL= "http://localhost:8080/rest/transferproduct/addstoredproduct";
+        String postURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/addstoredproduct";
         WebResource webResourcePost= client.resource(postURL);
         //use the object passed as a parameter to send a request
         response= webResourcePost.type("application/json").post(ClientResponse.class, addStoredProductList);
@@ -139,7 +139,7 @@ public class AcceptTransferItemController {
     }
 
     public String clientRequestPut(Object entity, String path, String searchField, String code){
-        String postURL= "http://localhost:8080/rest/transferproduct/" + path;
+        String postURL= "http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/" + path;
         WebResource webResourcePost= client.resource(postURL);
         //use the object passed as a parameter to send a request
         response= webResourcePost.type("application/json").put(ClientResponse.class, entity);
@@ -158,7 +158,7 @@ public class AcceptTransferItemController {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
-        getTransferItemURL="http://localhost:8080/rest/transferproduct/displaysendingtransferitem/";
+        getTransferItemURL="http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/displaysendingtransferitem/";
         searchTransferItem(getTransferItemURL,"transferID",transferID);
     }
 

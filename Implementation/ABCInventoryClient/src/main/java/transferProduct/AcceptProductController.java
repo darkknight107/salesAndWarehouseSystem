@@ -59,7 +59,7 @@ public class AcceptProductController {
         if(transferID.equals("")){
             showAllTransfer();
         }else {
-            searchTransfer("http://localhost:8080/rest/transferproduct/searchsendingtransfer/", "transferID", transferID);
+            searchTransfer("http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/searchsendingtransfer/", "transferID", transferID);
         }
     }
 
@@ -93,7 +93,7 @@ public class AcceptProductController {
         clientConfig.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
         client = Client.create(clientConfig);
 
-        getTransferURL="http://localhost:8080/rest/transferproduct/displaysendingtransfer/";
+        getTransferURL="http://abcinventoryserver.ap-southeast-2.elasticbeanstalk.com/rest/transferproduct/displaysendingtransfer/";
         searchTransfer(getTransferURL,"destinationLocationID", destinationLocationID);
         addDetailButton();
     }
