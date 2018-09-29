@@ -3,11 +3,10 @@
     <output-path>$PROJECT_DIR$/out/artifacts/ABCInventoryClient</output-path>
     <properties id="javafx-properties">
       <options>
-        <option name="appClass" value="searchProduct.SearchProductMain" />
+        <option name="appClass" value="homePage.SearchProductMain" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
-        <option name="nativeBundle" value="dmg" />
-        <option name="title" value="" />
+        <option name="title" value="ABC Inventory Management " />
         <option name="vendor" value="" />
         <option name="version" value="" />
       </options>
@@ -16,7 +15,6 @@
       <element id="archive" name="ABCInventoryClient.jar">
         <element id="module-output" name="ABCInventoryClient" />
       </element>
-      <element id="library" level="project" name="lib" />
     </root>
   </artifact>
 </component>
