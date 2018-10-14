@@ -1,38 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ABCInventoryClient.jnlp">
-  <information>
-    <title>ABCInventoryClient</title>
-    <vendor>Unknown</vendor>
-    <description>ABCInventoryClient</description>
-    <offline-allowed/>
-  </information>
-  <resources>
-    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ABCInventoryClient.jar" size="13925" download="eager" />
-    <jar href="asm-all-repackaged-2.1.88.jar" size="325348" download="eager" />
-    <jar href="cglib-2.1.88.jar" size="307599" download="eager" />
-    <jar href="guava-14.0.1.jar" size="2333755" download="eager" />
-    <jar href="hk2-api-2.1.88.jar" size="125669" download="eager" />
-    <jar href="hk2-locator-2.1.88.jar" size="134666" download="eager" />
-    <jar href="hk2-utils-2.1.88.jar" size="57000" download="eager" />
-    <jar href="javax.annotation-api-1.2.jar" size="29814" download="eager" />
-    <jar href="javax.inject-2.1.88.jar" size="8613" download="eager" />
-    <jar href="javax.json-1.0.1.jar" size="87729" download="eager" />
-    <jar href="javax.servlet-api-3.1.0.jar" size="106680" download="eager" />
-    <jar href="javax.ws.rs-api-2.0.jar" size="125110" download="eager" />
-    <jar href="jaxb-api-2.2.7.jar" size="112642" download="eager" />
-    <jar href="jersey-client.jar" size="123941" download="eager" />
-    <jar href="jersey-common.jar" size="620259" download="eager" />
-    <jar href="jersey-container-servlet-core.jar" size="55519" download="eager" />
-    <jar href="jersey-container-servlet.jar" size="17361" download="eager" />
-    <jar href="jersey-media-json-processing-2.0.jar" size="8263" download="eager" />
-    <jar href="jersey-server.jar" size="748819" download="eager" />
-    <jar href="jsonp-jaxrs-1.0.jar" size="9479" download="eager" />
-    <jar href="org.osgi.core-4.2.0.jar" size="260618" download="eager" />
-    <jar href="osgi-resource-locator-1.0.1.jar" size="23071" download="eager" />
-    <jar href="persistence-api-1.0.jar" size="62766" download="eager" />
-    <jar href="validation-api-1.1.0.Final.jar" size="76343" download="eager" />
-  </resources>
-  <jfx:javafx-desc  width="600" height="400" main-class="searchProduct.SearchProductMain"  name="ABCInventoryClient" />
-  <update check="background"/>
+<?xml version="1.0" encoding="UTF-8"?><jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ABCInventoryClient.jnlp">
+    <information>
+        <title>ABC Inventory Management </title>
+        <vendor>Unknown</vendor>
+        <description>none</description>
+        <offline-allowed/>
+    </information>
+    <update check="background"/>
+    <resources>
+        <j2se version="10.0.2+" href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="ABCInventoryClient.jar" size="305623" download="eager"/>
+    </resources>
+    <jfx:javafx-desc width="600" height="400" main-class="homePage.SearchProductMain" name="SearchProductMain"/>
 </jnlp>
+

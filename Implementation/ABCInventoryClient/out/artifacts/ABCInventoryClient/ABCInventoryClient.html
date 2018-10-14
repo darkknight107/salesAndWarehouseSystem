@@ -1,43 +1,49 @@
-<html><head>
-  <SCRIPT src="http://java.com/js/dtjava.js"></SCRIPT>
-<script>
+<html>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <SCRIPT src="https://java.com/js/dtjava.js"></SCRIPT><script>
     function launchApplication(jnlpfile) {
         dtjava.launch(            {
                 url : 'ABCInventoryClient.jnlp'
             },
             {
-                javafx : '8.0+'
+                javafx : '10.0.2+'
             },
             {}
         );
         return false;
     }
-</script>
-
-<script>
-    function javafxEmbedABCInventoryClient_id() {
+</script><script>
+    function javafxEmbedhomePage() {
         dtjava.embed(
             {
-                id : 'ABCInventoryClient_id',
+                id : 'homePage',
                 url : 'ABCInventoryClient.jnlp',
                 placeholder : 'javafx-app-placeholder',
                 width : '600',
                 height : '400'
             },
             {
-                javafx : '8.0+'
+                javafx : '10.0.2+'
             },
             {}
         );
     }
-    <!-- Embed FX application into web page once page is loaded -->
-    dtjava.addOnloadCallback(javafxEmbedABCInventoryClient_id);
+    
+            <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbedhomePage);
 </script>
-
-</head><body>
-<h2>Test page for <b>ABCInventoryClient</b></h2>
-  <b>Webstart:</b> <a href='ABCInventoryClient.jnlp' onclick="return launchApplication('ABCInventoryClient.jnlp');">click to launch this app as webstart</a><br><hr><br>
-
-  <!-- Applet will be inserted here -->
-  <div id='javafx-app-placeholder'></div>
-</body></html>
+    </head>
+    <body>
+        <h2>
+            Test page for <b>SearchProductMain</b>
+        </h2>
+        <b>Webstart:</b><a href="ABCInventoryClient.jnlp" onclick="return launchApplication('ABCInventoryClient.jnlp');">click to launch this app as webstart</a>
+        <br>
+        <hr>
+        <br>
+        
+        <!-- Applet will be inserted here -->
+        <div id="javafx-app-placeholder"></div>
+    </body>
+</html>

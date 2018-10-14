@@ -139,7 +139,6 @@ public class HomePageController {
             setLoggedInAsWarehouseStaff(false);
 
         }
-
     }
     public void checkStaff(){
         if (getLoggedInAsWarehouseStaff()== false){
