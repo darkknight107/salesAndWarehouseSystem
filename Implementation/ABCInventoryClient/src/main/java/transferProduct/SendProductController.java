@@ -136,7 +136,7 @@ public class SendProductController {
             }else{
                 for (StoredProduct st: dataCart) {
                     if ((locationID.equals(st.getLocationID())) & (productItemCode.equals(st.getProductItemCode()))) {
-                        screen.alertMessages("Dupplicate Product", "The product has been added to cart!");
+                        screen.alertMessages("Duplicate Product", "The product has been added to cart!");
                         flag = true;
                     }else if(!locationID.equals(st.getLocationID())){
                         screen.alertMessages("Multiple Send Location", "The items should be sent from 1 location at a time.");
@@ -264,7 +264,8 @@ public class SendProductController {
         String responseAddTransferItem = clientRequestPost(storedProductList,"addtransferitem");
         if (responseAddTransferItem.equals("true")){
             String responseUpdate = clientRequestPut(storedProductList,"updateproductquantity");
-            screen.alertMessages("Transfer Items Added", "Transfer Items has been added.");
+            screen.alertMessages("Products Sent", "The Products have been sent to the destination. Products needs to be accepted in the " +
+                    "destination for it to be updated in the destination database.");
             dataCart.clear();
 
             //load text fields and labels for adding product item

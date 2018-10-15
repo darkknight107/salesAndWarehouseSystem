@@ -133,18 +133,21 @@ public class HomePageController {
         loggedInAs.setStyle("-fx-color: white;");
         if(locationID.equals("WRH1")){
             setLoggedInAsWarehouseStaff(true);
-            loggedInAs.setText("Warehouse Staff");
+
         }
         else{
             setLoggedInAsWarehouseStaff(false);
-            loggedInAs.setText("Store Staff");
-        }
 
+        }
     }
     public void checkStaff(){
         if (getLoggedInAsWarehouseStaff()== false){
+            loggedInAs.setText("Store Staff");
             manageProduct.setDisable(true);
             manageStaff.setDisable(true);
+        }
+        else{
+            loggedInAs.setText("Warehouse Staff");
         }
     }
 
