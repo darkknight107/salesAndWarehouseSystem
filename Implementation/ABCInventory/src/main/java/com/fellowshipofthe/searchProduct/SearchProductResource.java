@@ -17,7 +17,8 @@ public class SearchProductResource{
     @GET
     @Path("/viewallproducts")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Product>viewAllProduct() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    public List<Product>viewAllProduct() throws SQLException, InstantiationException, IllegalAccessException,
+            ClassNotFoundException {
         ProductDAO productDAO = new ProductDAO();
 
         System.out.println(" View all product called!");
