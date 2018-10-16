@@ -38,6 +38,7 @@
                                 <image>
                                     <Image url="/image/SearchIcon.png" />
                                 </image>
+
                             </ImageView>
                         </graphic>
                     </Button>
