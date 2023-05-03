@@ -102,6 +102,7 @@ public class SearchAccountController {
             anchorPane.getChildren().setAll(pane);
             HomePageController controller= loader.<HomePageController>getController();
             controller.setUserType("STR");
+
             controller.checkStaff();
         }
         else if (responseValue.equals("false")){

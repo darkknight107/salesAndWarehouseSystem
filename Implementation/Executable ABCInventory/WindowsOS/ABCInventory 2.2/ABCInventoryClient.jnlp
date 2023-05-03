@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ABCInventoryClient.jnlp">
+    <information>
+        <title>ABCInventory</title>
+        <vendor>ABC Development Team</vendor>
+        <description>Java FX Restful Client-Side Application for ABC Inventory Management</description>
+        <offline-allowed/>
+    </information>
+    <update check="background"/>
+    <resources>
+        <j2se version="10.0.2+" href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="ABCInventoryClient.jar" size="304956" download="eager"/>
+        <jar href="activation-1.1.jar" size="62983" download="eager"/>
+        <jar href="jackson-core-asl-1.9.2.jar" size="228286" download="eager"/>
+        <jar href="jackson-jaxrs-1.9.2.jar" size="18323" download="eager"/>
+        <jar href="jackson-mapper-asl-1.9.2.jar" size="765648" download="eager"/>
+        <jar href="jackson-xc-1.9.2.jar" size="27075" download="eager"/>
+        <jar href="jaxb-api-2.2.2.jar" size="105134" download="eager"/>
+        <jar href="jaxb-impl-2.2.3-1.jar" size="890168" download="eager"/>
+        <jar href="jersey-client-1.18.1.jar" size="133906" download="eager"/>
+        <jar href="jersey-core-1.18.1.jar" size="479324" download="eager"/>
+        <jar href="jersey-json-1.18.1.jar" size="165342" download="eager"/>
+        <jar href="jettison-1.1.jar" size="67758" download="eager"/>
+        <jar href="stax-api-1.0-2.jar" size="23346" download="eager"/>
+    </resources>
+    <jfx:javafx-desc width="600" height="400" main-class="homePage.SearchProductMain" name="SearchProductMain"/>
+</jnlp>
+
